@@ -20,17 +20,18 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h3>
-				h3. Lorem ipsum dolor sit amet.
+				Tu-Pro
 			</h3>
+			<p> Tutorials for professionals</p>
 			<ul class="nav nav-tabs">
 				<li class="active">
 					<a href="#">Home</a>
 				</li>
 				<li>
-					<a href="#">Profile</a>
+					<a href="#">Student Login</a>
 				</li>
 				<li class="disabled">
-					<a href="#">Messages</a>
+					<a href="#">Instructor Login</a>
 				</li>
 				<li class="dropdown pull-right">
 					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<strong class="caret"></strong></a>
@@ -39,7 +40,7 @@
 							<a href="#">Action</a>
 						</li>
 						<li>
-							<a href="#">Another action</a>
+							<a href="#">Admin Login</a>
 						</li>
 						<li>
 							<a href="#">Something else here</a>
