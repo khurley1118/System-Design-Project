@@ -24,11 +24,11 @@
 			</h3>
 			<p> Tutorials for professionals</p>
 			<ul class="nav nav-tabs">
-				<li class="active">
+				<li>
 					<a href="index.php">Home</a>
 				</li>
-				<li>
-					<a href="studentLogin.php">Student Login</a>
+				<li class="active">
+					<a href="#">Student Login</a>
 				</li>
 				<li>
 					<a href="instructorLogin.php">Instructor Login</a>
@@ -54,7 +54,7 @@
 				</li>
 			</ul>
 			<h2>
-				HOME
+				Student Login
 			</h2>
 			<p>
 				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
