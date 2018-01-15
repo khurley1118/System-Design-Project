@@ -1,0 +1,44 @@
+
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 15, 2018, 10:19:41 AM
+    Author     : Mark Patterson
+*/
+
+            html, body{
+                background-image: url("Resources/BackGround.png");
+                background-repeat: no-repeat !important;
+		background-size: cover !important;
+		background-position: center center !important;
+		background-attachment: fixed !important;
+            }
+            
+            #buttonTable {
+                align-content: center;
+                position: relative;
+                left: 220px;
+                top: 120px;
+            }
+            #NBCClogo {
+                position: relative;
+                bottom: 213px;
+            }
+            
+            #logo {
+                align-content: center;
+                position: relative;
+                left: 130px; 
+                top: 60px;
+            }
+
+            #description {
+                align-content: center;
+                position: relative;
+                left: 130px; 
+                top: 130px;
+            }

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="indexCSS.css">
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -19,49 +20,26 @@
     <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<h3>
-				Tu-Pro
-			</h3>
-			<p> Tutorials for professionals</p>
-			<ul class="nav nav-tabs">
-				<li class="active">
-					<a href="index.php">Home</a>
-				</li>
-				<li>
-					<a href="studentLogin.php">Student Login</a>
-				</li>
-				<li>
-					<a href="instructorLogin.php">Instructor Login</a>
-				</li>
-				<li class="dropdown pull-right">
-					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<strong class="caret"></strong></a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="#">Action</a>
-						</li>
-						<li>
-							<a href="adminLogin.php">Admin Login</a>
-						</li>
-						<li>
-							<a href="#">Something else here</a>
-						</li>
-						<li class="divider">
-						</li>
-						<li>
-							<a href="#">Separated link</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
+                    <div id="logo">
+                        <img src="Resources/logo.jpg" alt="logo">
+                    </div>
+                    <div id="NBCClogo">
+                        <img src="Resources/nbccLogo.png" alt="logo">
+                    </div>
+                        <div id="buttonTable">
+                        <table>
+                            <tr><input type="image" src="Resources/StudentLogin.png" /></tr><BR>
+                            <tr><input type="image" src="Resources/FacultyLogin.png" /></tr>
+                        </table>
+                        </div>
+                    <div id="description">
 			<h2>
 				HOME
 			</h2>
 			<p>
-				Tu-Pro is a tutorial site for the NBCC network, dedicated to extending learning beyond the classroom. We offer extra tutorials and and tutoring outside of the classroom, just login with your Student ID to find your classes, and continue learning!
+                            Tu-Pro is a tutorial site for the NBCC network, dedicated to extending learning beyond the classroom. <BR> We offer extra tutorials and and tutoring outside of the classroom, just login with your Student ID to find your classes,<BR> and continue learning!
 			</p>
-			<p>
-				<a class="btn" href="#">View details »</a>
-			</p>
+                        </div>
 		</div>
 	</div>
 </div>
