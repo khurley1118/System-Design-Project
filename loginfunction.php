@@ -7,4 +7,5 @@
 	if ($passwordtrue && $username == $existingusername){
 		header('location:userhome.php');
 	}
+	//test
 ?>
