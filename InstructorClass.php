@@ -1,20 +1,20 @@
 <?php
-	//Admin class for TuPro.
+	//Instructor class for TuPro.
 
 	//private attributes
 	
-	private $adminId;
+	private $instructorId;
 	private $password;
 	private $firstName;
 	private $lastName;
 	
 	//getters/setters
 	
-	function setAdminId ($adminId) {
-		$this->adminId = $adminId;
+	function setInstructorId ($instructorId) {
+		$this->instructorId = $instructorId;
 	}
-	function getAdminId() {
-		return $this->adminId;
+	function getInstructorId() {
+		return $this->instructorId;
 	}
 	
 	function setPassword ($password) {
@@ -39,8 +39,8 @@
 	}
 	
 	//constructor
-	function __construct($AdminId, $FirstName, $LastName, $Password) {
-		$this->setAdminId($AdminId);
+	function __construct($InstructorId, $FirstName, $LastName, $Password) {
+		$this->setInstructorId($InstructorId);
 		$this->setFirstName($FirstName);
 		$this->setLastName($LastName);
 		$this->setPassword($Password);
