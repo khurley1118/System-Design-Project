@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <link rel="stylesheet" type="text/css" href="defaultStyle.css">
-<link rel="stylesheet" type="text/css" href="indexStyle.css">
+<link rel="stylesheet" type="text/css" href="LogStyle.css">
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -18,15 +18,13 @@
   </head>
   <body>
         <div id="pageContent">
-            <div id="logo">
-                <img src="Resources/logo.png" alt="logo">
-                
-            </div>
-            <div id="buttonTable">
-                <table>
-                    <tr><a href="studentLogin.php"><input type="image" src="Resources/StudentLogin.png" /></a></tr><BR>
-                    <tr><a href="facultyLogin.php"><input type="image" src="Resources/FacultyLogin.png" /></a></tr>
-                </table>
+            <h1>Faculty Log-in:</h1><BR>
+            <div id="loginForm">
+                <form action="loginServlet" method="post">
+                    <input type="text" name="login" placeholder="cc/Username" size="60"><br><BR>
+                    <input type="password" name="password" size="60" placeholder="Password"><br><BR>
+                    <input type="image" src="Resources/logIn.png" alt="Submit Form" />
+                </form>
             </div>
             <div id="description">
                 <h5><i>
