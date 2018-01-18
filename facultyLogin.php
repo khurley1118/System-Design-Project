@@ -24,15 +24,16 @@ $(document).ready(function(){
     $.ajax ({
         type: 'POST',
         url: 'loginfunction.php',
-        data: {$('#login).val(), $('#password')},
+        dataType: "text",
+        data: $('#loginForm').serialize(),
         cache: false,
         success: function(data) {
             alert(data);
             if (data == "invalid credentials"){
-                alert(response);
+                alert(data);
             }
             else {
-                alert(response);
+                alert(data);
                 window.location.replace(home.php);
             }
         },
