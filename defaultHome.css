@@ -26,7 +26,7 @@ and open the template in the editor.
             }
             
             #flexBox{
-                width: 85%;
+                width: 95%;
                 height: 90%;
                 margin-left: auto;
                 margin-right: auto;
@@ -36,17 +36,31 @@ and open the template in the editor.
             #mainBar {
                 border-style: groove;
                 border-color: #00293a;
-                width: 70%;
                 height: 90%;
                 background-color: #f3f3f3;
                 margin-left: 30px;
                 overflow: scroll;
+                min-width: 300px;
             }
             
             #sideBar{
                 border-style: groove;
                 border-color: #00293a;
+                max-width: 150px;
+                min-width: 150px;
                 height: 90%;
+                background-color: #f3f3f3;
+                flex-grow: 1;
+                overflow: scroll;
+            }
+            
+            #chatBar {
+                border-style: groove;
+                border-color: #00293a;
+                height: 90%;
+                min-width: 250px;
+                max-width: 350px;
+                margin-left: 30px;
                 background-color: #f3f3f3;
                 flex-grow: 1;
                 overflow: scroll;
@@ -81,7 +95,6 @@ and open the template in the editor.
                 height: 87%;
                 width: 80%;
             }
-            
             ::-webkit-scrollbar { 
                 /*Hides scrollbar */
                 width: 0px;  /* remove scrollbar space */

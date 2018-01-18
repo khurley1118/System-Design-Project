@@ -65,6 +65,15 @@ Here are a hundred and twenty-nine words in one sentence. The book from which it
             </p>
             </div>
         </div>
+              <div id="chatBar">
+                <div id="titleBar">
+                    <div id="titleText">
+                        <h3>Chat</h3>
+                    </div>
+                </div>
+                        <iframe src="http://localhost/TuPro/Home.php" height="700" width="230">
+                        </iframe>
+              </div>
           </div>
       </div>
 
