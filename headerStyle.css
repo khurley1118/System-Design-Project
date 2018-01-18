@@ -1,0 +1,75 @@
+
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 15, 2018, 10:19:41 AM
+    A00%;uthor     : Mark Patterson
+*/
+            
+            
+            
+            #navBar {
+                background-color: #00293a;
+                position: relative;
+                bottom: 70px;
+                
+                margin-left: 10%;
+                
+                float: left;
+            }
+            
+            #daBrand {
+                float: right;
+            }
+            
+            #HeaderContent{
+                position: relative;
+                width: 50%;
+                height: 150px;
+                bottom: 150px;
+                left: 25%;
+                
+            }
+
+            #HeaderBack{
+                width: 100%;
+                position: absolute;
+            }
+            
+            #homeButton {
+                float: left;
+            }
+
+            li {
+                float: left;
+                list-style-type: none;
+            }
+
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            li a:hover {
+                background-color: #829600;
+            }
+
+
+
+
+
+
+
+            
+            
+            
+            
+            
+            

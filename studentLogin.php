@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="defaultStyle.css">
-<link rel="stylesheet" type="text/css" href="LogStyle.css">
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -12,6 +10,8 @@
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
 
+    <link rel="stylesheet" type="text/css" href="defaultLogin.css">
+    <link rel="stylesheet" type="text/css" href="LogStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
@@ -20,7 +20,7 @@
         <div id="pageContent">
             <h1>Student Log-in:</h1><BR>
             <div id="loginForm">
-                <form action="loginServlet" method="post">
+                <form action="Home.php" method="post">
                     <input type="text" name="login" placeholder="cc/Username" size="60"><br><BR>
                     <input type="password" name="password" size="60" placeholder="Password"><br><BR>
                     <input type="image" src="Resources/logIn.png" alt="Submit Form" />
