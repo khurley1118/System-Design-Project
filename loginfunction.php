@@ -23,8 +23,6 @@ if ($id == $studentID) {
     while (mysqli_more_results($con)) {
         mysqli_next_result($con);
     }
-    //echo mysqli_error($con);
-    //$passwordtrue = //password_verify($_POST("password"), $dbpw);
     if ($dbpw == $_POST['password']) {
         $_SESSION['studentID'] = $studentID;
         $_SESSION['loggedin'] = $true;
@@ -36,13 +34,5 @@ if ($id == $studentID) {
 } else {
     //code for no user found error 
     echo "invalid credentials";
-}
-
-$username = $_POST["login"];
-$existingusername = "db get username here";
-$dbpasswd = "stored procedure to get password here";
-$passwordtrue = password_verify($_POST["password"], $dbpasswd);
-if ($passwordtrue && $username == $existingusername) {
-    header('location:userhome.php');
 }
 ?>

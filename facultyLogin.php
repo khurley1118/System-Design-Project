@@ -22,25 +22,25 @@
 $(document).ready(function(){
     var id = $("#login").val();
     $.ajax ({
-        type: 'post',
+        type: 'POST',
         url: 'loginfunction.php',
-        data: $('#loginForm').serialize(),
+        data: {$('#login).val(), $('#password')},
         cache: false,
         success: function(data) {
             alert(data);
-            if (true){
-                alert("TEST PASS")
-                $('.alertDiv').append($('<p/>').text(data));
-                return false;
+            if (data == "invalid credentials"){
+                alert(response);
+            }
+            else {
+                alert(response);
+                window.location.replace(home.php);
             }
         },
         error: function(msg){
             alert("Invalid username or password");
         }
     });
-    $("#name").on('click', function (){
-        
-    });
+    
     
 });
 
@@ -50,11 +50,13 @@ $(document).ready(function(){
         <div id="pageContent">
             <h1>Faculty Log-in:</h1><BR>
             <div id="loginForm">
-                <form action="loginfunction.php" method="post">
-                    <input type="text" name="login" placeholder="cc/Username" size="60"><br><BR>
-                    <input type="password" name="password" size="60" placeholder="Password"><br><BR>
+                <form action="" method="post">
+                    <input type="text" name="login" placeholder="cc/Username" size="60" required><br><BR>
+                    <input type="password" name="password" size="60" placeholder="Password" required><br><BR>
                     <input type="image" name="submit" src="Resources/logIn.png" alt="Submit Form" />
                 </form>
+                <div class="alertDiv">
+                </div>
             </div>
             <div id="description">
                 <h5><i>
