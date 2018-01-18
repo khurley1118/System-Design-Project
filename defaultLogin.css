@@ -18,11 +18,11 @@ and open the template in the editor.
 		background-size: cover !important;
 		background-attachment: fixed !important;
                 overflow-x: hidden;
-                overflow-y: hidden;
+                /*overflow-y: hidden;*/
             }
             
             #pageContent{
-                width: 800px;
+                width: 70%;
                 padding-top: 170px;
                 margin-left: auto !important;
                 margin-right: auto !important;
