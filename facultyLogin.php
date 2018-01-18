@@ -11,13 +11,14 @@
     <meta name="author" content="LayoutIt!">
     
     <link rel="stylesheet" type="text/css" href="defaultLogin.css">
-    <link rel="stylesheet" type="text/css" href="StuHome.css">
+    <link rel="stylesheet" type="text/css" href="LogStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
         <div id="pageContent">
+            <div id="logDiv">
             <h1>Faculty Log-in:</h1><BR>
             <div id="loginForm">
                 <form action="Home.php" method="post">
@@ -30,6 +31,7 @@
                 <h5><i>
                     Tu-Pro is a tutorial site for the NBCC network, dedicated to extending learning beyond the classroom. We offer extra tutorials and and tutoring outside of the classroom, just login with your Student ID to find your classes, and continue learning!
 		</i></h5>
+            </div>
             </div>
 	</div>
 

@@ -20,6 +20,7 @@
   <body>
         <div class="container-fluid">
         <div id="pageContent">
+            <div id="mainContainer">
             <div id="logo">
                 <img src="Resources/logo.png" alt="logo">
                 
@@ -34,6 +35,7 @@
                 <h5><i>
                     Tu-Pro is a tutorial site for the NBCC network, dedicated to extending learning beyond the classroom. We offer extra tutorials and and tutoring outside of the classroom, just login with your Student ID to find your classes, and continue learning!
 		          </i></h5>
+            </div>
             </div>
 	   </div>
     </div>
