@@ -23,7 +23,7 @@
                  <a href="Home.php"><input type="image" src="Resources/nbccLogo.png" /></a>
              </div>
              <div id ="daBrand">
-                 <img src="Resources/logoWhite.png" alt="logo" height="100px" width="180px">
+                 <img src="Resources/logoWhite.png" alt="logo" height="90px" width="180px">
              </div>
           </div>
       </div>

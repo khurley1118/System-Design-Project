@@ -16,14 +16,14 @@ and open the template in the editor.
                 background-color: #00293a;
                 position: relative;
                 bottom: 70px;
-                
                 margin-left: 10%;
-                
                 float: left;
             }
             
             #daBrand {
                 float: right;
+                position: relative;
+                bottom: 55px;
             }
             
             #HeaderContent{
@@ -41,7 +41,7 @@ and open the template in the editor.
             }
             
             #homeButton {
-                float: left;
+                margin-top: 20px;
             }
 
             li {
