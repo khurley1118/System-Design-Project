@@ -50,17 +50,8 @@ One office for lone of money for customs of goods, which by a plain method might
 Here are a hundred and twenty-nine words in one sentence. The book from which it is taken, "An Essay upon Projects," averages more than sixty words to the sentence. How long is the average sentence today! It depends on the man, but in even the most literary prose it will not average more than thirty words. The average sentence of Macaulay's England is 23.43. Emerson's average sentence is less than that.
             </p>
             </div>
-        </div>
-              <div id="chatBar">
-                <div id="titleBar">
-                    <div id="titleText">
-                        <h3>Chat</h3>
-                    </div>
-                </div>
-                        <iframe src="http://localhost/TuPro/Home.php" height="700" width="230">
-                        </iframe>
-              </div>
-          </div>
+       </div>
+      </div>
       </div>
 
 
