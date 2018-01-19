@@ -12,6 +12,9 @@ if (!$con)
   die('Could not connect: ' . mysqli_error());
   }
   
+$senderID = 1234567;
+$recipientID = 7654321;
+  
 $message = $_GET['message'];
 $name = $_GET['name'];
   
@@ -30,15 +33,16 @@ else if(strlen($name) < 1){
 else if(strlen($name) > 29){
    echo 6;
 }
-//Check if the name is used by somebody else
-else if(mysqli_num_rows(mysqli_query($con, "select * from chat where name = '" . $name . "' and ip != '" . @$REMOTE_ADDR . "'")) != 0){
-   echo 7;
-}
+////Check if the name is used by somebody else
+//else if(mysqli_num_rows(mysqli_query($con, "select * from chat where name = '" . $name . "' and ip != '" . @$REMOTE_ADDR . "'")) != 0){
+//   echo 7;
+//}
 //If everything is fine
 else{
    //This array contains the characters what will be removed from the message and name, because else somebody could send redirection script or links
    $search = array("<",">",">","<");
    //Insert a new row in the chat table
-   mysqli_query($con, "insert into chat values ('" . time() . "', '" . str_replace($search,"",$name) . "', '" . @$REMOTE_ADDR . "', '" . str_replace($search,"",$message) . "')") or die(8);
+   mysqli_query($con, "insert into chat values ('" . time() . "', '" . str_replace($search,"",$message) .  
+           "', '" . $senderID . "', '" . $recipientID . "')") or die(8);
 }
 ?>
