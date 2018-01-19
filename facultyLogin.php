@@ -30,15 +30,16 @@ $(document).ready(function(){
         success: function(data) {
             alert(data);
             if (data == "invalid credentials"){
-                alert(data);
+                //alert(data);
             }
             else {
-                alert(data);
+                //alert(data);
                 window.location.replace(home.php);
             }
         },
-        error: function(msg){
-            alert("Invalid username or password");
+        error: function (xhr, ajaxOptions, thrownError){
+            alert(xhr.status);
+            zalert(thrownError);
         }
     });
     
