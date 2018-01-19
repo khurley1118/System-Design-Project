@@ -20,31 +20,38 @@
 <script> 
     //ajax here
 $(document).ready(function(){
-    var id = $("#login").val();
-    $.ajax ({
+        var jsonArray = "";
+    $('#submit').on("click",function() {
+        //event.preventDefault();
+        var id = $("#login").val();
+        var pw = $("#password").val();
+        jarray = {"login":id, "password":pw};
+        //jsonArray = "login="+id+"&password="+password;
+        //alert(jarray);
+        //alert($("#formData").serialize());
+    }); 
+
+           $.ajax ({
         type: 'POST',
         url: 'loginfunction.php',
         dataType: "text",
-        data: $('#loginForm').serialize(),
+        data: $("#formData").serialize(),
         cache: false,
         success: function(data) {
             alert(data);
             if (data == "invalid credentials"){
-                //alert(data);
+                alert("FUCK");
             }
             else {
-                //alert(data);
+                alert("WOOT");
                 window.location.replace(home.php);
             }
         },
         error: function (xhr, ajaxOptions, thrownError){
-            alert(xhr.status);
-            zalert(thrownError);
+            alert(xhr.status + "\n" + thrownError);
         }
-    });
-    
-    
-});
+    }); // end ajax call
+}); // end document ready 
 
 </script>
   </head>
@@ -52,10 +59,10 @@ $(document).ready(function(){
         <div id="pageContent">
             <h1>Faculty Log-in:</h1><BR>
             <div id="loginForm">
-                <form action="" method="post">
-                    <input type="text" name="login" placeholder="cc/Username" size="60" required><br><BR>
-                    <input type="password" name="password" size="60" placeholder="Password" required><br><BR>
-                    <input type="image" name="submit" src="Resources/logIn.png" alt="Submit Form" />
+                <form action="" method="post" id="formData">
+                    <input type="text" id="login" name="login" placeholder="cc/Username" size="60" required> <br><BR>
+                    <input type="password" id="password" name="password" size="60" placeholder="Password" required> <br><BR>
+                    <input type="image" id="submit" name="submit" src="Resources/logIn.png" alt="Submit Form" />
                 </form>
                 <div class="alertDiv">
                 </div>
