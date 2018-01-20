@@ -40,10 +40,10 @@ $(document).ready(function(){
             type: 'POST',
             url: 'loginfunction.php',
             dataType: "text",
-            data: {login: id,password: pw},
+            data: {login: id,password: pw,type: "faculty"},
             cache: false,
             success: function(data) {
-                //alert(data);
+                alert(data);
                 if (data == "User does not Exist"){
                     //alert("inside user not found");
                     $("#formAlert").html(data);
@@ -81,9 +81,9 @@ $(document).ready(function(){
                     <input type="password" id="password" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span> <br><BR>
                     <input type="image" id="submit" name="submit" src="Resources/logIn.png" alt="Submit Form" />
                 </form>
-                <div id="formAlert" class="bg-danger text-white">
-                </div>
             </div>
+            <div id="formAlert" class="bg-danger text-white">
+                </div>
             <div id="description">
                 <h5><i>
                     Tu-Pro is a tutorial site for the NBCC network, dedicated to extending learning beyond the classroom. We offer extra tutorials and and tutoring outside of the classroom, just login with your Student ID to find your classes, and continue learning!
