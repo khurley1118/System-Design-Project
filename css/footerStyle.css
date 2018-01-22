@@ -1,0 +1,46 @@
+
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 15, 2018, 10:19:41 AM
+    A00%;uthor     : Mark Patterson
+*/
+
+
+        #footer {
+           position: fixed;
+           left: 0;
+           bottom: 0;
+           height: 9%;
+           width: 100%;
+           background-color: #00293a;
+           color: white;
+           text-align: center;
+        }
+        
+        #copyright {
+            
+        }
+        
+        #adminLogin {
+            float: right;
+            opacity: 0.5;
+        }
+
+
+
+
+
+
+
+
+            
+            
+            
+            
+            
+            

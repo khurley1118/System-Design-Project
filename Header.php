@@ -38,11 +38,10 @@
                             <button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
                             <span class='caret'></span></button>
                             <ul class='dropdown-menu'>
-                              <id = 'ddColor'>
+                              
                               <li><a href='#'>Course 1</a></li>
                               <li><a href='#'>Course 2</a></li>
                               <li><a href='#'>Course 3</a></li>
-                              </id>
                             </ul>
                           </div>
                           </li>";
