@@ -1,12 +1,37 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
+
 -- Host: localhost    Database: tupro
 -- ------------------------------------------------------
 -- Server version	5.7.19
+>>>>>>> origin/Dev
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+<<<<<<< HEAD
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `tupro`
+--
+
+DELIMITER $$
+--
+-- Procedures
+--
+DROP PROCEDURE IF EXISTS `SP_fetchStudentPassword`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_fetchStudentPassword` (IN `sid` INT(7))  NO SQL
+SELECT student.password FROM student WHERE student.studentId = sid$$
+
+DROP PROCEDURE IF EXISTS `SP_getUsername`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_getUsername` (IN `studentid` VARCHAR(255))  NO SQL
+SELECT student.studentId FROM student WHERE student.studentId = studentid$$
+
+DELIMITER ;
+
+-- --------------------------------------------------------
+=======
 /*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
@@ -14,6 +39,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+>>>>>>> origin/Dev
 
 --
 -- Table structure for table `admin`
@@ -35,11 +61,18 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
+<<<<<<< HEAD
+INSERT INTO `admin` (`adminId`, `password`, `firstName`, `lastName`) VALUES
+(1, 'password', 'jed', 'pal');
+
+-- --------------------------------------------------------
+=======
 LOCK TABLES `admin` WRITE;
 /*!40000 ALTER TABLE `admin` DISABLE KEYS */;
 INSERT INTO `admin` VALUES (1,'pass','jed','palm');
 /*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
+>>>>>>> origin/Dev
 
 --
 -- Table structure for table `content`
@@ -175,11 +208,22 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
+<<<<<<< HEAD
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`studentId`, `password`, `addedBy`, `firstName`, `lastName`) VALUES
+(12345, 'password', 1, 'jed', 'p');
+
+-- --------------------------------------------------------
+=======
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
 INSERT INTO `student` VALUES (12345,'password',1,'aaaaa','bbbbb');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
+>>>>>>> origin/Dev
 
 --
 -- Table structure for table `studentmap`
