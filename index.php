@@ -14,6 +14,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
+
   </head>
   
   <body>
@@ -38,7 +39,7 @@
             </div>
 	   </div>
     </div>
-    <script src="js/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
   </body>

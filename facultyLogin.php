@@ -24,9 +24,9 @@ $(document).ready(function(){
     //     alert($("#login").val() + " " + $("#password").val());
     //     });
         
-    $('#submit').on("click",function() {
+    $('#submit').on("click",function(e) {
         //reset error span message 
-        event.preventDefault();
+        e.preventDefault();
         $("#unerror").html("");
         $("#pwerror").html("");
 

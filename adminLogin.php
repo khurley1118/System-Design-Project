@@ -13,6 +13,62 @@
     <link rel="stylesheet" type="text/css" href="css/defaultLogin.css">
     <link rel="stylesheet" type="text/css" href="css/LogStyle.css">
     <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script> 
+    //ajax here
+$(document).ready(function(){
+
+    // $('#submit').on("submit",function() {
+    //     //event.preventDefault();
+    //     alert($("#login").val() + " " + $("#password").val());
+    //     });
+        
+    $('#submit').on("click",function(e) {
+        //reset error span message 
+        e.preventDefault();
+        $("#unerror").html("");
+        $("#pwerror").html("");
+
+        var id = $("#login").val();
+        var pw = $("#password").val();
+
+        if (id != ""){
+            if (pw != ""){
+            $.ajax ({
+            type: 'POST',
+            url: 'loginfunction.php',
+            dataType: "text",
+            data: {login: id,password: pw,type: "admin"},
+            cache: false,
+            success: function(data) {
+                // diagnostics !!!!!!!!!!!!!!!!!!!!!!alert(data);
+                if (data == "User does not Exist"){
+                    //alert("inside user not found");
+                    $("#formAlert").html(data);
+                }
+                else if (data == "Incorrect Password"){
+                    $("#formAlert").html(data);
+                }
+                else if (data == "Logged In") {
+                    window.location = '/home.php';
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError){
+                alert(xhr.status + "\n" + thrownError);
+                return false;
+                }
+            }); // end ajax call 
+            } else {
+                $("#pwerror").html("Required Field");
+            }
+        }
+        else {
+            $("#unerror").html("Required Field");
+        }
+    });   
+}); // end document ready 
+
+</script>
   </head>
   <body>
         <div id="pageContent">
