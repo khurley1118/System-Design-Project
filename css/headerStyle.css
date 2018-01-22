@@ -19,7 +19,7 @@ and open the template in the editor.
                 position: relative;
                 margin-left: auto;
                 margin-right: auto;
-                top: 80px;
+                bottom: 65px;
             }
 
             #daBrand {
@@ -39,6 +39,7 @@ and open the template in the editor.
                 font-size: 14pt;
                 position: relative;
                 top: 40px;
+                right: 140px;
             }
 
             #Type {
@@ -54,7 +55,7 @@ and open the template in the editor.
                 margin-left: auto;
                 margin-right: auto;
                 height: 150px;
-                bottom: 0px;
+                bottom: 150px;
             }
 
             #HeaderBack{

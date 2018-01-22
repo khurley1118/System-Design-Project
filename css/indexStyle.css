@@ -10,12 +10,12 @@ and open the template in the editor.
     Author     : Mark Patterson
 */
             #logo {
-							padding-top: 50px;
+		padding-top: 50px;
                 position: absolute;
             }
 
             #mainContainer{
-							padding-top: 100px;
+		padding-top: 100px;
                 height: 550px;
                 width: 700px;
                 margin-top: auto;
@@ -25,7 +25,7 @@ and open the template in the editor.
 
             #buttonTable {
                 position: relative;
-                top: 310px;
+                top: 340px;
                 left: 90px;
             }
 
@@ -34,5 +34,5 @@ and open the template in the editor.
                 position: relative;
                 width: 570px;
                 left: 60px;
-                top: 330px;
+                top: 360px;
             }
