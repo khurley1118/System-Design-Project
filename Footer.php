@@ -19,7 +19,7 @@
       
       <div id="footer">
           <div id="copyright">
-              <br><br>Copyright &copy; <?php echo date("Y"); ?> Design Shack
+              <br><br>Copyright &copy; <?php echo date("Y"); ?> NBCC
           </div>
           <div id="adminLogin">
               <a href="adminLogin.php">Admin Log-in</a>

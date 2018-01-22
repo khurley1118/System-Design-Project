@@ -15,7 +15,7 @@ and open the template in the editor.
            position: fixed;
            left: 0;
            bottom: 0;
-           height: 9%;
+           height: 6%;
            width: 100%;
            background-color: #00293a;
            color: white;
@@ -23,12 +23,19 @@ and open the template in the editor.
         }
         
         #copyright {
-            
+            position: absolute; 
+            left: 0; 
+            right: 0;
+            bottom: 4px;
+            margin-left: auto; 
+            margin-right: auto; 
+            width: 250px;
         }
         
         #adminLogin {
-            float: right;
-            opacity: 0.5;
+            position: absolute;
+            bottom: 1px;
+            opacity: 0.8;
         }
 
 
