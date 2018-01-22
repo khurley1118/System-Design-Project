@@ -1,0 +1,103 @@
+
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 15, 2018, 10:19:41 AM
+    A00%;uthor     : Mark Patterson
+*/
+
+.btn-custom {
+    color: white;
+    background-color: #00293a;
+}
+
+
+            #navBar {
+                background-color: #00293a;
+                position: absolute;
+                margin-left: auto;
+                margin-right: auto;
+                top: 80px;
+            }
+            
+            #daBrand {
+                position: relative;
+                bottom: 63px;
+                left: 440px;
+            }
+            
+            #ID {
+                color: white;
+                position: relative;
+                bottom: 100px;
+                left: 500px;
+            }
+            
+            #Name {
+                font-size: 14pt;
+                position: relative;
+                top: 40px;
+            }
+            
+            #Type {
+                font-size: 10pt;
+                position: relative;
+                top: 27px;
+                left: 70px;
+            }
+            
+            #HeaderContent{
+                position: relative;
+                width: 650px;
+                margin-left: auto;
+                margin-right: auto;
+                height: 150px;
+                bottom: 150px;
+            }
+
+            #HeaderBack{
+                width: 100%;
+                position: absolute;
+            }
+            
+            #homeButton {
+                margin-top: 20px;
+            }
+
+            li {
+                float: left;
+                list-style-type: none;
+            }
+
+            li a {
+                display: block;
+                color: black;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            li:hover {
+                color: white;
+            }
+            
+            li a:hover {
+                color: white;
+                background-color: #00293a;
+            }
+
+
+
+
+
+
+
+            
+            
+            
+            
+            
+            

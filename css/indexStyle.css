@@ -10,23 +10,31 @@ and open the template in the editor.
     Author     : Mark Patterson
 */
             
-            #buttonTable {
-                align-content: center;
-                position: relative;
-                top: 300px;
-                right: 50px;
-            }
             
             #logo {
                 position: absolute;
-                
             }
 
-            #description {
-                align-content: center;
+            #mainContainer{
+                
+                height: 550px;
+                width: 700px;
+                margin-top: 300px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            #buttonTable {
                 position: relative;
-                width: 500px;
-                left: 105px;
+                top: 310px;
+                left: 90px;
+            }
+            
+            #description {
+                text-align: center;
+                position: relative;
+                width: 570px;
+                left: 60px;
                 top: 330px;
             }
             

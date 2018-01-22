@@ -4,68 +4,33 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Administrator Login</title>
-
     <meta name="description" content="Source code generated using layoutit.com">
     <meta name="author" content="LayoutIt!">
-
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="css/defaultLogin.css">
+    <link rel="stylesheet" type="text/css" href="css/LogStyle.css">
+    <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
-
-    <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<h3>
-				Tu-Pro
-			</h3>
-			<p> Tutorials for professionals</p>
-			<ul class="nav nav-tabs">
-				<li class="active">
-					<a href="index.php">Home</a>
-				</li>
-				<li>
-					<a href="studentLogin.php">Student Login</a>
-				</li>
-				<li>
-					<a href="instructorLogin.php">Instructor Login</a>
-				</li>
-				<li class="dropdown pull-right">
-					 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<strong class="caret"></strong></a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="#">Action</a>
-						</li>
-						<li>
-							<a href="adminLogin.php">Admin Login</a>
-						</li>
-						<li>
-							<a href="#">Something else here</a>
-						</li>
-						<li class="divider">
-						</li>
-						<li>
-							<a href="#">Separated link</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
-			<h2>
-				Admin Login
-			</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-			</p>
-			<p>
-				<a class="btn" href="#">View details »</a>
-			</p>
-		</div>
+        <div id="pageContent">
+            <div id="logDiv">
+            <h1>Admin - Only Log-in:</h1><BR>
+            <div id="loginForm">
+                <form action="Home.php" method="post">
+                    <input type="text" name="login" placeholder="cc/Username" size="60"><br><BR>
+                    <input type="password" name="password" size="60" placeholder="Password"><br><BR>
+                    <input type="image" src="Resources/logIn.png" alt="Submit Form" />
+                </form>
+            </div>
+            <div id="description">
+                <h5><i>
+                    Tu-Pro is a tutorial site for the NBCC network, dedicated to extending learning beyond the classroom. We offer extra tutorials and and tutoring outside of the classroom, just login with your Student ID to find your classes, and continue learning!
+		</i></h5>
+            </div>
+            </div>
 	</div>
-</div>
-
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>

@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="defaultStyle.css">
-<link rel="stylesheet" type="text/css" href="LogStyle.css">
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -9,9 +7,9 @@
 
     <title>Tu-Pro Home</title>
 
-    <meta name="description" content="Source code generated using layoutit.com">
-    <meta name="author" content="LayoutIt!">
-
+    
+    <link rel="stylesheet" type="text/css" href="css/defaultLogin.css">
+    <link rel="stylesheet" type="text/css" href="css/LogStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
@@ -74,12 +72,14 @@ $(document).ready(function(){
   </head>
   <body>
         <div id="pageContent">
+            <div id="logDiv">
             <h1>Faculty Log-in:</h1><BR>
             <div id="loginForm">
                 <form action="" method="post" id="formData">
                     <input type="text" id="login" name="login" placeholder="cc/Username" size="60" required><span id="unerror"> </span> <br><BR>
                     <input type="password" id="password" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span> <br><BR>
                     <input type="image" id="submit" name="submit" src="Resources/logIn.png" alt="Submit Form" />
+
                 </form>
             </div>
             <div id="formAlert" class="bg-danger text-white">
@@ -88,6 +88,7 @@ $(document).ready(function(){
                 <h5><i>
                     Tu-Pro is a tutorial site for the NBCC network, dedicated to extending learning beyond the classroom. We offer extra tutorials and and tutoring outside of the classroom, just login with your Student ID to find your classes, and continue learning!
 		</i></h5>
+            </div>
             </div>
 	</div>
 
