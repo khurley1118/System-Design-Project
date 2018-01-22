@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include('Footer.php');?>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=0">
 
     <title>Tu-Pro Home</title>
-
-
     <link rel="stylesheet" type="text/css" href="css/defaultLogin.css">
     <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -16,14 +14,14 @@
     <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
 
   </head>
-  
+
   <body>
         <div class="container-fluid">
         <div id="pageContent">
             <div id="mainContainer">
             <div id="logo">
                 <img src="Resources/logo.png" alt="logo">
-                
+
             </div>
             <div id="buttonTable">
                 <table>
@@ -42,5 +40,6 @@
     <script src="/js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
+		<?php include('Footer.php');?>
   </body>
 </html>

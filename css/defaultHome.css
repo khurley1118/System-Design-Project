@@ -5,16 +5,15 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : Jan 15, 2018, 10:19:41 AM
     Author     : Mark Patterson
 */
-
             html, body {
                 width: 100%;
                 height: 100%;
             }
-            
+
             #pageContent{
                 width: 100%;
                 height: 100%;
@@ -23,7 +22,7 @@ and open the template in the editor.
                 margin-right: auto !important;
                 text-align: center;
             }
-            
+
             #flexBox{
                 width: 95%;
                 height: 90%;
@@ -31,7 +30,7 @@ and open the template in the editor.
                 margin-right: auto;
                 display: flex;
             }
-            
+
             #mainBar {
                 border-style: groove;
                 border-color: #00293a;
@@ -41,7 +40,7 @@ and open the template in the editor.
                 overflow: scroll;
                 min-width: 300px;
             }
-            
+
             #sideBar{
                 border-style: groove;
                 border-color: #00293a;
@@ -52,7 +51,7 @@ and open the template in the editor.
                 flex-grow: 1;
                 overflow: scroll;
             }
-            
+
             #chatBar {
                 border-style: groove;
                 border-color: #00293a;
@@ -64,7 +63,7 @@ and open the template in the editor.
                 flex-grow: 1;
                 overflow: scroll;
             }
-            
+
             #titleBar {
                 position: relative;
                 background-color: #00293a;
@@ -73,12 +72,12 @@ and open the template in the editor.
                 bottom: 20px;
                 text-align: center;
             }
-            
+
             #titleText {
                 position: relative;
                 top: 10px;
             }
-            
+
             #sideBarContent{
                 margin-left: auto;
                 margin-right: auto;
@@ -87,14 +86,14 @@ and open the template in the editor.
                 font-size: 20pt;
                 padding-top: 10px;
             }
-            
+
             #mainBarContent{
                 margin-left: auto;
                 margin-right: auto;
                 height: 87%;
                 width: 80%;
             }
-            ::-webkit-scrollbar { 
+            ::-webkit-scrollbar {
                 /*Hides scrollbar */
                 width: 0px;  /* remove scrollbar space */
                 background: transparent;  /* optional: just make scrollbar invisible */

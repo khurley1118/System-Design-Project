@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<?php include('Footer.php');?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -8,24 +7,18 @@
 
     <title>Tu-Pro Home</title>
 
-    
+
     <link rel="stylesheet" type="text/css" href="css/defaultLogin.css">
     <link rel="stylesheet" type="text/css" href="css/LogStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script> 
+<script>
     //ajax here
 $(document).ready(function(){
-
-    // $('#submit').on("submit",function() {
-    //     //event.preventDefault();
-    //     alert($("#login").val() + " " + $("#password").val());
-    //     });
-        
     $('#submit').on("click",function(e) {
-        //reset error span message 
+        //reset error span message
         e.preventDefault();
         $("#unerror").html("");
         $("#pwerror").html("");
@@ -42,7 +35,6 @@ $(document).ready(function(){
             data: {login: id,password: pw,type: "faculty"},
             cache: false,
             success: function(data) {
-                // diagnostics !!!!!!!!!!!!!!!!!!!!!!alert(data);
                 if (data == "User does not Exist"){
                     //alert("inside user not found");
                     $("#formAlert").html(data);
@@ -58,7 +50,7 @@ $(document).ready(function(){
                 alert(xhr.status + "\n" + thrownError);
                 return false;
                 }
-            }); // end ajax call 
+            }); // end ajax call
             } else {
                 $("#pwerror").html("Required Field");
             }
@@ -66,8 +58,8 @@ $(document).ready(function(){
         else {
             $("#unerror").html("Required Field");
         }
-    });   
-}); // end document ready 
+    });
+}); // end document ready
 
 </script>
   </head>
@@ -97,5 +89,6 @@ $(document).ready(function(){
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
+		<?php include('Footer.php');?>
   </body>
 </html>
