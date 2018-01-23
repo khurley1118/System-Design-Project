@@ -10,17 +10,20 @@ and open the template in the editor.
     Author     : Mark Patterson
 */
             #logo {
-		padding-top: 50px;
+		            padding-top: 50px;
                 position: absolute;
+                z-index: 99;
             }
 
             #mainContainer{
-		padding-top: 100px;
+		            padding-top: 100px;
+                margin-bottom: 250px;
                 height: 550px;
                 width: 700px;
                 margin-top: auto;
                 margin-left: auto;
                 margin-right: auto;
+                z-index: 99;
             }
 
             #buttonTable {
