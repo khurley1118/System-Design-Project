@@ -43,7 +43,7 @@ $(document).ready(function(){
                     $("#formAlert").html(data);
                 }
                 else if (data == "Logged In") {
-                    window.location = '/home.php';
+                    window.location = '/Home.php';
                 }
             },
             error: function (xhr, ajaxOptions, thrownError){
