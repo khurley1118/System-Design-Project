@@ -1,27 +1,24 @@
 <!DOCTYPE html>
-
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=0">
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width"/>
 
     <title>Tu-Pro Home</title>
+
     <link rel="stylesheet" type="text/css" href="css/defaultLogin.css">
     <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
-
   </head>
-
   <body>
         <div class="container-fluid">
         <div id="pageContent">
             <div id="mainContainer">
             <div id="logo">
                 <img src="Resources/logo.png" alt="logo">
-
             </div>
             <div id="buttonTable">
                 <table>

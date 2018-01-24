@@ -1,26 +1,26 @@
-
-
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
+
 /*
     Created on : Jan 15, 2018, 10:19:41 AM
     A00%;uthor     : Mark Patterson
 */
+
 #footer {
-position: fixed;
-bottom: 0;
-width: 100%;
-height: 60px;
-line-height: 60px;
-background-color: #00293a;
-color: white;
-text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 30px;
+  background-color: #00293a;
+  color: white;
+  text-align: center;
 }
 
-        /* #footer {
+/* #footer {
            position: fixed;
 					 clear:both;
            left: 0;
@@ -35,18 +35,18 @@ text-align: center;
            text-align: center;
         } */
 
-        #copyright {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 4px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 250px;
-        }
+#copyright {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 250px;
+}
 
-        #adminLogin {
-            position: absolute;
-            bottom: 1px;
-            opacity: 0.8;
-        }
+#adminLogin {
+  position: absolute;
+  bottom: 1px;
+  opacity: 0.8;
+}
