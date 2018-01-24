@@ -22,8 +22,8 @@
             </div>
             <div id="buttonTable">
                 <table>
-                    <tr><a href="studentLogin.php"><input type="image" src="/var/www/html/Resources/StudentLogin.png" /></a></tr><BR>
-                    <tr><a href="facultyLogin.php"><input type="image" src="/var/www/html/Resources/FacultyLogin.png" /></a></tr>
+                    <tr><a href="studentLogin.php"><input type="image" src="Resources/StudentLogin.png" /></a></tr><BR>
+                    <tr><a href="facultyLogin.php"><input type="image" src="Resources/FacultyLogin.png" /></a></tr>
                 </table>
             </div>
             <div id="description">
