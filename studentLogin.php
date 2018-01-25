@@ -39,7 +39,7 @@ $(document).ready(function(){
             data: {login: id,password: pw,type: "student"},
             cache: false,
             success: function(data) {
-                // diagnostics !!!!!!!!!!!!!!!!!!!!!!alert(data);
+                alert(data);
                 if (data == "User does not Exist"){
                     //alert("inside user not found");
                     $("#formAlert").html(data);
@@ -48,7 +48,7 @@ $(document).ready(function(){
                     $("#formAlert").html(data);
                 }
                 else if (data == "Logged In") {
-                    window.location = '/Home.php';
+                    window.location = 'Home.php';
                 }
             },
             error: function (xhr, ajaxOptions, thrownError){
@@ -56,6 +56,7 @@ $(document).ready(function(){
                 return false;
                 }
             }); // end ajax call
+
             } else {
                 $("#pwerror").html("Required Field");
             }
