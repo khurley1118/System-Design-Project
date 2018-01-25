@@ -37,7 +37,8 @@ $(document).ready(function(){
             success: function(data) {
                 //alert(data);
 								$("#formAlert").html(data);
-								if (data == "\n Logged In") {
+								if (data == "
+								Logged In") {
                     window.location.replace('Home.php');
                 }
             },
