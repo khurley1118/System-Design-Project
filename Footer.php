@@ -11,12 +11,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/footerStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
 
   </head>
   <body>
 
-      
+
       <div id="footer">
           <div id="copyright">
               <br><br>Copyright &copy; <?php echo date("Y"); ?> NBCC
@@ -25,7 +24,7 @@
               <a href="adminLogin.php">Admin Log-in</a>
           </div>
       </div>
-	
+
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
