@@ -4,7 +4,7 @@ include("connect.php");
 //student id as sent from form
 $userID = $_POST['login'];
 $id = "";
-$result = "a";
+$result = "";
 
 $idTypeToAssign = "";
 // Query the database with a stored procedure call, passing in the student id, loop through the result set 
