@@ -11,10 +11,8 @@
     <link rel="stylesheet" type="text/css" href="css/defaultLogin.css">
     <link rel="stylesheet" type="text/css" href="css/LogStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script> 
+<script>
     //ajax here
 $(document).ready(function(){
 
@@ -22,9 +20,9 @@ $(document).ready(function(){
     //     //event.preventDefault();
     //     alert($("#login").val() + " " + $("#password").val());
     //     });
-        
+
     $('#submit').on("click",function(e) {
-        //reset error span message 
+        //reset error span message
         e.preventDefault();
         $("#unerror").html("");
         $("#pwerror").html("");
@@ -57,7 +55,7 @@ $(document).ready(function(){
                 alert(xhr.status + "\n" + thrownError);
                 return false;
                 }
-            }); // end ajax call 
+            }); // end ajax call
             } else {
                 $("#pwerror").html("Required Field");
             }
@@ -65,8 +63,8 @@ $(document).ready(function(){
         else {
             $("#unerror").html("Required Field");
         }
-    });   
-}); // end document ready 
+    });
+}); // end document ready
 
 </script>
 
