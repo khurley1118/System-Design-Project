@@ -68,6 +68,7 @@ $(document).ready(function(){
 </script>
 	</head>
 	<body>
+            <?php include('indexHeader.php');?>
 				<div id="pageContent">
 						<div id="logDiv">
 						<h1>Admin - Only Log-in:</h1><BR>
@@ -88,5 +89,6 @@ $(document).ready(function(){
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
 		<script src="js/scripts.js"></script>
+                <?php include('Footer.php');?>
 	</body>
 </html>

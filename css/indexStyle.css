@@ -12,13 +12,14 @@ and open the template in the editor.
 #logo {
   padding-top: 50px;
   position: absolute;
-  z-index: 99;
+  z-index: -50;
 }
+
 
 #mainContainer {
   padding-top: 100px;
   margin-bottom: 250px;
-  height: 550px;
+  height: 1px;
   width: 700px;
   margin-top: auto;
   margin-left: auto;
