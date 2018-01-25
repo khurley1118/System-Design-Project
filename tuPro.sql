@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 24, 2018 at 01:15 PM
+-- Generation Time: Jan 25, 2018 at 03:47 PM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -21,9 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `tupro`
 --
-DROP DATABASE IF EXISTS `tupro`;
-CREATE DATABASE IF NOT EXISTS `tupro` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `tupro`;
 
 DELIMITER $$
 --
@@ -36,6 +33,11 @@ SELECT instructor.password FROM instructor WHERE instructor.instructorId = id$$
 DROP PROCEDURE IF EXISTS `SP_fetchStudentPassword`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_fetchStudentPassword` (IN `sid` INT(7))  NO SQL
 SELECT student.password FROM student WHERE student.studentId = sid$$
+
+DROP PROCEDURE IF EXISTS `SP_GetAdminId`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_GetAdminId` (IN `AdminId` INT(8))  NO SQL
+    COMMENT 'confirm adminId exists in table'
+SELECT adminId FROM admin WHERE adminId = AdminId$$
 
 DROP PROCEDURE IF EXISTS `SP_GetFaculty`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_GetFaculty` (IN `fid` INT(8))  SELECT instructor.instructorId from instructor WHERE instructor.instructorId = fid$$
