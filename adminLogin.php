@@ -38,17 +38,11 @@ $(document).ready(function(){
 						data: {login: id,password: pw,type: "admin"},
 						cache: false,
 						success: function(data) {
-								// diagnostics !!!!!!!!!!!!!!!!!!!!!!alert(data);
-								if (data == "User does not Exist"){
-										//alert("inside user not found");
-										$("#formAlert").html(data);
-								}
-								else if (data == "Incorrect Password"){
-										$("#formAlert").html(data);
-								}
-								else if (data == "Logged In") {
-										window.location = '/Home.php';
-								}
+							alert(data);
+							$("#formAlert").html(data);
+							if (data == "Logged In") {
+									window.location = '/Home.php';
+							}
 						},
 						error: function (xhr, ajaxOptions, thrownError){
 								alert(xhr.status + "\n" + thrownError);

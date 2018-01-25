@@ -36,14 +36,8 @@ $(document).ready(function(){
             cache: false,
             success: function(data) {
                 alert(data);
-                if (data == "User does not Exist"){
-                    //alert("inside user not found");
-                    $("#formAlert").html(data);
-                }
-                else if (data == "Incorrect Password"){
-                    $("#formAlert").html(data);
-                }
-                else if (data == "Logged In") {
+								$("#formAlert").html(data);
+								if (data == "Logged In") {
                     window.location = '/Home.php';
                 }
             },
