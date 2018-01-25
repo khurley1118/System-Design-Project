@@ -38,7 +38,7 @@ $(document).ready(function(){
                 //alert(data);
 								$("#formAlert").html(data);
 								if (data == "Logged In") {
-                    window.location = 'Home.php';
+                    window.location.replace('Home.php');
                 }
             },
             error: function (xhr, ajaxOptions, thrownError){
