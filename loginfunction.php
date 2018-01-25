@@ -60,7 +60,7 @@ if ($id == $userID) {
     	if ($dbpw == $_POST['password']) {
         	$_SESSION['studentID'] = $userID;
         	$_SESSION['loggedin'] = true;
-        	echo 'Logged In';
+        	echo json_encode('Logged In');
     } else {
     	//incorrect password error here
     	echo "Incorrect Password";
