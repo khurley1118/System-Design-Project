@@ -12,8 +12,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon">
   </head>
   <body>
+        <?php include('indexHeader.php');?>
         <div class="container-fluid">
         <div id="pageContent">
             <div id="mainContainer">
@@ -37,6 +39,7 @@
     <script src="/js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
+    
 		<?php include('Footer.php');?>
   </body>
 </html>

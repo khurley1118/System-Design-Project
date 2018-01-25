@@ -64,6 +64,7 @@ $(document).ready(function(){
 </script>
   </head>
   <body>
+      <?php include('indexHeader.php');?>
         <div id="pageContent">
             <div id="logDiv">
             <h1>Faculty Log-in:</h1><BR>
