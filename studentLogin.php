@@ -36,6 +36,7 @@ $(document).ready(function(){
             cache: false,
             success: function(data) {
                 alert(data);
+								print_r(data);
                 if (data == "User does not Exist"){
                     //alert("inside user not found");
                     $("#formAlert").html(data);
