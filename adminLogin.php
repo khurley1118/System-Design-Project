@@ -40,8 +40,8 @@ $(document).ready(function(){
 						success: function(data) {
 							//alert(data);
 							$("#formAlert").html(data);
-							if (data == "Logged In") {
-									window.location = 'Home.php';
+							if ((JSON.parse(data)) == "Logged In") {
+									window.location.replace('Home.php');
 							}
 						},
 						error: function (xhr, ajaxOptions, thrownError){
