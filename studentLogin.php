@@ -7,20 +7,16 @@
 
     <title>Student Login</title>
 
-
     <link rel="stylesheet" type="text/css" href="css/defaultLogin.css">
     <link rel="stylesheet" type="text/css" href="css/LogStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-    //ajax here
 $(document).ready(function(){
-
     // $('#submit').on("submit",function() {
     //     //event.preventDefault();
     //     alert($("#login").val() + " " + $("#password").val());
     //     });
-
     $('#submit').on("click",function(e) {
         //reset error span message
         e.preventDefault();
@@ -48,7 +44,7 @@ $(document).ready(function(){
                     $("#formAlert").html(data);
                 }
                 else if (data == "Logged In") {
-                    window.location = 'Home.php';
+                    window.location = '/Home.php';
                 }
             },
             error: function (xhr, ajaxOptions, thrownError){
@@ -66,7 +62,6 @@ $(document).ready(function(){
         }
     });
 }); // end document ready
-
 </script>
 
 

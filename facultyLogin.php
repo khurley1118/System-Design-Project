@@ -35,6 +35,7 @@ $(document).ready(function(){
             data: {login: id,password: pw,type: "faculty"},
             cache: false,
             success: function(data) {
+							alert(data);
                 if (data == "User does not Exist"){
                     //alert("inside user not found");
                     $("#formAlert").html(data);
