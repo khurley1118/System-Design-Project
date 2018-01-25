@@ -11,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="css/defaultLogin.css">
     <link rel="stylesheet" type="text/css" href="css/LogStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
     <link href="indexCSS.css" rel="stylesheet" type="text/css"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
