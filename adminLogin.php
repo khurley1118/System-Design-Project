@@ -38,7 +38,7 @@ $(document).ready(function(){
 						data: {login: id,password: pw,type: "admin"},
 						cache: false,
 						success: function(data) {
-							alert(data);
+							//alert(data);
 							$("#formAlert").html(data);
 							if (data == "Logged In") {
 									window.location = '/Home.php';

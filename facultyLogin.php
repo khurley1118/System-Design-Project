@@ -34,8 +34,7 @@ $(document).ready(function(){
             data: {login: id,password: pw,type: "faculty"},
             cache: false,
             success: function(data) {
-							alert(data);
-							alert(data);
+							//alert(data);
 							$("#formAlert").html(data);
 							if (data == "Logged In") {
 									window.location = '/Home.php';
