@@ -1,6 +1,7 @@
 <?php
 //connection
 include("connect.php");
+session_start();
 //student id as sent from form
 $userID = $_POST['login'];
 $id = "";
@@ -58,8 +59,8 @@ if ($id == $userID) {
     	}
     	//if passwords match log the user in and assign session variables.
     	if ($dbpw == $_POST['password']) {
-        	$_SESSION['studentID'] = $userID;
-        	$_SESSION['loggedin'] = true;
+				 	$_SESSION['userID'] = $userID
+					$_SESSION['userType'] = $loginType;
         	echo json_encode('Logged In');
     } else {
     	//incorrect password error here

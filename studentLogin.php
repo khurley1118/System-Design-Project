@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php include("StudentClass.php");
+session_start();
+ ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -36,8 +39,8 @@ $(document).ready(function(){
             cache: false,
             success: function(data) {
                 //alert(data);
-		$("#formAlert").html(data);
-		if ((JSON.parse(data)) == "Logged In") {
+								$("#formAlert").html(data);
+								if ((JSON.parse(data)) == "Logged In") {
                     window.location.replace('Home.php');
                 }
             },
