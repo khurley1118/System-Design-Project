@@ -17,7 +17,7 @@ else {
 	//else case is that user is a student
 	$user = new Student();
 	$user->setStudentID($id);
-	$user->setFirstName();
+	$user->setFirstName(DLgetStudentFirst($id));
 	$user->setLastName();
 	$user->setCourses();
 }
