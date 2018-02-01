@@ -6,7 +6,7 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'chattest');
-	
+
 global $con;
 	  $con = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
 if (!$con)
@@ -31,21 +31,21 @@ if($numrows != 0){
        //The last posts date
        //$old = $row['time'];
        $times[] = $row['time'];
-       
+
     }
     //Display the messages in an ascending order, so the newest message will be at the bottom
     $arraySize = count($messages);
-    
+
     if($arraySize >= 10){
         $size = $arraySize - 1;
         //This is the more important line, this deletes each message older then the 10th message ordered by time, so the table will never have to store more than 10 messages.
         mysqli_query($con, "delete from chat where senderid = '" . $senderID . "' and recipientId = '" . $recipientID . "' and time < " . $times[9]);
-      
+
     }
     else{
         $size = 9;
     }
-    
+
     for($i=$size;$i>=0;$i--){
        echo $messages[$i];
     }
