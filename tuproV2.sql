@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 01, 2018 at 01:28 PM
+-- Generation Time: Feb 01, 2018 at 01:47 PM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `tupro`
 --
+CREATE DATABASE IF NOT EXISTS `tupro` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `tupro`;
 
 DELIMITER $$
 --
@@ -63,6 +65,11 @@ CREATE TABLE IF NOT EXISTS `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Truncate table before insert `admin`
+--
+
+TRUNCATE TABLE `admin`;
+--
 -- Dumping data for table `admin`
 --
 
@@ -87,6 +94,11 @@ CREATE TABLE IF NOT EXISTS `content` (
   KEY `courseId` (`courseCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `content`
+--
+
+TRUNCATE TABLE `content`;
 -- --------------------------------------------------------
 
 --
@@ -100,6 +112,11 @@ CREATE TABLE IF NOT EXISTS `course` (
   PRIMARY KEY (`courseCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `course`
+--
+
+TRUNCATE TABLE `course`;
 -- --------------------------------------------------------
 
 --
@@ -117,6 +134,11 @@ CREATE TABLE IF NOT EXISTS `instructor` (
   KEY `addedBy` (`addedBy`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Instructor Information';
 
+--
+-- Truncate table before insert `instructor`
+--
+
+TRUNCATE TABLE `instructor`;
 --
 -- Dumping data for table `instructor`
 --
@@ -140,6 +162,11 @@ CREATE TABLE IF NOT EXISTS `instructormap` (
   KEY `courseId` (`courseCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `instructormap`
+--
+
+TRUNCATE TABLE `instructormap`;
 -- --------------------------------------------------------
 
 --
@@ -157,6 +184,11 @@ CREATE TABLE IF NOT EXISTS `student` (
   KEY `addedBy` (`addedBy`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `student`
+--
+
+TRUNCATE TABLE `student`;
 --
 -- Dumping data for table `student`
 --
@@ -180,6 +212,11 @@ CREATE TABLE IF NOT EXISTS `studentmap` (
   KEY `courseId` (`courseCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `studentmap`
+--
+
+TRUNCATE TABLE `studentmap`;
 --
 -- Constraints for dumped tables
 --
