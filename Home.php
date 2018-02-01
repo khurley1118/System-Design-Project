@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
+include('connect.php')
 include('Header.php');
 include('Footer.php');
 include('StudentClass.php');

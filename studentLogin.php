@@ -38,7 +38,7 @@ $(document).ready(function(){
             data: {login: id,password: pw,type: "student"},
             cache: false,
             success: function(data) {
-                //alert(data);
+                alert(data);
 								$("#formAlert").html(data);
 								if ((JSON.parse(data)) == "Logged In") {
                     window.location.replace('Home.php');

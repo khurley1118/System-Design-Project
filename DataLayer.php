@@ -1,10 +1,10 @@
 <?php
-include('connect.php');
+include("connect.php");
 //Student
 ///////////////////////////////////
-	DLgetStudentFirst($id){
-		$rs = mysqli_query($con, 'CALL SP');
-		while ($row = mysqli_fetch_array($rs)){
+	function DLgetStudentFirst($id) {
+		$rs = mysqli_query($con, "CALL SP_getStudentFirst($id)");
+		while ($row = mysqli_fetch_array($rs)) {
 			$firstName = $row['firstName'];
 		}
 		//gets rid of meta
@@ -13,8 +13,8 @@ include('connect.php');
 		}
 	}
 
-	DLgetStudentLast($id){
-		$rs = mysqli_query($con, 'CALL SP');
+	function DLgetStudentLast($id){
+		$rs = mysqli_query($con, "CALL SP_getStudentLastName($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$lastName = $row['lastName'];
 		}
@@ -24,15 +24,16 @@ include('connect.php');
 			mysqli_next_result($con);
 		}
 	}
-	DLgetStudentCourses($id){
-
-
-
+	function DLgetStudentCourses($id){
+		$rs = mysqli_query($con, "CALL SP_getStudentCourses($id)");
+		while ($row = mysqli_fetch_array($rs)){
+			$courses = $row["courseCode"];
+		}
 	}
 //ADMIN
 ///////////////////////////////////////
-	DLgetAdminFrist($id){
-		$rs = mysqli_query($con, 'CALL SP');
+	function DLgetAdminFrist($id){
+		$rs = mysqli_query($con, "CALL SP_getAdminFirstName($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$firstName = $row['firstName'];
 		}
@@ -41,8 +42,8 @@ include('connect.php');
 			mysqli_next_result($con);
 		}
 	}
-	DLgetAdminLast($id){
-		$rs = mysqli_query($con, 'CALL SP');
+	function DLgetAdminLast($id){
+		$rs = mysqli_query($con, "CALL SP_getAdminLastName($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$lastName = $row['lastName'];
 		}
@@ -53,18 +54,19 @@ include('connect.php');
 	}
 //INSTRUCTOR
 //////////////////////////////////////
-	DLgetInstructorFirst($id){
-		$rs = mysqli_query($con, 'CALL SP');
+	function DLgetInstructorFirst($con, $id){
+		$rs = mysqli_query($con, "CALL SP_getInstructorFirstName($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$firstName = $row['firstName'];
+			return $firstName;
 		}
 		//gets rid of meta
 		while(mysqli_more_results($con)){
 			mysqli_next_result($con);
 		}
 	}
-	DLgetInstructorLast($id){
-		$rs = mysqli_query($con, 'CALL SP');
+	function DLgetInstructorLast($id){
+		$rs = mysqli_query($con, "CALL SP_GetInstructorLastName($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$lastName = $row['lastName'];
 		}
@@ -73,19 +75,29 @@ include('connect.php');
 			mysqli_next_result($con);
 		}
 	}
-	DLgetInstructorCourses($id){
-
+	function DLgetInstructorCourses($con, $id){
+		$x = mysqli_query($con, "CALL SP_getInstructorCourses($id)");
+		while ($row2 = mysqli_fetch_array($x)){
+			$courses[] = $row;
+		}
+		return $courses;
 	}
 
 //COURSES
 /////////////////////////////////////
-	DLgetCourseList(){
+	function DLgetCourseList($con){
+		$rs = mysqli_query($con, "CALL SP_getAllCourses");
+		while ($row = mysqli_fetch_array($rs)){
+			$list[] = $row;
+			//Index 0 = Course code
+			//Index 1 = Course description
+		}
+		return $list;
+	}
+	function DLupdateCourse($courseID){
 
 	}
-	DLupdateCourse($courseID){
-
-	}
-	DLRemoveCourse($courseID){
+	function DLRemoveCourse($courseID){
 
 	}
 ?>

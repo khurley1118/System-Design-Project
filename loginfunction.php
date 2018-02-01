@@ -15,12 +15,12 @@ if ($loginType == "admin"){
 	$idTypeToAssign = "adminId";
 }
 else if ($loginType == "faculty") {
-	$result = mysqli_query($con, "CALL SP_GetFaculty($userID)");
+	$result = mysqli_query($con, "CALL SP_GetFacultyID($userID)");
 	$idTypeToAssign = "instructorId";
 }
 else {
 	//else case is it's a student.
-	$result = mysqli_query($con, "CALL SP_getUsername($userID)");
+	$result = mysqli_query($con, "CALL SP_getStudentID($userID)");
 	$idTypeToAssign = "studentId";
 }
 
@@ -59,7 +59,7 @@ if ($id == $userID) {
     	}
     	//if passwords match log the user in and assign session variables.
     	if ($dbpw == $_POST['password']) {
-				 	$_SESSION['userID'] = $userID
+				 	$_SESSION['userID'] = $userID;
 					$_SESSION['userType'] = $loginType;
         	echo json_encode('Logged In');
     } else {
