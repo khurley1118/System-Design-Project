@@ -1,8 +1,8 @@
 <?php
-include("connect.php");
+//include("connect.php");
 //Student
 ///////////////////////////////////
-	function DLgetStudentFirst($id) {
+	function DLgetStudentFirst($con, $id) {
 		$rs = mysqli_query($con, "CALL SP_getStudentFirst($id)");
 		while ($row = mysqli_fetch_array($rs)) {
 			$firstName = $row['firstName'];
@@ -11,9 +11,10 @@ include("connect.php");
 		while(mysqli_more_results($con)){
 			mysqli_next_result($con);
 		}
+		return $firstName;
 	}
 
-	function DLgetStudentLast($id){
+	function DLgetStudentLast($con, $id){
 		$rs = mysqli_query($con, "CALL SP_getStudentLastName($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$lastName = $row['lastName'];
@@ -23,12 +24,14 @@ include("connect.php");
 		while(mysqli_more_results($con)){
 			mysqli_next_result($con);
 		}
+		return $lastName;
 	}
-	function DLgetStudentCourses($id){
+	function DLgetStudentCourses($con, $id){
 		$rs = mysqli_query($con, "CALL SP_getStudentCourses($id)");
 		while ($row = mysqli_fetch_array($rs)){
-			$courses = $row["courseCode"];
+			$courses[] = $row["courseCode"];
 		}
+		return $courses;
 	}
 //ADMIN
 ///////////////////////////////////////
@@ -78,7 +81,7 @@ include("connect.php");
 	function DLgetInstructorCourses($con, $id){
 		$x = mysqli_query($con, "CALL SP_getInstructorCourses($id)");
 		while ($row2 = mysqli_fetch_array($x)){
-			$courses[] = $row;
+			$courses[] = $row2;
 		}
 		return $courses;
 	}

@@ -1,5 +1,13 @@
 <!DOCTYPE html>
-
+<?php
+//session_start();
+//include("connect.php");
+include("DataLayer.php");
+$id =	$_SESSION['userID'];
+$first = DLgetStudentFirst($con, $id);
+$last = DLgetStudentLast($con, $id);
+$full = $first . " " . $last;
+ ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -24,25 +32,34 @@
              <div id ="daBrand">
                  <img src="Resources/logoWhite.png" alt="logo" height="90px" width="180px">
              </div>
-              
+
             <div id="headerContent">
                 <?php
                 echo "<ul id='navBar'>";
-                        $name = "Mark Patterson";
-                        $type = "Student";
+                        $name = $full;
+                        $type = $_SESSION['userType'];
                         $sessionID = 1;
                         //placehold session id and name/type
                         if ($sessionID == 1){
+
                             echo "<li>
                             <li><div class='dropdown'>
                             <button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
                             <span class='caret'></span></button>
-                            <ul class='dropdown-menu'>
-                              
-                              <li><a href='#'>Course 1</a></li>
-                              <li><a href='#'>Course 2</a></li>
-                              <li><a href='#'>Course 3</a></li>
-                            </ul>
+                            <ul class='dropdown-menu'>";
+
+														$courselist = DLgetStudentCourses($con,$id);
+														$courseCounter = 0;
+														//print_r($courselist);
+													  foreach ($courselist as $course){
+															echo "<li><a href='$course'>" . $course . "</a></li>";
+															$courseCounter++;
+														}
+                              //
+                              // "<li><a href='#'>Course 1</a></li>
+                              // <li><a href='#'>Course 2</a></li>
+                              // <li><a href='#'>Course 3</a></li>
+                            echo "</ul>
                           </div>
                           </li>";
                         } else if ($sessionID == 2){
@@ -71,13 +88,13 @@
                     <div id="Type">
                         <p><?php echo $type; ?><p>
                     </div>
-                    
+
                 </div>
             </div>
           </div>
       </div>
 
-	
+
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>

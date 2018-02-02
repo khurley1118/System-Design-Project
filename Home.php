@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 session_start();
-include('connect.php')
+include('connect.php');
 include('Header.php');
 include('Footer.php');
 include('StudentClass.php');
@@ -16,14 +16,13 @@ else if ($userType == "faculty"){
 }
 else {
 	//else case is that user is a student
-	$user = new Student();
-	$user->setStudentID($id);
-	$user->setFirstName(DLgetStudentFirst($id));
-	$user->setLastName();
-	$user->setCourses();
+	// $user = new Student();
+	// $user->setStudentID($id);
+	// $user->setFirstName(DLgetStudentFirst($con, $id));
+	// $user->setLastName();
+	// $user->setCourses();
+	// $_SESSION['CurrentUser'] = $user;
 }
-
-
 ?>
 <html lang="en">
   <head>
