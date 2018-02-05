@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+	if (isset($_SESSION['userID'])){
+		echo "<script> alert(".$_SESSION['userID']."); <script>";
+		header("location: Home.php");
+	}
+ ?>
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
@@ -39,7 +47,7 @@
     <script src="/js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
-    
+
 		<?php include('Footer.php');?>
   </body>
 </html>

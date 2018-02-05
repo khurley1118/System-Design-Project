@@ -3,7 +3,7 @@
 //Student
 ///////////////////////////////////
 	function DLgetStudentFirst($con, $id) {
-		$rs = mysqli_query($con, "CALL SP_getStudentFirst($id)");
+		$rs = mysqli_query($con, "CALL SP_GetStudentFirstName($id)");
 		while ($row = mysqli_fetch_array($rs)) {
 			$firstName = $row['firstName'];
 		}
@@ -15,11 +15,10 @@
 	}
 
 	function DLgetStudentLast($con, $id){
-		$rs = mysqli_query($con, "CALL SP_getStudentLastName($id)");
-		while ($row = mysqli_fetch_array($rs)){
+		$rs2 = mysqli_query($con, "CALL SP_getStudentLastName($id)");
+		while ($row = mysqli_fetch_array($rs2)){
 			$lastName = $row['lastName'];
 		}
-
 		//gets rid of meta
 		while(mysqli_more_results($con)){
 			mysqli_next_result($con);
@@ -30,6 +29,10 @@
 		$rs = mysqli_query($con, "CALL SP_getStudentCourses($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$courses[] = $row["courseCode"];
+		}
+		//gets rid of meta
+		while(mysqli_more_results($con)){
+			mysqli_next_result($con);
 		}
 		return $courses;
 	}
@@ -83,6 +86,10 @@
 		while ($row2 = mysqli_fetch_array($x)){
 			$courses[] = $row2;
 		}
+		//gets rid of meta
+		while(mysqli_more_results($con)){
+			mysqli_next_result($con);
+		}
 		return $courses;
 	}
 
@@ -94,6 +101,10 @@
 			$list[] = $row;
 			//Index 0 = Course code
 			//Index 1 = Course description
+			//gets rid of meta
+			while(mysqli_more_results($con)){
+				mysqli_next_result($con);
+			}
 		}
 		return $list;
 	}
@@ -102,5 +113,17 @@
 	}
 	function DLRemoveCourse($courseID){
 
+	}
+
+	function DLgetCourseName($con, $courseID){
+		$rs = mysqli_query($con, "CALL SP_getCourseName($courseID)");
+		while ($row = mysqli_fetch_array($rs)){
+			$course = $row['description'];
+		}
+		//gets rid of meta
+		while(mysqli_more_results($con)){
+			mysqli_next_result($con);
+		}
+		return $course;
 	}
 ?>

@@ -1,13 +1,25 @@
 <?php
 	include("DataLayer.php");
 	echo "<pre>";
+	include("connect.php");
 // TEST FOR COURSE LIST
 	// $list = DLgetCourseList($con);
 	// foreach ($list as $item){
 	// 	echo $item[0] . " ".$item[1] .  "\n";
 	// }
+	$id = 12345;
+	$courselist = DLgetStudentCourses($con,$id);
+	$courseCounter = 0;
+	//print_r($courselist);
 
-	print_r(DLgetStudentFirst($con, 12345) . " " . DLgetStudentLast($con, 12345));
+	foreach ($courselist as $course){
+		$courseName = DLgetCourseName($con, $course);
+
+		echo $course . " " . $courseName . "<BR>";
+		$courseCounter++;
+	}
+
+	print_r(DLgetStudentFirst($con, 12345) . " " . DLgetStudentLast($con, 12345) . "<BR>");
 
 //TEST FOR STUDENT COURSES
 	// $x = 0;

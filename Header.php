@@ -41,27 +41,25 @@ $full = $first . " " . $last;
                         $sessionID = 1;
                         //placehold session id and name/type
                         if ($sessionID == 1){
-
+													$courselist = DLgetStudentCourses($con,$id);
                             echo "<li>
                             <li><div class='dropdown'>
                             <button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
                             <span class='caret'></span></button>
                             <ul class='dropdown-menu'>";
 
-														$courselist = DLgetStudentCourses($con,$id);
 														$courseCounter = 0;
 														//print_r($courselist);
 													  foreach ($courselist as $course){
-															echo "<li><a href='$course'>" . $course . "</a></li>";
+															$courseName = DLgetCourseName($con, $course);
+															echo "<li><a href='$course'>" . $course . " " . $courseName . "</a></li>";
 															$courseCounter++;
 														}
-                              //
-                              // "<li><a href='#'>Course 1</a></li>
-                              // <li><a href='#'>Course 2</a></li>
-                              // <li><a href='#'>Course 3</a></li>
+
                             echo "</ul>
                           </div>
                           </li>";
+
                         } else if ($sessionID == 2){
                             echo "<li><a href='Home.php'>Content</a></li>
                             <li><a href='Home.php'>News</a></li>
@@ -86,7 +84,7 @@ $full = $first . " " . $last;
                         <p><?php echo $name; ?></p>
                     </div>
                     <div id="Type">
-                        <p><?php echo $type; ?><p>
+                        <p><?php echo strtoupper($type); ?><p>
                     </div>
 
                 </div>
