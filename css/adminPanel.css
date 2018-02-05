@@ -24,6 +24,34 @@ and open the template in the editor.
   height: 90%;
 }
 
+.buttonStyle2 {
+  position: relative;
+    font-size: 12pt;
+    z-index: 555;
+    color: white;
+    width: 200px;
+    background-color: #00293a;
+}
+
+#courseButtons {
+    position: absolute;
+    background-color: #f3f3f3;
+    margin-left: 53%;
+    width: 46%;
+    height: 30%;
+}
+
+#addCourse, #removeCourse, #showCourses, #addAccount, #removeAccount, #showAccount {
+    position: absolute;
+    border-style: groove;
+    border-color: #00293a;
+    background-color: #f3f3f3;
+    margin-left: 53%;
+    width: 46%;
+    margin-top: 18%;
+    height: 63%;
+} 
+
 #coursesContent {
     position: absolute;
     border-style: groove;
@@ -40,6 +68,16 @@ and open the template in the editor.
     background-color: #f3f3f3;
     width: 100%;
     height: 100%
+}
+
+#mainContent {
+    position: absolute;
+    border-style: groove;
+    border-color: #00293a;
+    background-color: #f3f3f3;
+    margin-left: 10px;
+    height: 82%;
+    width: 50%;
 }
 
 html, body {
