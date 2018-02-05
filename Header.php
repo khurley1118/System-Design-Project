@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/headerStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+
 
   </head>
   <body>
@@ -33,7 +33,7 @@
                         $sessionID = 1;
                         //placehold session id and name/type
                         if ($sessionID == 1){
-                            echo "<li>
+                            echo "
                             <li><div class='dropdown'>
                             <button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
                             <span class='caret'></span></button>
@@ -44,7 +44,7 @@
                               <li><a href='#'>Course 3</a></li>
                             </ul>
                           </div>
-                          </li>";
+                          ";
                         } else if ($sessionID == 2){
                             echo "<li><a href='Home.php'>Content</a></li>
                             <li><a href='Home.php'>News</a></li>
