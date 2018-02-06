@@ -39,7 +39,7 @@
 
 //ADMIN
 ///////////////////////////////////////
-	function DLgetAdminFrist($id){
+	function DLgetAdminFirst($id){
 		$rs = mysqli_query($con, "CALL SP_getAdminFirstName($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$firstName = $row['firstName'];
@@ -48,6 +48,7 @@
 		while(mysqli_more_results($con)){
 			mysqli_next_result($con);
 		}
+		return $firstName;
 	}
 	function DLgetAdminLast($id){
 		$rs = mysqli_query($con, "CALL SP_getAdminLastName($id)");
@@ -58,6 +59,7 @@
 		while(mysqli_more_results($con)){
 			mysqli_next_result($con);
 		}
+		return $lastName;
 	}
 //INSTRUCTOR
 //////////////////////////////////////
@@ -81,6 +83,7 @@
 		while(mysqli_more_results($con)){
 			mysqli_next_result($con);
 		}
+		return $lastName;
 	}
 	function DLgetInstructorCourses($con, $id){
 		$x = mysqli_query($con, "CALL SP_getInstructorCourses($id)");
@@ -95,8 +98,8 @@
 			return null;
 		}
 		else {
-		return $courses;
-	}
+			return $courses;
+		}
 	}
 
 //COURSES
@@ -107,13 +110,13 @@
 			$list[] = $row;
 			//Index 0 = Course code
 			//Index 1 = Course description
+			}
 			//gets rid of meta
 			while(mysqli_more_results($con)){
 				mysqli_next_result($con);
 			}
+			return $list;
 		}
-		return $list;
-	}
 	function DLupdateCourse($courseID){
 
 	}

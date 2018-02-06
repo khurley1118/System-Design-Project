@@ -11,7 +11,7 @@ $idTypeToAssign = "";
 // Query the database with a stored procedure call, passing in the student id, loop through the result set
 $loginType = $_POST['type'];
 if ($loginType == "admin"){
-	$result = mysqli_query($con, "ADMIN STORED PROCEDURE HERE");
+	$result = mysqli_query($con, "CALL SP_getAdminID($userID)");
 	$idTypeToAssign = "adminId";
 }
 else if ($loginType == "faculty") {

@@ -38,7 +38,7 @@ $(document).ready(function(){
 						data: {login: id,password: pw,type: "admin"},
 						cache: false,
 						success: function(data) {
-							//alert(data);
+							alert(data);
 							$("#formAlert").html(data);
 							if ((JSON.parse(data)) == "Logged In") {
 									window.location.replace('AdminPage.php');
@@ -66,13 +66,15 @@ $(document).ready(function(){
 				<div id="pageContent">
 						<div id="logDiv">
 						<h1>Admin - Only Log-in:</h1><BR>
-						<div id="loginForm">
-								<form action="Home.php" method="post">
-										<input type="text" name="login" placeholder="cc/Username" size="60"><br><BR>
-										<input type="password" name="password" size="60" placeholder="Password"><br><BR>
-										<input type="image" src="Resources/logIn.png" alt="Submit Form" />
-								</form>
-						</div>
+							<div id="loginForm">
+							<form action="" method="post" id="formData">
+									<input type="text" id="login" name="login" placeholder="cc/Username" size="60" required><span id="unerror"> </span> <br><BR>
+									<input type="password" id="password" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span> <br><BR>
+									<input type="image" id="submit" name="submit" src="Resources/logIn.png" alt="Submit Form" />
+							</form>
+					</div>
+					<div id="formAlert" class="bg-danger text-white">
+					</div>
 						<div id="description">
 								<h5><i>
 										Tu-Pro is a tutorial site for the NBCC network, dedicated to extending learning beyond the classroom. We offer extra tutorials and and tutoring outside of the classroom, just login with your Student ID to find your classes, and continue learning!

@@ -53,9 +53,11 @@ $full = $first . " " . $last;
                             <button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
                             <span class='caret'></span></button>
                             <ul class='dropdown-menu'>";
+														// if user isn't enrolled in anycourses display no courses, else print to a dropdown list
 														if (!isset($courselist)){
 															echo "<li><a href='#'>No courses</a></li>";
 														} else {
+
 														$courseCounter = 0;
 													  foreach ($courselist as $course){
 															$courseName = DLgetCourseName($con, $course);
@@ -73,6 +75,7 @@ $full = $first . " " . $last;
 														<button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
 														<span class='caret'></span></button>
 														<ul class='dropdown-menu'>";
+														//if user is enrolled in courses print them/print no courses if not
 														if (!isset($courselist)){
 															echo "<li><a href='#'>No courses</a></li>";
 														}
