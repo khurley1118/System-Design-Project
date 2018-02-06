@@ -24,12 +24,12 @@
              <div id ="daBrand">
                  <img src="Resources/logoWhite.png" alt="logo" height="90px" width="180px">
              </div>
-              
+
             <div id="headerContent">
                 <?php
                 echo "<ul id='navBar'>";
                         $name = "Mark Patterson";
-                        $type = "Student";
+                        $type = "Studnet";
                         $sessionID = 1;
                         //placehold session id and name/type
                         if ($sessionID == 1){
@@ -38,7 +38,7 @@
                             <button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
                             <span class='caret'></span></button>
                             <ul class='dropdown-menu'>
-                              
+
                               <li><a href='#'>Course 1</a></li>
                               <li><a href='#'>Course 2</a></li>
                               <li><a href='#'>Course 3</a></li>
@@ -71,13 +71,13 @@
                     <div id="Type">
                         <p><?php echo $type; ?><p>
                     </div>
-                    
+
                 </div>
             </div>
           </div>
       </div>
 
-	
+
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>

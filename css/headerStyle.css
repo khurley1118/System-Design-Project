@@ -79,6 +79,17 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
+#indexHeader {
+  position: relative;
+  background-color: #00293a;
+  width: 100%;
+  height: 70px;
+}
+#indexLogo {
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
 
 li:hover {
   color: white;

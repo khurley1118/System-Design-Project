@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=0">
     <title>Tu-Pro Home</title>
-    <link rel="stylesheet" type="text/css" href="css/adminPanel.css">    
+    <link rel="stylesheet" type="text/css" href="css/adminPanel.css">
     <link rel="stylesheet" type="text/css" href="css/defaultHome.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
   </head>
@@ -17,11 +17,17 @@
                 document.getElementById('coursesContent').setAttribute("class", "showDiv");
                 document.getElementById('accountsContent').setAttribute("class", "hideDiv");
                 document.getElementById('mainTitle').innerHTML = "Course Information";
+                document.getElementById('removeAccount').setAttribute("class", "hideDiv");
+                document.getElementById('addAccount').setAttribute("class", "hideDiv");
+                document.getElementById('showAccount').setAttribute("class", "hideDiv");
             }
             function setAccounts() {
                 document.getElementById('coursesContent').setAttribute("class", "hideDiv");
                 document.getElementById('accountsContent').setAttribute("class", "showDiv");
                 document.getElementById('mainTitle').innerHTML = "Account Information";
+                document.getElementById('removeCourse').setAttribute("class", "hideDiv");
+                document.getElementById('addCourse').setAttribute("class", "hideDiv");
+                document.getElementById('showCourses').setAttribute("class", "hideDiv");
             }
             function addCourse(){
                 document.getElementById('removeCourse').setAttribute("class", "hideDiv");
@@ -70,27 +76,22 @@
             </div>
         </div>
         <div id="mainBar">
-            <div id="titleBar">
-                <div id="titleText">
-                <h3 id="mainTitle">Course Information</h3>
-                </div>
-            </div>
             <div id="mainBarContent">
                 <div class="showDiv" id="coursesContent">
                     <div id="titleBar">
                         <div id="titleText">
-                        <h3>Controls</h3>
+                        <h3>Courses</h3>
                         </div>
                     </div>
                     <div id="mainContent">
-                        Course Information 
+                        Course Information
                     </div>
                     <div id="courseButtons">
                         <table>
                             <tr><button class="buttonStyle2" onclick="showAllCrs()">Show All</button></tr>
                             <tr><button class="buttonStyle2" onclick="addCourse()">Add Course</button></tr>
                             <tr><button class="buttonStyle2" onclick="removeCourse()">Remove Course</button></tr>
-                </table> 
+                </table>
                     </div>
                     <div class="hideDiv" id="addCourse">
                         Add course
@@ -105,18 +106,18 @@
                 <div class="hideDiv" id="accountsContent">
                     <div id="titleBar">
                         <div id="titleText">
-                        <h3>Controls</h3>
+                        <h3>Accounts</h3>
                         </div>
                     </div>
                     <div id="mainContent">
-                       Accounts Panel 
+                       Accounts Panel
                     </div>
                     <div id="courseButtons">
                         <table>
                             <tr><button class="buttonStyle2" onclick="showAllAcc()">Show All</button></tr>
                             <tr><button class="buttonStyle2" onclick="addAccount()">Add Account</button></tr>
                             <tr><button class="buttonStyle2" onclick="removeAccount()">Remove Account</button></tr>
-                </table> 
+                </table>
                     </div>
                     <div class="hideDiv" id="addAccount">
                         Add course
