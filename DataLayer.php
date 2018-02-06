@@ -36,6 +36,7 @@
 		}
 		return $courses;
 	}
+
 //ADMIN
 ///////////////////////////////////////
 	function DLgetAdminFrist($id){
@@ -64,14 +65,14 @@
 		$rs = mysqli_query($con, "CALL SP_getInstructorFirstName($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$firstName = $row['firstName'];
-			return $firstName;
 		}
 		//gets rid of meta
 		while(mysqli_more_results($con)){
 			mysqli_next_result($con);
 		}
+		return $firstName;
 	}
-	function DLgetInstructorLast($id){
+	function DLgetInstructorLast($con, $id){
 		$rs = mysqli_query($con, "CALL SP_GetInstructorLastName($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$lastName = $row['lastName'];
@@ -83,14 +84,19 @@
 	}
 	function DLgetInstructorCourses($con, $id){
 		$x = mysqli_query($con, "CALL SP_getInstructorCourses($id)");
-		while ($row2 = mysqli_fetch_array($x)){
-			$courses[] = $row2;
+		while ($row = mysqli_fetch_array($x)){
+			$courses[] = $row["courseCode"];
 		}
 		//gets rid of meta
 		while(mysqli_more_results($con)){
 			mysqli_next_result($con);
 		}
+		if (!isset($courses)){
+			return null;
+		}
+		else {
 		return $courses;
+	}
 	}
 
 //COURSES

@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <?php
-//session_start();
-//include("connect.php");
 include("DataLayer.php");
+$type = $_SESSION['userType'];
 $id =	$_SESSION['userID'];
-$first = DLgetStudentFirst($con, $id);
-$last = DLgetStudentLast($con, $id);
+if ($type == "faculty"){
+	$first = DLgetInstructorFirst($con, $id);
+	$last = DLgetInstructorLast($con, $id);
+}
+else if ($type == "admin"){
+
+}
+else {
+	$first = DLgetStudentFirst($con, $id);
+	$last = DLgetStudentLast($con, $id);
+}
 $full = $first . " " . $last;
- ?>
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -19,7 +27,6 @@ $full = $first . " " . $last;
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/headerStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
 
   </head>
   <body>
@@ -35,39 +42,51 @@ $full = $first . " " . $last;
 
             <div id="headerContent">
                 <?php
+
                 echo "<ul id='navBar'>";
                         $name = $full;
-                        $type = $_SESSION['userType'];
-                        $sessionID = 1;
                         //placehold session id and name/type
-                        if ($sessionID == 1){
-													$courselist = DLgetStudentCourses($con,$id);
+                        if ($type == "student"){
+														$courselist = DLgetStudentCourses($con,$id);
                             echo "<li>
                             <li><div class='dropdown'>
                             <button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
                             <span class='caret'></span></button>
                             <ul class='dropdown-menu'>";
-
+														if (!isset($courselist)){
+															echo "<li><a href='#'>No courses</a></li>";
+														} else {
 														$courseCounter = 0;
-														//print_r($courselist);
 													  foreach ($courselist as $course){
 															$courseName = DLgetCourseName($con, $course);
 															echo "<li><a href='$course'>" . $course . " " . $courseName . "</a></li>";
 															$courseCounter++;
 														}
-
+													}
                             echo "</ul>
-                          </div>
-                          </li>";
+                          </div>";
 
-                        } else if ($sessionID == 2){
-                            echo "<li><a href='Home.php'>Content</a></li>
-                            <li><a href='Home.php'>News</a></li>
-                            <li><a href='Home.php'>Contactd</a></li>
-                            <li><a href='Home.php'>About</a></li>
-                            <li><a href='Home.php'>News</a></li>
-                            <li><a href='Home.php'>Contactd</a></li>
-                            <li><a href='Home.php'>About</a></li>";
+                        } else if ($type == "faculty"){
+														$courselist = DLgetInstructorCourses($con, $id);
+														echo "<li>
+														<li><div class='dropdown'>
+														<button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
+														<span class='caret'></span></button>
+														<ul class='dropdown-menu'>";
+														if (!isset($courselist)){
+															echo "<li><a href='#'>No courses</a></li>";
+														}
+														else {
+															$courseCounter = 0;
+															foreach ($courselist as $course){
+																$courseName = DLgetCourseName($con, $course);
+																echo "<li><a href='$course'>" . $course . " " . $courseName . "</a></li>";
+																$courseCounter++;
+															}
+														}
+															echo "</ul>
+															</div>";
+
                         } else {
                             echo "<li><a href='Home.php'>Content</a></li>
                             <li><a href='Home.php'>News</a></li>

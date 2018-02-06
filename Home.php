@@ -34,7 +34,6 @@ else {
 
     <link rel="stylesheet" type="text/css" href="css/defaultHome.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
 
   </head>
   <body>
@@ -86,8 +85,6 @@ else {
                     </div>
           </div>
       </div>
-
-
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
