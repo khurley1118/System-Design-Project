@@ -10,6 +10,7 @@ $result = "";
 $idTypeToAssign = "";
 // Query the database with a stored procedure call, passing in the student id, loop through the result set
 $loginType = $_POST['type'];
+//print_r($loginType);
 if ($loginType == "admin"){
 	$result = mysqli_query($con, "CALL SP_getAdminID($userID)");
 	$idTypeToAssign = "adminId";
@@ -43,7 +44,7 @@ if ($id == $userID) {
 	//decide which password query to run and run it, exit condition and test result of query
 	//if query not false loop through and verify password
 	if ($loginType == "admin"){
-    	$r2 = mysqli_query($con, "CALL SP_fetchAdminPW($userID)");
+    	$r2 = mysqli_query($con, "CALL SP_fetchAdminPassword($userID)");
 	} else if ($loginType == "faculty"){
 		$r2 = mysqli_query($con, "CALL SP_fetchInstructorPW($userID)");
 	} else {
@@ -53,6 +54,7 @@ if ($id == $userID) {
     	while ($dRow = mysqli_fetch_array($r2)) {
     		//WHEN HASHING IS IMPLEMENTED WILL NEED TO BE MODIFIED
         	$dbpw = $dRow['password'];
+					//print_r($dbpw);
     	}
     	while (mysqli_more_results($con)) {
         	mysqli_next_result($con);

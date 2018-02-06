@@ -16,50 +16,47 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 		//ajax here
-$(document).ready(function(){
-		$('#submit').on("click",function(e) {
-				//reset error span message
-				e.preventDefault();
-				$("#unerror").html("");
-				$("#pwerror").html("");
-				//assign variables for un and password
-				var id = $("#login").val();
-				var pw = $("#password").val();
-				//check for blanks, if not blank proceed
-				if (id != ""){
-						if (pw != ""){
-							//ajax call to Auth API
-						$.ajax ({
-						type: 'POST',
-						url: 'loginfunction.php',
-						//return type is text  (data coming back from API)
-						dataType: "text",
-						//Parameters (ID, Password, and User type)
-						data: {login: id,password: pw,type: "admin"},
-						cache: false,
-						success: function(data) {
-							alert(data);
-							$("#formAlert").html(data);
-							if ((JSON.parse(data)) == "Logged In") {
-									window.location.replace('AdminPage.php');
-							}
-						},
-						error: function (xhr, ajaxOptions, thrownError){
-								alert(xhr.status + "\n" + thrownError);
-								return false;
-								}
-						}); // end ajax call
-						} else {
-								$("#pwerror").html("Required Field");
-						}
-				}
-				else {
-						$("#unerror").html("Required Field");
-				} //end else scenarios (pw and un error)
-		});//end on click event handler
-}); // end document ready
+		$(document).ready(function(){
+		    $('#submit').on("click",function(e) {
+		        //reset error span message
+		        e.preventDefault();
+		        $("#unerror").html("");
+		        $("#pwerror").html("");
 
-</script>
+		        var id = $("#login").val();
+		        var pw = $("#password").val();
+
+		        if (id != ""){
+		            if (pw != ""){
+		            $.ajax ({
+		            type: 'POST',
+		            url: 'loginfunction.php',
+		            dataType: "text",
+		            data: {login: id,password: pw,type: "admin"},
+		            cache: false,
+		            success: function(data) {
+									alert(data);
+									$("#formAlert").html(data);
+									if ((JSON.parse(data)) == "Logged In") {
+											window.location.replace('Home.php');
+									}
+		            },
+		            error: function (xhr, ajaxOptions, thrownError){
+		                alert(xhr.status + "\n" + thrownError);
+		                return false;
+		                }
+		            }); // end ajax call
+		            } else {
+		                $("#pwerror").html("Required Field");
+		            }
+		        }
+		        else {
+		            $("#unerror").html("Required Field");
+		        }
+		    });
+		}); // end document ready
+
+		</script>
 	</head>
 	<body>
             <?php include('indexHeader.php');?>

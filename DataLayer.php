@@ -39,7 +39,7 @@
 
 //ADMIN
 ///////////////////////////////////////
-	function DLgetAdminFirst($id){
+	function DLgetAdminFirst($con, $id){
 		$rs = mysqli_query($con, "CALL SP_getAdminFirstName($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$firstName = $row['firstName'];
@@ -50,7 +50,7 @@
 		}
 		return $firstName;
 	}
-	function DLgetAdminLast($id){
+	function DLgetAdminLast($con, $id){
 		$rs = mysqli_query($con, "CALL SP_getAdminLastName($id)");
 		while ($row = mysqli_fetch_array($rs)){
 			$lastName = $row['lastName'];

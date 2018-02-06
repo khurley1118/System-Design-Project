@@ -8,7 +8,8 @@ if ($type == "faculty"){
 	$last = DLgetInstructorLast($con, $id);
 }
 else if ($type == "admin"){
-
+	$first = DLgetAdminFirst($con, $id);
+	$last = DLgetAdminLast($con, $id);
 }
 else {
 	$first = DLgetStudentFirst($con, $id);
