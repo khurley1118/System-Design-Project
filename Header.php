@@ -16,6 +16,7 @@ $courselist = $user->getCourses();
 ?>
 <html lang="en">
   <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=0">
@@ -23,6 +24,8 @@ $courselist = $user->getCourses();
     <title>Tu-Pro Home</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
     <link rel="stylesheet" type="text/css" href="css/headerStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -59,7 +62,7 @@ $courselist = $user->getCourses();
 														$courseCounter = 0;
 													  foreach ($courselist as $course){
 															$courseName = utilCourseName($con, $course);
-															echo "<script> alert('". $course . "   " . $courseName ."')</script>";
+
 															echo "<li><a href='$course'>" . $course . " " . $courseName . "</a></li>";
 															$courseCounter++;
 														}
@@ -95,22 +98,21 @@ $courselist = $user->getCourses();
 
                         }
                 echo "</ul>";
-                ?>
+      ?>
                 <div id ="ID">
                   	<?php
 											echo "<table>";
 											echo "<tr><td>$name</td></tr>";
                      	echo "<tr><td>" . strtoupper($type) . "</td></tr>";
 											echo "</table>";
+
 											?>
                 </div>
             </div>
           </div>
       </div>
-
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+			<script src="js/jquery.min.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/scripts.js"></script>
   </body>
 </html>
