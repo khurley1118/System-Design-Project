@@ -1,6 +1,7 @@
 <?php
 //connection
 include("connect.php");
+session_start();
 //student id as sent from form
 $userID = $_POST['login'];
 $id = "";
@@ -9,17 +10,18 @@ $result = "";
 $idTypeToAssign = "";
 // Query the database with a stored procedure call, passing in the student id, loop through the result set
 $loginType = $_POST['type'];
+//print_r($loginType);
 if ($loginType == "admin"){
-	$result = mysqli_query($con, "ADMIN STORED PROCEDURE HERE");
+	$result = mysqli_query($con, "CALL SP_getAdminID($userID)");
 	$idTypeToAssign = "adminId";
 }
 else if ($loginType == "faculty") {
-	$result = mysqli_query($con, "CALL SP_GetFaculty($userID)");
+	$result = mysqli_query($con, "CALL SP_GetFacultyID($userID)");
 	$idTypeToAssign = "instructorId";
 }
 else {
 	//else case is it's a student.
-	$result = mysqli_query($con, "CALL SP_getUsername($userID)");
+	$result = mysqli_query($con, "CALL SP_getStudentID($userID)");
 	$idTypeToAssign = "studentId";
 }
 
@@ -42,7 +44,7 @@ if ($id == $userID) {
 	//decide which password query to run and run it, exit condition and test result of query
 	//if query not false loop through and verify password
 	if ($loginType == "admin"){
-    	$r2 = mysqli_query($con, "CALL SP_fetchAdminPW($userID)");
+    	$r2 = mysqli_query($con, "CALL SP_fetchAdminPassword($userID)");
 	} else if ($loginType == "faculty"){
 		$r2 = mysqli_query($con, "CALL SP_fetchInstructorPW($userID)");
 	} else {
@@ -52,14 +54,15 @@ if ($id == $userID) {
     	while ($dRow = mysqli_fetch_array($r2)) {
     		//WHEN HASHING IS IMPLEMENTED WILL NEED TO BE MODIFIED
         	$dbpw = $dRow['password'];
+					//print_r($dbpw);
     	}
     	while (mysqli_more_results($con)) {
         	mysqli_next_result($con);
     	}
     	//if passwords match log the user in and assign session variables.
     	if ($dbpw == $_POST['password']) {
-        	$_SESSION['studentID'] = $userID;
-        	$_SESSION['loggedin'] = true;
+				 	$_SESSION['userID'] = $userID;
+					$_SESSION['userType'] = $loginType;
         	echo json_encode('Logged In');
     } else {
     	//incorrect password error here
