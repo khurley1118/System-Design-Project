@@ -7,6 +7,7 @@
 	private $password;
 	private $firstName;
 	private $lastName;
+	private $courses = [];
 
 	//getters/setters
 
@@ -38,10 +39,16 @@
 	function getLastName() {
 		return $this->lastName;
 	}
+	function getCourses(){
+		return $this->courses;
+	}
+	function setCourses($courses){
+		$this->courses = $courses;
+	}
 
 	//constructor
 	function __construct() {
-		
+
 	}
 
 	//to do: functions will go below
