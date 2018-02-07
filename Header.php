@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include("DataLayer.php");
+include("connect.php");
 $type = $_SESSION['userType'];
 $id =	$_SESSION['userID'];
 if ($type == "faculty"){
