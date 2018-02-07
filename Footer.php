@@ -23,6 +23,11 @@
           <div id="adminLogin">
               <a href="adminLogin.php">Admin Log-in</a>
           </div>
+          <div id="logOut">
+              <form method="POST" action="logOut.php">
+                <input type="submit" value="log-out">
+              </form>
+          </div>
       </div>
 
     <script src="js/jquery.min.js"></script>
