@@ -1,7 +1,11 @@
 <?php
 //connection
-include("connect.php");
 session_start();
+include("connect.php");
+include("StudentClass.php");
+include("AdminClass.php");
+include("InstructorClass.php");
+include("utilClass.php");
 //student id as sent from form
 $userID = $_POST['login'];
 $id = "";
@@ -63,6 +67,34 @@ if ($id == $userID) {
     	if ($dbpw == $_POST['password']) {
 				 	$_SESSION['userID'] = $userID;
 					$_SESSION['userType'] = $loginType;
+
+					$id = $userID;
+					if ($loginType == "admin"){
+						$user = new Admin;
+						$user->setAdminId($userID);
+						$user->setFirstName(utilAdminFirst($con, $id));
+						$user->setLastName(utilAdminlast($con, $id));
+						$_SESSION['CurrentUser'] = $user;
+					}
+					else if ($loginType == "faculty"){
+						$user = new Instructor();
+						$user->setInstructorId($id);
+						$user->setFirstName(utilInstructorFirst($con, $id));
+						$user->setLastName(utilInstructorLast($con, $id));
+						$user->setCourses(utilInstructorCourses($con, $id));
+						$_SESSION['CurrentUser'] = $user;
+					}
+
+					else {
+						//else case is that user is a student
+						$user = new Student();
+						$user->setStudentID($id);
+						$user->setFirstName(utilStudentFirst($con, $id));
+						$user->setLastName(utilStudentLast($con,$id));
+						$user->setCourses(utilStudentCourseList($con, $id));
+						$_SESSION['CurrentUser'] = $user;
+					}
+
         	echo json_encode('Logged In');
     } else {
     	//incorrect password error here

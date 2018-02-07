@@ -2,7 +2,7 @@
 	//Admin class for TuPro.
 
 	//private attributes
-
+class Admin{
 	private $adminId;
 	private $password;
 	private $firstName;
@@ -21,7 +21,7 @@
 		$this->password = $password;
 	}
 	function getPassword() {
-		return this->password;
+		return $this->password;
 	}
 
 	function setFirstName ($firstName) {
@@ -43,5 +43,5 @@
 	}
 
 	//to do: functions will go below
-
+}
 ?>

@@ -38,7 +38,7 @@ class Student{
 	}
 
 	function __construct() {
-		
+
 	}
 }
 ?>

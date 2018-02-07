@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<?php include('Footer.php');
+<?php
+include('Footer.php');
 include("connect.php");
 if (isset($_SESSION['userID']) && isset($_SESSION['userType'])){
 	if ($_SESSION['userType'] == 'admin'){
@@ -7,6 +8,7 @@ if (isset($_SESSION['userID']) && isset($_SESSION['userType'])){
 	}
 }
 ?>
+
 <html lang="en">
 	<head>
 		<meta charset="utf-8">

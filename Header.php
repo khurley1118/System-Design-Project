@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <?php
-include("DataLayer.php");
-//include("connect.php");
+require("StudentClass.php");
+require("AdminClass.php");
+require("InstructorClass.php");
+require("utilClass.php");
+session_start();
+
 $type = $_SESSION['userType'];
 $id =	$_SESSION['userID'];
-if ($type == "faculty"){
-	$first = DLgetInstructorFirst($con, $id);
-	$last = DLgetInstructorLast($con, $id);
-}
-else if ($type == "admin"){
-	$first = DLgetAdminFirst($con, $id);
-	$last = DLgetAdminLast($con, $id);
-}
-else {
-	$first = DLgetStudentFirst($con, $id);
-	$last = DLgetStudentLast($con, $id);
-}
+$user = $_SESSION['CurrentUser'];
+$first = $user->getFirstName();
+$last = $user->getLastName();
 $full = $first . " " . $last;
+$courselist = $user->getCourses();
 ?>
 <html lang="en">
   <head>
@@ -49,7 +45,7 @@ $full = $first . " " . $last;
                         $name = $full;
                         //placehold session id and name/type
                         if ($type == "student"){
-														$courselist = DLgetStudentCourses($con,$id);
+														//$courselist = DLgetStudentCourses($con,$id);
                             echo "<li>
                             <li><div class='dropdown'>
                             <button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
@@ -62,7 +58,8 @@ $full = $first . " " . $last;
 
 														$courseCounter = 0;
 													  foreach ($courselist as $course){
-															$courseName = DLgetCourseName($con, $course);
+															$courseName = utilCourseName($con, $course);
+															echo "<script> alert('". $course . "   " . $courseName ."')</script>";
 															echo "<li><a href='$course'>" . $course . " " . $courseName . "</a></li>";
 															$courseCounter++;
 														}
@@ -71,11 +68,13 @@ $full = $first . " " . $last;
                           </div>";
 
                         } else if ($type == "faculty"){
-														$courselist = DLgetInstructorCourses($con, $id);
-														echo "<li>
-														<li><div class='dropdown'>
-														<button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
-														<span class='caret'></span></button>
+														//$courselist = DLgetInstructorCourses($con, $id);
+														echo "
+														<li>
+															<li>
+																<div class='dropdown'>
+																	<button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
+																	<span class='caret'></span></button> </li></li>
 														<ul class='dropdown-menu'>";
 														//if user is enrolled in courses print them/print no courses if not
 														if (!isset($courselist)){
@@ -84,7 +83,7 @@ $full = $first . " " . $last;
 														else {
 															$courseCounter = 0;
 															foreach ($courselist as $course){
-																$courseName = DLgetCourseName($con, $course);
+																$courseName = utilCourseName($con, $course);
 																echo "<li><a href='$course'>" . $course . " " . $courseName . "</a></li>";
 																$courseCounter++;
 															}

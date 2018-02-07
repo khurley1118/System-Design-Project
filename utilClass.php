@@ -1,4 +1,5 @@
 <?php
+include("DataLayer.php");
 //STUDENT/////////////////////////////////////
 function utilStudentFirst($con, $id){
 	return DLgetStudentFirst($con, $id);
