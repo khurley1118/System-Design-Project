@@ -2,6 +2,13 @@
 <?php include('Header.php');?>
 <?php include('Footer.php');?>
 <script src="AdminPanel.js"></script>
+<?php
+session_start();
+include("connect.php");
+include('Header.php');
+include('Footer.php');
+?>
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
