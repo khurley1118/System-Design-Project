@@ -14,8 +14,17 @@ html, body {
   height: 100%;
 }
 
+.buttonStyle {
+  position: relative;
+    font-size: 14pt;
+    z-index: 555;
+    color: white;
+    width: 125px;
+    background-color: #00293a;
+}
+
 #pageContent {
-  width: 100%;
+  max-width: 900px;
   height: 100%;
   padding-top: 170px;
   margin-left: auto !important;
@@ -82,7 +91,7 @@ html, body {
   margin-left: auto;
   margin-right: auto;
   height: 87%;
-  width: 80%;
+  width: 100%;
   font-size: 20pt;
   padding-top: 10px;
 }
