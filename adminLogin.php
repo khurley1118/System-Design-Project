@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<?php include('Footer.php');?>
+<?php include('Footer.php');
+include("connect.php");
+?>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
