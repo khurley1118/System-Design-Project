@@ -93,24 +93,17 @@ $full = $first . " " . $last;
 															</div>";
 
                         } else {
-                            echo "<li><a href='Home.php'>Content</a></li>
-                            <li><a href='Home.php'>News</a></li>
-                            <li><a href='Home.php'>Contactd</a></li>
-                            <li><a href='Home.php'>About</a></li>
-                            <li><a href='Home.php'>News</a></li>
-                            <li><a href='Home.php'>Contactd</a></li>
-                            <li><a href='Home.php'>About</a></li>";
+
                         }
                 echo "</ul>";
                 ?>
                 <div id ="ID">
-                    <div id="Name">
-                        <p><?php echo $name; ?></p>
-                    </div>
-                    <div id="Type">
-                        <p><?php echo strtoupper($type); ?><p>
-                    </div>
-
+                  	<?php
+											echo "<table>";
+											echo "<tr><td>$name</td></tr>";
+                     	echo "<tr><td>" . strtoupper($type) . "</td></tr>";
+											echo "</table>";
+											?>
                 </div>
             </div>
           </div>

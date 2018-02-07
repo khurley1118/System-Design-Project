@@ -20,6 +20,33 @@ and open the template in the editor.
   text-align: center;
 }
 
+#logOut {
+  position: relative;
+  width: 70px;
+  color: black;
+  float: right;
+  top: 8px;
+  left: 10px;
+  background-color: #00293a; !important
+  font-size:1em;
+  color:black;
+  background: #00293a;
+
+
+
+
+
+
+
+height: 50px;
+
+width: 100px;
+
+font: bold 15px arial, sans-serif;
+
+text-shadow:none;
+}
+
 /* #footer {
            position: fixed;
 					 clear:both;

@@ -40,6 +40,18 @@ include('Footer.php');
               </div>
               <div id="mainContent">
                  Course Information
+                 <div id='displayStyling'>
+                 <?php
+                 $ID = 12345;
+                 $description = "C# Programming";
+                 $courseCode = "CPROG#1234";
+                 echo "<table>";
+                 echo "<tr><td>Course ID: $ID</td></tr>";
+                 echo "<tr><td>Description: $description</td></tr>";
+                 echo "<tr><td>Course Code: $courseCode</td></tr>";
+                 echo "</table>";
+                 ?>
+               </div>
               </div>
               <div id="courseButtons">
                  <table>
@@ -50,9 +62,27 @@ include('Footer.php');
               </div>
               <div class="hideDiv" id="addCourse">
                  Add course
+                 <div id="addForm">
+                   <form action="AdminPage.php" method="POST">
+                     <table>
+                       <tr><td> <input type="text" name="courseID" placeholder="CourseID"></td></tr>
+                       <tr><td> <input type="text" name="courseCode" placeholder="Course Code"></td></tr>
+                       <tr><td> <input type="text" name="Description" placeholder="Description"></td></tr>
+                       <tr><td><input type="submit" value="Submit"></td></tr>
+                     </table>
+                   </form>
+                 </div>
               </div>
               <div class="hideDiv" id="removeCourse">
                  Remove Course
+                 <div id="searchForm">
+                   <form action="AdminPage.php" method="POST">
+                     <table>
+                       <tr><td> <input type="text" name="courseID" placeholder="CourseID"></td>
+                       <td><input type="submit" value="Submit"></td></tr>
+                     </table>
+                   </form>
+                 </div>
               </div>
               <div class="hideDiv" id="showCourses">
                  Search Courses
@@ -74,6 +104,20 @@ include('Footer.php');
               </div>
               <div id="mainContent">
                  Accounts Panel
+                 <div id='displayStyling'>
+                 <?php
+                 $ID = 12345;
+                 $fname = "Mark";
+                 $lname = "Patterson";
+                 $addedBy = "1";
+                 echo "<table>";
+                 echo "<tr><td>Account ID: $ID</td></tr>";
+                 echo "<tr><td>First Name: $fname</td></tr>";
+                 echo "<tr><td>Last Name: $lname</td></tr>";
+                 echo "<tr><td>Added By: $addedBy</td></tr>";
+                 echo "</table>";
+                 ?>
+               </div>
               </div>
               <div id="courseButtons">
                  <table>
@@ -83,12 +127,30 @@ include('Footer.php');
               </div>
               <div class="hideDiv" id="addAccount">
                  Add course
+                 <div id="addForm">
+                   <form action="AdminPage.php" method="POST">
+                     <table>
+                       <tr><td> <input type="text" name="firstName" placeholder="First Name"></td></tr>
+                       <tr><td> <input type="text" name="lastName" placeholder="Last Name"></td></tr>
+                       <tr><td> <input type="text" name="password" placeholder="Password"></td></tr>
+                       <tr><td><input type="submit" value="Submit"></td></tr>
+                     </table>
+                   </form>
+                 </div>
               </div>
               <div class="hideDiv" id="removeAccount">
                  Remove Course
               </div>
               <div class="hideDiv" id="showAccount">
                  Search Accounts
+                 <div id="searchForm">
+                   <form action="AdminPage.php" method="POST">
+                     <table>
+                       <tr><td> <input type="text" name="accountID" placeholder="AccountID"></td>
+                       <td><input type="submit" value="Submit"></td></tr>
+                     </table>
+                   </form>
+                 </div>
               </div>
            </div>
         </div>
