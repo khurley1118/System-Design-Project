@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<?php include('Header.php');?>
-<?php include('Footer.php');?>
+
 <script src="AdminPanel.js"></script>
 <?php
 session_start();
