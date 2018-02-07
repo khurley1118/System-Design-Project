@@ -12,7 +12,9 @@ $user = $_SESSION['CurrentUser'];
 $first = $user->getFirstName();
 $last = $user->getLastName();
 $full = $first . " " . $last;
+if ($_SESSION['userType'] != "admin"){
 $courselist = $user->getCourses();
+}
 ?>
 <html lang="en">
   <head>

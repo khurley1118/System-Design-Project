@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <script src="AdminPanel.js"></script>
 <?php
-session_start();
-if (!isset($_SESSION['userID']) || $_SESSION['userType'] != 'admin'){
-	header("location: index.php");
-}
-include("connect.php");
+
 include('Header.php');
 include('Footer.php');
 
