@@ -1,5 +1,4 @@
 <?php
-//include("connect.php");
 //Student
 ///////////////////////////////////
 	function DLgetStudentFirst($con, $id) {
