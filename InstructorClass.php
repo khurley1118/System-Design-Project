@@ -40,11 +40,8 @@
 	}
 
 	//constructor
-	function __construct($InstructorId, $FirstName, $LastName, $Password) {
-		$this->setInstructorId($InstructorId);
-		$this->setFirstName($FirstName);
-		$this->setLastName($LastName);
-		$this->setPassword($Password);
+	function __construct() {
+		
 	}
 
 	//to do: functions will go below

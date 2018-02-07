@@ -1,27 +1,38 @@
 <!DOCTYPE html>
 <?php
 session_start();
+if (!isset($_SESSION['userID'])){
+	header("location: index.php");
+}
 include('connect.php');
 include('Header.php');
 include('Footer.php');
 include('StudentClass.php');
 include('InstructorClass.php');
+include("utilClass.php");
 $id = $_SESSION['userID'];
+
 $userType = $_SESSION['userType'];
 if ($userType == "admin"){
 
 }
 else if ($userType == "faculty"){
-
+	$user = new Instructor();
+	$user->setInstructorId($id);
+	$user->setFirstName(utilInstructorFirst($con, $id));
+	$user->setLastName(utilInstructorLast($con, $id));
+	$user->setCourses(utilInstructorCourses($con, $id));
+	$_SESSION['CurrentUser'] = $user;
 }
 else {
 	//else case is that user is a student
-	// $user = new Student();
-	// $user->setStudentID($id);
-	// $user->setFirstName(DLgetStudentFirst($con, $id));
-	// $user->setLastName();
-	// $user->setCourses();
-	// $_SESSION['CurrentUser'] = $user;
+
+	$user = new Student();
+	$user->setStudentID($id);
+	$user->setFirstName(utilStudentFirst($con, $id));
+	$user->setLastName(utilStudentLast($con,$id));
+	$user->setCourses(utilStudentCourseList($con, $id));
+	$_SESSION['CurrentUser'] = $user;
 }
 ?>
 <html lang="en">

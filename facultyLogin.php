@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <?php
 	if (isset($_SESSION['userID'])){
-		echo "<script> alert(".$_SESSION['userID']."); <script>";
 		header("location: Home.php");
 	}
  ?>

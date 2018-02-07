@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <?php include('Footer.php');
 include("connect.php");
+if (isset($_SESSION['userID']) && isset($_SESSION['userType'])){
+	if ($_SESSION['userType'] == 'admin'){
+		header("location: AdminPage.php");
+	}
+}
 ?>
 <html lang="en">
 	<head>

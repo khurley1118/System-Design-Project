@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
 session_start();
+if (!isset($_SESSION['userID'])){
+	header("location: index.php");
+}
 include("connect.php");
 include('Header.php');
 include('Footer.php');

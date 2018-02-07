@@ -2,7 +2,6 @@
 <?php include("StudentClass.php");
 session_start();
  	if (isset($_SESSION['userID'])){
- 		echo "<script> alert(".$_SESSION['userID']."); <script>";
  		header("location: Home.php");
  	}
   ?>

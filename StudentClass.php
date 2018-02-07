@@ -37,11 +37,8 @@ class Student{
 		$this->courses = $courses;
 	}
 
-	function __construct($studentID, $FirstName, $LastName, $Password) {
-		$this->setStudentID($InstructorId);
-		$this->setFirstName($FirstName);
-		$this->setLastName($LastName);
-		$this->setPassword($Password);
+	function __construct() {
+		
 	}
 }
 ?>

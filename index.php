@@ -3,8 +3,11 @@
 <?php
 session_start();
 	if (isset($_SESSION['userID'])){
-		echo "<script> alert(".$_SESSION['userID']."); <script>";
-		header("location: Home.php");
+		if ($_SESSION['userType'] == 'admin'){
+			header("location: AdminPage.php");
+		} else {
+			header("location: Home.php");
+		}
 	}
  ?>
 <html lang="en">
