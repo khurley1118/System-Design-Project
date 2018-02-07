@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php include('Header.php');?>
 <?php include('Footer.php');?>
+<script src="AdminPanel.js"></script>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -12,129 +13,83 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
-        <script type="text/javascript">
-            function setCourses() {
-                document.getElementById('coursesContent').setAttribute("class", "showDiv");
-                document.getElementById('accountsContent').setAttribute("class", "hideDiv");
-                document.getElementById('mainTitle').innerHTML = "Course Information";
-                document.getElementById('removeAccount').setAttribute("class", "hideDiv");
-                document.getElementById('addAccount').setAttribute("class", "hideDiv");
-                document.getElementById('showAccount').setAttribute("class", "hideDiv");
-            }
-            function setAccounts() {
-                document.getElementById('coursesContent').setAttribute("class", "hideDiv");
-                document.getElementById('accountsContent').setAttribute("class", "showDiv");
-                document.getElementById('mainTitle').innerHTML = "Account Information";
-                document.getElementById('removeCourse').setAttribute("class", "hideDiv");
-                document.getElementById('addCourse').setAttribute("class", "hideDiv");
-                document.getElementById('showCourses').setAttribute("class", "hideDiv");
-            }
-            function addCourse(){
-                document.getElementById('removeCourse').setAttribute("class", "hideDiv");
-                document.getElementById('addCourse').setAttribute("class", "showDiv");
-                document.getElementById('showCourses').setAttribute("class", "hideDiv");
-            }
-            function removeCourse(){
-                document.getElementById('addCourse').setAttribute("class", "hideDiv");
-                document.getElementById('showCourses').setAttribute("class", "hideDiv");
-                document.getElementById('removeCourse').setAttribute("class", "showDiv");
-            }
-            function showAllCrs() {
-                document.getElementById('addCourse').setAttribute("class", "hideDiv");
-                document.getElementById('removeCourse').setAttribute("class", "hideDiv");
-                document.getElementById('showCourses').setAttribute("class", "showDiv");
-            }
-            function addAccount(){
-                document.getElementById('removeAccount').setAttribute("class", "hideDiv");
-                document.getElementById('addAccount').setAttribute("class", "showDiv");
-                document.getElementById('showAccount').setAttribute("class", "hideDiv");
-            }
-            function removeAccount(){
-                document.getElementById('addAccount').setAttribute("class", "hideDiv");
-                document.getElementById('showAccount').setAttribute("class", "hideDiv");
-                document.getElementById('removeAccount').setAttribute("class", "showDiv");
-            }
-            function showAllAcc() {
-                document.getElementById('addAccount').setAttribute("class", "hideDiv");
-                document.getElementById('removeAccount').setAttribute("class", "hideDiv");
-                document.getElementById('showAccount').setAttribute("class", "showDiv");
-            }
-        </script>
-      <div id="pageContent">
-          <div id="flexBox">
-        <div id="sideBar">
-            <div id="titleBar">
-                <div id="titleText">
-                <h3>Toolbar</h3>
-                </div>
-            </div>
-            <div id="sideBarContent">
-                <table>
-                    <tr><button class="buttonStyle" onclick="setCourses()">Courses</button></tr><br>
-                <tr><button class="buttonStyle" onclick="setAccounts()">Accounts</button></tr><br>
-                </table>
-            </div>
+  <div id="pageContent">
+     <div id="flexBox">
+        <div id="sideBar" class="col-md-3">
+           <div id="sideBarContent">
+              <table>
+                 <tr><button class="buttonStyle" onclick="setCourses()">Courses</button></tr>
+                 <br>
+                 <tr><button class="buttonStyle" onclick="setAccounts()">Accounts</button></tr>
+                 <br>
+              </table>
+           </div>
         </div>
-        <div id="mainBar">
-            <div id="mainBarContent">
-                <div class="showDiv" id="coursesContent">
-                    <div id="titleBar">
-                        <div id="titleText">
-                        <h3>Courses</h3>
-                        </div>
-                    </div>
-                    <div id="mainContent">
-                        Course Information
-                    </div>
-                    <div id="courseButtons">
-                        <table>
-                            <tr><button class="buttonStyle2" onclick="showAllCrs()">Show All</button></tr>
-                            <tr><button class="buttonStyle2" onclick="addCourse()">Add Course</button></tr>
-                            <tr><button class="buttonStyle2" onclick="removeCourse()">Remove Course</button></tr>
-                </table>
-                    </div>
-                    <div class="hideDiv" id="addCourse">
-                        Add course
-                    </div>
-                    <div class="hideDiv" id="removeCourse">
-                        Remove Course
-                    </div>
-                    <div class="hideDiv" id="showCourses">
-                        Show All
-                    </div>
-                </div>
-                <div class="hideDiv" id="accountsContent">
-                    <div id="titleBar">
-                        <div id="titleText">
-                        <h3>Accounts</h3>
-                        </div>
-                    </div>
-                    <div id="mainContent">
-                       Accounts Panel
-                    </div>
-                    <div id="courseButtons">
-                        <table>
-                            <tr><button class="buttonStyle2" onclick="showAllAcc()">Show All</button></tr>
-                            <tr><button class="buttonStyle2" onclick="addAccount()">Add Account</button></tr>
-                            <tr><button class="buttonStyle2" onclick="removeAccount()">Remove Account</button></tr>
-                </table>
-                    </div>
-                    <div class="hideDiv" id="addAccount">
-                        Add course
-                    </div>
-                    <div class="hideDiv" id="removeAccount">
-                        Remove Course
-                    </div>
-                    <div class="hideDiv" id="showAccount">
-                        Show All
-                    </div>
-                </div>
-            </div>
-       </div>
-      </div>
-      </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+        <div id="mainBar" class="col-md-3">
+           <div class="showDiv" id="coursesContent">
+              <div id="titleBar">
+                 <div id="titleText">
+                    <h3>Courses</h3>
+                 </div>
+              </div>
+              <div id="mainContent">
+                 Course Information
+              </div>
+              <div id="courseButtons">
+                 <table>
+                    <tr><button class="buttonStyle2" onclick="showAllCrs()">Search Courses</button></tr>
+                    <tr><button class="buttonStyle2" onclick="addCourse()">Add Course</button></tr>
+                    <tr><button class="buttonStyle2" onclick="removeCourse()">Remove Course</button></tr>
+                 </table>
+              </div>
+              <div class="hideDiv" id="addCourse">
+                 Add course
+              </div>
+              <div class="hideDiv" id="removeCourse">
+                 Remove Course
+              </div>
+              <div class="hideDiv" id="showCourses">
+                 Search Courses
+                 <div id="searchForm">
+                   <form action="AdminPage.php" method="POST">
+                     <table>
+                       <tr><td> <input type="text" name="courseID" placeholder="CourseID"></td>
+                       <td><input type="submit" value="Submit"></td></tr>
+                     </table>
+                   </form>
+                 </div>
+              </div>
+           </div>
+           <div class="hideDiv" id="accountsContent">
+              <div id="titleBar">
+                 <div id="titleText">
+                    <h3>Accounts</h3>
+                 </div>
+              </div>
+              <div id="mainContent">
+                 Accounts Panel
+              </div>
+              <div id="courseButtons">
+                 <table>
+                    <tr><button class="buttonStyle2" onclick="showAllAcc()">Search Accounts</button></tr>
+                    <tr><button class="buttonStyle2" onclick="addAccount()">Add Account</button></tr>
+                 </table>
+              </div>
+              <div class="hideDiv" id="addAccount">
+                 Add course
+              </div>
+              <div class="hideDiv" id="removeAccount">
+                 Remove Course
+              </div>
+              <div class="hideDiv" id="showAccount">
+                 Search Accounts
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/scripts.js"></script>
   </body>
-</html>
+  </html>
