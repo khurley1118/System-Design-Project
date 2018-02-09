@@ -10,7 +10,7 @@ and open the template in the editor.
 */
 
 #logo {
-  padding-top: 50px;
+  padding-top: 10px;
   position: absolute;
   z-index: -50;
 }
@@ -39,4 +39,5 @@ and open the template in the editor.
   width: 570px;
   left: 60px;
   top: 360px;
+  padding-bottom: 50px;
 }
