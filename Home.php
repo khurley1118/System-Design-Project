@@ -5,7 +5,7 @@ include('Header.php');
 include('Footer.php');
 
 //if user id is not set then user is not logged in and is redirected to index.
-if (!isset($_SESSION['userID'])){
+if (!isset($_SESSION['userID']) || $_SESSION['userID'] == ""){
 	header("location: index.php");
 }
 // set local variables for use from session variables.
