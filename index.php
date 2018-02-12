@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+	if (isset($_SESSION['userID'])){
+		if ($_SESSION['userType'] == 'admin'){
+			header("location: AdminPage.php");
+		} else {
+			header("location: Home.php");
+		}
+	}
+ ?>
 <html lang="en">
   <head>
     <meta charset="utf-8"/>
@@ -85,7 +96,6 @@
             </div>
 	   </div>
     </div>
-    
 		<?php include('Footer.php');?>
   </body>
 </html>

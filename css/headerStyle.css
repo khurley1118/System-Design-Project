@@ -31,8 +31,8 @@ and open the template in the editor.
 #ID {
   color: white;
   position: relative;
-  bottom: 100px;
-  left: 500px;
+  bottom: 70px;
+  margin-left: 85%;
 }
 
 #Name {
@@ -78,6 +78,17 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+#indexHeader {
+  position: relative;
+  background-color: #00293a;
+  width: 100%;
+  height: 70px;
+}
+#indexLogo {
+  position: relative;
+  top: 10px;
+  left: 10px;
 }
 
 li:hover {

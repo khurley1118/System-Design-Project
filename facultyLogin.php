@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+<?php
+	if (isset($_SESSION['userID'])){
+		header("location: Home.php");
+	}
+ ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">

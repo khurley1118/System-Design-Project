@@ -11,11 +11,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/headerStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    
   </head>
   <body>
-      <div id="header">
-            <img src="Resources/indexHeader.png" alt="logo">
-        </div>scripts.js"></script>
+      <div id="indexHeader">
+        <div id="indexLogo">
+            <img src="Resources/nbccLogo.png" alt="logo">
+          </div>
+        </div>
+      </script>
   </body>
 </html>
