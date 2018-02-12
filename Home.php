@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <?php
 include('connect.php');
-include('Header.php');
-include('Footer.php');
+
 
 //if user id is not set then user is not logged in and is redirected to index.
 if (!isset($_SESSION['userID']) || $_SESSION['userID'] == ""){
 	header("location: index.php");
 }
+include('Header.php');
+include('Footer.php');
 // set local variables for use from session variables.
 $id = $_SESSION['userID'];
 $userType = $_SESSION['userType'];
