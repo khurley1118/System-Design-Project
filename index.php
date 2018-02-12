@@ -46,7 +46,7 @@ if (isset($_SESSION['userID'])) {
                     } else {
                         //add student form
                         $("#description").prepend('<form action="" method="post" id="formData"><input type="text" id="studentUsername" name="login" placeholder="cc/Username" size="60" required><span id="unerror"> </span><br><BR><input type="password" id="studentPassword" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span><br><BR><input type="image" id="studentSubmit" name="submit" src="Resources/logIn.png" alt="Submit Form" /></form>');
-
+												$("#studentUsername").focus();
 												$("#studentSubmit").on("click", function () {
 																					$("#unerror").html("");
 																					$("#pwerror").html("");
@@ -99,7 +99,7 @@ if (isset($_SESSION['userID'])) {
                     } else {
                         //add faculty form
                         $("#description").prepend('<form action="" method="post" id="formData"><input type="text" id="facultyUsername" name="login" placeholder="cc/Username" size="60" required><span id="unerror"> </span><br><BR><input type="password" id="facultyPassword" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span><br><BR><input type="image" id="facultySubmit" name="facultySubmit" src="Resources/logIn.png" alt="Submit Form" /></form>');
-
+												$("#facultyUsername").focus();
 												$("#facultySubmit").on("click", function () {
 														$("#unerror").html("");
 														$("#pwerror").html("");
