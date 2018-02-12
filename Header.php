@@ -5,7 +5,9 @@ require("AdminClass.php");
 require("InstructorClass.php");
 require("utilClass.php");
 session_start();
-
+if (!isset($_SESSION['userID']) || $_SESSION['userID'] == ""){
+	header("location: index.php");
+}
 $type = $_SESSION['userType'];
 $id =	$_SESSION['userID'];
 $user = $_SESSION['CurrentUser'];
