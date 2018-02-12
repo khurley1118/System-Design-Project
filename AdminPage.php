@@ -4,7 +4,6 @@
 include('connect.php');
 include('Header.php');
 include('Footer.php');
-echo "<script> alert(". $_SESSION['userType'] .")</script>";
 if (isset($_SESSION['userType'])){
 	if ($_SESSION['userType'] != "admin"){
 		header("location: index.php");
