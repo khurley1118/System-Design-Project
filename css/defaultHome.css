@@ -14,6 +14,11 @@ html, body {
   height: 100%;
 }
 
+.container {
+  max-width: 195px;
+  font-size: 12pt;
+}
+
 .buttonStyle {
   position: relative;
     font-size: 14pt;
@@ -45,33 +50,23 @@ html, body {
   border-color: #00293a;
   height: 90%;
   background-color: #f3f3f3;
-  margin-left: 30px;
+  margin-left: 30px;z
   overflow: scroll;
-  min-width: 300px;
+  min-width: 500px;
+  flex-grow: 1;
 }
 
 #sideBar {
   border-style: groove;
   border-color: #00293a;
-  max-width: 150px;
-  min-width: 150px;
+  max-width: 200px;
+  min-width: 200px;
   height: 90%;
   background-color: #f3f3f3;
   flex-grow: 1;
   overflow: scroll;
 }
 
-#chatBar {
-  border-style: groove;
-  border-color: #00293a;
-  height: 90%;
-  min-width: 250px;
-  max-width: 350px;
-  margin-left: 30px;
-  background-color: #f3f3f3;
-  flex-grow: 1;
-  overflow: scroll;
-}
 
 #titleBar {
   position: relative;
