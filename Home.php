@@ -30,7 +30,11 @@ $user = $_SESSION['CurrentUser'];
       <div id="pageContent">
           <div id="flexBox">
             <div id="sideBar">
-
+                <div id="titleBar">
+                    <div id="titleText">
+                    <h3>Toolbar</h3>
+                    </div>
+                </div>
                 <div id="sideBarContent">
 									<div class="container">
 <h2>Accordion Example</h2>
@@ -77,7 +81,7 @@ $user = $_SESSION['CurrentUser'];
                     </div>
                 </div>
                 <div id="mainBarContent">
-
+									
                 </div>
             </div>
 
