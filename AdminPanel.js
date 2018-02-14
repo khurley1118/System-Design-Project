@@ -12,12 +12,12 @@ function setAccounts() {
     document.getElementById('addCourse').setAttribute("class", "hideDiv");
     document.getElementById('showCourses').setAttribute("class", "hideDiv");
 }
-function addCourse(){
+function addCourse() {
     document.getElementById('removeCourse').setAttribute("class", "hideDiv");
     document.getElementById('addCourse').setAttribute("class", "showDiv");
     document.getElementById('showCourses').setAttribute("class", "hideDiv");
 }
-function removeCourse(){
+function removeCourse() {
     document.getElementById('addCourse').setAttribute("class", "hideDiv");
     document.getElementById('showCourses').setAttribute("class", "hideDiv");
     document.getElementById('removeCourse').setAttribute("class", "showDiv");
@@ -27,12 +27,12 @@ function showAllCrs() {
     document.getElementById('removeCourse').setAttribute("class", "hideDiv");
     document.getElementById('showCourses').setAttribute("class", "showDiv");
 }
-function addAccount(){
+function addAccount() {
     document.getElementById('removeAccount').setAttribute("class", "hideDiv");
     document.getElementById('addAccount').setAttribute("class", "showDiv");
     document.getElementById('showAccount').setAttribute("class", "hideDiv");
 }
-function removeAccount(){
+function removeAccount() {
     document.getElementById('addAccount').setAttribute("class", "hideDiv");
     document.getElementById('showAccount').setAttribute("class", "hideDiv");
     document.getElementById('removeAccount').setAttribute("class", "showDiv");

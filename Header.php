@@ -8,6 +8,7 @@ session_start();
 if (!isset($_SESSION['userID']) || $_SESSION['userID'] == ""){
 	header("location: index.php");
 }
+// User variables.
 $type = $_SESSION['userType'];
 $id =	$_SESSION['userID'];
 $user = $_SESSION['CurrentUser'];

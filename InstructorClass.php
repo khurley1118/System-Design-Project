@@ -1,56 +1,63 @@
 <?php
-	//Instructor class for TuPro.
 
-	//private attributes
-	Class Instructor{
-	private $instructorId;
-	private $password;
-	private $firstName;
-	private $lastName;
-	private $courses = [];
+//Instructor class for TuPro.
+//private attributes
+Class Instructor {
 
-	//getters/setters
+    private $instructorId;
+    private $password;
+    private $firstName;
+    private $lastName;
+    private $courses = [];
 
-	function setInstructorId ($instructorId) {
-		$this->instructorId = $instructorId;
-	}
-	function getInstructorId() {
-		return $this->instructorId;
-	}
+    //getters/setters
 
-	function setPassword ($password) {
-		$this->password = $password;
-	}
+    function setInstructorId($instructorId) {
+        $this->instructorId = $instructorId;
+    }
 
-	function getPassword() {
-		return $this->password;
-	}
+    function getInstructorId() {
+        return $this->instructorId;
+    }
 
-	function setFirstName ($firstName) {
-		$this->firstName = $firstName;
-	}
-	function getFirstName() {
-		return $this->firstName;
-	}
+    function setPassword($password) {
+        $this->password = $password;
+    }
 
-	function setLastName ($lastName) {
-		$this->lastName = $lastName;
-	}
-	function getLastName() {
-		return $this->lastName;
-	}
-	function getCourses(){
-		return $this->courses;
-	}
-	function setCourses($courses){
-		$this->courses = $courses;
-	}
+    function getPassword() {
+        return $this->password;
+    }
 
-	//constructor
-	function __construct() {
+    function setFirstName($firstName) {
+        $this->firstName = $firstName;
+    }
 
-	}
+    function getFirstName() {
+        return $this->firstName;
+    }
 
-	//to do: functions will go below
+    function setLastName($lastName) {
+        $this->lastName = $lastName;
+    }
+
+    function getLastName() {
+        return $this->lastName;
+    }
+
+    function getCourses() {
+        return $this->courses;
+    }
+
+    function setCourses($courses) {
+        $this->courses = $courses;
+    }
+
+    //constructor
+    function __construct() {
+        
+    }
+
+    //to do: functions will go below
 }
+
 ?>
