@@ -50,6 +50,7 @@ if (isset($_SESSION['userID'])) {
                         $("#studentUsername").focus();
                         //On submit do an ajax call to the REST auth API
                         $("#studentSubmit").on("click", function () {
+														//event.preventDefault();
                             $("#unerror").html("");
                             $("#pwerror").html("");
                             //JS variables for input to be posted to the API
@@ -65,9 +66,10 @@ if (isset($_SESSION['userID'])) {
                                         data: {login: id, password: pw, type: "student"},
                                         cache: false,
                                         success: function (data) {
+
                                             //Succesful AP response will display the message returned. if the message is Logged in
                                             //user will be redirected to the home page.
-                                            $("#formAlert").html(data);
+																						$("#formAlert").html(data);
                                             if ((JSON.parse(data)) == "Logged In") {
                                                 window.location.replace('Home.php');
                                             }
@@ -77,7 +79,7 @@ if (isset($_SESSION['userID'])) {
                                             return false;
                                         }
                                     }); // end ajax call
-
+																		return false;
                                 } else {
                                     $("#pwerror").html("Required Field");
                                 }
@@ -122,7 +124,7 @@ if (isset($_SESSION['userID'])) {
                                         data: {login: id, password: pw, type: "faculty"},
                                         cache: false,
                                         success: function (data) {
-                                            //API Response 
+                                            //API Response
                                             $("#formAlert").html(data);
                                             if ((JSON.parse(data)) == "Logged In") {
                                                 window.location.replace('Home.php');
@@ -133,7 +135,7 @@ if (isset($_SESSION['userID'])) {
                                             return false;
                                         }
                                     }); // end ajax call
-
+																		return false;
                                 } else {
                                     $("#pwerror").html("Required Field");
                                 }
@@ -161,9 +163,10 @@ if (isset($_SESSION['userID'])) {
                         </table>
                     </div>
                     <div id="formLocation">
-
                     </div>
                     <div id="description">
+											<div id="formAlert" class="bg-danger text-white">
+											</div>
                         <h5><i>
                                 Tu-Pro is a tutorial site for the NBCC network, dedicated to extending learning beyond the classroom. We offer extra tutorials and and tutoring outside of the classroom, just login with your Student ID to find your classes, and continue learning!
                             </i></h5>
