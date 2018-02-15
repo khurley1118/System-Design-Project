@@ -46,42 +46,47 @@ if (isset($_SESSION['userID'])) {
                     } else {
                         //add student form
                         $("#description").prepend('<form action="" method="post" id="formData"><input type="text" id="studentUsername" name="login" placeholder="cc/Username" size="60" required><span id="unerror"> </span><br><BR><input type="password" id="studentPassword" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span><br><BR><input type="image" id="studentSubmit" name="submit" src="Resources/logIn.png" alt="Submit Form" /></form>');
-												$("#studentUsername").focus();
-												$("#studentSubmit").on("click", function () {
-																					$("#unerror").html("");
-																					$("#pwerror").html("");
+                        //set focus for un input
+                        $("#studentUsername").focus();
+                        //On submit do an ajax call to the REST auth API
+                        $("#studentSubmit").on("click", function () {
+														//event.preventDefault();
+                            $("#unerror").html("");
+                            $("#pwerror").html("");
+                            //JS variables for input to be posted to the API
+                            var id = $("#studentUsername").val();
+                            var pw = $("#studentPassword").val();
 
-																					var id = $("#studentUsername").val();
-																					var pw = $("#studentPassword").val();
+                            if (id != "") {
+                                if (pw != "") {
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: 'loginfunction.php',
+                                        dataType: "text",
+                                        data: {login: id, password: pw, type: "student"},
+                                        cache: false,
+                                        success: function (data) {
 
-																					if (id != "") {
-																							if (pw != "") {
-																									$.ajax({
-																											type: 'POST',
-																											url: 'loginfunction.php',
-																											dataType: "text",
-																											data: {login: id, password: pw, type: "student"},
-																											cache: false,
-																											success: function (data) {
-																													//alert(data);
-																													$("#formAlert").html(data);
-																													if ((JSON.parse(data)) == "Logged In") {
-																															window.location.replace('Home.php');
-																													}
-																											},
-																											error: function (xhr, ajaxOptions, thrownError) {
-																													alert(xhr.status + "\n" + thrownError);
-																													return false;
-																											}
-																									}); // end ajax call
-
-																							} else {
-																									$("#pwerror").html("Required Field");
-																							}
-																					} else {
-																							$("#unerror").html("Required Field");
-																					}
-																				});
+                                            //Succesful AP response will display the message returned. if the message is Logged in
+                                            //user will be redirected to the home page.
+																						$("#formAlert").html(data);
+                                            if ((JSON.parse(data)) == "Logged In") {
+                                                window.location.replace('Home.php');
+                                            }
+                                        },
+                                        error: function (xhr, ajaxOptions, thrownError) {
+                                            alert(xhr.status + "\n" + thrownError);
+                                            return false;
+                                        }
+                                    }); // end ajax call
+																		return false;
+                                } else {
+                                    $("#pwerror").html("Required Field");
+                                }
+                            } else {
+                                $("#unerror").html("Required Field");
+                            }
+                        });
                     }
                 });
 
@@ -99,42 +104,45 @@ if (isset($_SESSION['userID'])) {
                     } else {
                         //add faculty form
                         $("#description").prepend('<form action="" method="post" id="formData"><input type="text" id="facultyUsername" name="login" placeholder="cc/Username" size="60" required><span id="unerror"> </span><br><BR><input type="password" id="facultyPassword" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span><br><BR><input type="image" id="facultySubmit" name="facultySubmit" src="Resources/logIn.png" alt="Submit Form" /></form>');
-												$("#facultyUsername").focus();
-												$("#facultySubmit").on("click", function () {
-														$("#unerror").html("");
-														$("#pwerror").html("");
+                        //set username focus
+                        $("#facultyUsername").focus();
+                        // submit form to AJAX
+                        $("#facultySubmit").on("click", function () {
+                            $("#unerror").html("");
+                            $("#pwerror").html("");
+                            //JS variables that will be submitted to REST API
+                            var id = $("#facultyUsername").val();
+                            var pw = $("#facultyPassword").val();
 
-														var id = $("#facultyUsername").val();
-														var pw = $("#facultyPassword").val();
-
-														if (id != "") {
-																if (pw != "") {
-																		$.ajax({
-																				type: 'POST',
-																				url: 'loginfunction.php',
-																				dataType: "text",
-																				data: {login: id, password: pw, type: "faculty"},
-																				cache: false,
-																				success: function (data) {
-																						alert(data);
-																						$("#formAlert").html(data);
-																						if ((JSON.parse(data)) == "Logged In") {
-																								window.location.replace('Home.php');
-																						}
-																				},
-																				error: function (xhr, ajaxOptions, thrownError) {
-																						alert(xhr.status + "\n" + thrownError);
-																						return false;
-																				}
-																		}); // end ajax call
-
-																} else {
-																		$("#pwerror").html("Required Field");
-																}
-														} else {
-																$("#unerror").html("Required Field");
-														}
-												}); //end of faculty submit
+                            if (id != "") {
+                                if (pw != "") {
+                                    //AJAX CALL
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: 'loginfunction.php',
+                                        dataType: "text",
+                                        data: {login: id, password: pw, type: "faculty"},
+                                        cache: false,
+                                        success: function (data) {
+                                            //API Response
+                                            $("#formAlert").html(data);
+                                            if ((JSON.parse(data)) == "Logged In") {
+                                                window.location.replace('Home.php');
+                                            }
+                                        },
+                                        error: function (xhr, ajaxOptions, thrownError) {
+                                            alert(xhr.status + "\n" + thrownError);
+                                            return false;
+                                        }
+                                    }); // end ajax call
+																		return false;
+                                } else {
+                                    $("#pwerror").html("Required Field");
+                                }
+                            } else {
+                                $("#unerror").html("Required Field");
+                            }
+                        }); //end of faculty submit
                     } //end of else
                 }); //end of faculty form show button
             });
@@ -155,9 +163,10 @@ if (isset($_SESSION['userID'])) {
                         </table>
                     </div>
                     <div id="formLocation">
-
                     </div>
                     <div id="description">
+											<div id="formAlert" class="bg-danger text-white">
+											</div>
                         <h5><i>
                                 Tu-Pro is a tutorial site for the NBCC network, dedicated to extending learning beyond the classroom. We offer extra tutorials and and tutoring outside of the classroom, just login with your Student ID to find your classes, and continue learning!
                             </i></h5>

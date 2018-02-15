@@ -12,12 +12,12 @@ function setAccounts() {
     document.getElementById('addCourse').setAttribute("class", "hideDiv");
     document.getElementById('showCourses').setAttribute("class", "hideDiv");
 }
-function addCourse(){
+function addCourse() {
     document.getElementById('removeCourse').setAttribute("class", "hideDiv");
     document.getElementById('addCourse').setAttribute("class", "showDiv");
     document.getElementById('showCourses').setAttribute("class", "hideDiv");
 }
-function removeCourse(){
+function removeCourse() {
     document.getElementById('addCourse').setAttribute("class", "hideDiv");
     document.getElementById('showCourses').setAttribute("class", "hideDiv");
     document.getElementById('removeCourse').setAttribute("class", "showDiv");
