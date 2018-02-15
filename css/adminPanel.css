@@ -51,18 +51,17 @@ and open the template in the editor.
     background-color: #00293a;
 }
 #addForm {
-  left: 20%;
-  position: relative;
+  width: 174px;
   margin-left: auto;
   margin-right: auto;
-  top: 20%;
+  margin-top: 100px;
 }
+
 #searchForm {
-  left: 10%;
-  position: relative;
+  width: 174px;
   margin-left: auto;
   margin-right: auto;
-  top: 20%;
+  margin-top: 100px;
 }
 
 #courseButtons {
@@ -73,14 +72,14 @@ and open the template in the editor.
     height: 30%;
 }
 
-#addCourse, #removeCourse, #showCourses, #addAccount, #removeAccount, #showAccount {
+#addCourse, #removeCourse, #showCourses, #addAccount, #changePassword, #searchAccount {
     position: absolute;
     border-style: groove;
     border-color: #00293a;
     background-color: #f3f3f3;
     margin-left: 53%;
     width: 46%;
-    margin-top: 18%;
+    margin-top: 100px;
     height: 67%;
     height: 63%;
 }

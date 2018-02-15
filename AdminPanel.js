@@ -1,9 +1,9 @@
 function setCourses() {
     document.getElementById('coursesContent').setAttribute("class", "showDiv");
     document.getElementById('accountsContent').setAttribute("class", "hideDiv");
-    document.getElementById('removeAccount').setAttribute("class", "hideDiv");
+    document.getElementById('searchAccount').setAttribute("class", "hideDiv");
     document.getElementById('addAccount').setAttribute("class", "hideDiv");
-    document.getElementById('showAccount').setAttribute("class", "hideDiv");
+    document.getElementById('changePassword').setAttribute("class", "hideDiv");
 }
 function setAccounts() {
     document.getElementById('coursesContent').setAttribute("class", "hideDiv");
@@ -28,17 +28,17 @@ function showAllCrs() {
     document.getElementById('showCourses').setAttribute("class", "showDiv");
 }
 function addAccount(){
-    document.getElementById('removeAccount').setAttribute("class", "hideDiv");
+    document.getElementById('searchAccount').setAttribute("class", "hideDiv");
     document.getElementById('addAccount').setAttribute("class", "showDiv");
-    document.getElementById('showAccount').setAttribute("class", "hideDiv");
+    document.getElementById('changePassword').setAttribute("class", "hideDiv");
 }
-function removeAccount(){
+function searchAccount(){
     document.getElementById('addAccount').setAttribute("class", "hideDiv");
-    document.getElementById('showAccount').setAttribute("class", "hideDiv");
-    document.getElementById('removeAccount').setAttribute("class", "showDiv");
+    document.getElementById('changePassword').setAttribute("class", "hideDiv");
+    document.getElementById('searchAccount').setAttribute("class", "showDiv");
 }
-function showAllAcc() {
+function changePassword() {
     document.getElementById('addAccount').setAttribute("class", "hideDiv");
-    document.getElementById('removeAccount').setAttribute("class", "hideDiv");
-    document.getElementById('showAccount').setAttribute("class", "showDiv");
+    document.getElementById('searchAccount').setAttribute("class", "hideDiv");
+    document.getElementById('changePassword').setAttribute("class", "showDiv");
 }

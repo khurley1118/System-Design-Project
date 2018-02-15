@@ -4,7 +4,6 @@
    include('connect.php');
    include('Header.php');
    include('Footer.php');
-
    //if user id is not set then user is not logged in and is redirected to index.
    if (!isset($_SESSION['userID']) || $_SESSION['userID'] == ""){
    	header("location: index.php");
@@ -20,6 +19,9 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=0">
       <title>Tu-Pro Home</title>
+			<script src="js/jquery.min.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+			<script src="js/scripts.js"></script>
       <link rel="stylesheet" type="text/css" href="css/defaultHome.css">
       <link href="css/bootstrap.min.css" rel="stylesheet">
    </head>
@@ -82,17 +84,17 @@
                                        <table class="table">
                                           <tr>
                                              <td>
-                                                <a href="">Text</a>
+                                                <span class="glyphicon glyphicon-font"></span><a href="">Text</a>
                                              </td>
                                           </tr>
                                           <tr>
                                              <td>
-                                                <a href="">Audio</a>
+                                                <span class="glyphicon glyphicon-volume-up"></span><a href="">Audio</a>
                                              </td>
                                           </tr>
                                           <tr>
                                              <td>
-                                                <a href="">Video</a>
+                                                <span class="glyphicon glyphicon-camera"></span><a href="">Video</a>
                                              </td>
                                           </tr>
                                        </table>
@@ -111,12 +113,12 @@
                                        <table class="table">
                                           <tr>
                                              <td>
-                                                <a href="">Change Password</a>
+                                                <span class="glyphicon glyphicon-sort"></span><a href="">Change Password</a>
                                              </td>
                                           </tr>
                                           <tr>
                                              <td>
-                                                <a href="">Notifications</a> <span class="label label-info">5</span>
+                                                <span class="glyphicon glyphicon-comment"></span><a href="">Notifications</a> <span class="label label-info">5</span>
                                              </td>
                                        </table>
                                     </div>
@@ -163,8 +165,5 @@
             </div>
          </div>
       </div>
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/scripts.js"></script>
    </body>
 </html>

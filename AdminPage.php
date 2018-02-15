@@ -81,7 +81,7 @@ if (isset($_SESSION['userType'])){
                  <div id="searchForm">
                    <form action="AdminPage.php" method="POST">
                      <table>
-                       <tr><td> <input type="text" name="courseID" placeholder="CourseID"></td>
+                       <tr><td> <input type="text" name="courseID" placeholder="CourseID"></td></tr><tr>
                        <td><input type="submit" value="Submit"></td></tr>
                      </table>
                    </form>
@@ -92,7 +92,7 @@ if (isset($_SESSION['userType'])){
                  <div id="searchForm">
                    <form action="AdminPage.php" method="POST">
                      <table>
-                       <tr><td> <input type="text" name="courseID" placeholder="CourseID"></td>
+                       <tr><td> <input type="text" name="courseID" placeholder="CourseID"></td></tr><tr>
                        <td><input type="submit" value="Submit"></td></tr>
                      </table>
                    </form>
@@ -124,8 +124,9 @@ if (isset($_SESSION['userType'])){
               </div>
               <div id="courseButtons">
                  <table>
-                    <tr><button class="buttonStyle2" onclick="showAllAcc()">Search Accounts</button></tr>
+                    <tr><button class="buttonStyle2" onclick="searchAccount()">Search Accounts</button></tr>
                     <tr><button class="buttonStyle2" onclick="addAccount()">Add Account</button></tr>
+										<tr><button class="buttonStyle2" onclick="changePassword()">Change Password</button></tr>
                  </table>
               </div>
               <div class="hideDiv" id="addAccount">
@@ -141,15 +142,25 @@ if (isset($_SESSION['userType'])){
                    </form>
                  </div>
               </div>
-              <div class="hideDiv" id="removeAccount">
-                 Remove Course
-              </div>
-              <div class="hideDiv" id="showAccount">
+              <div class="hideDiv" id="searchAccount">
                  Search Accounts
+								 <div id="searchForm">
+                   <form action="AdminPage.php" method="POST">
+                     <table>
+                       <tr><td> <input type="text" name="courseID" placeholder="CourseID"></td></tr><tr>
+                       <td><input type="submit" value="Submit"></td></tr>
+                     </table>
+                   </form>
+                 </div>
+              </div>
+							<div class="hideDiv" id="changePassword">
+                 Change Password
                  <div id="searchForm">
                    <form action="AdminPage.php" method="POST">
                      <table>
-                       <tr><td> <input type="text" name="accountID" placeholder="AccountID"></td>
+	                      <tr><td> <input type="text" name="oldPW" placeholder="Old Password"></td></tr><tr>
+												<tr><td> <input type="text" name="newPW" placeholder="New Password"></td></tr><tr>
+												<tr><td> <input type="text" name="confPW" placeholder="Confirm Password""></td></tr><tr>
                        <td><input type="submit" value="Submit"></td></tr>
                      </table>
                    </form>

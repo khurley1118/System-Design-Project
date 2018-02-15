@@ -29,7 +29,7 @@ html, body {
 }
 
 #pageContent {
-  max-width: 900px;
+  max-width: 80%;
   height: 100%;
   padding-top: 170px;
   margin-left: auto !important;
@@ -53,7 +53,7 @@ html, body {
   margin-left: 30px;z
   overflow: scroll;
   min-width: 500px;
-  flex-grow: 1;
+  flex-grow: 2;
 }
 
 .glyphicon { margin-right:10px; }
