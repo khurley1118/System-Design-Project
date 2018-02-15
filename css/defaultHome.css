@@ -16,8 +16,10 @@ html, body {
 
 .container {
   max-width: 195px;
-  font-size: 12pt;
+  font-size: 15pt;
 }
+
+
 
 .buttonStyle {
   position: relative;
@@ -83,12 +85,12 @@ html, body {
 }
 
 #sideBarContent {
+  position: relative;
   margin-left: auto;
   margin-right: auto;
-  height: 87%;
+  z-index: 1;
   width: 100%;
   font-size: 20pt;
-  padding-top: 10px;
 }
 
 #mainBarContent {
