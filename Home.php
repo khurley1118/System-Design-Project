@@ -34,94 +34,117 @@
                </div>
                <div id="sideBarContent">
                   <div class="container">
-                     <div id="accordionMenu">
-                        <div class="panel-group" id="accordion">
-                           <!-- Item start -->
-                           <div class="panel panel-default">
-                              <div class="panel-heading">
-                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Group 1</a>
-                                 </h4>
+                     <div class="row">
+                        <div class="accordionMenu">
+                           <div class="panel-group" id="accordion">
+                              <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-th">
+                                       </span>Course Info</a>
+                                    </h4>
+                                 </div>
+                                 <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                       <table class="table">
+                                          <tr>
+                                             <td>
+                                                <span class="glyphicon glyphicon-pencil text-primary"></span><a href="">News</a>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <span class="glyphicon glyphicon-file text-info"></span><a href="">Calendar</a>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <span class="glyphicon glyphicon-flash text-success"></span><a href="">Due Dates</a>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
                               </div>
-                              <div id="collapse1" class="panel-collapse collapse in">
-                                 <div class="panel-body">Lorem</div>
+                              <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-folder-close">
+                                       </span>Content</a>
+                                    </h4>
+                                 </div>
+                                 <div id="collapseTwo" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                       <table class="table">
+                                          <tr>
+                                             <td>
+                                                <a href="">Text</a>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <a href="">Audio</a>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <a href="">Video</a>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
                               </div>
-                           </div>
-                           <!-- Item start -->
-                           <div class="panel panel-default">
-                              <div class="panel-heading">
-                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Group 2</a>
-                                 </h4>
+                              <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                                       </span>Account</a>
+                                    </h4>
+                                 </div>
+                                 <div id="collapseThree" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                       <table class="table">
+                                          <tr>
+                                             <td>
+                                                <a href="">Change Password</a>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <a href="">Notifications</a> <span class="label label-info">5</span>
+                                             </td>
+                                       </table>
+                                    </div>
+                                 </div>
                               </div>
-                              <div id="collapse2" class="panel-collapse collapse">
-                                 <div class="panel-body">Lorem</div>
-                              </div>
-                           </div>
-                           <!-- Item start -->
-                           <div class="panel panel-default">
-                              <div class="panel-heading">
-                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Group 3</a>
-                                 </h4>
-                              </div>
-                              <div id="collapse3" class="panel-collapse collapse">
-                                 <div class="panel-body">Lorem</div>
-                              </div>
-                           </div>
-                           <!-- Item start -->
-                           <div class="panel panel-default">
-                              <div class="panel-heading">
-                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Group 4</a>
-                                 </h4>
-                              </div>
-                              <div id="collapse4" class="panel-collapse collapse">
-                                 <div class="panel-body">Lorem</div>
-                              </div>
-                           </div>
-                           <!-- Item start -->
-                           <div class="panel panel-default">
-                              <div class="panel-heading">
-                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Group 5</a>
-                                 </h4>
-                              </div>
-                              <div id="collapse5" class="panel-collapse collapse">
-                                 <div class="panel-body">Lorem</div>
-                              </div>
-                           </div>
-                           <!-- Item start -->
-                           <div class="panel panel-default">
-                              <div class="panel-heading">
-                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Group 6</a>
-                                 </h4>
-                              </div>
-                              <div id="collapse6" class="panel-collapse collapse">
-                                 <div class="panel-body">Lorem</div>
-                              </div>
-                           </div>
-                           <!-- Item start -->
-                           <div class="panel panel-default">
-                              <div class="panel-heading">
-                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Group 7</a>
-                                 </h4>
-                              </div>
-                              <div id="collapse7" class="panel-collapse collapse">
-                                 <div class="panel-body">Lorem</div>
-                              </div>
-                           </div>
-                           <!-- Item start -->
-                           <div class="panel panel-default">
-                              <div class="panel-heading">
-                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse8">Group 8</a>
-                                 </h4>
-                              </div>
-                              <div id="collapse8" class="panel-collapse collapse">
-                                 <div class="panel-body">Lorem</div>
+                              <div class="panel panel-default">
+                                 <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
+                                       </span>Tickets</a>
+                                    </h4>
+                                 </div>
+                                 <div id="collapseFour" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                       <table class="table">
+                                          <tr>
+                                             <td>
+                                                <span class="glyphicon glyphicon-user"></span><a href="">View Tickets</a>
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                <span class="glyphicon glyphicon-tasks"></span><a href="">Create Ticket</a>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                    </div>
+                                 </div>
                               </div>
                            </div>
                         </div>
@@ -135,7 +158,8 @@
                      <h3>Course Information</h3>
                   </div>
                </div>
-               <div id="mainBarContent"></div>
+               <div id="mainBarContent">
+               </div>
             </div>
          </div>
       </div>

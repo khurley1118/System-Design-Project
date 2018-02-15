@@ -16,10 +16,8 @@ html, body {
 
 .container {
   max-width: 195px;
-  font-size: 15pt;
+  font-size: 12pt;
 }
-
-
 
 .buttonStyle {
   position: relative;
@@ -58,17 +56,21 @@ html, body {
   flex-grow: 1;
 }
 
+.glyphicon { margin-right:10px; }
+.panel-body { padding:0px; }
+.panel-body table tr td { padding-left: 1px }
+.panel-body .table {margin-bottom: 0px; }
+
 #sideBar {
   border-style: groove;
   border-color: #00293a;
-  max-width: 200px;
-  min-width: 200px;
+  max-width: 250px;
+  min-width: 250px;
   height: 90%;
   background-color: #f3f3f3;
   flex-grow: 1;
   overflow: scroll;
 }
-
 
 #titleBar {
   position: relative;
