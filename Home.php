@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <?php
 include('connect.php');
+
 include('Header.php');
+include('chatGUI.html');
 include('Footer.php');
+
 
 //if user id is not set then user is not logged in and is redirected to index.
 if (!isset($_SESSION['userID'])){
@@ -64,12 +67,8 @@ $user = $_SESSION['CurrentUser'];
                 </div>
             </div>
                     <div id="chatBar">
-                        <div id="titleBar">
-                            <div id="titleText">
-                                <h3>Chat</h3>
-                            </div>
-                        </div>
-                        <iframe src="http://localhost/TuPro/Home.php" height="700" width="230">
+
+                        <iframe src="" height="700" width="230">
                         </iframe>
                     </div>
           </div>
