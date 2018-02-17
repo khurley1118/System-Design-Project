@@ -18,21 +18,21 @@ $courselist = $user->getCourses();
 ?>
 <html lang="en">
   <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=0">
-
     <title>Tu-Pro Home</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
     <link rel="stylesheet" type="text/css" href="css/headerStyle.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <script src="js/jquery.min.js" async></script>
+    <script src="js/bootstrap.min.js" async></script>
+    <script src="js/scripts.js" async></script>
+    <meta charset="utf-8">
   </head>
   <body>
+
       <div id="HeaderBack">
           <img src="Resources/Header.png" alt="logo" height="150px" width="100%">
           <div id="HeaderContent">
@@ -47,13 +47,15 @@ $courselist = $user->getCourses();
                 <?php
 
                 echo "<ul id='navBar'>";
+
                         $name = $full;
                         //placehold session id and name/type
                         if ($type == "student"){
+
 														//$courselist = DLgetStudentCourses($con,$id);
                             echo "<li>
                             <li><div class='dropdown'>
-                            <button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
+                            <button class='btn btn-primary dropdown-toggle' type='button' data-toggle='dropdown'>Courses
                             <span class='caret'></span></button>
                             <ul class='dropdown-menu'>";
 														// if user isn't enrolled in anycourses display no courses, else print to a dropdown list
@@ -88,6 +90,7 @@ $courselist = $user->getCourses();
 														else {
 															$courseCounter = 0;
 															foreach ($courselist as $course){
+
 																$courseName = utilCourseName($con, $course);
 																echo "<li><a href='$course'>" . $course . " " . $courseName . "</a></li>";
 																$courseCounter++;
@@ -113,8 +116,8 @@ $courselist = $user->getCourses();
             </div>
           </div>
       </div>
-			<script src="js/jquery.min.js"></script>
-			<script src="js/bootstrap.min.js"></script>
-			<script src="js/scripts.js"></script>
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/scripts.js"></script>
   </body>
 </html>
