@@ -1,72 +1,26 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-
-/*
-    Created on : Jan 15, 2018, 10:19:41 AM
-    A00%;uthor     : Mark Patterson
-*/
-
-#footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  line-height: 30px;
-  background-color: #00293a;
-  color: white;
-  text-align: center;
-  z-index: 1;
+/* To change this license header, choose License Headers in Project Properties. To change this template file, choose Tools | Templates and open the template in the editor. */
+/* Created on : Jan 15, 2018, 10:19:41 AM Author : Mark Patterson */
+ html, body {
+     width: 100%;
+     height: 100%;
+     background-image: url("../Resources/BackGround.png");
+     position: fixed;
+     background-size: cover !important;
+     background-attachment: fixed !important;
+     overflow-x: hidden;
+     overflow-y: auto;
 }
-
-#logOut {
-  position: relative;
-  width: 70px;
-  color: black;
-  float: right;
-  top: 8px;
-  left: 10px;
-  background-color: #00293a; !important
-  font-size:5pt;
-  color:black;
-  background: #00293a;
-  height: 50px;
-  width: 100px;
-  font: bold 10px arial, sans-serif;
-  text-shadow:none;
+ #header {
+     position: fixed;
+     z-index: 1000;
+     width: 100%;
+     margin-left: auto;
 }
-
-/* #footer {
-           position: fixed;
-					 clear:both;
-           left: 0;
-					 right: 0;
-           bottom: 0;
-           height: 6%;
-           width: 100%;
-					 margin-top: -6%;
-					 padding-top: 20px;
-           background-color: #00293a;
-           color: white;
-           text-align: center;
-        } */
-
-#copyright {
-  font-size: 7pt;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 4px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 250px;
+ z #pageContent {
+     width: 70%;
+     padding-top: 0px;
+     margin-left: auto !important;
+     margin-right: auto !important;
+     text-align: center;
 }
-
-#adminLogin {
-  font-size: 7pt;
-  position: absolute;
-  bottom: 1px;
-  opacity: 0.8;
-}
+ 
