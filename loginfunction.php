@@ -79,6 +79,7 @@ if ($id == $userID) {
                 $user->setFirstName(utilInstructorFirst($con, $id));
                 $user->setLastName(utilInstructorLast($con, $id));
                 $user->setCourses(utilInstructorCourses($con, $id));
+				$user->setPassword(utilInstructorGetPassword($con,$id));
                 $_SESSION['CurrentUser'] = $user;
             } else {
                 //else case is that user is a student
@@ -87,6 +88,7 @@ if ($id == $userID) {
                 $user->setFirstName(utilStudentFirst($con, $id));
                 $user->setLastName(utilStudentLast($con, $id));
                 $user->setCourses(utilStudentCourseList($con, $id));
+				$user->setPassword(utilInstructorGetPassword($con,$id));
                 $_SESSION['CurrentUser'] = $user;
             }
 
