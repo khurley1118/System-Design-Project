@@ -18,6 +18,7 @@ and open the template in the editor.
   background-color: #00293a;
   color: white;
   text-align: center;
+  z-index: 1;
 }
 
 #logOut {
@@ -28,23 +29,13 @@ and open the template in the editor.
   top: 8px;
   left: 10px;
   background-color: #00293a; !important
-  font-size:1em;
+  font-size:5pt;
   color:black;
   background: #00293a;
-
-
-
-
-
-
-
-height: 50px;
-
-width: 100px;
-
-font: bold 15px arial, sans-serif;
-
-text-shadow:none;
+  height: 50px;
+  width: 100px;
+  font: bold 10px arial, sans-serif;
+  text-shadow:none;
 }
 
 /* #footer {
@@ -63,6 +54,7 @@ text-shadow:none;
         } */
 
 #copyright {
+  font-size: 7pt;
   position: absolute;
   left: 0;
   right: 0;
@@ -73,6 +65,7 @@ text-shadow:none;
 }
 
 #adminLogin {
+  font-size: 7pt;
   position: absolute;
   bottom: 1px;
   opacity: 0.8;
