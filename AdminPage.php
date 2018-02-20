@@ -20,6 +20,9 @@ if (isset($_SESSION['userType'])) {
         <link rel="stylesheet" type="text/css" href="css/adminPanel.css">
         <link rel="stylesheet" type="text/css" href="css/defaultHome.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
+				<script src="js/jquery.min.js"></script>
+				<script src="js/bootstrap.min.js"></script>
+				<script src="js/scripts.js"></script>
     </head>
     <body>
         <div id="pageContent">
