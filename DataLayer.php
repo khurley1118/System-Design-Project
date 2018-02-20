@@ -161,11 +161,11 @@ function DLgetCourseList($con) {
 }
 
 function DLupdateCourse($courseID) {
-    
+
 }
 
 function DLRemoveCourse($courseID) {
-    
+
 }
 
 function DLgetCourseName($con, $courseID) {
@@ -179,5 +179,41 @@ function DLgetCourseName($con, $courseID) {
     }
     return $course;
 }
+
+function DLgetFolders($con, $courseID){
+		$result = mysqli_query($con, "CALL SP_getFolders($courseID)");
+		while ($row = mysqli_fetch_array($result)){
+			$folders[] = $row;
+		}
+		while (mysqli_more_results($con)) {
+				mysqli_next_result($con);
+		}
+		return $folders;
+}
+
+function DLcreateContent($con, $type, $courseID, $location, $path, $desc){
+	if ($type == "audio"){
+		$result = mysqli_query($con, "CALL SP_createAudio($courseID, $location, '$path', '$desc')");
+		if ($result > 0){
+			return true;
+		}
+		else return false;
+	}
+	else if ($type == "video"){
+		$result = mysqli_query($con, "CALL SP_createVideo($courseID, $location, '$path', '$desc')");
+		if ($result > 0){
+			return true;
+		}
+		else return false;
+	}
+	else if ($type == "documents"){
+		$result = mysqli_query($con, "CALL SP_createDoc($courseID, $location, '$path', '$desc')");
+		if ($result > 0){
+			return true;
+		}
+		else return false;
+	}
+}
+
 
 ?>
