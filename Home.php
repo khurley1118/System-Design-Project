@@ -113,7 +113,7 @@
                                        <table class="table">
                                           <tr>
                                              <td>
-                                                <span class="glyphicon glyphicon-sort"></span><a href="">Change Password</a>
+                                                <span class="glyphicon glyphicon-sort"></span><a href="ChangePassForm.php">Change Password</a>
                                              </td>
                                           </tr>
                                           <tr>
