@@ -159,7 +159,6 @@ if (isset($_SESSION['userType'])) {
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
         <div id="mainBar" class="col-md-3">
            <div class="showDiv" id="coursesContent">
               <div id="titleBar">
@@ -301,10 +300,3 @@ if (isset($_SESSION['userType'])) {
   <script src="js/scripts.js"></script>
   </body>
   </html>
-=======
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/scripts.js"></script>
-    </body>
-</html>
->>>>>>> 426d0d79ff99567f62c437e6fc6147f468ebdedb
