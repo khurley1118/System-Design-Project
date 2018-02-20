@@ -38,6 +38,25 @@ function DLgetStudentCourses($con, $id) {
     return $courses;
 }
 
+//get student's password
+function DLgetStudentPassword($con, $id) {
+	$password = ""; //put this here so $password is initialized so we don't get an error, but as is if the student doesn't exist $password will stay blank
+    $rs = mysqli_query($con, "CALL SP_fetchStudentPassword($id)");
+    while ($row = mysqli_fetch_array($rs)) {
+        $password = $row['password'];
+    }
+    //gets rid of meta
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+    return $password;
+}
+
+//change student's password
+function DLstudentPasswordChange($con, $id, $newPass) {
+	return mysqli_query($con, "CALL SP_changeStudentPassword($id, $newPass)");
+}
+
 //ADMIN
 ///////////////////////////////////////
 function DLgetAdminFirst($con, $id) {
@@ -104,6 +123,25 @@ function DLgetInstructorCourses($con, $id) {
     } else {
         return $courses;
     }
+}
+
+//get instructor's password
+function DLgetInstructorPassword($con, $id) {
+	$password = ""; //put this here so $password is initialized so we don't get an error, but as is if the student doesn't exist $password will stay blank
+    $rs = mysqli_query($con, "CALL SP_fetchInstructorPW($id)");
+    while ($row = mysqli_fetch_array($rs)) {
+        $password = $row['password'];
+    }
+    //gets rid of meta
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+    return $password;
+}
+
+//change instructor's password
+function DLinstructorPasswordChange($con, $id, $newPass) {
+	return mysqli_query($con, "CALL SP_changeInstructorPassword($id, $newPass)");
 }
 
 //COURSES

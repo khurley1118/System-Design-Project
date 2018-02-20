@@ -1,4 +1,6 @@
 <?php
+//needs data layer functions but should be accessible because utilClass.php includes DataLayer.php and it is included in Header.php
+//include("DataLayer.php");
 
 //Instructor class for TuPro.
 //private attributes
@@ -57,7 +59,16 @@ Class Instructor {
         
     }
 
-    //to do: functions will go below
+    //verifies that inputted old password matches db old password
+	function ChangePassword($con,$origPass,$newPass) {
+		if ($origPass == utilInstructorGetPassword($con,getInstructorId())) { //the inputted old password matches the db password
+			return DLinstructorPasswordChange($con, getInstructorId(), $newPass);
+		}
+		else {
+			//the inputted old password doesn't match the db password
+		}
+		
+	}
 }
 
 ?>

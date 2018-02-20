@@ -15,6 +15,10 @@ function utilStudentCourseList($con, $id) {
     return DLgetStudentCourses($con, $id);
 }
 
+function utilStudentGetPassword($con,$id){
+	return DLgetStudentPassword($con,$id);
+}
+
 // INSTRUCTOR /////////////////////////////////
 function utilInstructorFirst($con, $id) {
     return DLgetInstructorFirst($con, $id);
@@ -26,6 +30,10 @@ function utilInstructorLast($con, $id) {
 
 function utilInstructorCourses($con, $id) {
     return DLgetInstructorCourses($con, $id);
+}
+
+function utilInstructorGetPassword($con,$id){
+	return DLgetInstructorPassword($con,$id);
 }
 
 // ADMIN /////////////////////////////////////

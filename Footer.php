@@ -12,18 +12,22 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-      <div id="footer">
-          <div id="copyright">
-              <br><br>Copyright &copy; <?php echo date("Y"); ?> NBCC
-          </div>
-          <div id="adminLogin">
-              <a href="adminLogin.php">Admin Log-in</a>
-          </div>
-          <div id="logOut">
-              <form method="POST" action="logOut.php">
-                <input type="submit" value="log-out">
-              </form>
-          </div>
-      </div>
-  </body>
+        <div id="footer">
+            <div id="copyright">
+                <br><br>Copyright &copy; <?php echo date("Y"); ?> NBCC
+            </div>
+            <div id="adminLogin">
+                <a href="adminLogin.php">Admin Log-in</a>
+            </div>
+            <div id="logOut">
+                <form method="POST" action="logOut.php">
+                    <input type="submit" value="log-out">
+                </form>
+            </div>
+        </div>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/scripts.js"></script>
+    </body>
 </html>

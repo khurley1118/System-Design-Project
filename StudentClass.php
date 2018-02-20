@@ -1,4 +1,6 @@
 <?php
+//needs data layer functions but should be accessible because utilClass.php includes DataLayer.php and it is included in Header.php
+//include("DataLayer.php");
 
 class Student {
 
@@ -52,6 +54,16 @@ class Student {
         
     }
 
+	//verifies that inputted old password matches db old password
+	function ChangePassword($con,$origPass,$newPass) {
+		if ($origPass == utilStudentGetPassword($con,getStudentID())) { //the inputted old password matches the db password
+			return DLstudentPasswordChange($con, getStudentID(), $newPass);
+		}
+		else {
+			//the inputted old password doesn't match the db password
+		}
+		
+	}
 }
 
 ?>
