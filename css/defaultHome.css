@@ -9,14 +9,31 @@ and open the template in the editor.
     Author     : Mark Patterson
 */
 
+h1, h2, h3, h4, h5, h6, h7{
+  color: #00293a;
+}
+
 html, body {
   width: 100%;
   height: 100%;
+  color: #00293a;
+}
+
+#navbar {
+  background-color: #00293a;
+}
+
+#columnSetup {
+  position: relative;
+  top: 20px;
+  color: #00293a;
 }
 
 .container {
-  max-width: 195px;
+  max-width: 90%;
+  min-width: 90%;
   font-size: 12pt;
+  color: #00293a;
 }
 
 .buttonStyle {

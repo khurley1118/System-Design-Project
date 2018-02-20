@@ -17,33 +17,38 @@
    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=0">
       <title>Tu-Pro Home</title>
 			<script src="js/jquery.min.js"></script>
 			<script src="js/bootstrap.min.js"></script>
 			<script src="js/scripts.js"></script>
       <link rel="stylesheet" type="text/css" href="css/defaultHome.css">
       <link href="css/bootstrap.min.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="css/pageStylings.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    </head>
-   <body>
-      <div id="pageContent">
-         <div id="flexBox">
-            <div id="sideBar">
-               <div id="titleBar">
-                  <div id="titleText">
-                     <h3>Toolbar</h3>
-                  </div>
-               </div>
-               <div id="sideBarContent">
-                  <div class="container">
+   <body class="w3-light-grey">
+
+   <!-- Page Container -->
+   <div id="columnSetup" class="w3-content w3-margin-top" style="max-width:1400px;">
+
+     <!-- The Grid -->
+     <div id="columnSetup" class="w3-row-padding">
+
+       <!-- Left Column -->
+       <div class="w3-third">
+
+         <div class="w3-white w3-text-grey w3-card-4">
+           <br>
+           <div class="container">
                      <div class="row">
                         <div class="accordionMenu">
                            <div class="panel-group" id="accordion">
                               <div class="panel panel-default">
                                  <div class="panel-heading">
                                     <h4 class="panel-title">
-                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-th">
-                                       </span>Course Info</a>
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                       Course Info</a>
                                     </h4>
                                  </div>
                                  <div id="collapseOne" class="panel-collapse collapse in">
@@ -152,18 +157,53 @@
                         </div>
                      </div>
                   </div>
-               </div>
-            </div>
-            <div id="mainBar">
-               <div id="titleBar">
-                  <div id="titleText">
-                     <h3>Course Information</h3>
-                  </div>
-               </div>
-               <div id="mainBarContent">
-               </div>
-            </div>
+         </div><br>
+
+       <!-- End Left Column -->
+       </div>
+
+       <!-- Right Column -->
+       <div class="w3-twothird">
+
+         <div class="w3-container w3-card w3-white w3-margin-bottom">
+           <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i><?php echo $courseName; ?></h2>
+           <?php
+           //Needs to be looped once object available / content available just dummy outputs
+            $file1name = "Practice-Exam";
+            $file1desc = "This text file is preparation for the exam coming next week. It is a practice Exam please complete this prior to the exam.";
+            $file2name = "Lecture Recording";
+            $file2desc = "This is a recording of the lecture that took place on Feb/16/2018 Please listen again if you are unsure.";
+            $file3name = "Example Video";
+            $file3desc = "This is an example video for some of the concepts that we went over in class yesterday. Please watch this if you have questions.";
+              echo "<div class='w3-container'>";
+              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'/><b> " . $file1name . "</b></h5>";
+              echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
+              echo "<br><br><p>" . $file1desc . "</p>";
+              echo "<hr>";
+              echo "</div>";
+
+              echo "<div class='w3-container'>";
+              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-volume-up'/><b> " . $file2name . "</b></h5>";
+              echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
+              echo "<br><br><p>" . $file2desc . "</p>";
+              echo "<hr>";
+              echo "</div>";
+
+              echo "<div class='w3-container'>";
+              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-facetime-video'/><b> " . $file3name . "</b></h5>";
+              echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
+              echo "<br><br><p>" . $file3desc . "</p>";
+              echo "<hr>";
+              echo "</div>";
+           ?>
          </div>
-      </div>
+       <!-- End Right Column -->
+       </div>
+     <!-- End Grid -->
+     </div>
+     <!-- End Page Container -->
+   </div>
+
+
    </body>
 </html>

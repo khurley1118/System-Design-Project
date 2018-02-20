@@ -14,8 +14,6 @@
 
   </head>
   <body>
-
-
       <div id="footer">
           <div id="copyright">
               <br><br>Copyright &copy; <?php echo date("Y"); ?> NBCC
