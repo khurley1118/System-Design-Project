@@ -1,47 +1,54 @@
 <?php
-	//Admin class for TuPro.
 
-	//private attributes
-class Admin{
-	private $adminId;
-	private $password;
-	private $firstName;
-	private $lastName;
+//Admin class for TuPro.
+//private attributes
+class Admin {
 
-	//getters/setters
+    private $adminId;
+    private $password;
+    private $firstName;
+    private $lastName;
 
-	function setAdminId ($adminId) {
-		$this->adminId = $adminId;
-	}
-	function getAdminId() {
-		return $this->adminId;
-	}
+    //getters/setters
 
-	function setPassword ($password) {
-		$this->password = $password;
-	}
-	function getPassword() {
-		return $this->password;
-	}
+    function setAdminId($adminId) {
+        $this->adminId = $adminId;
+    }
 
-	function setFirstName ($firstName) {
-		$this->firstName = $firstName;
-	}
-	function getFirstName() {
-		return $this->firstName;
-	}
+    function getAdminId() {
+        return $this->adminId;
+    }
 
-	function setLastName ($lastName) {
-		$this->lastName = $lastName;
-	}
-	function getLastName() {
-		return $this->lastName;
-	}
+    function setPassword($password) {
+        $this->password = $password;
+    }
 
-	//constructor
-	function __construct() {
-	}
+    function getPassword() {
+        return $this->password;
+    }
 
-	//to do: functions will go below
+    function setFirstName($firstName) {
+        $this->firstName = $firstName;
+    }
+
+    function getFirstName() {
+        return $this->firstName;
+    }
+
+    function setLastName($lastName) {
+        $this->lastName = $lastName;
+    }
+
+    function getLastName() {
+        return $this->lastName;
+    }
+
+    //constructor
+    function __construct() {
+        
+    }
+
+    //to do: functions will go below
 }
+
 ?>
