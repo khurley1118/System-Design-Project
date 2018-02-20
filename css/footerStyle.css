@@ -26,7 +26,7 @@ and open the template in the editor.
   width: 70px;
   color: black;
   float: right;
-  top: 8px;
+  top: 11px;
   left: 10px;
   background-color: #00293a; !important
   font-size:5pt;
@@ -38,35 +38,23 @@ and open the template in the editor.
   text-shadow:none;
 }
 
-/* #footer {
-           position: fixed;
-					 clear:both;
-           left: 0;
-					 right: 0;
-           bottom: 0;
-           height: 6%;
-           width: 100%;
-					 margin-top: -6%;
-					 padding-top: 20px;
-           background-color: #00293a;
-           color: white;
-           text-align: center;
-        } */
-
 #copyright {
   font-size: 7pt;
   position: absolute;
   left: 0;
   right: 0;
+  height: 90px;
   bottom: 4px;
   margin-left: auto;
   margin-right: auto;
   width: 250px;
+  z-index: 1;
 }
 
 #adminLogin {
   font-size: 7pt;
   position: absolute;
-  bottom: 1px;
+  bottom: 3px;
+  left: 5px;
   opacity: 0.8;
 }

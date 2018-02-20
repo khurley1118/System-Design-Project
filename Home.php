@@ -176,21 +176,21 @@
             $file3name = "Example Video";
             $file3desc = "This is an example video for some of the concepts that we went over in class yesterday. Please watch this if you have questions.";
               echo "<div class='w3-container'>";
-              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'/><b> " . $file1name . "</b></h5>";
+              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b> " . $file1name . "</b></h5>";
               echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
               echo "<br><br><p>" . $file1desc . "</p>";
               echo "<hr>";
               echo "</div>";
 
               echo "<div class='w3-container'>";
-              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-volume-up'/><b> " . $file2name . "</b></h5>";
+              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-volume-up'></span><b> " . $file2name . "</b></h5>";
               echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
               echo "<br><br><p>" . $file2desc . "</p>";
               echo "<hr>";
               echo "</div>";
 
               echo "<div class='w3-container'>";
-              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-facetime-video'/><b> " . $file3name . "</b></h5>";
+              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-facetime-video'></span><b> " . $file3name . "</b></h5>";
               echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
               echo "<br><br><p>" . $file3desc . "</p>";
               echo "<hr>";
@@ -203,7 +203,5 @@
      </div>
      <!-- End Page Container -->
    </div>
-
-
    </body>
 </html>

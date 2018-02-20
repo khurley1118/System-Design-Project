@@ -6,10 +6,7 @@
      box-sizing:inherit
 }
 /* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
- html{
-     -ms-text-size-adjust:100%;
-     -webkit-text-size-adjust:100%
-}
+
  body{
      margin:0
 }
@@ -1345,4 +1342,3 @@
  .w3-border-pale-blue,.w3-hover-border-pale-blue:hover{
      border-color:#e7ffff!important
 }
- 
