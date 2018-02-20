@@ -14,7 +14,8 @@
 			echo "<BR><BR>";
 	}
 	$ms1 = "file";
-	$rs = DLcreateContent($con, "audio", 52, 1, "fasdfasdfads", 'texthere');
+	$rs = DLcreateContent($con, "documents", 52, 1, 'aaaa'
+	, 'texthere');
 	echo "RESULT:";
 	echo mysqli_error($con);
 	echo $rs;
