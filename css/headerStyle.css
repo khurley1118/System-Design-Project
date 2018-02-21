@@ -14,6 +14,17 @@ and open the template in the editor.
   background-color: #00293a;
 }
 
+#nav {
+  background-color: #00293a;
+  color: white;
+}
+
+body {
+
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
 #navBar {
   background-color: #00293a;
   position: relative;
@@ -71,6 +82,7 @@ li {
   float: left;
   list-style-type: none;
 }
+
 
 li a {
   display: block;

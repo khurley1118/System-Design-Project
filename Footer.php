@@ -14,8 +14,6 @@
 
   </head>
   <body>
-
-
       <div id="footer">
           <div id="copyright">
               <br><br>Copyright &copy; <?php echo date("Y"); ?> NBCC
@@ -29,9 +27,5 @@
               </form>
           </div>
       </div>
-
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
   </body>
 </html>

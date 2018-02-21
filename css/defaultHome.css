@@ -9,9 +9,120 @@ and open the template in the editor.
     Author     : Mark Patterson
 */
 
+html,
+body {
+    height: 100%;
+}
+
+#AdmiralSnackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #00293a; /* Black background color */
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#AdmiralSnackbar.show {
+    visibility: visible; /* Show the snackbar */
+
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+form {
+  width: 20%;
+  margin-top: 200px;
+  margin-bottom: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hideDiv {
+    visibility: hidden;
+}
+
+.showDiv {
+    visibility: visible;
+}
+
+.w3-light-grey {
+  background-color: red;
+  padding-top: 25px;
+  background-image: url("../Resources/BackGround.png");
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
+#columnSetup {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.container {
+  max-width: 90%;
+  min-width: 90%;
+  font-size: 12pt;
+  color: #00293a;
+}
+
+h1, h2, h3, h4, h5, h6, h7{
+  color: #00293a;
+}
+
 html, body {
   width: 100%;
   height: 100%;
+  color: #00293a;
+}
+
+#navbar {
+  background-color: #00293a;
+}
+
+#columnSetup {
+  position: relative;
+  top: 20px;
+  color: #00293a;
+}
+
+.container {
+  max-width: 90%;
+  min-width: 90%;
+  font-size: 12pt;
+  color: #00293a;
 }
 
 .buttonStyle {
@@ -24,7 +135,7 @@ html, body {
 }
 
 #pageContent {
-  max-width: 900px;
+  max-width: 80%;
   height: 100%;
   padding-top: 170px;
   margin-left: auto !important;
@@ -45,29 +156,23 @@ html, body {
   border-color: #00293a;
   height: 90%;
   background-color: #f3f3f3;
-  margin-left: 30px;
+  margin-left: 30px;z
   overflow: scroll;
-  min-width: 300px;
+  min-width: 500px;
+  flex-grow: 2;
 }
+
+.glyphicon { margin-right:10px; }
+.panel-body { padding:0px; }
+.panel-body table tr td { padding-left: 1px }
+.panel-body .table {margin-bottom: 0px; }
 
 #sideBar {
   border-style: groove;
   border-color: #00293a;
-  max-width: 150px;
-  min-width: 150px;
-  height: 90%;
-  background-color: #f3f3f3;
-  flex-grow: 1;
-  overflow: scroll;
-}
-
-#chatBar {
-  border-style: groove;
-  border-color: #00293a;
-  height: 90%;
+  max-width: 250px;
   min-width: 250px;
-  max-width: 350px;
-  margin-left: 30px;
+  height: 90%;
   background-color: #f3f3f3;
   flex-grow: 1;
   overflow: scroll;
@@ -88,12 +193,12 @@ html, body {
 }
 
 #sideBarContent {
+  position: relative;
   margin-left: auto;
   margin-right: auto;
-  height: 87%;
+  z-index: 1;
   width: 100%;
   font-size: 20pt;
-  padding-top: 10px;
 }
 
 #mainBarContent {

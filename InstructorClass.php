@@ -1,56 +1,74 @@
 <?php
-	//Instructor class for TuPro.
+//needs data layer functions but should be accessible because utilClass.php includes DataLayer.php and it is included in Header.php
+//include("DataLayer.php");
 
-	//private attributes
-	Class Instructor{
-	private $instructorId;
-	private $password;
-	private $firstName;
-	private $lastName;
-	private $courses = [];
+//Instructor class for TuPro.
+//private attributes
+Class Instructor {
 
-	//getters/setters
+    private $instructorId;
+    private $password;
+    private $firstName;
+    private $lastName;
+    private $courses = [];
 
-	function setInstructorId ($instructorId) {
-		$this->instructorId = $instructorId;
-	}
-	function getInstructorId() {
-		return $this->instructorId;
-	}
+    //getters/setters
 
-	function setPassword ($password) {
-		$this->password = $password;
-	}
+    function setInstructorId($instructorId) {
+        $this->instructorId = $instructorId;
+    }
 
-	function getPassword() {
-		return $this->password;
-	}
+    function getInstructorId() {
+        return $this->instructorId;
+    }
 
-	function setFirstName ($firstName) {
-		$this->firstName = $firstName;
-	}
-	function getFirstName() {
-		return $this->firstName;
-	}
+    function setPassword($password) {
+        $this->password = $password;
+    }
 
-	function setLastName ($lastName) {
-		$this->lastName = $lastName;
-	}
-	function getLastName() {
-		return $this->lastName;
-	}
-	function getCourses(){
-		return $this->courses;
-	}
-	function setCourses($courses){
-		$this->courses = $courses;
-	}
+    function getPassword() {
+        return $this->password;
+    }
 
-	//constructor
-	function __construct() {
+    function setFirstName($firstName) {
+        $this->firstName = $firstName;
+    }
 
+    function getFirstName() {
+        return $this->firstName;
+    }
+
+    function setLastName($lastName) {
+        $this->lastName = $lastName;
+    }
+
+    function getLastName() {
+        return $this->lastName;
+    }
+
+    function getCourses() {
+        return $this->courses;
+    }
+
+    function setCourses($courses) {
+        $this->courses = $courses;
+    }
+
+    //constructor
+    function __construct() {
+        
+    }
+
+    //verifies that inputted old password matches db old password
+	function ChangePassword($con,$origPass,$newPass) {
+		if ($origPass == utilInstructorGetPassword($con,getInstructorId())) { //the inputted old password matches the db password
+			return DLinstructorPasswordChange($con, getInstructorId(), $newPass);
+		}
+		else {
+			//the inputted old password doesn't match the db password
+		}
+		
 	}
-
-	//to do: functions will go below
 }
+
 ?>
