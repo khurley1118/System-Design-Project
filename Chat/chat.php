@@ -46,7 +46,7 @@ function showmessages(){
    //Replace the content of the messages with the response from the 'show-messages.php' file
    document.getElementById('messages').innerHTML = xmlhttp.responseText;
    //Repeat the function each 30 seconds
-   setTimeout('showmessages()',30000);
+   setTimeout('showmessages()',3000);
 }
 //Start the showmessages() function
 showmessages();
