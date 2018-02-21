@@ -13,6 +13,7 @@
    $userType = $_SESSION['userType'];
    $user = $_SESSION['CurrentUser'];
    ?>
+
 <html lang="en">
    <head>
       <meta charset="utf-8">
@@ -21,6 +22,7 @@
 			<script src="js/jquery.min.js"></script>
 			<script src="js/bootstrap.min.js"></script>
 			<script src="js/scripts.js"></script>
+      <script src="js/Home.js"></script>
       <link rel="stylesheet" type="text/css" href="css/defaultHome.css">
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +30,6 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    </head>
    <body class="w3-light-grey">
-
    <!-- Page Container -->
    <div id="columnSetup" class="w3-content w3-margin-top" style="max-width:1400px;">
 
@@ -102,6 +103,20 @@
                                                 <span class="glyphicon glyphicon-camera"></span><a href="">Video</a>
                                              </td>
                                           </tr>
+                                          <?php
+                                            if ($type == "faculty"){
+                                              echo "<tr>
+                                                 <td>
+                                                    <span class='glyphicon glyphicon-plus'></span><a href='javascript:addContent()'>Add Content</a>
+                                                 </td>
+                                              </tr>
+                                              <tr>
+                                                 <td>
+                                                    <span class='glyphicon glyphicon-plus'></span><a href='javascript:addFolder()'>Add Topic</a>
+                                                 </td>
+                                              </tr>";
+                                            }
+                                          ?>
                                        </table>
                                     </div>
                                  </div>
@@ -118,13 +133,14 @@
                                        <table class="table">
                                           <tr>
                                              <td>
-                                                <span class="glyphicon glyphicon-sort"></span><a href="ChangePassForm.php">Change Password</a>
+                                                <span class="glyphicon glyphicon-sort"></span><a href="javascript:changePassword()">Change Password</a>
                                              </td>
                                           </tr>
                                           <tr>
                                              <td>
                                                 <span class="glyphicon glyphicon-comment"></span><a href="">Notifications</a> <span class="label label-info">5</span>
                                              </td>
+                                          </tr>
                                        </table>
                                     </div>
                                  </div>
@@ -158,14 +174,11 @@
                      </div>
                   </div>
          </div><br>
-
        <!-- End Left Column -->
        </div>
-
        <!-- Right Column -->
        <div class="w3-twothird">
-
-         <div class="w3-container w3-card w3-white w3-margin-bottom">
+         <div id="outputContainer" class="w3-container w3-card w3-white w3-margin-bottom">
            <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i><?php echo $courseName; ?></h2>
            <?php
            //Needs to be looped once object available / content available just dummy outputs
@@ -176,21 +189,21 @@
             $file3name = "Example Video";
             $file3desc = "This is an example video for some of the concepts that we went over in class yesterday. Please watch this if you have questions.";
               echo "<div class='w3-container'>";
-              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'/><b> " . $file1name . "</b></h5>";
+              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b> " . $file1name . "</b></h5>";
               echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
               echo "<br><br><p>" . $file1desc . "</p>";
               echo "<hr>";
               echo "</div>";
 
               echo "<div class='w3-container'>";
-              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-volume-up'/><b> " . $file2name . "</b></h5>";
+              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-volume-up'></span><b> " . $file2name . "</b></h5>";
               echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
               echo "<br><br><p>" . $file2desc . "</p>";
               echo "<hr>";
               echo "</div>";
 
               echo "<div class='w3-container'>";
-              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-facetime-video'/><b> " . $file3name . "</b></h5>";
+              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-facetime-video'></span><b> " . $file3name . "</b></h5>";
               echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
               echo "<br><br><p>" . $file3desc . "</p>";
               echo "<hr>";
@@ -201,9 +214,16 @@
        </div>
      <!-- End Grid -->
      </div>
+     <div id="AdmiralSnackbar">Password has been changed!</div>
      <!-- End Page Container -->
+     <?php
+      if (isset($_SESSION['passwordChng'])){
+       if ($_SESSION['passwordChng'] == 1){
+         $_SESSION['passwordChng'] = 0;
+         echo "<script> myFunction(); </script>";
+       }
+     }
+    ?>
    </div>
-
-
    </body>
 </html>
