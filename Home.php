@@ -219,9 +219,20 @@
      <?php
       if (isset($_SESSION['passwordChng'])){
        if ($_SESSION['passwordChng'] == 1){
-         $_SESSION['passwordChng'] = 0;
-         echo "<script> myFunction(); </script>";
+			$_SESSION['passwordChng'] = 0;
+			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Password has been changed!';</script>";
+			echo "<script> myFunction(); </script>";
        }
+	   else if ($_SESSION['passwordChng'] == 2) {
+		    $_SESSION['passwordChng'] = 0;
+			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Error, confirm password does not match!';</script>";
+			echo "<script> myFunction(); </script>";
+	   }
+	   else if ($_SESSION['passwordChng'] == 3) {
+		    $_SESSION['passwordChng'] = 0;
+			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Error, password is incorrect!';</script>";
+			echo "<script> myFunction(); </script>";
+	   }
      }
     ?>
    </div>

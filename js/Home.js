@@ -137,7 +137,8 @@ function addFolder() {
 
 function myFunction() {
     // Get the snackbar DIV
-    var x = document.getElementById("AdmiralSnackbar")
+	var x = document.getElementById("AdmiralSnackbar");
+    
 
     // Add the "show" class to DIV
     x.className = "show";
