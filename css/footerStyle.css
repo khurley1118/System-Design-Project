@@ -18,11 +18,13 @@ and open the template in the editor.
   background-color: #00293a;
   color: white;
   text-align: center;
-  z-index: 1;
+  z-index: 4;
+
 }
 
 #logOut {
   position: relative;
+  z-index: 1;
   width: 70px;
   color: black;
   float: right;
@@ -56,5 +58,5 @@ and open the template in the editor.
   position: absolute;
   bottom: 3px;
   left: 5px;
-  opacity: 0.8;
+
 }

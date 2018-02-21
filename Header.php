@@ -6,6 +6,7 @@ require("InstructorClass.php");
 require("utilClass.php");
 session_start();
 
+
 $type = $_SESSION['userType'];
 $id =	$_SESSION['userID'];
 $user = $_SESSION['CurrentUser'];
@@ -61,14 +62,12 @@ $courselist = $user->getCourses();
                 $courseCounter = 0;
                 foreach ($courselist as $course){
                   $courseName = utilCourseName($con, $course);
-
                   echo "<li><a href='$course'>" . $course . " " . $courseName . "</a></li>";
                   $courseCounter++;
                 }
               }
                 echo "</ul>"
                 ?>
-
             </li>
           </ul>
         </div>
