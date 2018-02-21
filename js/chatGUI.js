@@ -80,7 +80,7 @@ function register_popup(id, name)
     element = element + '<div class="popup-head-left">'+ name +'</div>';
     element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\''+ id +'\');">&#10005;</a></div>';
     element = element + '<div style="clear: both"></div></div><div class="popup-messages" id="messages ' + id +'"></div>';
-    element = element + '<div id="write" style="text-align:left;"><textarea id="message" cols="29" rows="2" onkeyup="process(event, this)"></textarea></div></div>'
+    element = element + '<div id="write" style="text-align:left;"><textarea id="message" cols="29" rows="1" onkeyup="process(event, this)"></textarea></div></div>'
 
 
     document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + element;
