@@ -12,11 +12,18 @@ and open the template in the editor.
 .btn-custom {
   color: white;
   background-color: #00293a;
+  position: relative;
+  top: 16px;
 }
 
 #nav {
   background-color: #00293a;
   color: white;
+}
+
+img {
+  position: relative;
+  bottom: 5px;
 }
 
 body {

@@ -18,13 +18,11 @@ and open the template in the editor.
   background-color: #00293a;
   color: white;
   text-align: center;
-  z-index: 4;
-
+  z-index: 1;
 }
 
 #logOut {
   position: relative;
-  z-index: 1;
   width: 70px;
   color: black;
   float: right;
@@ -54,9 +52,10 @@ and open the template in the editor.
 }
 
 #adminLogin {
-  font-size: 7pt;
+  font-size: 9pt;
   position: absolute;
+  color: #00293a;
   bottom: 3px;
   left: 5px;
-
+  opacity: 0.8;
 }
