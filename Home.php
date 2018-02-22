@@ -233,6 +233,11 @@
 			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Error, password is incorrect!';</script>";
 			echo "<script> myFunction(); </script>";
 	   }
+	   else if ($_SESSION['passwordChng'] == 4) {
+		    $_SESSION['passwordChng'] = 0;
+			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Error, password did not update successfully!';</script>";
+			echo "<script> myFunction(); </script>";
+	   }
      }
     ?>
    </div>

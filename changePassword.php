@@ -2,6 +2,8 @@
 <?php
 include('utilClass.php');
 include('connect.php');
+include('StudentClass.php');
+include('InstructorClass.php');
 session_start();
 $id = $_SESSION['userID'];
 $userType = $_SESSION['userType'];
@@ -24,8 +26,17 @@ $user = $_SESSION['CurrentUser'];
 					//make sure new pass and confirm new pass match
 					if ($newPW == $confirmNewPW) { 
 						//passwords match, able to update new password
-						$success = DLstudentPasswordChange($con, $id, $newPW);
-						$_SESSION['passwordChng'] = 1;
+						
+						//$success = DLstudentPasswordChange($con, $id, $newPW);
+						$success = $user->ChangePassword($con,$newPW);
+						if ($success == 1) {
+							$_SESSION['passwordChng'] = 1;
+							$user->setPassword($newPW);
+						}
+						else {
+							$_SESSION['passwordChng'] = 4;
+						}
+						
 						header('Location: index.php');
 					}
 					else {
@@ -56,8 +67,16 @@ $user = $_SESSION['CurrentUser'];
 					//make sure new pass and confirm new pass match
 					if ($newPW == $confirmNewPW) { 
 						//passwords match, able to update new password
-						DLinstructorPasswordChange($con, $id, $newPW);
-						$_SESSION['passwordChng'] = 1;
+						//$success = DLstudentPasswordChange($con, $id, $newPW);
+						$success = $user->ChangePassword($con,$newPW);
+						if ($success == 1) {
+							$_SESSION['passwordChng'] = 1;
+							$user->setPassword($newPW);
+						}
+						else {
+							$_SESSION['passwordChng'] = 4;
+						}
+						
 						header('Location: index.php');
 					}
 					else {

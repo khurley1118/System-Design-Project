@@ -54,15 +54,9 @@ class Student {
         
     }
 
-	//verifies that inputted old password matches db old password
-	function ChangePassword($con,$origPass,$newPass) {
-		if ($origPass == utilStudentGetPassword($con,getStudentID())) { //the inputted old password matches the db password
-			return DLstudentPasswordChange($con, getStudentID(), $newPass);
-		}
-		else {
-			//the inputted old password doesn't match the db password
-		}
-		
+	//calls DL function to change password
+	function ChangePassword($con,$newPass) {
+		return DLstudentPasswordChange($con, $this->getStudentID(), $newPass);
 	}
 }
 
