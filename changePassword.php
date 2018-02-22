@@ -26,8 +26,6 @@ $user = $_SESSION['CurrentUser'];
 					//make sure new pass and confirm new pass match
 					if ($newPW == $confirmNewPW) { 
 						//passwords match, able to update new password
-						
-						//$success = DLstudentPasswordChange($con, $id, $newPW);
 						$success = $user->ChangePassword($con,$newPW);
 						if ($success == 1) {
 							$_SESSION['passwordChng'] = 1;
@@ -67,7 +65,6 @@ $user = $_SESSION['CurrentUser'];
 					//make sure new pass and confirm new pass match
 					if ($newPW == $confirmNewPW) { 
 						//passwords match, able to update new password
-						//$success = DLstudentPasswordChange($con, $id, $newPW);
 						$success = $user->ChangePassword($con,$newPW);
 						if ($success == 1) {
 							$_SESSION['passwordChng'] = 1;
