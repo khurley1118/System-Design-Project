@@ -59,15 +59,9 @@ Class Instructor {
         
     }
 
-    //verifies that inputted old password matches db old password
-	function ChangePassword($con,$origPass,$newPass) {
-		if ($origPass == utilInstructorGetPassword($con,getInstructorId())) { //the inputted old password matches the db password
-			return DLinstructorPasswordChange($con, getInstructorId(), $newPass);
-		}
-		else {
-			//the inputted old password doesn't match the db password
-		}
-		
+    //calls DL function to change password
+	function ChangePassword($con,$newPass) {
+		return DLinstructorPasswordChange($con, $this->getInstructorId(), $newPass);
 	}
 }
 

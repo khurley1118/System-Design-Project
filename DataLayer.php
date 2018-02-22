@@ -54,7 +54,7 @@ function DLgetStudentPassword($con, $id) {
 
 //change student's password
 function DLstudentPasswordChange($con, $id, $newPass) {
-	return mysqli_query($con, "CALL SP_changeStudentPassword($id, $newPass)");
+	return mysqli_query($con, "CALL SP_changeStudentPassword($id, '$newPass')");
 }
 
 //ADMIN
@@ -141,7 +141,7 @@ function DLgetInstructorPassword($con, $id) {
 
 //change instructor's password
 function DLinstructorPasswordChange($con, $id, $newPass) {
-	return mysqli_query($con, "CALL SP_changeInstructorPassword($id, $newPass)");
+	return mysqli_query($con, "CALL SP_changeInstructorPassword($id, '$newPass')");
 }
 
 //COURSES

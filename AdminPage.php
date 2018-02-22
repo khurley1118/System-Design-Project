@@ -69,11 +69,11 @@ if (isset($_SESSION['userType'])) {
                         <div class="hideDiv" id="addCourse">
                             Add course
                             <div id="addForm">
-                                <form action="AdminPage.php" method="POST">
+                                <form action="adminFunctions.php" method="POST">
                                     <table>
-                                        <tr><td> <input type="text" name="courseID" placeholder="CourseID"></td></tr>
-                                        <tr><td> <input type="text" name="courseCode" placeholder="Course Code"></td></tr>
-                                        <tr><td> <input type="text" name="Description" placeholder="Description"></td></tr>
+                                        <tr><td> <input type="text" name="courseID" id="courseID" placeholder="CourseID"></td></tr>
+                                        <tr><td> <input type="text" name="courseCode" id="courseCode" placeholder="Course Code"></td></tr>
+                                        <tr><td> <input type="text" name="Description" id="Description" placeholder="Description"></td></tr>
                                         <tr><td><input type="submit" value="Submit"></td></tr>
                                     </table>
                                 </form>
