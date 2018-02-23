@@ -191,6 +191,27 @@
                              echo "</div>";
 
                              echo "<div class='w3-container'>";
+                             echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b> " . $file1name . "</b></h5>";
+                             echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
+                             echo "<br><br><p>" . $file1desc . "</p>";
+                             echo "<hr>";
+                             echo "</div>";
+
+                             echo "<div class='w3-container'>";
+                             echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b> " . $file1name . "</b></h5>";
+                             echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
+                             echo "<br><br><p>" . $file1desc . "</p>";
+                             echo "<hr>";
+                             echo "</div>";
+
+                             echo "<div class='w3-container'>";
+                             echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b> " . $file1name . "</b></h5>";
+                             echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
+                             echo "<br><br><p>" . $file1desc . "</p>";
+                             echo "<hr>";
+                             echo "</div>";
+
+                             echo "<div class='w3-container'>";
                              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-volume-up'></span><b> " . $file2name . "</b></h5>";
                              echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
                              echo "<br><br><p>" . $file2desc . "</p>";
