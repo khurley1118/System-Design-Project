@@ -215,5 +215,18 @@ function DLcreateContent($con, $type, $courseID, $location, $path, $desc){
 	}
 }
 
+function DLfetchAllStudentIDs($con){
+  
+  $rs = mysqli_query($con, "CALL SP_fetchAllStudentIDs");
+  while ($row = mysqli_fetch_array($rs)) {
+      $list[] = $row;
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $list;
+}
+
 
 ?>

@@ -1,6 +1,7 @@
 <?php
-$senderID = 1234567;
-$recipientID = 7654321;
+session_start();
+$senderID =	$_SESSION['userID'];
+$recipientID = 456456;
 
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
@@ -42,11 +43,11 @@ if($numrows != 0){
         mysqli_query($con, "delete from chat where senderid = '" . $senderID . "' and recipientId = '" . $recipientID . "' and time < " . $times[9]);
 
     }
-    else{
-        $size = 9;
-    }
+    // else{
+    //     $size = 9;
+    // }
 
-    for($i=$size;$i>=0;$i--){
+    for($i=$arraySize - 1;$i>=0;$i--){
        echo $messages[$i];
     }
 }

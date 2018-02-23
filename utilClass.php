@@ -53,4 +53,8 @@ function utilCourseName($con, $id) {
 function utilGetFolders($con, $courseid){
 	return DLgetFolders($con, $courseid);
 }
+
+function utilGetAllStudentIDs($con){
+  return DLfetchAllStudentIDs($con);
+}
 ?>

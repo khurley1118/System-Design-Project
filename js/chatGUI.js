@@ -80,7 +80,7 @@ function register_popup(id, name)
     element = element + '<div class="popup-head-left">'+ name +'</div>';
     element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\''+ id +'\');">&#10005;</a></div>';
     element = element + '<div style="clear: both"></div></div><div class="popup-messages" id="messages ' + id +'"></div>';
-    element = element + '<div id="write" style="text-align:left;"><textarea id="message" cols="29" rows="1" onkeyup="process(event, this)"></textarea></div></div>'
+    element = element + '<div id="write" style="text-align:left;"><textarea class="text-bar" id="message' + id + '" rows="1" onkeyup="process(event, message' + id + ')"></textarea></div></div>';
 
 
     document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + element;
@@ -136,8 +136,6 @@ function showmessages(id){
    var objDiv = document.getElementById(elementName);
    objDiv.scrollTop = objDiv.scrollHeight;
 
-   setTimeout('showmessages(' + id + ')',1000);
-
    setTimeout(function() {
     showmessages(id);
 }, 1000)
@@ -192,16 +190,17 @@ function send(){
    }
 }
 
-function process(e) {
+function process(e, fieldID) {
 
     var code = (e.keyCode ? e.keyCode : e.which);
+
     if (code == 13) {
-      var message = document.getElementById('message'.value);
-      var inputArea = "document.getElementById('message').value";
 
-        alert("Sending your Message : " + document.getElementById('message').value);
+      var message = document.getElementById(fieldID.id).value;
+      var inputArea = "document.getElementById(\'" + fieldID.id + "\').value";
+        alert("Sending your Message : " + message);
 
-        $('#message').val('');
+        $('#' + fieldID.id).val('');
 
     }
 }

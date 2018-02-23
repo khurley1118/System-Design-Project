@@ -26,7 +26,7 @@ body
     height: 100%;
     right: 0px;
     top: 0px;
-    margin-top: 150px;
+    margin-top: 48px;
     margin-bottom: 150px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -110,4 +110,20 @@ body
 {
     height: 73.5%;
     overflow-y: scroll;
+}
+
+.text-bar input{
+  width:90%;
+  margin-left:-15px;
+  padding:10px 10px;
+  border:1px solid #fff;
+}
+.text-bar a i{
+  background-color:#FD8468;
+  color:#fff;
+  width:30px;
+  height:30px;
+  padding:7px 0px;
+  border-radius: 50%;
+  text-align: center;
 }
