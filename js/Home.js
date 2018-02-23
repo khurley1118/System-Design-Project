@@ -5,7 +5,6 @@ function changePassword() {
   document.getElementById('landingPage').style.height = "400px";
   document.getElementById('we-shrink').style.height = "0px";
 }
-
 function landingPage() {
   document.getElementById('landingPage').setAttribute("class", "showDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
@@ -13,8 +12,6 @@ function landingPage() {
   document.getElementById('landingPage').style.height = "";
   document.getElementById('we-shrink').style.height = "";
 }
-
-
 function addContent() {
   document.getElementById('addContent').setAttribute("class", "showDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
@@ -22,7 +19,13 @@ function addContent() {
   document.getElementById('landingPage').style.height = "400px";
   document.getElementById('we-shrink').style.height = "0px";
 }
-
+function logOut(){
+  if (confirm('Are you sure you want to log out?')) {
+    window.location.href = "logOut.php";
+} else {
+    // Do nothing!
+}
+}
 function myFunction() {
     // Get the snackbar DIV
 	var x = document.getElementById("AdmiralSnackbar");

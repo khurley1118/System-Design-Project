@@ -21,11 +21,6 @@
           <div id="adminLogin">
               <a href="adminLogin.php">Admin Log-in</a>
           </div>
-          <div id="logOut">
-              <form method="POST" action="logOut.php">
-                <input type="submit" height="500" width="500" value="log-out">
-              </form>
-          </div>
       </div>
   </body>
 </html>

@@ -32,6 +32,11 @@ body {
   padding-bottom: 70px;
 }
 
+#logOutBtn {
+  width: 100%;
+  float: right;
+}
+
 #navBar {
   background-color: #00293a;
   position: relative;
