@@ -17,7 +17,7 @@ body {
 
 #outputContainer {
   position: relative;
-  min-height: 700px;
+  min-height: 540px;
 }
 
 #swapDiv {
