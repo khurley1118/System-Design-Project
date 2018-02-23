@@ -3,6 +3,7 @@ function changePassword() {
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
   document.getElementById('addContent').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
+  document.getElementById('we-shrink').style.height = "0px";
 }
 
 function landingPage() {
@@ -10,6 +11,7 @@ function landingPage() {
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('addContent').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "";
+  document.getElementById('we-shrink').style.height = "";
 }
 
 
@@ -18,6 +20,7 @@ function addContent() {
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
+  document.getElementById('we-shrink').style.height = "0px";
 }
 
 function myFunction() {
