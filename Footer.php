@@ -23,7 +23,7 @@
           </div>
           <div id="logOut">
               <form method="POST" action="logOut.php">
-                <input type="submit" value="log-out">
+                <input type="submit" height="500" width="500" value="log-out">
               </form>
           </div>
       </div>
