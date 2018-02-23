@@ -160,11 +160,15 @@ function DLgetCourseList($con) {
     return $list;
 }
 
+function DLinsertCourse($con, $courseCode, $courseDescription) {
+  return mysqli_query($con, "CALL SP_createCourse($courseCode, '$courseDescription')");
+}
+
 function DLupdateCourse($courseID) {
 
 }
 
-function DLRemoveCourse($courseID) {
+function DLremoveCourse($courseID) {
 
 }
 

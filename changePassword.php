@@ -13,10 +13,10 @@ $user = $_SESSION['CurrentUser'];
 			if ($userType == "student") {
 				//get existing pw
 				$existingPW = utilStudentGetPassword($con,$id);
-				
+
 				//get inputted pw
 				$inputtedOldPW = $_POST["oldPW"];
-				
+
 				//check match
 				if ($existingPW == $inputtedOldPW) {
 					//user entered correct password, proceed with changePassForm
@@ -24,7 +24,7 @@ $user = $_SESSION['CurrentUser'];
 					$newPW = $_POST["newPW"];
 					$confirmNewPW = $_POST["confPW"];
 					//make sure new pass and confirm new pass match
-					if ($newPW == $confirmNewPW) { 
+					if ($newPW == $confirmNewPW) {
 						//passwords match, able to update new password
 						$success = $user->ChangePassword($con,$newPW);
 						if ($success == 1) {
@@ -34,7 +34,7 @@ $user = $_SESSION['CurrentUser'];
 						else {
 							$_SESSION['passwordChng'] = 4;
 						}
-						
+
 						header('Location: index.php');
 					}
 					else {
@@ -52,10 +52,10 @@ $user = $_SESSION['CurrentUser'];
 			else if ($userType == "faculty") {
 				//get existing pw
 				$existingPW = utilInstructorGetPassword($con,$id);
-				
+
 				//get inputted pw
 				$inputtedOldPW = $_POST["oldPW"];
-				
+
 				//check match
 				if ($existingPW == $inputtedOldPW) {
 					//user entered correct password, proceed with changePassForm
@@ -63,7 +63,7 @@ $user = $_SESSION['CurrentUser'];
 					$newPW = $_POST["newPW"];
 					$confirmNewPW = $_POST["confirmPW"];
 					//make sure new pass and confirm new pass match
-					if ($newPW == $confirmNewPW) { 
+					if ($newPW == $confirmNewPW) {
 						//passwords match, able to update new password
 						$success = $user->ChangePassword($con,$newPW);
 						if ($success == 1) {
@@ -73,7 +73,7 @@ $user = $_SESSION['CurrentUser'];
 						else {
 							$_SESSION['passwordChng'] = 4;
 						}
-						
+
 						header('Location: index.php');
 					}
 					else {
@@ -88,9 +88,4 @@ $user = $_SESSION['CurrentUser'];
 					header('Location: index.php');
 				}
 			}
-		
-	
-
-	
-
 ?>

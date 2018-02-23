@@ -23,6 +23,7 @@ if (isset($_SESSION['userType'])) {
 				<script src="js/jquery.min.js"></script>
 				<script src="js/bootstrap.min.js"></script>
 				<script src="js/scripts.js"></script>
+				<script src="js/Home.js"></script>
     </head>
     <body>
         <div id="pageContent">
@@ -69,9 +70,8 @@ if (isset($_SESSION['userType'])) {
                         <div class="hideDiv" id="addCourse">
                             Add course
                             <div id="addForm">
-                                <form action="adminFunctions.php" method="POST">
+                                <form action="adminInsertCourse.php" method="POST">
                                     <table>
-                                        <tr><td> <input type="text" name="courseID" id="courseID" placeholder="CourseID"></td></tr>
                                         <tr><td> <input type="text" name="courseCode" id="courseCode" placeholder="Course Code"></td></tr>
                                         <tr><td> <input type="text" name="Description" id="Description" placeholder="Description"></td></tr>
                                         <tr><td><input type="submit" value="Submit"></td></tr>
@@ -163,6 +163,22 @@ if (isset($_SESSION['userType'])) {
             </div>
         </div>
      </div>
+     <!--div to show messages-->
+     <div id="AdmiralSnackbar"></div>
+     <?php
+      if (isset($_SESSION['insertCourse'])){
+       if ($_SESSION['insertCourse'] == 1){
+			$_SESSION['insertCourse'] = 0;
+			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course has been inserted!';</script>";
+			echo "<script> myFunction(); </script>";
+       }
+	   else if ($_SESSION['insertCourse'] == 2) {
+		    $_SESSION['insertCourse'] = 0;
+			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course did not insert successfully.';</script>";
+			echo "<script> myFunction(); </script>";
+	   }
+     }
+    ?>
   </div>
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>

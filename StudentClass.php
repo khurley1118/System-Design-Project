@@ -51,7 +51,7 @@ class Student {
     }
 
     function __construct() {
-        
+
     }
 
 	//calls DL function to change password
