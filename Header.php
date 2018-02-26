@@ -68,7 +68,6 @@ $courselist = $user->getCourses();
                 echo "</ul>"
                 ?>
             </li>
-            <a href="javascript:logOut()"> Temporary Logout Button </a>
           </ul>
         </div>
       </div>

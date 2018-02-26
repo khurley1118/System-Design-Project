@@ -241,17 +241,17 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <form class="form-signin" action="" method="">
+                                   <form class="form-signin" action="javascript:getStudent(stuIDtxt.value)" method="">
                                       <center>
                                          <h2>Edit Account</h2>
                                       </center>
+                                      <input id="stuIDtxt" type="text" class="form-control" placeholder="#StudentID" required>
+                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Get Student" />
+                                    </form>
+                                      <br>
+                                      <form class="form-signin" action="" method="">
                                       <input type="text" class="form-control" placeholder="First Name" required>
                                       <input type="text" class="form-control" placeholder="Last Name" required>
-                                      <select class="form-control">
-                                         <option value="1">Student</option>
-                                         <option value="2">Instructor</option>
-                                         <option value="3">Admin</option>
-                                      </select>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                    </form>
                                  </div>
