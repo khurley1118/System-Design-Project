@@ -94,7 +94,7 @@ function DLgetAdminLast($con, $id) {
 }
 
 function DLinsertAdmin($con, $adminId, $password, $fname, $lname) {
-  return mysqli_query($con, "CALL SP_createStudent($studentID, '$password',$admin,'$fname','$lname')");
+  return mysqli_query($con, "CALL SP_createAdmin($adminId, '$password','$fname','$lname')");
 }
 //INSTRUCTOR
 //////////////////////////////////////

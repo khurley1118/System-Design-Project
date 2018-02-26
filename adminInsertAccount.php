@@ -5,6 +5,7 @@ include('connect.php');
 include('StudentClass.php');
 include('InstructorClass.php');
 include('courseClass.php');
+include('AdminClass.php');
 session_start();
 $id = $_SESSION['userID'];
 $userType = $_SESSION['userType'];
