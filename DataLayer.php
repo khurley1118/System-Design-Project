@@ -57,6 +57,10 @@ function DLstudentPasswordChange($con, $id, $newPass) {
 	return mysqli_query($con, "CALL SP_changeStudentPassword($id, '$newPass')");
 }
 
+function DLinsertStudent($con, $studentID, $password, $admin, $fname, $lname) {
+  return mysqli_query($con, "CALL SP_createStudent($studentID, '$password',$admin,'$fname','$lname')");
+}
+
 //ADMIN
 ///////////////////////////////////////
 function DLgetAdminFirst($con, $id) {
@@ -144,6 +148,10 @@ function DLinstructorPasswordChange($con, $id, $newPass) {
 	return mysqli_query($con, "CALL SP_changeInstructorPassword($id, '$newPass')");
 }
 
+function DLinsertInstructor($con, $instructorID, $password, $admin, $fname, $lname) {
+  return mysqli_query($con, "CALL SP_createInstructor($instructorID, '$password',$admin,'$fname','$lname')");
+}
+
 //COURSES
 /////////////////////////////////////
 function DLgetCourseList($con) {
@@ -160,11 +168,15 @@ function DLgetCourseList($con) {
     return $list;
 }
 
+function DLinsertCourse($con, $courseCode, $courseDescription) {
+  return mysqli_query($con, "CALL SP_createCourse($courseCode, '$courseDescription')");
+}
+
 function DLupdateCourse($courseID) {
 
 }
 
-function DLRemoveCourse($courseID) {
+function DLremoveCourse($courseID) {
 
 }
 

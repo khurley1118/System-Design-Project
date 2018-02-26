@@ -150,12 +150,12 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                    <form class="form-signin" action="" method="">
+                                    <form class="form-signin" action="adminInsertCourse.php" method="POST">
                                        <center>
                                           <h2>Add Course</h2>
                                        </center>
-                                       <input type="text" class="form-control" placeholder="Course Code" required autofocus>
-                                       <input type="text" class="form-control" placeholder="Description" required>
+                                       <input type="text" class="form-control" id="courseCode" name="courseCode" placeholder="Course Code" required autofocus>
+                                       <input type="text" class="form-control" id="courseDescription" name="courseDescription" placeholder="Description" required>
                                        <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                     </form>
                               </div>
@@ -214,16 +214,16 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <form class="form-signin" action="" method="">
+                                   <form class="form-signin" action="adminInsertAccount.php" method="POST">
                                       <center>
                                          <h2>Add Account</h2>
                                       </center>
-                                      <input type="text" class="form-control" placeholder="Account ID" required autofocus>
-                                      <input type="text" class="form-control" placeholder="First Name" required>
-                                      <input type="text" class="form-control" placeholder="Last Name" required>
-                                      <input type="password" class="form-control" placeholder="Password" required>
-                                      <input type="password" class="form-control" placeholder="Confirm Password" required>
-                                      <select class="form-control">
+                                      <input type="text" class="form-control" id="newID" name="newID" placeholder="Account ID" required autofocus>
+                                      <input type="text" class="form-control" id="newFirstName" name="newFirstName" placeholder="First Name" required>
+                                      <input type="text" class="form-control" id="newLastName" name="newLastName" placeholder="Last Name" required>
+                                      <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Password" required>
+                                      <input type="password" class="form-control" id="newConfPassword" name="newConfPassword"placeholder="Confirm Password" required>
+                                      <select class="form-control" id="newUserType" name="newUserType">
                                          <option value="1">Student</option>
                                          <option value="2">Instructor</option>
                                          <option value="3">Admin</option>
@@ -315,7 +315,7 @@
       </div>
       <!-- End Grid -->
       </div>
-      <div id="AdmiralSnackbar">Password has been changed!</div>
+      <div id="AdmiralSnackbar"></div>
       <!-- End Page Container -->
       <?php
          if (isset($_SESSION['passwordChng'])){
@@ -341,6 +341,39 @@
          }
          }
          ?>
+         <?php
+          if (isset($_SESSION['insertCourse'])){
+           if ($_SESSION['insertCourse'] == 1){
+    			$_SESSION['insertCourse'] = 0;
+    			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course has been created!';</script>";
+    			echo "<script> myFunction(); </script>";
+           }
+    	   else if ($_SESSION['insertCourse'] == 2) {
+    		    $_SESSION['insertCourse'] = 0;
+    			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Error creating course.';</script>";
+    			echo "<script> myFunction(); </script>";
+    	   }
+         }
+        ?>
+        <?php
+         if (isset($_SESSION['insertAccount'])){
+          if ($_SESSION['insertAccount'] == 1){
+         $_SESSION['insertAccount'] = 0;
+         echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Account has been created!';</script>";
+         echo "<script> myFunction(); </script>";
+          }
+        else if ($_SESSION['insertAccount'] == 2) {
+           $_SESSION['insertAccount'] = 0;
+         echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Your passwords didn\'t match.';</script>";
+         echo "<script> myFunction(); </script>";
+        }
+        else if ($_SESSION['insertAccount'] == 3) {
+           $_SESSION['insertAccount'] = 0;
+         echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Error creating account.';</script>";
+         echo "<script> myFunction(); </script>";
+        }
+        }
+       ?>
       </div>
    </body>
 </html>
