@@ -21,22 +21,6 @@ and open the template in the editor.
   z-index: 1;
 }
 
-#logOut {
-  position: relative;
-  width: 70px;
-  color: black;
-  float: right;
-  top: 11px;
-  left: 10px;
-  background-color: #00293a; !important
-  font-size:5pt;
-  color:black;
-  background: #00293a;
-  height: 50px;
-  width: 100px;
-  font: bold 10px arial, sans-serif;
-  text-shadow:none;
-}
 
 #copyright {
   font-size: 7pt;

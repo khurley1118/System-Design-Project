@@ -14,19 +14,16 @@ if (isset($_SESSION['userID'])) {
     <head>
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width"/>
-
+        <meta name="viewport" content="width=device-width">
+        
         <title>Tu-Pro Home</title>
-
         <link rel="stylesheet" type="text/css" href="css/defaultLogin.css">
         <link rel="stylesheet" type="text/css" href="css/indexStyle.css">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon">
-
         <script src="/js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/scripts.js"></script>
-
         <script>
             $(document).ready(function () {
                 //the below is jQuery that displays the login form for the site after the user clicks on either student or faculty login button. form will have student ids or faculty
@@ -151,7 +148,6 @@ if (isset($_SESSION['userID'])) {
     <body>
         <?php include('indexHeader.php'); ?>
         <div class="container-fluid">
-            <div id="pageContent">
                 <div id="mainContainer">
                     <div id="logo">
                         <img src="Resources/logo.png" alt="logo">
@@ -170,7 +166,6 @@ if (isset($_SESSION['userID'])) {
                         <h5><i>
                                 Tu-Pro is a tutorial site for the NBCC network, dedicated to extending learning beyond the classroom. We offer extra tutorials and and tutoring outside of the classroom, just login with your Student ID to find your classes, and continue learning!
                             </i></h5>
-                    </div>
                 </div>
             </div>
         </div>

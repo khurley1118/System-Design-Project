@@ -261,13 +261,6 @@
                              echo "<br><br><p>" . $file2desc . "</p>";
                              echo "<hr>";
                              echo "</div>";
-
-                             echo "<div class='w3-container' id='we-shrink'>";
-                             echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-facetime-video'></span><b> " . $file3name . "</b></h5>";
-                             echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
-                             echo "<br><br><p>" . $file3desc . "</p>";
-                             echo "<hr>";
-                             echo "</div>";
                            ?>
                      </div>
                      <!-- Keep em seperated -->
@@ -364,7 +357,7 @@
                                       <center>
                                         <h2>Create Ticket</h2>
                                       </center>
-                                      <textarea type="text" class="form-control" placeholder="Ticket Contents" required rows="4" cols="90"></textarea>
+                                      <textarea type="text" class="form-control" placeholder="Ticket Contents" required rows="10"></textarea>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                     </form>
                                  </div>
