@@ -2,6 +2,8 @@ function changePassword() {
   document.getElementById('changePassword').setAttribute("class", "showDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
   document.getElementById('addContent').setAttribute("class", "hideDiv");
+  document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
+  document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
   document.getElementById('we-shrink').style.height = "0px";
 }
@@ -9,11 +11,33 @@ function landingPage() {
   document.getElementById('landingPage').setAttribute("class", "showDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('addContent').setAttribute("class", "hideDiv");
+  document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
+  document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "";
   document.getElementById('we-shrink').style.height = "";
 }
 function addContent() {
   document.getElementById('addContent').setAttribute("class", "showDiv");
+  document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('changePassword').setAttribute("class", "hideDiv");
+  document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
+  document.getElementById('createTicket').setAttribute("class", "hideDiv");
+  document.getElementById('landingPage').style.height = "400px";
+  document.getElementById('we-shrink').style.height = "0px";
+}
+function uploadAvatar() {
+  document.getElementById('uploadAvatar').setAttribute("class", "showDiv");
+  document.getElementById('addContent').setAttribute("class", "hideDiv");
+  document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('changePassword').setAttribute("class", "hideDiv");
+  document.getElementById('createTicket').setAttribute("class", "hideDiv");
+  document.getElementById('landingPage').style.height = "400px";
+  document.getElementById('we-shrink').style.height = "0px";
+}
+function createTicket(){
+  document.getElementById('createTicket').setAttribute("class", "showDiv");
+  document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
+  document.getElementById('addContent').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";

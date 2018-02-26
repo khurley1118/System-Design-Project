@@ -85,19 +85,68 @@
                                  <div id="collapseTwo" class="panel-collapse collapse">
                                     <div class="panel-body">
                                        <table class="table">
+                                         <!-- Needs to be dynamically populated from top level topics-->
                                           <tr>
                                              <td>
-                                                <span class="glyphicon glyphicon-font"></span><a href="">Text</a>
+                                                <span class="glyphicon glyphicon glyphicon-pushpin"></span>
+                                                <div class="dropdown btn-group">
+                                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    JAVA <span class="caret"></span>
+                                                  </a>
+                                                  <ul class="dropdown-menu scrollable-menu" role="menu">
+                                                    <li><a href="#">Test prep for test 1<br></a></li>
+                                                    <li><a href="#">Recording of Tuesday's class<br></a></li>
+                                                    <li><a href="#">Example Recursive function<br></a></li>
+                                                  </ul>
+                                                </div>
                                              </td>
                                           </tr>
+                                          <!-- Keep em seperated -->
                                           <tr>
                                              <td>
-                                                <span class="glyphicon glyphicon-volume-up"></span><a href="">Audio</a>
+                                                <span class="glyphicon glyphicon glyphicon-pushpin"></span>
+                                                <div class="dropdown btn-group">
+                                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    PHP <span class="caret"></span>
+                                                  </a>
+                                                  <ul class="dropdown-menu scrollable-menu" role="menu">
+                                                    <li><a href="#">Test prep for test 1<br></a></li>
+                                                    <li><a href="#">Recording of Tuesday's class<br></a></li>
+                                                    <li><a href="#">Example Recursive function<br></a></li>
+                                                  </ul>
+                                                </div>
                                              </td>
                                           </tr>
+                                          <!-- Keep em seperated -->
                                           <tr>
                                              <td>
-                                                <span class="glyphicon glyphicon-camera"></span><a href="">Video</a>
+                                                <span class="glyphicon glyphicon glyphicon-pushpin"></span>
+                                                <div class="dropdown btn-group">
+                                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    C# <span class="caret"></span>
+                                                  </a>
+                                                  <ul class="dropdown-menu scrollable-menu" role="menu">
+                                                    <li><a href="#">Test prep for test 1<br></a></li>
+                                                    <li><a href="#">Recording of Tuesday's class<br></a></li>
+                                                    <li><a href="#">Example Recursive function<br></a></li>
+                                                  </ul>
+                                                </div>
+                                             </td>
+                                          </tr>
+                                          <!-- Keep em seperated -->
+                                          <tr>
+                                             <td>
+                                                <span class="glyphicon glyphicon glyphicon-pushpin"></span>
+                                                <div class="dropdown btn-group">
+                                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    SQL <span class="caret"></span>
+                                                  </a>
+                                                  <ul class="dropdown-menu scrollable-menu" role="menu">
+                                                    <li><a href="#">Test prep for test 1<br></a></li>
+                                                    <li><a href="#">Recording of Tuesday's class<br></a></li>
+                                                    <li><a href="#">Example Recursive function<br></a></li>
+                                                  </ul>
+                                                </div>
                                              </td>
                                           </tr>
                                           <?php
@@ -130,7 +179,7 @@
                                           </tr>
                                           <tr>
                                              <td>
-                                                <span class="glyphicon glyphicon-comment"></span><a href="">Notifications</a> <span class="label label-info">5</span>
+                                                <span id="changePasswordBtn" class="glyphicon glyphicon-picture"></span><a href="javascript:uploadAvatar()">Edit Avatar</a>
                                              </td>
                                           </tr>
                                        </table>
@@ -149,12 +198,7 @@
                                        <table class="table">
                                           <tr>
                                              <td>
-                                                <span class="glyphicon glyphicon-user"></span><a href="">View Tickets</a>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td>
-                                                <span class="glyphicon glyphicon-tasks"></span><a href="">Create Ticket</a>
+                                                <span class="glyphicon glyphicon-tasks"></span><a href="javascript:createTicket()">Create Ticket</a>
                                              </td>
                                           </tr>
                                        </table>
@@ -226,6 +270,7 @@
                              echo "</div>";
                            ?>
                      </div>
+                     <!-- Keep em seperated -->
                      <div class="row hideDiv" id="addContent">
                         <div id="formContainer">
                            <div class="account-wall">
@@ -251,7 +296,7 @@
                                  <div class="tab-pane" id="register">
                                     <form class="form-signin" action="" method="">
                                        <center>
-                                          <h2>Add a topic</h2>
+                                          <h2>Add a Topic</h2>
                                        </center>
                                        <select class="form-control">
                                           <option>Select a Parent Topic</option>
@@ -263,13 +308,33 @@
                                        <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                     </form>
                                     <div id="tabs" data-tabs="tabs">
-                                       <p class="text-center"><a href="#login" data-toggle="tab">Add a file</a></p>
+                                       <p class="text-center"><a href="#login" data-toggle="tab">Add a File</a></p>
                                     </div>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
+                     <!-- Keep em seperated -->
+                     <div class="row hideDiv" id="uploadAvatar">
+                        <div id="formContainer">
+                           <div class="account-wall">
+                              <div id="my-tab-content" class="tab-content">
+                                 <div class="tab-pane active" id="login">
+                                    <form class="form-signin" action="" method="">
+                                       <center>
+                                         <img id="avatarPreview" height="150" width="200" src="/Resources/TuPro2.png"/>
+                                          <h2>Upload an Avatar</h2>
+                                       </center>
+                                       <input type="file" class="form-control" placeholder="Username" required autofocus>
+                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
+                                    </form>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Keep em seperated -->
                      <div class="row hideDiv" id="changePassword">
                         <div id="formContainer">
                            <div class="account-wall">
@@ -283,6 +348,24 @@
                                        <input type="password" class="form-control" placeholder="New Password"id="newPW" required>
                                        <input type="password" class="form-control" placeholder="Confirm Password"id="confPW" required>
                                        <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
+                                    </form>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Keep em seperated -->
+                     <div class="row hideDiv" id="createTicket">
+                        <div id="formContainer">
+                           <div class="account-wall">
+                              <div id="my-tab-content" class="tab-content">
+                                 <div class="tab-pane active" id="login">
+                                    <form class="form-signin" action="changePassword.php" method="">
+                                      <center>
+                                        <h2>Create Ticket</h2>
+                                      </center>
+                                      <textarea type="text" class="form-control" placeholder="Ticket Contents" required rows="4" cols="90"></textarea>
+                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                     </form>
                                  </div>
                               </div>

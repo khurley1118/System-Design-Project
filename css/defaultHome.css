@@ -16,7 +16,17 @@
  .showDiv {
      visibility: visible;
 }
- #changePassword, #addContent, #addCourse, #editCourse, #removeCourse, #resetPassword, #addAccount, #editAccount, #viewTickets{
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+#avatarPreview {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #D8D8D8;
+}
+ #changePassword, #createTicket, #uploadAvatar, #addContent, #addCourse, #editCourse, #removeCourse, #resetPassword, #addAccount, #editAccount, #viewTickets{
      position: absolute;
      bottom: 0px;
      width: 100%;
@@ -312,11 +322,3 @@
  #formContainer {
      width: 100%;
 }
- ::-webkit-scrollbar {
-    /*Hides scrollbar */
-     width: 0px;
-    /* remove scrollbar space */
-     background: transparent;
-    /* optional: just make scrollbar invisible */
-}
- 

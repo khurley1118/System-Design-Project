@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<script src="AdminPanel.js"></script>
+<script src="js/AdminPanel.js"></script>
 <?php
    include('connect.php');
    include('Header.php');
@@ -291,13 +291,15 @@
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
                                     <form class="form-signin" action="changePassword.php" method="">
-                                       <center>
-                                          <h2>Change Password</h2>
-                                       </center>
-                                       <input type="password" class="form-control" placeholder="Current Password" id="oldPW" required autofocus>
-                                       <input type="password" class="form-control" placeholder="New Password"id="newPW" required>
-                                       <input type="password" class="form-control" placeholder="Confirm Password"id="confPW" required>
-                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
+                                      <select class="form-control"  onchange="showTicket(this.value)">
+                                        <option value="" disabled selected hidden>Please choose a Ticket</option>
+                                        <option value="202034">Ticket: #202034</option>
+                                        <option value="632534">Ticket: #632534</option>
+                                        <option value="126362">Ticket: #126362</option>
+                                      </select>
+                                      Submitted By: <input type="text" name="Name" value="Mark Patterson" readonly>
+                                      <textarea id="ticketDisplay" type="text" class="form-control" rows="10" cols="50" placeholder="Select a Ticket from the Dropdown"></textarea>
+                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Set Resolved" />
                                     </form>
                                  </div>
                               </div>
