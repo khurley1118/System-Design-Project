@@ -27,15 +27,21 @@ function DLgetStudentLast($con, $id) {
 }
 
 function DLgetStudentCourses($con, $id) {
+    //$courses = array();
     $rs = mysqli_query($con, "CALL SP_getStudentCourses($id)");
     while ($row = mysqli_fetch_array($rs)) {
-        $courses[] = $row["courseCode"];
+        $courses[] = $row['courseCode'];
     }
     //gets rid of meta
     while (mysqli_more_results($con)) {
         mysqli_next_result($con);
     }
-    return $courses;
+    if (!isset($courses)) {
+        return null;
+    } else {
+        return $courses;
+    }
+    //return $courses;
 }
 
 //get student's password
@@ -87,6 +93,9 @@ function DLgetAdminLast($con, $id) {
     return $lastName;
 }
 
+function DLinsertAdmin($con, $adminId, $password, $fname, $lname) {
+  return mysqli_query($con, "CALL SP_createStudent($studentID, '$password',$admin,'$fname','$lname')");
+}
 //INSTRUCTOR
 //////////////////////////////////////
 function DLgetInstructorFirst($con, $id) {

@@ -62,7 +62,9 @@ if ($id == $userID) {
             mysqli_next_result($con);
         }
         //if passwords match log the user in and assign session variables.
-        if ($dbpw == $_POST['password']) {
+        if ($dbpw == $_POST['password']) { //this is for logging in with unencrypted pws
+        $hashedPW = $_POST['password'];
+        //if (password_verify($hashedPW, $dbpw)) {
             $_SESSION['userID'] = $userID;
             $_SESSION['userType'] = $loginType;
 
@@ -78,8 +80,8 @@ if ($id == $userID) {
                 $user->setInstructorId($id);
                 $user->setFirstName(utilInstructorFirst($con, $id));
                 $user->setLastName(utilInstructorLast($con, $id));
-                $user->setCourses(utilInstructorCourses($con, $id));
-				$user->setPassword(utilInstructorGetPassword($con,$id));
+                //$user->setCourses(utilInstructorCourses($con, $id));
+				        $user->setPassword(utilInstructorGetPassword($con,$id));
                 $_SESSION['CurrentUser'] = $user;
             } else {
                 //else case is that user is a student
@@ -88,7 +90,7 @@ if ($id == $userID) {
                 $user->setFirstName(utilStudentFirst($con, $id));
                 $user->setLastName(utilStudentLast($con, $id));
                 $user->setCourses(utilStudentCourseList($con, $id));
-				$user->setPassword(utilStudentGetPassword($con,$id));
+				        $user->setPassword(utilStudentGetPassword($con,$id));
                 $_SESSION['CurrentUser'] = $user;
             }
 

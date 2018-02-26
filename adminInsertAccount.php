@@ -25,7 +25,9 @@ if ($newUserPW == $newUserConfPW) {
   if ($newUserType == "1") {
     $newUser = new Student();
     $newUser->setStudentID($newUserId);
-    $newUser->setPassword($newUserPW);
+    //hash password
+    $hashedPassword = password_hash($newUserPW, PASSWORD_DEFAULT);
+    $newUser->setPassword($hashedPassword);
     $newUser->setFirstName($newUserFName);
     $newUser->setLastName($newUserLName);
     $newUser->setAddedBy($newUserAddedBy);
@@ -36,13 +38,27 @@ if ($newUserPW == $newUserConfPW) {
   else if ($newUserType == "2") {
     $newUser = new Instructor();
     $newUser->setInstructorId($newUserId);
-    $newUser->setPassword($newUserPW);
+    //hash password
+    $hashedPassword = password_hash($newUserPW, PASSWORD_DEFAULT);
+    $newUser->setPassword($hashedPassword);
     $newUser->setFirstName($newUserFName);
     $newUser->setLastName($newUserLName);
     $newUser->setAddedBy($newUserAddedBy);
 
     //call insert function
     $success = $newUser->insertInstructor($con);
+  }
+  else if ($newUserType == "3") {
+    $newUser = new Admin();
+    $newUser->setAdminId($newUserId);
+    //hash password
+    $hashedPassword = password_hash($newUserPW, PASSWORD_DEFAULT);
+    $newUser->setPassword($hashedPassword);
+    $newUser->setFirstName($newUserFName);
+    $newUser->setLastName($newUserLName);
+
+    //call insert function
+    $success = $newUser->insertAdmin($con);
   }
 
   if ($success) {
