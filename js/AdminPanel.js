@@ -42,3 +42,14 @@ function changePassword() {
     document.getElementById('searchAccount').setAttribute("class", "hideDiv");
     document.getElementById('changePassword').setAttribute("class", "showDiv");
 }
+function showTicket(showTicket){
+  if (showTicket == 202034) {
+    document.getElementById('ticketDisplay').innerHTML = "Ticket #202034: This ticket sucks";
+  } else if (showTicket == 632534) {
+    document.getElementById('ticketDisplay').innerHTML = "Ticket #202034: Look ma, im a ticket";
+  } else if (showTicket == 126362) {
+    document.getElementById('ticketDisplay').innerHTML = "Ticket #202034: Why did i make 3 of these";
+  } else {
+    document.getElementById('ticketDisplay').innerHTML = "No ticket found";
+  }
+}
