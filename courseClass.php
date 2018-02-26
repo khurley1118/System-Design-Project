@@ -26,6 +26,10 @@ class Course{
 		return $this->isActive;
 	}
 
+	function __construct() {
+
+	}
+
 	function nameByCode($con, $courseCode){
 		$courseName = DLgetCourseName($con, $courseCode);
 	}

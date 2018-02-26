@@ -275,13 +275,13 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                    <form class="form-signin" action="changePassword.php" method="">
+                                    <form class="form-signin" action="changePassword.php" method="POST">
                                         <center>
                                            <h2>Change Password</h2>
                                         </center>
-                                       <input type="password" class="form-control" placeholder="Current Password" id="oldPW" required autofocus>
-                                       <input type="password" class="form-control" placeholder="New Password"id="newPW" required>
-                                       <input type="password" class="form-control" placeholder="Confirm Password"id="confPW" required>
+                                       <input type="password" class="form-control" placeholder="Current Password" id="oldPW" name="oldPW" required autofocus>
+                                       <input type="password" class="form-control" placeholder="New Password"id="newPW" name="newPW" required>
+                                       <input type="password" class="form-control" placeholder="Confirm Password"id="confPW" name="confPW" required>
                                        <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                     </form>
                                  </div>

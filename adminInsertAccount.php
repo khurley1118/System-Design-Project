@@ -1,4 +1,5 @@
 <?php
+//note: still need insert Admin
 include('utilClass.php');
 include('connect.php');
 include('StudentClass.php');
@@ -9,48 +10,55 @@ $id = $_SESSION['userID'];
 $userType = $_SESSION['userType'];
 $user = $_SESSION['CurrentUser'];
 
-//get course code and description admin posted from AdminPage form
-$newUserId = $_POST["noFormYet"];
-$newUserPW = $_POST["noFormYet"];
-$newUserAddedBy = $_POST["noFormYet"];
-$newUserFName = $_POST["noFormYet"];
-$newUserLName = $_POST["noFormYet"];
-$newUserType = $_POST["noFormYet"];
+//get account info from form, ensure conf password matches
+$newUserId = $_POST["newID"];
+$newUserPW = $_POST["newPassword"];
+$newUserConfPW = $_POST["newConfPassword"];
+$newUserFName = $_POST["newFirstName"];
+$newUserLName = $_POST["newLastName"];
+$newUserType = $_POST["newUserType"];
+$newUserAddedBy = $id; //session ID for logged in admin
 
-//create course object and set attributes
-if ($newUserType == "student") {
-  $newUser = new Student();
-  $newUser->setStudentID($newUserId);
-  $newUser->setPassword($newUserPW);
-  $newUser->setFirstName($newUserFName);
-  $newUser->setLastName($newUserLName);
-  //added by field in db, so remember to get admin's id for that
-  //$newUser->setCourses($courses); //probably won't have courses assigned in the beginning
+//check pw/conf pw match first
+if ($newUserPW == $newUserConfPW) {
+  //create appropriate type user object and set attributes
+  if ($newUserType == "1") {
+    $newUser = new Student();
+    $newUser->setStudentID($newUserId);
+    $newUser->setPassword($newUserPW);
+    $newUser->setFirstName($newUserFName);
+    $newUser->setLastName($newUserLName);
+    $newUser->setAddedBy($newUserAddedBy);
 
-  //call insert function
-  $success = $newUser->insertStudent($con);
-}
-else if ($newUserType == "faculty") {
-  $newUser = new Instructor();
-  $newUser->setInstructorId($newUserId);
-  $newUser->setPassword($newUserPW);
-  $newUser->setFirstName($newUserFName);
-  $newUser->setLastName($newUserLName);
-  //$newUser->setCourses($courses); //probably won't have courses assigned in the beginning
+    //call insert function
+    $success = $newUser->insertStudent($con);
+  }
+  else if ($newUserType == "2") {
+    $newUser = new Instructor();
+    $newUser->setInstructorId($newUserId);
+    $newUser->setPassword($newUserPW);
+    $newUser->setFirstName($newUserFName);
+    $newUser->setLastName($newUserLName);
+    $newUser->setAddedBy($newUserAddedBy);
 
-  //call insert function
-  $success = $newUser->insertInstructor($con);
-}
+    //call insert function
+    $success = $newUser->insertInstructor($con);
+  }
 
-if ($success) {
-  //insert was successful, destruct object, redirect to AdminPage
-  $_SESSION['insertCourse'] = 1;
-  unset($newUser);
+  if ($success) {
+    //account has been inserted. display success message.
+    $_SESSION['insertAccount'] = 1;
+  }
+  else {
+    //error inserting account. display error message.
+    $_SESSION['insertAccount'] = 3;
+  }
 }
 else {
-  //insert was not sucessful, display error message
-  $_SESSION['insertCourse'] = 2;
-  unset($newUser);
+  //display pw mismatch flag...set admiralsnackbar, redirect back to AdminPage.php
+  $_SESSION['insertAccount'] = 2;
 }
-header('Location: AdminPage.php');
+
+unset($newUser); //destruct object
+header('Location: AdminPage.php'); //head back to AdminPage either way
 ?>

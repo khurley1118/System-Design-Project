@@ -11,7 +11,7 @@ $user = $_SESSION['CurrentUser'];
 
 //get course code and description admin posted from AdminPage form
 $courseCode = $_POST["courseCode"];
-$courseDescription = $_POST["Description"];
+$courseDescription = $_POST["courseDescription"];
 
 //create course object and set attributes
 $course = new Course();
