@@ -12,7 +12,6 @@
                 $studentIDnums = DLfetchAllStudentIDs($con);
 
                 foreach ($studentIDnums as $stuID){
-                  //make the names dynamic with the id num
                   if($stuID['studentId'] != $currentUserID){
 
                     $studentName = utilStudentFirst($con, $stuID['studentId']) . " " . utilStudentLast($con, $stuID['studentId']);

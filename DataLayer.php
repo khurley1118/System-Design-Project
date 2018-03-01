@@ -216,7 +216,7 @@ function DLcreateContent($con, $type, $courseID, $location, $path, $desc){
 }
 
 function DLfetchAllStudentIDs($con){
-  
+
   $rs = mysqli_query($con, "CALL SP_fetchAllStudentIDs");
   while ($row = mysqli_fetch_array($rs)) {
       $list[] = $row;
@@ -226,6 +226,34 @@ function DLfetchAllStudentIDs($con){
       mysqli_next_result($con);
   }
   return $list;
+}
+
+function DLfetchConversation($con, $senderId, $recipientId){
+
+  $rs = mysqli_query($con, "CALL SP_getConversation($senderId, $recipientId)");
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $rs;
+}
+
+function DLdeleteOldMessages($con, $senderId, $recipientId, $time){
+  $result = mysqli_query($con, "CALL SP_deleteOldMessages($time, $senderId, $recipientId)");
+
+  if ($result > 0){
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+    return true;
+
+  }
+  else{
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+     return false;
+
+  }
 }
 
 

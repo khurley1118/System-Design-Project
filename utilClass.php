@@ -19,6 +19,10 @@ function utilStudentGetPassword($con,$id){
 	return DLgetStudentPassword($con,$id);
 }
 
+function utilGetAllStudentIDs($con){
+  return DLfetchAllStudentIDs($con);
+}
+
 // INSTRUCTOR /////////////////////////////////
 function utilInstructorFirst($con, $id) {
     return DLgetInstructorFirst($con, $id);
@@ -54,7 +58,12 @@ function utilGetFolders($con, $courseid){
 	return DLgetFolders($con, $courseid);
 }
 
-function utilGetAllStudentIDs($con){
-  return DLfetchAllStudentIDs($con);
+// CHAT //////////////////////////////////
+function utilGetConversation($con, $senderId, $recipientId){
+  return DLfetchConversation($con, $senderId, $recipientId);
+}
+
+function utilDeleteOldMessages($con, $senderId, $recipientId, $time){
+  return DLdeleteOldMessages($con, $senderId, $recipientId, $time);
 }
 ?>

@@ -79,8 +79,8 @@ function register_popup(id, name)
     element = element + '<div class="popup-head">';
     element = element + '<div class="popup-head-left">'+ name +'</div>';
     element = element + '<div class="popup-head-right"><a href="javascript:close_popup(\''+ id +'\');">&#10005;</a></div>';
-    element = element + '<div style="clear: both"></div></div><div class="popup-messages" id="messages ' + id +'"></div>';
-    element = element + '<div id="write" style="text-align:left;"><textarea class="text-bar" id="message' + id + '" rows="1" onkeyup="process(event, message' + id + ')"></textarea></div></div>';
+    element = element + '<div style="clear: both"></div></div><div class="popup-messages" id="messages' + id +'"></div>';
+    element = element + '<div id="write" style="text-align:left;"><textarea class="text-bar" id="message' + id + '" rows="1" placeholder="Enter message here" onkeyup="process(event, message' + id + ', ' + id +')"></textarea></div></div>';
 
 
     document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML + element;
@@ -89,6 +89,8 @@ function register_popup(id, name)
 
     calculate_popups();
     showmessages(id);
+    //auto scroll to bottom
+    scrollToBottom(id);
 }
 
 //calculate the total number of popups suitable and then populate the toatal_popups variable.
@@ -119,40 +121,48 @@ window.addEventListener("load", calculate_popups);
 
 function showmessages(id){
    //Send an XMLHttpRequest to the 'show-message.php' file
+   var param_id = encodeURIComponent(id);
    if(window.XMLHttpRequest){
       xmlhttp = new XMLHttpRequest();
-      xmlhttp.open("GET","../Chat/show-messages.php",false);
-      xmlhttp.send(null);
+      xmlhttp.open("POST","../Chat/show-messages.php",false);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send("recipientId=" + param_id);
    }
    else{
       xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-      xmlhttp.open("GET","../Chat/showmessages.php",false);
-      xmlhttp.send();
+      xmlhttp.open("POST","../Chat/show-messages.php",false);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send("recipientId=" + param_id);
    }
-   var elementName = "messages " + id
+   var elementName = "messages" + id
    //Replace the content of the messages with the response from the 'show-messages.php' file
    document.getElementById(elementName).innerHTML = xmlhttp.responseText;
    //Repeat the function each 30 seconds
-   var objDiv = document.getElementById(elementName);
-   objDiv.scrollTop = objDiv.scrollHeight;
 
+   //scrollToBottom(id);
    setTimeout(function() {
     showmessages(id);
 }, 1000)
 }
 
-function send(){
+function send(recipientId, message){
    //Send an XMLHttpRequest to the 'send.php' file with all the required informations
-   var sendto = 'send.php?message=' + document.getElementById('message').value + '&name=' + document.getElementById('name').value;
+   //change this to post*************************
+   var param_id = encodeURIComponent(recipientId);
+   var param_message = encodeURIComponent(message);
+
+   //var url = 'send.php?message=' + document.getElementById('message').value + '&name=' + document.getElementById('name').value;
    if(window.XMLHttpRequest){
       xmlhttp = new XMLHttpRequest();
-      xmlhttp.open("GET",sendto,false);
-      xmlhttp.send(null);
+      xmlhttp.open("POST","../Chat/send.php",false);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send("recipientId=" + param_id + "&message=" + param_message);
    }
    else{
       xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-      xmlhttp.open("GET",sendto,false);
-      xmlhttp.send();
+      xmlhttp.open("POST","../Chat/send.php",false);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send("recipientId=" + param_id + "&message=" + param_message);
    }
    var error = '';
    //If an error occurs the 'send.php' file send`s the number of the error and based on that number a message is displayed
@@ -164,33 +174,28 @@ function send(){
       error = 'The database is down!';
       break;
    case 3:
-      error = 'Don`t forget the message!';
+      //error = 'Don`t forget the message!';
+      alert("Must insert message");
       break;
    case 4:
-      error = 'The message is too long!';
+      //error = 'The message is too long!';
+      alert("Message is too long");
       break;
    case 5:
-      error = 'Don`t forget the name!';
+      error = 'The database is down!';
       break;
    case 6:
-      error = 'The name is too long!';
+      error = 'The database is down!';
       break;
    case 7:
-      error = 'This name is already used by somebody else!';
+      //alert("Success");
+      //scrollToBottom(recipientId);
       break;
-   case 8:
-      error = 'The database is down!';
    }
-   if(error == ''){
-      document.getElementById('error').innerHTML = '';
-      showmessages();
-   }
-   else{
-      document.getElementById('error').innerHTML = error;
-   }
+
 }
 
-function process(e, fieldID) {
+function process(e, fieldID, id) {
 
     var code = (e.keyCode ? e.keyCode : e.which);
 
@@ -198,9 +203,16 @@ function process(e, fieldID) {
 
       var message = document.getElementById(fieldID.id).value;
       var inputArea = "document.getElementById(\'" + fieldID.id + "\').value";
-        alert("Sending your Message : " + message);
-
+        //alert(fieldID.id + " ,  " + id);
+        scrollToBottom(id);
+        send(id, message);
         $('#' + fieldID.id).val('');
 
     }
-}
+  }
+
+  function scrollToBottom(id){
+
+    $("#messages" + id).scrollTop($("#messages" + id)[0].scrollHeight);
+
+  }
