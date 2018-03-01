@@ -72,9 +72,10 @@ if ($newUserPW == $newUserConfPW) {
   }
 }
 else {
-  //display pw mismatch flag...set admiralsnackbar, redirect back to AdminPage.php
+  //display pw mismatch flag
   $_SESSION['insertAccount'] = 2;
 }
+//echo mysqli_error($con);
 
 unset($newUser); //destruct object
 header('Location: AdminPage.php'); //head back to AdminPage either way
