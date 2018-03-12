@@ -11,11 +11,11 @@ class Admin {
 
     //getters/setters
 
-    function setAdminId($adminId) {
+    function setUserID($adminId) {
         $this->adminId = $adminId;
     }
 
-    function getAdminId() {
+    function getUserID() {
         return $this->adminId;
     }
 
@@ -49,10 +49,20 @@ class Admin {
     }
 
     //to do: functions will go below
+    //calls DL function to change password
+  	function ChangePassword($con,$newPass) {
+  		return DLadminPasswordChange($con, $this->getUserID(), $newPass);
+  	}
+
     //calls DL function to insert new student
     function InsertAdmin($con){
-      return DLinsertAdmin($con, $this->getAdminId(), $this->getPassword(), $this->getFirstName(), $this->getLastName());
+      return DLinsertAdmin($con, $this->getUserID(), $this->getPassword(), $this->getFirstName(), $this->getLastName());
     }
+
+    //calls DL function to update Admin's first and last names
+    function UpdateNames($con) {
+  		return DLadminUpdateNames($con, $this->getUserID(), $this->getFirstName(), $this->getLastName());
+  	}
 }
 
 ?>

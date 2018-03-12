@@ -1,5 +1,4 @@
 <?php
-//note: still need insert Admin
 include('utilClass.php');
 include('connect.php');
 include('StudentClass.php');
@@ -25,7 +24,7 @@ if ($newUserPW == $newUserConfPW) {
   //create appropriate type user object and set attributes
   if ($newUserType == "1") {
     $newUser = new Student();
-    $newUser->setStudentID($newUserId);
+    $newUser->setUserID($newUserId);
     //hash password
     $hashedPassword = password_hash($newUserPW, PASSWORD_DEFAULT);
     $newUser->setPassword($hashedPassword);
@@ -38,7 +37,7 @@ if ($newUserPW == $newUserConfPW) {
   }
   else if ($newUserType == "2") {
     $newUser = new Instructor();
-    $newUser->setInstructorId($newUserId);
+    $newUser->setUserId($newUserId);
     //hash password
     $hashedPassword = password_hash($newUserPW, PASSWORD_DEFAULT);
     $newUser->setPassword($hashedPassword);
@@ -51,7 +50,7 @@ if ($newUserPW == $newUserConfPW) {
   }
   else if ($newUserType == "3") {
     $newUser = new Admin();
-    $newUser->setAdminId($newUserId);
+    $newUser->setUserID($newUserId);
     //hash password
     $hashedPassword = password_hash($newUserPW, PASSWORD_DEFAULT);
     $newUser->setPassword($hashedPassword);

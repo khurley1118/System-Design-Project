@@ -11,11 +11,11 @@ class Student {
     private $addedBy;
     private $courses = [];
 
-    function setStudentID($studentID) {
+    function setUserID($studentID) {
         $this->studentID = $studentID;
     }
 
-    function getStudentID() {
+    function getUserID() {
         return $this->studentID;
     }
 
@@ -66,13 +66,18 @@ class Student {
 //functions
 	//calls DL function to change password
 	function ChangePassword($con,$newPass) {
-		return DLstudentPasswordChange($con, $this->getStudentID(), $newPass);
+		return DLstudentPasswordChange($con, $this->getUserID(), $newPass);
 	}
 
   //calls DL function to insert new student
   function InsertStudent($con){
-    return DLinsertStudent($con, $this->getStudentID(), $this->getPassword(), $this->getAddedBy(), $this->getFirstName(), $this->getLastName());
+    return DLinsertStudent($con, $this->getUserID(), $this->getPassword(), $this->getAddedBy(), $this->getFirstName(), $this->getLastName());
   }
+
+  //calls DL function to update Student's first and last names
+  function UpdateNames($con) {
+		return DLstudentUpdateNames($con, $this->getUserID(), $this->getFirstName(), $this->getLastName());
+	}
 }
 
 ?>

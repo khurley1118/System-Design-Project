@@ -77,7 +77,7 @@
                               <div class="panel panel-default">
                                  <div class="panel-heading">
                                     <h4 class="panel-title">
-                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-folder-close">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" id="accountsLeftMenu"><span class="glyphicon glyphicon-folder-close">
                                        </span>Accounts</a>
                                     </h4>
                                  </div>
@@ -91,7 +91,7 @@
                                           </tr>
                                           <tr>
                                              <td>
-                                                <span class="glyphicon glyphicon-wrench"></span><a href="javascript:editAccount()">Edit Account</a>
+                                                <span class="glyphicon glyphicon-wrench"></span><a href="javascript:editAccount()" id="editAccountLeftMenu">Edit Account</a>
                                              </td>
                                           </tr>
                                           <tr>
@@ -244,17 +244,22 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <form class="form-signin" action="javascript:getStudent(stuIDtxt.value)" method="">
+                                   <form class="form-signin" action="adminGetUser.php" method="POST">
                                       <center>
                                          <h2>Edit Account</h2>
                                       </center>
-                                      <input id="stuIDtxt" type="text" class="form-control" placeholder="#StudentID" required>
-                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Get Student" />
+                                      <input id="getUserID" name="getUserID" type="text" class="form-control" placeholder="#UserID" required>
+                                      <select class="form-control" id="userType" name="userType">
+                                         <option value="1">Student</option>
+                                         <option value="2">Instructor</option>
+                                         <option value="3">Admin</option>
+                                      </select>
+                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Get User" />
                                     </form>
                                       <br>
-                                      <form class="form-signin" action="" method="">
-                                      <input type="text" class="form-control" placeholder="First Name" required>
-                                      <input type="text" class="form-control" placeholder="Last Name" required>
+                                      <form class="form-signin" action="adminEditProfile.php" method="POST">
+                                      <input id="inFirstName" name="inFirstName" type="text" class="form-control" placeholder="First Name" required>
+                                      <input id="inLastName" name="inLastName" type="text" class="form-control" placeholder="Last Name" required>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                    </form>
                                  </div>
@@ -268,14 +273,14 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <form class="form-signin" action="" method="">
+                                   <form class="form-signin" action="adminResetPassword.php" method="POST">
                                       <center>
                                          <h2>Reset Password</h2>
                                       </center>
-                                      <input type="text" class="form-control" placeholder="Account ID" required autofocus>
-                                      <input type="password" class="form-control" placeholder="Password" required>
-                                      <input type="password" class="form-control" placeholder="Confirm Password" required>
-                                      <select class="form-control">
+                                      <input type="text" class="form-control" name="ID" placeholder="Account ID" required autofocus>
+                                      <input type="password" class="form-control" name="newPassword" placeholder="Password" required>
+                                      <input type="password" class="form-control" name="newConfPassword"placeholder="Confirm Password" required>
+                                      <select class="form-control" name="userType">
                                          <option value="1">Student</option>
                                          <option value="2">Instructor</option>
                                          <option value="3">Admin</option>
@@ -386,6 +391,89 @@
         }
         }
        ?>
+       <?php
+        if (isset($_SESSION['adminResetPassword'])){
+         if ($_SESSION['adminResetPassword'] == 1){
+           $_SESSION['adminResetPassword'] = 0;
+           echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Password changed successfully!';</script>";
+           echo "<script> myFunction(); </script>";
+         }
+         else if ($_SESSION['adminResetPassword'] == 2) {
+          $_SESSION['adminResetPassword'] = 0;
+          echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Your passwords didn\'t match.';</script>";
+          echo "<script> myFunction(); </script>";
+          }
+       else if ($_SESSION['adminResetPassword'] == 3) {
+          $_SESSION['adminResetPassword'] = 0;
+        echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Error changing password.';</script>";
+        echo "<script> myFunction(); </script>";
+       }
+       else if ($_SESSION['adminResetPassword'] == 4) {
+          $_SESSION['adminResetPassword'] = 0;
+        echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'The selected ID does not exist for that user type.';</script>";
+        echo "<script> myFunction(); </script>";
+       }
+       }
+      ?>
+      <?php
+       if (isset($_SESSION['editGetUser'])){
+        if ($_SESSION['editGetUser'] == 1){
+          echo "<script>document.getElementById('accountsLeftMenu').click();</script>";
+          echo "<script>document.getElementById('editAccountLeftMenu').click();</script>";
+          echo "<script>document.getElementById('getUserID').value = " . $_SESSION['editUser']->getUserID() . ";</script>";
+          if ($_SESSION['editUserType'] == "1"){
+            echo "<script>document.getElementById('userType').selectedIndex = ' ". '0' ." ';</script>";
+          }
+          else if ($_SESSION['editUserType'] == "2"){
+            echo "<script>document.getElementById('userType').selectedIndex = ' ". '1' ." ';</script>";
+          }
+          else if ($_SESSION['editUserType'] == "3"){
+            echo "<script>document.getElementById('userType').selectedIndex = ' ". '2' ." ';</script>";
+          }
+          echo "<script>document.getElementById('inFirstName').value = '". $_SESSION['editUser']->getFirstName() ."';</script>";
+          echo "<script>document.getElementById('inLastName').value = '" . $_SESSION['editUser']->getLastName() . "';</script>";
+          $_SESSION['editGetUser'] = 0;
+          // $_SESSION['editUser'] = 0;
+          // $_SESSION['editUserType'] = 0;
+        }
+        else if ($_SESSION['editGetUser'] == 2) {
+          echo "<script>document.getElementById('accountsLeftMenu').click();</script>";
+          echo "<script>document.getElementById('editAccountLeftMenu').click();</script>";
+          $_SESSION['editGetUser'] = 0;
+          echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'No user ID of that type found.';</script>";
+          echo "<script> myFunction(); </script>";
+        }
+       }
+     ?>
+     <?php
+      if (isset($_SESSION['adminUpdateUser'])){
+       if ($_SESSION['adminUpdateUser'] == 1){
+         $_SESSION['adminUpdateUser'] = 0;
+         unset($_SESSION['editUser']);
+         unset($_SESSION['editUserType']);
+         echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'User has been updated successfully!';</script>";
+         echo "<script> myFunction(); </script>";
+       }
+       else if ($_SESSION['adminUpdateUser'] == 2) {
+        echo "<script>document.getElementById('accountsLeftMenu').click();</script>";
+        echo "<script>document.getElementById('editAccountLeftMenu').click();</script>";
+        $_SESSION['adminUpdateUser'] = 0;
+        unset($_SESSION['editUser']);
+        unset($_SESSION['editUserType']);
+        echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'User was not updated successfully.';</script>";
+        echo "<script> myFunction(); </script>";
+        }
+     else if ($_SESSION['adminUpdateUser'] == 3) {
+       echo "<script>document.getElementById('accountsLeftMenu').click();</script>";
+       echo "<script>document.getElementById('editAccountLeftMenu').click();</script>";
+       $_SESSION['adminUpdateUser'] = 0;
+       unset($_SESSION['editUser']);
+       unset($_SESSION['editUserType']);
+       echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Oops, you chose the same names.';</script>";
+       echo "<script> myFunction(); </script>";
+     }
+     }
+    ?>
       </div>
    </body>
 </html>
