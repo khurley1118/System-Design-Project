@@ -78,6 +78,7 @@ function DLgetStudentLast($con, $id) {
 }
 
 function DLgetStudentCourses($con, $id) {
+    $courses = "";
     $rs = mysqli_query($con, "CALL SP_getStudentCourses($id)");
     while ($row = mysqli_fetch_array($rs)) {
         $courses[] = $row["courseCode"];
