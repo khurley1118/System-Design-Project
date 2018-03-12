@@ -44,6 +44,27 @@ function DLgetStudentCourses($con, $id) {
     //return $courses;
 }
 
+//create student object, populate student ID, password, first name, last name from db
+function DLgetStudent($con, $id) {
+  $rs = mysqli_query($con, "CALL SP_getStudent($id)");
+  while ($row = mysqli_fetch_array($rs)) {
+      $student = new Student();
+      $student->setUserID($row['studentId']);
+      $student->setPassword($row['password']);
+      $student->setFirstName($row['firstName']);
+      $student->setLastName($row['lastName']);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (!isset($student)) {
+      return null;
+  } else {
+      return $student;
+  }
+}
+
 //get student's password
 function DLgetStudentPassword($con, $id) {
 	$password = ""; //put this here so $password is initialized so we don't get an error, but as is if the student doesn't exist $password will stay blank
@@ -63,8 +84,14 @@ function DLstudentPasswordChange($con, $id, $newPass) {
 	return mysqli_query($con, "CALL SP_changeStudentPassword($id, '$newPass')");
 }
 
+//insert student
 function DLinsertStudent($con, $studentID, $password, $admin, $fname, $lname) {
   return mysqli_query($con, "CALL SP_createStudent($studentID, '$password',$admin,'$fname','$lname')");
+}
+
+//update names
+function DLstudentUpdateNames($con,$id,$firstName,$lastName) {
+	return mysqli_query($con, "CALL SP_updateStudentNames($id, '$firstName','$lastName')");
 }
 
 //ADMIN
@@ -93,9 +120,40 @@ function DLgetAdminLast($con, $id) {
     return $lastName;
 }
 
+//create instructor object, populate instructor ID, password, first name, last name from db
+function DLgetAdmin($con, $id) {
+  $rs = mysqli_query($con, "CALL SP_getAdmin($id)");
+  while ($row = mysqli_fetch_array($rs)) {
+      $admin = new Admin();
+      $admin->setUserID($row['adminId']);
+      $admin->setPassword($row['password']);
+      $admin->setFirstName($row['firstName']);
+      $admin->setLastName($row['lastName']);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (!isset($admin)) {
+      return null;
+  } else {
+      return $admin;
+  }
+}
+
 function DLinsertAdmin($con, $adminId, $password, $fname, $lname) {
   return mysqli_query($con, "CALL SP_createAdmin($adminId, '$password','$fname','$lname')");
 }
+
+function DLadminPasswordChange($con, $adminId, $newPass){
+  return mysqli_query($con, "CALL SP_changeAdminPassword($adminId, '$newPass')");
+}
+
+//update names
+function DLadminUpdateNames($con,$id,$firstName,$lastName) {
+	return mysqli_query($con, "CALL SP_updateAdminNames($id, '$firstName','$lastName')");
+}
+
 //INSTRUCTOR
 //////////////////////////////////////
 function DLgetInstructorFirst($con, $id) {
@@ -152,6 +210,27 @@ function DLgetInstructorPassword($con, $id) {
     return $password;
 }
 
+//create instructor object, populate instructor ID, password, first name, last name from db
+function DLgetInstructor($con, $id) {
+  $rs = mysqli_query($con, "CALL SP_getInstructor($id)");
+  while ($row = mysqli_fetch_array($rs)) {
+      $instructor = new Instructor();
+      $instructor->setUserID($row['instructorId']);
+      $instructor->setPassword($row['password']);
+      $instructor->setFirstName($row['firstName']);
+      $instructor->setLastName($row['lastName']);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (!isset($instructor)) {
+      return null;
+  } else {
+      return $instructor;
+  }
+}
+
 //change instructor's password
 function DLinstructorPasswordChange($con, $id, $newPass) {
 	return mysqli_query($con, "CALL SP_changeInstructorPassword($id, '$newPass')");
@@ -159,6 +238,11 @@ function DLinstructorPasswordChange($con, $id, $newPass) {
 
 function DLinsertInstructor($con, $instructorID, $password, $admin, $fname, $lname) {
   return mysqli_query($con, "CALL SP_createInstructor($instructorID, '$password',$admin,'$fname','$lname')");
+}
+
+//update names
+function DLinstructorUpdateNames($con,$id,$firstName,$lastName) {
+	return mysqli_query($con, "CALL SP_updateInstructorNames($id, '$firstName','$lastName')");
 }
 
 //COURSES

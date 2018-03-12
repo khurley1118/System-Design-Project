@@ -71,13 +71,13 @@ if ($id == $userID) {
             $id = $userID;
             if ($loginType == "admin") {
                 $user = new Admin;
-                $user->setAdminId($userID);
+                $user->setUserID($userID);
                 $user->setFirstName(utilAdminFirst($con, $id));
                 $user->setLastName(utilAdminlast($con, $id));
                 $_SESSION['CurrentUser'] = $user;
             } else if ($loginType == "faculty") {
                 $user = new Instructor();
-                $user->setInstructorId($id);
+                $user->setUserID($id);
                 $user->setFirstName(utilInstructorFirst($con, $id));
                 $user->setLastName(utilInstructorLast($con, $id));
                 $user->setCourses(utilInstructorCourses($con, $id));
@@ -86,7 +86,7 @@ if ($id == $userID) {
             } else {
                 //else case is that user is a student
                 $user = new Student();
-                $user->setStudentID($id);
+                $user->setUserID($id);
                 $user->setFirstName(utilStudentFirst($con, $id));
                 $user->setLastName(utilStudentLast($con, $id));
                 $user->setCourses(utilStudentCourseList($con, $id));

@@ -15,11 +15,11 @@ Class Instructor {
 
     //getters/setters
 
-    function setInstructorID($instructorID) {
+    function setUserID($instructorID) {
         $this->instructorID = $instructorID;
     }
 
-    function getInstructorID() {
+    function getUserID() {
         return $this->instructorID;
     }
 
@@ -70,13 +70,18 @@ Class Instructor {
 
     //calls DL function to change password
 	function ChangePassword($con,$newPass) {
-		return DLinstructorPasswordChange($con, $this->getInstructorId(), $newPass);
+		return DLinstructorPasswordChange($con, $this->getUserID(), $newPass);
 	}
 
   //calls DL function to insert new instructor
   function InsertInstructor($con){
-    return DLinsertInstructor($con, $this->getInstructorID(), $this->getPassword(), $this->getAddedBy(), $this->getFirstName(), $this->getLastName());
+    return DLinsertInstructor($con, $this->getUserID(), $this->getPassword(), $this->getAddedBy(), $this->getFirstName(), $this->getLastName());
   }
+
+  //calls DL function to update Instructor's first and last names
+  function UpdateNames($con) {
+		return DLinstructorUpdateNames($con, $this->getUserID(), $this->getFirstName(), $this->getLastName());
+	}
 }
 
 ?>
