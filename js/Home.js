@@ -71,7 +71,9 @@ function insTicket(description){
       data: {desc : description},
       cache: false,
       success: function (data) {
-        console.log(description);
+        document.getElementById('AdmiralSnackbar').innerHTML = 'Ticket has been created!';
+        document.getElementById('textInput').value = "";
+        myFunction();
       },
       error: function (xhr, ajaxOptions, thrownError) {
           alert(xhr.status + "\n" + thrownError);

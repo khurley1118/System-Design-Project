@@ -334,7 +334,8 @@
       </div>
       <div id="AdmiralSnackbar"></div>
       <!-- End Page Container -->
-      <?php
+
+        <?php
          if (isset($_SESSION['passwordChng'])){
           if ($_SESSION['passwordChng'] == 1){
          $_SESSION['passwordChng'] = 0;

@@ -12,5 +12,5 @@ $id = $_POST['ticket'];
 
 $ticket = new Ticket();
 $ticket->resolveTicket($con, $id);
-
+$_SESSION['confirmationSnack'] = 1;
 ?>

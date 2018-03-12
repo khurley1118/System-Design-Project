@@ -52,7 +52,8 @@ function resTicket(ticketID) {
         data: {ticket : ticketID},
         cache: false,
         success: function (dataArray) {
-          alert("Ticket set to resolved");
+          document.getElementById('AdmiralSnackbar').innerHTML = 'Ticket has been set to resolved!';
+          myFunction();
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status + "\n" + thrownError);
