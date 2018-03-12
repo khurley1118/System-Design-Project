@@ -42,14 +42,52 @@ function changePassword() {
     document.getElementById('searchAccount').setAttribute("class", "hideDiv");
     document.getElementById('changePassword').setAttribute("class", "showDiv");
 }
-function showTicket(showTicket){
-  if (showTicket == 202034) {
-    document.getElementById('ticketDisplay').innerHTML = "Ticket #202034: This ticket sucks";
-  } else if (showTicket == 632534) {
-    document.getElementById('ticketDisplay').innerHTML = "Ticket #202034: Look ma, im a ticket";
-  } else if (showTicket == 126362) {
-    document.getElementById('ticketDisplay').innerHTML = "Ticket #202034: Why did i make 3 of these";
+
+function resTicket(ticketID) {
+
+  if (ticketID != 0){
+    $.ajax({
+        type: 'POST',
+        url: 'setResolvedFunction.php',
+        data: {ticket : ticketID},
+        cache: false,
+        success: function (dataArray) {
+          alert("Ticket set to resolved");
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.status + "\n" + thrownError);
+            return false;
+        }
+    }); // end ajax call
   } else {
-    document.getElementById('ticketDisplay').innerHTML = "No ticket found";
+    alert("Please select a ticket to resolve first!");
+  }
+}
+
+function retrieveTicket(ticketID) {
+  $.ajax({
+      type: 'POST',
+      url: 'getTicketsFunction.php',
+      data: {ticket : ticketID},
+      cache: false,
+      success: function (dataArray) {
+        var data = JSON.parse(dataArray);
+        var name = data[0];
+        var description = data[1];
+        var status = data[2];
+        document.getElementById('ticketDisplay').value = description;
+        document.getElementById('status').value = status;
+        document.getElementById('subBy').value = name;
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + thrownError);
+          return false;
+      }
+  }); // end ajax call
+
+  function limitText(limitField, limitNum) {
+      if (limitField.value.length > limitNum) {
+          limitField.value = limitField.value.substring(0, limitNum);
+      }
   }
 }

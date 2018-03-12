@@ -6,6 +6,7 @@
  #outputContainer {
      position: relative;
      min-height: 620px;
+     
 }
 #userLogOut{
   z-index: 1;

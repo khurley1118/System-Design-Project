@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
+require("utilClass.php");
 require("StudentClass.php");
 require("AdminClass.php");
 require("InstructorClass.php");
-require("utilClass.php");
 session_start();
 
 $type = $_SESSION['userType'];
@@ -11,6 +11,8 @@ $id =	$_SESSION['userID'];
 $user = $_SESSION['CurrentUser'];
 $first = $user->getFirstName();
 $last = $user->getLastName();
+$_SESSION['lastName'] = $last;
+$_SESSION['firstName'] = $first;
 $full = $first . " " . $last;
 if ($_SESSION['userType'] != "admin"){
 $courselist = $user->getCourses();
@@ -30,7 +32,6 @@ $courselist = $user->getCourses();
   </head>
 
   <body>
-
     <!-- Fixed navbar -->
     <nav id="nav" class="navbar navbar-default navbar-fixed-top">
       <div id="nav" class="container">

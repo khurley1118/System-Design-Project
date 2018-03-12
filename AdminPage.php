@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <script src="js/AdminPanel.js"></script>
 <?php
+
    include('connect.php');
    include('Header.php');
    include('Footer.php');
+   require("TicketClass.php");
+
    if (isset($_SESSION['userType'])) {
        if ($_SESSION['userType'] != "admin") {
            header("location: index.php");
@@ -290,16 +293,25 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                    <form class="form-signin" action="changePassword.php" method="">
-                                      <select class="form-control"  onchange="showTicket(this.value)">
+                                    <form class="form-signin">
+                                      <select class="form-control" id="ticketSelect" onchange="javascript:retrieveTicket(this.value)">
                                         <option value="" disabled selected hidden>Please choose a Ticket</option>
-                                        <option value="202034">Ticket: #202034</option>
-                                        <option value="632534">Ticket: #632534</option>
-                                        <option value="126362">Ticket: #126362</option>
-                                      </select>
-                                      Submitted By: <input type="text" name="Name" value="Mark Patterson" readonly>
-                                      <textarea id="ticketDisplay" type="text" class="form-control" rows="10" cols="50" placeholder="Select a Ticket from the Dropdown"></textarea>
-                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Set Resolved" />
+                                        <?php
+                                        $idList = new Ticket();
+                                        $ticketID[] = $idList->getTickets($con);
+                                        $i = 0;
+                                        while ($ticketID[0][$i] != ""){
+                                          $str = $ticketID[0][$i];
+                                          $value = strstr($str, '&nbsp', true);
+                                          echo "<option value='" . $value . "'>Ticket#: " . $ticketID[0][$i] . "</option>";
+                                          $i++;
+                                        }
+                                        ?>
+                                        </select>
+                                        Submitted By: <input type='text' id='subBy' name='Name' value='Mark Patterson' readonly>
+                                        Status: <input type='text' id='status' name='Name' value='Un-Resolved' readonly>
+                                        <textarea id='ticketDisplay' type='text' class='form-control' rows='10' cols='50' placeholder='Select a Ticket from the Dropdown'></textarea>
+                                        <input type='submit' formaction="javascript:resTicket(ticketSelect.value)" class='btn btn-lg btn-default btn-block' name='action' id='action' value='Set Resolved' />
                                     </form>
                                  </div>
                               </div>
@@ -364,7 +376,7 @@
           }
         else if ($_SESSION['insertAccount'] == 2) {
            $_SESSION['insertAccount'] = 0;
-         echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Your passwords didn\'t match.';</script>";
+         echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Your passwords didn't match.';</script>";
          echo "<script> myFunction(); </script>";
         }
         else if ($_SESSION['insertAccount'] == 3) {

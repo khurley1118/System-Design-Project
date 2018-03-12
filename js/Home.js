@@ -46,14 +46,14 @@ function createTicket(){
 function logOut(){
   if (confirm('Are you sure you want to log out?')) {
     window.location.href = "logOut.php";
-} else {
-    // Do nothing!
+  } else {
+      // Do nothing!
+  }
 }
-}
+
 function myFunction() {
     // Get the snackbar DIV
 	var x = document.getElementById("AdmiralSnackbar");
-
 
     // Add the "show" class to DIV
     x.className = "show";
@@ -62,4 +62,20 @@ function myFunction() {
     setTimeout(function() {
         x.className = x.className.replace("show", "");
     }, 3000);
+}
+
+function insTicket(description){
+  $.ajax({
+      type: 'POST',
+      url: 'insertTicketFunction.php',
+      data: {desc : description},
+      cache: false,
+      success: function (data) {
+        console.log(description);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + thrownError);
+          return false;
+      }
+  }); // end ajax call
 }

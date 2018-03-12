@@ -1,5 +1,56 @@
 <?php
 
+//Ticket
+///////////////////////////////////
+
+//function to get all un-resolved Tickets to populate drop down select
+function DLgetTickets($con) {
+    //$ticketIDs = array();
+    $rs = mysqli_query($con, "CALL SP_getTickets");
+    while ($row = mysqli_fetch_array($rs)) {
+        $ticketIDs[] = $row['ticketID'] . "&nbsp&nbsp" . $row['status'];
+    }
+    //gets rid of meta
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+    if (!isset($ticketIDs)) {
+        return null;
+    } else {
+        return $ticketIDs;
+    }
+    //return $ticketIDs;
+}
+
+//function to return specific ticket info based on submitted ID
+function DLgetTicket($con, $id) {
+    $rs = mysqli_query($con, "CALL SP_getTicket($id)");
+    while ($row = mysqli_fetch_array($rs)) {
+        $ticket = new Ticket();
+        $ticket->setDescription($row['description']);
+        $ticket->setFirstName($row['firstName']);
+        $ticket->setLastName($row['lastName']);
+        $ticket->setDate($row['subDate']);
+        $ticket->setStatus($row['status']);
+        $_SESSION['testTicket'] = $row['description'];
+    }
+    //gets rid of meta
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+    return $ticket;
+}
+
+//function to insert a ticket
+function DLinsertTicket($con, $desc, $fNm, $lNm, $subBy) {
+  return mysqli_query($con, "CALL SP_insertTicket('$desc', '$fNm', '$lNm', $subBy)");
+}
+
+//function to set ticket to resolved
+function DLresolveTicket($con, $id) {
+  return mysqli_query($con, "CALL SP_resolveTicket($id)");
+}
+
 //Student
 ///////////////////////////////////
 function DLgetStudentFirst($con, $id) {
@@ -27,21 +78,15 @@ function DLgetStudentLast($con, $id) {
 }
 
 function DLgetStudentCourses($con, $id) {
-    //$courses = array();
     $rs = mysqli_query($con, "CALL SP_getStudentCourses($id)");
     while ($row = mysqli_fetch_array($rs)) {
-        $courses[] = $row['courseCode'];
+        $courses[] = $row["courseCode"];
     }
     //gets rid of meta
     while (mysqli_more_results($con)) {
         mysqli_next_result($con);
     }
-    if (!isset($courses)) {
-        return null;
-    } else {
-        return $courses;
-    }
-    //return $courses;
+    return $courses;
 }
 
 //get student's password
@@ -93,9 +138,6 @@ function DLgetAdminLast($con, $id) {
     return $lastName;
 }
 
-function DLinsertAdmin($con, $adminId, $password, $fname, $lname) {
-  return mysqli_query($con, "CALL SP_createAdmin($adminId, '$password','$fname','$lname')");
-}
 //INSTRUCTOR
 //////////////////////////////////////
 function DLgetInstructorFirst($con, $id) {
