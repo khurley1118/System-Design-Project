@@ -15,7 +15,6 @@ if (isset($_SESSION['userID'])) {
         <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width">
-        
         <title>Tu-Pro Home</title>
         <link rel="stylesheet" type="text/css" href="css/defaultLogin.css">
         <link rel="stylesheet" type="text/css" href="css/indexStyle.css">

@@ -1,5 +1,56 @@
 <?php
 
+//Ticket
+///////////////////////////////////
+
+//function to get all un-resolved Tickets to populate drop down select
+function DLgetTickets($con) {
+    //$ticketIDs = array();
+    $rs = mysqli_query($con, "CALL SP_getTickets");
+    while ($row = mysqli_fetch_array($rs)) {
+        $ticketIDs[] = $row['ticketID'] . "&nbsp&nbsp" . $row['status'];
+    }
+    //gets rid of meta
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+    if (!isset($ticketIDs)) {
+        return null;
+    } else {
+        return $ticketIDs;
+    }
+    //return $ticketIDs;
+}
+
+//function to return specific ticket info based on submitted ID
+function DLgetTicket($con, $id) {
+    $rs = mysqli_query($con, "CALL SP_getTicket($id)");
+    while ($row = mysqli_fetch_array($rs)) {
+        $ticket = new Ticket();
+        $ticket->setDescription($row['description']);
+        $ticket->setFirstName($row['firstName']);
+        $ticket->setLastName($row['lastName']);
+        $ticket->setDate($row['subDate']);
+        $ticket->setStatus($row['status']);
+        $_SESSION['testTicket'] = $row['description'];
+    }
+    //gets rid of meta
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+    return $ticket;
+}
+
+//function to insert a ticket
+function DLinsertTicket($con, $desc, $fNm, $lNm, $subBy) {
+  return mysqli_query($con, "CALL SP_insertTicket('$desc', '$fNm', '$lNm', $subBy)");
+}
+
+//function to set ticket to resolved
+function DLresolveTicket($con, $id) {
+  return mysqli_query($con, "CALL SP_resolveTicket($id)");
+}
+
 //Student
 ///////////////////////////////////
 function DLgetStudentFirst($con, $id) {
@@ -27,21 +78,16 @@ function DLgetStudentLast($con, $id) {
 }
 
 function DLgetStudentCourses($con, $id) {
-    //$courses = array();
+    $courses = "";
     $rs = mysqli_query($con, "CALL SP_getStudentCourses($id)");
     while ($row = mysqli_fetch_array($rs)) {
-        $courses[] = $row['courseCode'];
+        $courses[] = $row["courseCode"];
     }
     //gets rid of meta
     while (mysqli_more_results($con)) {
         mysqli_next_result($con);
     }
-    if (!isset($courses)) {
-        return null;
-    } else {
-        return $courses;
-    }
-    //return $courses;
+    return $courses;
 }
 
 //create student object, populate student ID, password, first name, last name from db
@@ -240,9 +286,20 @@ function DLinsertInstructor($con, $instructorID, $password, $admin, $fname, $lna
   return mysqli_query($con, "CALL SP_createInstructor($instructorID, '$password',$admin,'$fname','$lname')");
 }
 
-//update names
-function DLinstructorUpdateNames($con,$id,$firstName,$lastName) {
-	return mysqli_query($con, "CALL SP_updateInstructorNames($id, '$firstName','$lastName')");
+function DLfetchAllInstructorIDs($con){
+  $list = array();
+  $rs = mysqli_query($con, "CALL SP_fetchAllInstructorIDs");
+  if($rs != false){
+    while ($row = mysqli_fetch_array($rs)) {
+        $list[] = $row;
+    }
+  }
+
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $list;
 }
 
 //COURSES
@@ -318,6 +375,50 @@ function DLcreateContent($con, $type, $courseID, $location, $path, $desc){
 		}
 		else return false;
 	}
+}
+
+function DLfetchAllStudentIDs($con){
+  $list = array();
+  $rs = mysqli_query($con, "CALL SP_fetchAllStudentIDs");
+  if($rs != false){
+    while ($row = mysqli_fetch_array($rs)) {
+        $list[] = $row;
+    }
+  }
+
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $list;
+}
+
+function DLfetchConversation($con, $senderId, $recipientId){
+
+  $rs = mysqli_query($con, "CALL SP_getConversation($senderId, $recipientId)");
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $rs;
+}
+
+function DLdeleteOldMessages($con, $senderId, $recipientId, $time){
+  $result = mysqli_query($con, "CALL SP_deleteOldMessages($time, $senderId, $recipientId)");
+
+  if ($result > 0){
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+    return true;
+
+  }
+  else{
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+     return false;
+
+  }
 }
 
 

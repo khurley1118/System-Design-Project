@@ -3,6 +3,7 @@
 <?php
    include('connect.php');
    include('Header.php');
+
    include('Footer.php');
    //if user id is not set then user is not logged in and is redirected to index.
    if (!isset($_SESSION['userID']) || $_SESSION['userID'] == ""){
@@ -353,11 +354,11 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                    <form class="form-signin" action="changePassword.php" method="">
+                                    <form class="form-signin" action="javascript:insTicket(textInput.value)" method="">
                                       <center>
                                         <h2>Create Ticket</h2>
                                       </center>
-                                      <textarea type="text" class="form-control" placeholder="Ticket Contents" required rows="10"></textarea>
+                                      <textarea type="text" maxlength="990" id="textInput" class="form-control" placeholder="Ticket Contents" required rows="10"></textarea>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                     </form>
                                  </div>
@@ -401,5 +402,6 @@
      }
     ?>
    </div>
+   <?php include('ChatGUI.php'); ?>
    </body>
 </html>
