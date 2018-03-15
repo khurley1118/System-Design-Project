@@ -1,14 +1,13 @@
-@media only screen and (max-width : 540px)
+@media only screen and (max-width : 1000px)
 {
     .chat-sidebar
     {
         display: none !important;
     }
 
-    .chat-popup
+    .chat-popup, .sidebar-name
     {
         display: none !important;
-
     }
 }
 
@@ -21,7 +20,7 @@ body
 .chat-sidebar
 {
     background-color: #cbcbd1;
-    width: 200px;
+    width: 12%;
     position: fixed;
     height: 100%;
     right: 0px;
@@ -64,6 +63,12 @@ body
     width: 32px;
     height: 32px;
     vertical-align:middle;
+}
+
+.sidebar-heading
+{
+    text-align:center;
+    color:#829600;
 }
 
 .popup-box
@@ -186,7 +191,6 @@ container {
   bottom: 1px;
   left: -5px;
 }
-
 
 .bubble-alt {
   float: right;

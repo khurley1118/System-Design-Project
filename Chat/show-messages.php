@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include('../connect.php');
 include('../utilClass.php');
 
 
@@ -8,18 +8,18 @@ $senderId =	$_SESSION['userID'];
 
 if(isset($_POST["recipientId"])) {
 	$recipientId = $_POST["recipientId"];
-
-	define('DB_HOST', 'localhost');
-	define('DB_USER', 'root');
-	define('DB_PASS', '');
-	define('DB_NAME', 'chattest');
-
-	global $con;
-		  $con = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
-	if (!$con)
-	  {
-	  die('Could not connect: ' . mysql_error());
-	  }
+	//
+	// define('DB_HOST', 'localhost');
+	// define('DB_USER', 'root');
+	// define('DB_PASS', '');
+	// define('DB_NAME', 'chattest');
+	//
+	// global $con;
+	// 	  $con = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
+	// if (!$con)
+	//   {
+	//   die('Could not connect: ' . mysql_error());
+	//   }
 
 	// $sql = "select * from chat WHERE senderId = '" . $senderId . "' AND recipientId = '" . $recipientId . "' order by time desc";
 	// $results = mysqli_query($con, $sql);

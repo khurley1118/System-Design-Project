@@ -1,23 +1,24 @@
 <?php
 session_start();
+include('../connect.php');
 $senderID =	$_SESSION['userID'];
 
 if(isset($_POST["recipientId"]) && isset($_POST["message"])) {
 	$recipientID = $_POST["recipientId"];
 	$message = $_POST['message'];
 
-		define('DB_HOST', 'localhost');
-		define('DB_USER', 'root');
-		define('DB_PASS', '');
-		define('DB_NAME', 'chattest');
-
-		global $con;
-			  $con = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
-		if (!$con)
-		  {
-		    echo 5;
-		  die('Could not connect: ' . mysqli_error());
-		  }
+		// define('DB_HOST', 'localhost');
+		// define('DB_USER', 'root');
+		// define('DB_PASS', '');
+		// define('DB_NAME', 'chattest');
+		//
+		// global $con;
+		// 	  $con = mysqli_connect(DB_HOST,DB_USER,DB_PASS, DB_NAME);
+		// if (!$con)
+		//   {
+		//     echo 5;
+		//   die('Could not connect: ' . mysqli_error());
+		//   }
 		//check if message is too short
 		if(strlen($message) < 2){
 		   echo 3;

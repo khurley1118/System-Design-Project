@@ -3,7 +3,7 @@
 <?php
    include('connect.php');
    include('Header.php');
-	 include('ChatGUI.php');
+
    include('Footer.php');
    //if user id is not set then user is not logged in and is redirected to index.
    if (!isset($_SESSION['userID']) || $_SESSION['userID'] == ""){
@@ -226,5 +226,6 @@
      }
     ?>
    </div>
+   <?php include('ChatGUI.php'); ?>
    </body>
 </html>

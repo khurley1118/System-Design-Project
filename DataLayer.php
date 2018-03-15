@@ -144,6 +144,22 @@ function DLinstructorPasswordChange($con, $id, $newPass) {
 	return mysqli_query($con, "CALL SP_changeInstructorPassword($id, $newPass)");
 }
 
+function DLfetchAllInstructorIDs($con){
+  $list = array();
+  $rs = mysqli_query($con, "CALL SP_fetchAllInstructorIDs");
+  if($rs != false){
+    while ($row = mysqli_fetch_array($rs)) {
+        $list[] = $row;
+    }
+  }
+
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $list;
+}
+
 //COURSES
 /////////////////////////////////////
 function DLgetCourseList($con) {
@@ -216,11 +232,14 @@ function DLcreateContent($con, $type, $courseID, $location, $path, $desc){
 }
 
 function DLfetchAllStudentIDs($con){
-
+  $list = array();
   $rs = mysqli_query($con, "CALL SP_fetchAllStudentIDs");
-  while ($row = mysqli_fetch_array($rs)) {
-      $list[] = $row;
+  if($rs != false){
+    while ($row = mysqli_fetch_array($rs)) {
+        $list[] = $row;
+    }
   }
+
   //gets rid of meta
   while (mysqli_more_results($con)) {
       mysqli_next_result($con);

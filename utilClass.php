@@ -40,6 +40,10 @@ function utilInstructorGetPassword($con,$id){
 	return DLgetInstructorPassword($con,$id);
 }
 
+function utilGetAllInstructorIDs($con){
+  return DLfetchAllInstructorIDs($con);
+}
+
 // ADMIN /////////////////////////////////////
 function utilAdminFirst($con, $id) {
     return DLgetAdminFirst($con, $id);
