@@ -140,6 +140,11 @@ function DLstudentUpdateNames($con,$id,$firstName,$lastName) {
 	return mysqli_query($con, "CALL SP_updateStudentNames($id, '$firstName','$lastName')");
 }
 
+//setStudentsAvatar
+function DLsetAvatarStudent($con, $id, $path){
+  return mysqli_query($con, "CALL SP_setAvatarStudent($id, '$path')");
+}
+
 //ADMIN
 ///////////////////////////////////////
 function DLgetAdminFirst($con, $id) {
@@ -300,6 +305,11 @@ function DLfetchAllInstructorIDs($con){
       mysqli_next_result($con);
   }
   return $list;
+}
+
+//set Instructor Avatar
+function DLsetAvatarInstructor($con, $id, $path){
+  return mysqli_query($con, "CALL SP_setAvatarInstructor($id, '$path')");
 }
 
 //COURSES

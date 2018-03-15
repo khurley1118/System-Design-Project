@@ -81,3 +81,25 @@ function insTicket(description){
       }
   }); // end ajax call
 }
+
+function uploadAvatar(idNum, path){
+  $.ajax(
+      type: 'POST',
+      url:  'uploadAvatar.php',
+      data: {id : idNum, path : path},
+      cache: false,
+      success: function (data) {
+        // var data = JSON.parse(dataArray);
+        // var name = data[0];
+        // var description = data[1];
+        // var status = data[2];
+        document.getElementById('AdmiralSnackbar').innerHTML = "Avatar uploaded successfully";
+        document.getElementById('avatarFile').innerHTML = "";
+        myFunction();
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(xhr.status + "\n" + thrownError);
+        return false;
+      }
+  );
+}

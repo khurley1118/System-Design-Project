@@ -320,7 +320,7 @@
                                          <img id="avatarPreview" height="150" width="200" src="/Resources/TuPro2.png"/>
                                           <h2>Upload an Avatar</h2>
                                        </center>
-                                       <input type="file" class="form-control" placeholder="Username" required autofocus>
+                                       <input type="file" id="avatarFile" class="form-control" placeholder="Username" required autofocus>
                                        <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                     </form>
                                  </div>
