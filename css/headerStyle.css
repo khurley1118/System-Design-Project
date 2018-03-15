@@ -14,13 +14,16 @@ and open the template in the editor.
   position: relative;
   top: 16px;
 }
+#nameDisplay {
+  margin-top: 50px;
+}
 #nav {
   background-color: #00293a;
   color: white;
 }
 img {
   position: relative;
-  bottom: 5px;
+  bottom: 2px;
 }
 body {
   padding-top: 70px;

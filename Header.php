@@ -43,6 +43,11 @@ $courselist = $user->getCourses();
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="index.php"><img src="Resources/nbccLogo.png" height="30" width="170"/></a>
+          <div id="nameDisplay">
+            <?php
+              echo $first . " " . $last . " - " . ucfirst($type);
+            ?>
+          </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -60,11 +65,15 @@ $courselist = $user->getCourses();
                 } else {
 
                 $courseCounter = 0;
+                if (isset($courseList)){
                 foreach ($courselist as $course){
                   $courseName = utilCourseName($con, $course);
                   echo "<li><a href='$course'>" . $course . " " . $courseName . "</a></li>";
                   $courseCounter++;
                 }
+              } else {
+                echo "<li><a>No Course Found</a></li>";
+              }
               }
                 echo "</ul>"
                 ?>
@@ -72,6 +81,7 @@ $courselist = $user->getCourses();
           </ul>
         </div>
       </div>
+
     </nav>
   </body>
 </html>
