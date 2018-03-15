@@ -14,7 +14,7 @@ $user = $_SESSION['CurrentUser'];
 $userId = $_POST["ID"];
 $newUserPW = $_POST["newPassword"];
 $newUserConfPW = $_POST["newConfPassword"];
-$userType = $_POST["userType"]; //I don't think we need this - delete later
+$userType = $_POST["userType"];
 
 //check pw/conf pw match first
 if ($newUserPW == $newUserConfPW) {
@@ -24,7 +24,7 @@ if ($newUserPW == $newUserConfPW) {
     $studentCheck = GetStudent($con,$userId);
     if (isset($studentCheck)) {
       $newUser = new Student();
-      $newUser->setStudentID($userId);
+      $newUser->setUserID($userId);
       //hash password
       $hashedPassword = password_hash($newUserPW, PASSWORD_DEFAULT);
       $newUser->setPassword($hashedPassword);
@@ -49,7 +49,7 @@ if ($newUserPW == $newUserConfPW) {
     $instructorCheck = GetInstructor($con,$userId);
     if (isset($instructorCheck)) {
       $newUser = new Instructor();
-      $newUser->setInstructorID($userId);
+      $newUser->setUserID($userId);
       //hash password
       $hashedPassword = password_hash($newUserPW, PASSWORD_DEFAULT);
       $newUser->setPassword($hashedPassword);
@@ -74,7 +74,7 @@ if ($newUserPW == $newUserConfPW) {
     $adminCheck = GetAdmin($con,$userId);
     if (isset($adminCheck)) {
       $newUser = new Admin();
-      $newUser->setAdminId($userId);
+      $newUser->setUserID($userId);
       //hash password
       $hashedPassword = password_hash($newUserPW, PASSWORD_DEFAULT);
       $newUser->setPassword($hashedPassword);
