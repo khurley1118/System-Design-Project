@@ -8,6 +8,7 @@ class Student {
     private $password;
     private $firstName;
     private $lastName;
+    private $addedBy;
     private $courses = [];
 
     function setStudentID($studentID) {
@@ -42,6 +43,14 @@ class Student {
         return $this->lastName;
     }
 
+    function setAddedBy($addedBy) {
+        $this->addedBy = $addedBy;
+    }
+
+    function getAddedBy() {
+        return $this->addedBy;
+    }
+
     function getCourses() {
         return $this->courses;
     }
@@ -51,19 +60,19 @@ class Student {
     }
 
     function __construct() {
-        
+
     }
 
-	//verifies that inputted old password matches db old password
-	function ChangePassword($con,$origPass,$newPass) {
-		if ($origPass == utilStudentGetPassword($con,getStudentID())) { //the inputted old password matches the db password
-			return DLstudentPasswordChange($con, getStudentID(), $newPass);
-		}
-		else {
-			//the inputted old password doesn't match the db password
-		}
-		
+//functions
+	//calls DL function to change password
+	function ChangePassword($con,$newPass) {
+		return DLstudentPasswordChange($con, $this->getStudentID(), $newPass);
 	}
+
+  //calls DL function to insert new student
+  function InsertStudent($con){
+    return DLinsertStudent($con, $this->getStudentID(), $this->getPassword(), $this->getAddedBy(), $this->getFirstName(), $this->getLastName());
+  }
 }
 
 ?>

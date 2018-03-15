@@ -45,10 +45,14 @@ class Admin {
 
     //constructor
     function __construct() {
-        
+
     }
 
     //to do: functions will go below
+    //calls DL function to insert new student
+    function InsertAdmin($con){
+      return DLinsertAdmin($con, $this->getAdminId(), $this->getPassword(), $this->getFirstName(), $this->getLastName());
+    }
 }
 
 ?>

@@ -26,9 +26,16 @@ class Course{
 		return $this->isActive;
 	}
 
+	function __construct() {
+
+	}
+
 	function nameByCode($con, $courseCode){
 		$courseName = DLgetCourseName($con, $courseCode);
 	}
 
+	function insertCourse($con){
+		return DLinsertCourse($con, $this->getCourseCode(), $this->getDescription());
+	}
 }
 ?>

@@ -6,20 +6,21 @@
 //private attributes
 Class Instructor {
 
-    private $instructorId;
+    private $instructorID;
     private $password;
     private $firstName;
     private $lastName;
+    private $addedBy;
     private $courses = [];
 
     //getters/setters
 
-    function setInstructorId($instructorId) {
-        $this->instructorId = $instructorId;
+    function setInstructorID($instructorID) {
+        $this->instructorID = $instructorID;
     }
 
-    function getInstructorId() {
-        return $this->instructorId;
+    function getInstructorID() {
+        return $this->instructorID;
     }
 
     function setPassword($password) {
@@ -46,6 +47,14 @@ Class Instructor {
         return $this->lastName;
     }
 
+    function setAddedBy($addedBy) {
+        $this->addedBy = $addedBy;
+    }
+
+    function getAddedBy() {
+        return $this->addedBy;
+    }
+
     function getCourses() {
         return $this->courses;
     }
@@ -56,19 +65,18 @@ Class Instructor {
 
     //constructor
     function __construct() {
-        
+
     }
 
-    //verifies that inputted old password matches db old password
-	function ChangePassword($con,$origPass,$newPass) {
-		if ($origPass == utilInstructorGetPassword($con,getInstructorId())) { //the inputted old password matches the db password
-			return DLinstructorPasswordChange($con, getInstructorId(), $newPass);
-		}
-		else {
-			//the inputted old password doesn't match the db password
-		}
-		
+    //calls DL function to change password
+	function ChangePassword($con,$newPass) {
+		return DLinstructorPasswordChange($con, $this->getInstructorId(), $newPass);
 	}
+
+  //calls DL function to insert new instructor
+  function InsertInstructor($con){
+    return DLinsertInstructor($con, $this->getInstructorID(), $this->getPassword(), $this->getAddedBy(), $this->getFirstName(), $this->getLastName());
+  }
 }
 
 ?>

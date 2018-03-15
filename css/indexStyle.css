@@ -13,7 +13,7 @@
      margin-top: auto;
      margin-left: auto;
      margin-right: auto;
-     z-index: 99;
+     z-index: 1;
 }
  #buttonTable {
      position: relative;
@@ -28,4 +28,3 @@
      top: 360px;
      padding-bottom: 50px;
 }
- 

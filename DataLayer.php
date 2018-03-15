@@ -27,15 +27,21 @@ function DLgetStudentLast($con, $id) {
 }
 
 function DLgetStudentCourses($con, $id) {
+    //$courses = array();
     $rs = mysqli_query($con, "CALL SP_getStudentCourses($id)");
     while ($row = mysqli_fetch_array($rs)) {
-        $courses[] = $row["courseCode"];
+        $courses[] = $row['courseCode'];
     }
     //gets rid of meta
     while (mysqli_more_results($con)) {
         mysqli_next_result($con);
     }
-    return $courses;
+    if (!isset($courses)) {
+        return null;
+    } else {
+        return $courses;
+    }
+    //return $courses;
 }
 
 //get student's password
@@ -54,7 +60,11 @@ function DLgetStudentPassword($con, $id) {
 
 //change student's password
 function DLstudentPasswordChange($con, $id, $newPass) {
-	return mysqli_query($con, "CALL SP_changeStudentPassword($id, $newPass)");
+	return mysqli_query($con, "CALL SP_changeStudentPassword($id, '$newPass')");
+}
+
+function DLinsertStudent($con, $studentID, $password, $admin, $fname, $lname) {
+  return mysqli_query($con, "CALL SP_createStudent($studentID, '$password',$admin,'$fname','$lname')");
 }
 
 //ADMIN
@@ -83,6 +93,9 @@ function DLgetAdminLast($con, $id) {
     return $lastName;
 }
 
+function DLinsertAdmin($con, $adminId, $password, $fname, $lname) {
+  return mysqli_query($con, "CALL SP_createAdmin($adminId, '$password','$fname','$lname')");
+}
 //INSTRUCTOR
 //////////////////////////////////////
 function DLgetInstructorFirst($con, $id) {
@@ -141,7 +154,11 @@ function DLgetInstructorPassword($con, $id) {
 
 //change instructor's password
 function DLinstructorPasswordChange($con, $id, $newPass) {
-	return mysqli_query($con, "CALL SP_changeInstructorPassword($id, $newPass)");
+	return mysqli_query($con, "CALL SP_changeInstructorPassword($id, '$newPass')");
+}
+
+function DLinsertInstructor($con, $instructorID, $password, $admin, $fname, $lname) {
+  return mysqli_query($con, "CALL SP_createInstructor($instructorID, '$password',$admin,'$fname','$lname')");
 }
 
 function DLfetchAllInstructorIDs($con){
@@ -176,11 +193,15 @@ function DLgetCourseList($con) {
     return $list;
 }
 
+function DLinsertCourse($con, $courseCode, $courseDescription) {
+  return mysqli_query($con, "CALL SP_createCourse($courseCode, '$courseDescription')");
+}
+
 function DLupdateCourse($courseID) {
 
 }
 
-function DLRemoveCourse($courseID) {
+function DLremoveCourse($courseID) {
 
 }
 
