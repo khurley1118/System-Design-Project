@@ -53,6 +53,10 @@ function utilAdminlast($con, $id) {
     return DLgetAdminLast($con, $id);
 }
 
+function getAdmin($con,$id){
+  return DLgetAdmin($con,$id);
+}
+
 // COURSES ///////////////////////////////
 function utilCourseName($con, $id) {
     return DLgetCourseName($con, $id);
