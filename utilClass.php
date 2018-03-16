@@ -23,6 +23,10 @@ function utilGetAllStudentIDs($con){
   return DLfetchAllStudentIDs($con);
 }
 
+function getStudent($con,$id){
+  return DLgetStudent($con,$id);
+}
+
 // INSTRUCTOR /////////////////////////////////
 function utilInstructorFirst($con, $id) {
     return DLgetInstructorFirst($con, $id);
@@ -42,6 +46,10 @@ function utilInstructorGetPassword($con,$id){
 
 function utilGetAllInstructorIDs($con){
   return DLfetchAllInstructorIDs($con);
+}
+
+function getInstructor($con,$id){
+  return DLgetInstructor($con,$id);
 }
 
 // ADMIN /////////////////////////////////////
