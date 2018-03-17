@@ -8,12 +8,17 @@
      min-height: 620px;
      max-width: 100%;
 }
-@media only screen and (min-width : 1000px){
+@media only screen and (min-width : 1062px){
     #outputContainer{
       position: relative;
       min-height: 620px;
       max-width: 80%;
     }
+}
+td {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: #dddddd;
 }
 #userLogOut{
   z-index: 1;
@@ -114,6 +119,7 @@
      display: block;
      margin: 30px 10px 10px;
 }
+
  .logo-img {
      width: 96px;
      height: 96px;
@@ -123,6 +129,7 @@
      -webkit-border-radius: 50%;
      border-radius: 50%;
 }
+
  #AdmiralSnackbar {
      visibility: hidden;
     /* Hidden by default. Visible on click */
@@ -221,7 +228,7 @@
      background-attachment: fixed !important;
 }
  #columnSetup {
-     padding-top: 30px;
+     padding-top: 10px;
      padding-bottom: 30px;
 }
  .container {

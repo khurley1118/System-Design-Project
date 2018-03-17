@@ -37,7 +37,7 @@
          <div id="columnSetup" class="w3-row-padding">
             <!-- Left Column -->
             <div class="w3-third">
-               <div class="w3-white w3-text-grey w3-card-4">
+               <div id="accordianID" class="w3-white w3-text-grey w3-card-4">
                   <br>
                   <div class="container">
                      <div class="row">
@@ -56,20 +56,6 @@
                                           <tr>
                                              <td>
                                                 <span class="glyphicon glyphicon-pencil text-primary"></span><a href="javascript:landingPage()">News</a>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td>
-                                                <span class="glyphicon glyphicon-file text-info"></span><a href="">Calendar</a>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td>
-                                                <span class="glyphicon glyphicon-flash text-success"></span><a href="">Due Dates</a>
-                                             </td>
-                                          </tr>
-                                          <tr>
-                                             <td>
                                              </td>
                                           </tr>
                                        </table>
@@ -98,7 +84,7 @@
                                                     <li><a href="#">Test prep for test 1<br></a></li>
                                                     <li><a href="#">Recording of Tuesday's class<br></a></li>
                                                     <li><a href="#">Example Recursive function<br></a></li>
-                                                  </ul>
+                                                  </ul> 
                                                 </div>
                                              </td>
                                           </tr>
@@ -253,13 +239,6 @@
                              echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b> " . $file1name . "</b></h5>";
                              echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
                              echo "<br><br><p>" . $file1desc . "</p>";
-                             echo "<hr>";
-                             echo "</div>";
-
-                             echo "<div class='w3-container' id='we-shrink'>";
-                             echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-volume-up'></span><b> " . $file2name . "</b></h5>";
-                             echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
-                             echo "<br><br><p>" . $file2desc . "</p>";
                              echo "<hr>";
                              echo "</div>";
                            ?>

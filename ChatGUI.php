@@ -6,10 +6,11 @@
     </head>
     <body>
 <div class="chat-sidebar" id="chatWindow">
+  <div id="chatTitle">
+    Chat
+  </div>
   <div id="innerDiv">
-    <div id="chatTitle">
-      Chat
-    </div>
+
               <?php
                 $currentUserID = $_SESSION['userID'];
 
@@ -18,7 +19,7 @@
                 $noStudents = true;
                 $noInstructors = true;
                 ?>
-                <h4 class="sidebar-heading">Instructors</h4>
+                <h4 class="sidebar-heading"><p class="glyphicon glyphicon-apple"></p>Instructors</h4>
                 <?php
                 foreach ($instructorIDNums as $instID){
                   if($instID['instructorId'] != $currentUserID){
@@ -37,7 +38,7 @@
                   echo"No Instructors available";
                 }
                 ?>
-                <h4 class="sidebar-heading">Students</h4>
+                <h4 class="sidebar-heading"><p class="glyphicon glyphicon-leaf"></p>Students</h4>
                 <?php
                 foreach ($studentIDnums as $stuID){
                   if($stuID['studentId'] != $currentUserID){
