@@ -47,14 +47,7 @@
       if($avatarPath == ""){
         $avatarPath = "avatars/default.png";
       }
-      if($avatarRedirect == "isset"){
 
-        $_SESSION['avatar'] = "";
-        //echo "<script>alert(\"HERE\")</script>";
-        echo "<script>document.getElementById('accountsLeftMenu').click();</script>";
-        echo "<script>document.getElementById('editAvatarbtn').click();</script>";
-        echo "<script> myFunction(); </script>";
-      }
        ?>
    </head>
    <body class="w3-light-grey">
@@ -193,7 +186,7 @@
                               <div class="panel panel-default">
                                  <div class="panel-heading">
                                     <h4 class="panel-title">
-                                       <a id="accountsLeftMenu" name="accountsLeftMenu" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" id="accountsLeftMenu"><span class="glyphicon glyphicon-user">
                                        </span>Account</a>
                                     </h4>
                                  </div>
@@ -426,6 +419,17 @@
 			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Error, password did not update successfully!';</script>";
 			echo "<script> myFunction(); </script>";
 	   }
+     }
+     if($avatarRedirect == "isset"){
+       $avatarMessage = "";
+       $_SESSION['avatar'] = "";
+       if(isset($_SESSION['avatarMessage'])){
+         $avatarMessage = $_SESSION['avatarMessage'];
+       }
+       echo "<script>document.getElementById('accountsLeftMenu').click();</script>";
+       echo "<script>document.getElementById('editAvatarbtn').click();</script>";
+       echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = '" . $avatarMessage . "'</script>";
+       echo "<script> myFunction(); </script>";
      }
     ?>
    </div>
