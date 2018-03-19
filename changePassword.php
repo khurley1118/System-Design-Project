@@ -16,40 +16,38 @@ $user = $_SESSION['CurrentUser'];
 
 				//get inputted pw
 				$inputtedOldPW = $_POST["oldPW"];
-				echo password_verify($inputtedOldPW, $existingPW);
-				echo $existingPW;
-				echo $inputtedOldPW;
 				//check match
-				// if ($existingPW == $inputtedOldPW) {
-				// 	//user entered correct password, proceed with changePassForm
-				// 	//get user's inputted new pw and confirm pw
-				// 	$newPW = $_POST["newPW"];
-				// 	$confirmNewPW = $_POST["confPW"];
-				// 	//make sure new pass and confirm new pass match
-				// 	if ($newPW == $confirmNewPW) {
-				// 		//passwords match, able to update new password
-				// 		//$success = $user->ChangePassword($con,$newPW);
-				// 		if ($success == 1) {
-				// 			//$_SESSION['passwordChng'] = 1;
-				// 			//$user->setPassword($newPW);
-				// 		}
-				// 		else {
-				// 			//$_SESSION['passwordChng'] = 4;
-				// 		}
-				//
-				// 		//header('Location: index.php');
-				// 	}
-				// 	else {
-				// 		//user's confirm pw doesn't match, display error message
-				// 		//$_SESSION['passwordChng'] = 2;
-				// 		//header('Location: index.php');
-				// 	}
-				// }
-				// else {
-				// 	//user did not enter correct pw, display error message
-				// 	//$_SESSION['passwordChng'] = 3;
-				// 	//header('Location: index.php');
-				// }
+				if (password_verify($inputtedOldPW, $existingPW)) {
+					//user entered correct password, proceed with changePassForm
+					//get user's inputted new pw and confirm pw
+					$newPW = $_POST["newPW"];
+					$confirmNewPW = $_POST["confPW"];
+					//make sure new pass and confirm new pass match
+					if ($newPW == $confirmNewPW) {
+						//passwords match, able to update new password
+						$hashedPassword = password_hash($newPW, PASSWORD_DEFAULT);
+						$success = $user->ChangePassword($con,$hashedPassword);
+						if ($success == 1) {
+							$_SESSION['passwordChng'] = 1;
+							$user->setPassword($newPW);
+						}
+						else {
+							$_SESSION['passwordChng'] = 4;
+						}
+
+						header('Location: index.php');
+					}
+					else {
+						//user's confirm pw doesn't match, display error message
+						$_SESSION['passwordChng'] = 2;
+						header('Location: index.php');
+					}
+				}
+				else {
+					//user did not enter correct pw, display error message
+					$_SESSION['passwordChng'] = 3;
+					header('Location: index.php');
+				}
 			}
 			else if ($userType == "faculty") {
 				//get existing pw
@@ -59,7 +57,7 @@ $user = $_SESSION['CurrentUser'];
 				$inputtedOldPW = $_POST["oldPW"];
 
 				//check match
-				if ($existingPW == $inputtedOldPW) {
+				if (password_verify($inputtedOldPW, $existingPW)) {
 					//user entered correct password, proceed with changePassForm
 					//get user's inputted new pw and confirm pw
 					$newPW = $_POST["newPW"];
@@ -67,7 +65,8 @@ $user = $_SESSION['CurrentUser'];
 					//make sure new pass and confirm new pass match
 					if ($newPW == $confirmNewPW) {
 						//passwords match, able to update new password
-						$success = $user->ChangePassword($con,$newPW);
+						$hashedPassword = password_hash($newPW, PASSWORD_DEFAULT);
+						$success = $user->ChangePassword($con,$hashedPassword);
 						if ($success == 1) {
 							$_SESSION['passwordChng'] = 1;
 							$user->setPassword($newPW);

@@ -31,6 +31,9 @@ function utilGetAvatarStudent($con, $id){
   return DLgetAvatarStudent($con, $id);
 }
 
+function getStudent($con,$id){
+  return DLgetStudent($con,$id);
+}
 // INSTRUCTOR /////////////////////////////////
 function utilInstructorFirst($con, $id) {
     return DLgetInstructorFirst($con, $id);
@@ -58,6 +61,10 @@ function utilSetInstructorAvatar($con, $id, $path){
 
 function utilGetAvatarInstructor($con, $id){
   return DLgetAvatarInstructor($con, $id);
+}
+
+function getInstructor($con,$id){
+  return DLgetInstructor($con,$id);
 }
 
 // ADMIN /////////////////////////////////////

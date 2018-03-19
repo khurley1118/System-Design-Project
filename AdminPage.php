@@ -382,12 +382,17 @@
           }
         else if ($_SESSION['insertAccount'] == 2) {
            $_SESSION['insertAccount'] = 0;
-         echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Your passwords didn't match.';</script>";
+         echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Your passwords don\'t match.';</script>";
          echo "<script> myFunction(); </script>";
         }
         else if ($_SESSION['insertAccount'] == 3) {
            $_SESSION['insertAccount'] = 0;
          echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Error creating account.';</script>";
+         echo "<script> myFunction(); </script>";
+        }
+        else if ($_SESSION['insertAccount'] == 4) {
+           $_SESSION['insertAccount'] = 0;
+         echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'User ID must be numeric.';</script>";
          echo "<script> myFunction(); </script>";
         }
         }
@@ -412,6 +417,11 @@
        else if ($_SESSION['adminResetPassword'] == 4) {
           $_SESSION['adminResetPassword'] = 0;
         echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'The selected ID does not exist for that user type.';</script>";
+        echo "<script> myFunction(); </script>";
+       }
+       else if ($_SESSION['adminResetPassword'] == 5) {
+          $_SESSION['adminResetPassword'] = 0;
+        echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'User ID was not valid.';</script>";
         echo "<script> myFunction(); </script>";
        }
        }
@@ -444,6 +454,13 @@
           echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'No user ID of that type found.';</script>";
           echo "<script> myFunction(); </script>";
         }
+        else if ($_SESSION['editGetUser'] == 3) {
+          echo "<script>document.getElementById('accountsLeftMenu').click();</script>";
+          echo "<script>document.getElementById('editAccountLeftMenu').click();</script>";
+          $_SESSION['editGetUser'] = 0;
+          echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'User ID must be numeric.';</script>";
+          echo "<script> myFunction(); </script>";
+        }
        }
      ?>
      <?php
@@ -471,6 +488,15 @@
        unset($_SESSION['editUser']);
        unset($_SESSION['editUserType']);
        echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Oops, you chose the same names.';</script>";
+       echo "<script> myFunction(); </script>";
+     }
+     else if ($_SESSION['adminUpdateUser'] == 4) {
+       echo "<script>document.getElementById('accountsLeftMenu').click();</script>";
+       echo "<script>document.getElementById('editAccountLeftMenu').click();</script>";
+       $_SESSION['adminUpdateUser'] = 0;
+       unset($_SESSION['editUser']);
+       unset($_SESSION['editUserType']);
+       echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'User ID not valid.';</script>";
        echo "<script> myFunction(); </script>";
      }
      }
