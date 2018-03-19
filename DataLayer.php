@@ -145,6 +145,19 @@ function DLsetAvatarStudent($con, $id, $path){
   return mysqli_query($con, "CALL SP_setAvatarStudent($id, '$path')");
 }
 
+function DLgetAvatarStudent($con, $id){
+  $rs = mysqli_query($con, "CALL SP_getAvatarStudent($id)");
+
+  while ($row = mysqli_fetch_array($rs)) {
+      $path = $row['avatarPath'];
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $path;
+}
+
 //ADMIN
 ///////////////////////////////////////
 function DLgetAdminFirst($con, $id) {
@@ -312,6 +325,17 @@ function DLsetAvatarInstructor($con, $id, $path){
   return mysqli_query($con, "CALL SP_setAvatarInstructor($id, '$path')");
 }
 
+function DLgetAvatarInstructor($con, $id){
+  $rs = mysqli_query($con, "CALL SP_getAvatarInstructor($id)");
+  $path = "";
+  while ($row = mysqli_fetch_array($rs)) {
+      $path = $row['avatarPath'];
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $path;}
 //COURSES
 /////////////////////////////////////
 function DLgetCourseList($con) {

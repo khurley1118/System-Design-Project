@@ -82,24 +82,32 @@ function insTicket(description){
   }); // end ajax call
 }
 
-function uploadAvatar(idNum, path){
-  $.ajax(
-      type: 'POST',
-      url:  'uploadAvatar.php',
-      data: {id : idNum, path : path},
-      cache: false,
-      success: function (data) {
-        // var data = JSON.parse(dataArray);
-        // var name = data[0];
-        // var description = data[1];
-        // var status = data[2];
-        document.getElementById('AdmiralSnackbar').innerHTML = "Avatar uploaded successfully";
-        document.getElementById('avatarFile').innerHTML = "";
-        myFunction();
-      },
-      error: function(xhr, ajaxOptions, thrownError) {
-        alert(xhr.status + "\n" + thrownError);
-        return false;
-      }
-  );
-}
+// function setAvatar(filepath){
+//   alert(filepath);
+//   $.ajax({
+//       type: 'POST',
+//       url:  'uploadAvatar.php',
+//       data: {path : filepath},
+//       cache: false,
+//       success: function (returnData) {
+//         alert(returnData);
+//         var result = JSON.parse(returnData);
+//         if(result == "true"){
+//           document.getElementById('AdmiralSnackbar').innerHTML = "Avatar uploaded successfully";
+//           document.getElementById('avatarFile').innerHTML = "";
+//           document.getElementById('avatarPreview').innerHTML = "filepath";
+//           myFunction();
+//           return true;
+//         }
+//         else{
+//           document.getElementById('AdmiralSnackbar').innerHTML = "Avatar uploaded was unsuccessful";
+//           myFunction();
+//           return false;
+//         }
+//       },
+//       error: function(xhr, ajaxOptions, thrownError) {
+//         alert(xhr.status + "\n" + thrownError);
+//         return false;
+//       }
+//   });
+// }
