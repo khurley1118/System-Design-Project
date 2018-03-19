@@ -64,6 +64,31 @@ function myFunction() {
     }, 3000);
 }
 
+function popSubDir(directory){
+  $.ajax({
+      type: 'POST',
+      url: 'getSubDirs.php',
+      data: {directory : directory},
+      cache: false,
+      success: function (data) {
+        var data = JSON.parse(data);
+        len = data.length;
+        select = document.getElementById('subDir');
+        select.options.length = 0;
+        for (var i = 0; i < len; i++){
+          option = document.createElement('option');
+          option.value = data[i];
+          option.text = data[i];
+          select.add( option );
+        }
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + thrownError);
+          return false;
+      }
+  }); // end ajax call
+}
+
 function insTicket(description){
   $.ajax({
       type: 'POST',

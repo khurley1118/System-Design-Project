@@ -15,7 +15,11 @@
       max-width: 80%;
     }
 }
+span {
+  margin-left: 10px;
+}
 td {
+  margin-left: 5px;
   border-bottom: solid;
   border-width: 1px;
   border-color: #dddddd;

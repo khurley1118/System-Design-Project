@@ -19,15 +19,15 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Tu-Pro Home</title>
-      <script src="js/jquery.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
+
+
       <script src="js/scripts.js"></script>
       <script src="js/Home.js"></script>
       <link rel="stylesheet" type="text/css" href="css/defaultHome.css">
-      <link href="css/bootstrap.min.css" rel="stylesheet">
+
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="css/pageStylings.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    </head>
    <body class="w3-light-grey">
@@ -73,69 +73,32 @@
                                     <div class="panel-body">
                                        <table class="table">
                                          <!-- Needs to be dynamically populated from top level topics-->
-                                          <tr>
-                                             <td>
-                                                <span class="glyphicon glyphicon glyphicon-pushpin"></span>
-                                                <div class="dropdown btn-group">
-                                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                                    JAVA <span class="caret"></span>
-                                                  </a>
-                                                  <ul class="dropdown-menu scrollable-menu" role="menu">
-                                                    <li><a href="#">Test prep for test 1<br></a></li>
-                                                    <li><a href="#">Recording of Tuesday's class<br></a></li>
-                                                    <li><a href="#">Example Recursive function<br></a></li>
-                                                  </ul> 
-                                                </div>
-                                             </td>
-                                          </tr>
-                                          <!-- Keep em seperated -->
-                                          <tr>
-                                             <td>
-                                                <span class="glyphicon glyphicon glyphicon-pushpin"></span>
-                                                <div class="dropdown btn-group">
-                                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                                    PHP <span class="caret"></span>
-                                                  </a>
-                                                  <ul class="dropdown-menu scrollable-menu" role="menu">
-                                                    <li><a href="#">Test prep for test 1<br></a></li>
-                                                    <li><a href="#">Recording of Tuesday's class<br></a></li>
-                                                    <li><a href="#">Example Recursive function<br></a></li>
-                                                  </ul>
-                                                </div>
-                                             </td>
-                                          </tr>
-                                          <!-- Keep em seperated -->
-                                          <tr>
-                                             <td>
-                                                <span class="glyphicon glyphicon glyphicon-pushpin"></span>
-                                                <div class="dropdown btn-group">
-                                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                                    C# <span class="caret"></span>
-                                                  </a>
-                                                  <ul class="dropdown-menu scrollable-menu" role="menu">
-                                                    <li><a href="#">Test prep for test 1<br></a></li>
-                                                    <li><a href="#">Recording of Tuesday's class<br></a></li>
-                                                    <li><a href="#">Example Recursive function<br></a></li>
-                                                  </ul>
-                                                </div>
-                                             </td>
-                                          </tr>
-                                          <!-- Keep em seperated -->
-                                          <tr>
-                                             <td>
-                                                <span class="glyphicon glyphicon glyphicon-pushpin"></span>
-                                                <div class="dropdown btn-group">
-                                                  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-                                                    SQL <span class="caret"></span>
-                                                  </a>
-                                                  <ul class="dropdown-menu scrollable-menu" role="menu">
-                                                    <li><a href="#">Test prep for test 1<br></a></li>
-                                                    <li><a href="#">Recording of Tuesday's class<br></a></li>
-                                                    <li><a href="#">Example Recursive function<br></a></li>
-                                                  </ul>
-                                                </div>
-                                             </td>
-                                          </tr>
+                                         <?php
+                                         $directories = glob("Content/*");
+                                         foreach($directories as $folder){
+                                           $folder = substr($folder, strpos($folder, "/") + 1);
+                                           $subDirs = glob("Content/" . $folder . "/*");
+                                           echo "<tr>
+                                              <td>
+                                                 <span class='glyphicon glyphicon glyphicon-pushpin'></span>
+                                                 <div class='dropdown btn-group'>
+                                                   <a class='btn dropdown-toggle' data-toggle='dropdown' href='#'> $folder
+                                                   <span class='caret'></span>
+                                                   </a>
+                                                   <ul class='dropdown-menu scrollable-menu' role='menu'>";
+                                                    foreach($subDirs as $subFolder){
+                                                      $subFolder = substr($subFolder, strpos($subFolder, '/', strpos($subFolder, '/')+3));
+                                                      $subFolder = str_replace("/", "", $subFolder);
+                                                      echo "<li><a href='#'>$subFolder<br></a></li>";
+                                                    }
+                                                   echo "</ul>
+                                                 </div>
+                                              </td>
+                                           </tr>";
+                                          }
+
+
+                                          ?>
                                           <?php
                                              if ($type == "faculty"){
                                                echo "<tr>
@@ -253,13 +216,21 @@
                                        <center>
                                           <h2>Add a File</h2>
                                        </center>
-                                       <input type="file" class="form-control" placeholder="Username" required autofocus>
-                                       <select class="form-control">
-                                          <option value="CSS">CSS</option>
-                                          <option value="JAVA">JAVA</option>
-                                          <option value="PYTHON">PYTHON NO BUNS HUN</option>
+                                       <input type="file" class="form-control" required autofocus>
+                                       <select class="form-control" id="mainDir" onchange="javascript:popSubDir(mainDir.value)">
+                                         <option>Select a Course</option>
+                                         <?php
+                                           $directories = glob("Content/*");
+                                           foreach($directories as $folder){
+                                             $folder = substr($folder, strpos($folder, "/") + 1);
+                                             echo "<option value='" . $folder . "'>" . $folder . "</option>";
+                                           }
+                                         ?>
                                        </select>
-                                       <textarea type="text" class="form-control" placeholder="Description" required></textarea>
+                                       <select class="form-control" id="subDir">
+
+                                       </select>
+                                       <textarea type="text" class="form-control" id="fileTA" placeholder="Description" required></textarea>
                                        <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                     </form>
                                     <div id="tabs" data-tabs="tabs">
@@ -267,17 +238,21 @@
                                     </div>
                                  </div>
                                  <div class="tab-pane" id="register">
-                                    <form class="form-signin" action="" method="">
+                                    <form class="form-signin" action="createFolder.php" method="POST">
                                        <center>
                                           <h2>Add a Topic</h2>
                                        </center>
-                                       <select class="form-control">
+                                       <select class="form-control" name="mainDirectory">
                                           <option>Select a Parent Topic</option>
-                                          <option value="CSS">CSS</option>
-                                          <option value="JAVA">JAVA</option>
-                                          <option value="PYTHON">PYTHON NO BUNS HUN</option>
+                                          <?php
+                                            $directories = glob("Content/*");
+                                            foreach($directories as $folder){
+                                              $folder = substr($folder, strpos($folder, "/") + 1);
+                                              echo "<option value='" . $folder . "'>" . $folder . "</option>";
+                                            }
+                                          ?>
                                        </select>
-                                       <input type="text" class="form-control" placeholder="Topic Name" required>
+                                       <input type="text" name="folderName" class="form-control" placeholder="Topic Name" required>
                                        <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                     </form>
                                     <div id="tabs" data-tabs="tabs">
@@ -357,6 +332,17 @@
      <div id="AdmiralSnackbar"></div>
      <!-- End Page Container -->
      <?php
+     if (isset($_SESSION['folderAdded'])){
+       if ($_SESSION['folderAdded'] == 1) {
+  		    $_SESSION['folderAdded'] = 0;
+  			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Folder added successfully!';</script>";
+  			echo "<script> myFunction(); </script>";
+      } else if ($_SESSION['folderAdded'] == 2){
+        $_SESSION['folderAdded'] = 0;
+      echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Folder already exists!';</script>";
+      echo "<script> myFunction(); </script>";
+      }
+     }
       if (isset($_SESSION['passwordChng'])){
        if ($_SESSION['passwordChng'] == 1){
 			$_SESSION['passwordChng'] = 0;
