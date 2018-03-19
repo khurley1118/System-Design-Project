@@ -7,6 +7,7 @@ Array.remove = function(array, from, to) {
     return array.push.apply(array, rest);
 };
 
+
 //this variable represents the total number of popups can be displayed according to the viewport width
 var total_popups = 0;
 

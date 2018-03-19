@@ -5,7 +5,11 @@
       <script src="js/chatGUI.js"></script>
     </head>
     <body>
-<div class="chat-sidebar">
+<div class="chat-sidebar" id="chatWindow">
+  <div id="innerDiv">
+    <div id="chatTitle">
+      Chat
+    </div>
               <?php
                 $currentUserID = $_SESSION['userID'];
 
@@ -52,6 +56,7 @@
                   echo"No Students available";
                 }
                 ?>
+              </div>
         </div>
     </body>
 </html>

@@ -313,8 +313,8 @@
                                         }
                                         ?>
                                         </select>
-                                        Submitted By: <input type='text' id='subBy' name='Name' value='Mark Patterson' readonly>
-                                        Status: <input type='text' id='status' name='Name' value='Un-Resolved' readonly>
+                                        Submitted By: <input type='text' id='subBy' name='Name' value='' readonly>
+                                        Status: <input type='text' id='status' name='Name' value='' readonly>
                                         <textarea id='ticketDisplay' type='text' class='form-control' rows='10' cols='50' placeholder='Select a Ticket from the Dropdown'></textarea>
                                         <input type='submit' formaction="javascript:resTicket(ticketSelect.value)" class='btn btn-lg btn-default btn-block' name='action' id='action' value='Set Resolved' />
                                     </form>
