@@ -166,7 +166,7 @@ function DLgetAdminLast($con, $id) {
     return $lastName;
 }
 
-//create instructor object, populate instructor ID, password, first name, last name from db
+//create admin object, populate admin ID, password, first name, last name from db
 function DLgetAdmin($con, $id) {
   $rs = mysqli_query($con, "CALL SP_getAdmin($id)");
   while ($row = mysqli_fetch_array($rs)) {
