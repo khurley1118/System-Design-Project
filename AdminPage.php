@@ -66,10 +66,6 @@
                                                 <span class="glyphicon glyphicon-remove"></span><a href="javascript:removeCourse()">Remove Course</a>
                                              </td>
                                           </tr>
-                                          <tr>
-                                             <td>
-                                             </td>
-                                          </tr>
                                        </table>
                                     </div>
                                  </div>
