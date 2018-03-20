@@ -66,6 +66,10 @@
                                                 <span class="glyphicon glyphicon-remove"></span><a href="javascript:removeCourse()">Remove Course</a>
                                              </td>
                                           </tr>
+                                          <tr>
+                                             <td>
+                                             </td>
+                                          </tr>
                                        </table>
                                     </div>
                                  </div>
@@ -365,6 +369,11 @@
     	   else if ($_SESSION['insertCourse'] == 2) {
     		    $_SESSION['insertCourse'] = 0;
     			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Error creating course.';</script>";
+    			echo "<script> myFunction(); </script>";
+    	   }
+         else if ($_SESSION['insertCourse'] == 3) {
+    		    $_SESSION['insertCourse'] = 0;
+    			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'That course code already exists.';</script>";
     			echo "<script> myFunction(); </script>";
     	   }
          }

@@ -373,7 +373,12 @@ function DLgetCourseName($con, $courseID) {
     while (mysqli_more_results($con)) {
         mysqli_next_result($con);
     }
-    return $course;
+    if (isset($course)) {
+      return $course;
+    }
+    else {
+      return null;
+    }
 }
 
 function DLgetFolders($con, $courseID){
