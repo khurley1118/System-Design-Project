@@ -171,7 +171,7 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <form class="form-signin" action="" method="">
+                                   <form class="form-signin" action="adminEditCourse.php" method="POST">
                                       <center>
                                          <h2>Edit Course</h2>
                                       </center>
