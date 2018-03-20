@@ -5,7 +5,6 @@ function changePassword() {
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
-  document.getElementById('we-shrink').style.height = "0px";
 }
 function landingPage() {
   document.getElementById('landingPage').setAttribute("class", "showDiv");
@@ -14,7 +13,6 @@ function landingPage() {
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "";
-  document.getElementById('we-shrink').style.height = "";
 }
 function addContent() {
   document.getElementById('addContent').setAttribute("class", "showDiv");
@@ -23,7 +21,6 @@ function addContent() {
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
-  document.getElementById('we-shrink').style.height = "0px";
 }
 function uploadAvatar() {
   document.getElementById('uploadAvatar').setAttribute("class", "showDiv");
@@ -32,7 +29,6 @@ function uploadAvatar() {
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
-  document.getElementById('we-shrink').style.height = "0px";
 }
 function createTicket(){
   document.getElementById('createTicket').setAttribute("class", "showDiv");
@@ -41,7 +37,6 @@ function createTicket(){
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
-  document.getElementById('we-shrink').style.height = "0px";
 }
 function logOut(){
   if (confirm('Are you sure you want to log out?')) {
@@ -107,32 +102,4 @@ function insTicket(description){
   }); // end ajax call
 }
 
-// function setAvatar(filepath){
-//   alert(filepath);
-//   $.ajax({
-//       type: 'POST',
-//       url:  'uploadAvatar.php',
-//       data: {path : filepath},
-//       cache: false,
-//       success: function (returnData) {
-//         alert(returnData);
-//         var result = JSON.parse(returnData);
-//         if(result == "true"){
-//           document.getElementById('AdmiralSnackbar').innerHTML = "Avatar uploaded successfully";
-//           document.getElementById('avatarFile').innerHTML = "";
-//           document.getElementById('avatarPreview').innerHTML = "filepath";
-//           myFunction();
-//           return true;
-//         }
-//         else{
-//           document.getElementById('AdmiralSnackbar').innerHTML = "Avatar uploaded was unsuccessful";
-//           myFunction();
-//           return false;
-//         }
-//       },
-//       error: function(xhr, ajaxOptions, thrownError) {
-//         alert(xhr.status + "\n" + thrownError);
-//         return false;
-//       }
-//   });
-// }
+$(document).ready(function() { landingPage(); });

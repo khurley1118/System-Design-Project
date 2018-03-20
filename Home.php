@@ -66,8 +66,8 @@
                               <div class="panel panel-default">
                                  <div class="panel-heading">
                                     <h4 class="panel-title">
-                                       <span class='glyphicon glyphicon-list'></span><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                       Course Info</a>
+                                       <span class='glyphicon glyphicon-th-large'></span><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                       TuPro</a>
                                     </h4>
                                  </div>
                                  <div id="collapseOne" class="panel-collapse collapse in">
@@ -75,7 +75,7 @@
                                        <table class="table">
                                           <tr>
                                              <td>
-                                                <span class="glyphicon glyphicon-pencil text-primary"></span><a href="javascript:landingPage()">News</a>
+                                                <span class="glyphicon glyphicon-home"></span><a href="javascript:landingPage()">Home</a>
                                              </td>
                                           </tr>
                                        </table>
@@ -186,46 +186,22 @@
             <!-- Right Column -->
             <div class="w3-twothird">
                <div id="outputContainer" class="w3-container w3-card w3-white w3-margin-bottom">
-                  <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i><?php if (isset($courseName)) {echo $courseName;} else { echo 'Instructor';} ?></h2>
+                <div id='titleText'>
+                  <p><i class="fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i><?php echo 'TuPro - Tutorial Professors';?></p>
+                </div>
                   <div id=swapDiv>
                      <div class="row showDiv" id="landingPage">
-                        <?php
-                           //Needs to be looped once object available / content available just dummy outputs
-                           $file1name = "Practice-Exam";
-                           $file1desc = "This text file is preparation for the exam coming next week. It is a practice Exam please complete this prior to the exam.";
-                           $file2name = "Lecture Recording";
-                           $file2desc = "This is a recording of the lecture that took place on Feb/16/2018 Please listen again if you are unsure.";
-                           $file3name = "Example Video";
-                           $file3desc = "This is an example video for some of the concepts that we went over in class yesterday. Please watch this if you have questions.";
-                             echo "<div class='w3-container' id='we-shrink'>";
-                             echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b> " . $file1name . "</b></h5>";
-                             echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
-                             echo "<br><br><p>" . $file1desc . "</p>";
-                             echo "<hr>";
-                             echo "</div>";
-
-                             echo "<div class='w3-container' id='we-shrink'>";
-                             echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b> " . $file1name . "</b></h5>";
-                             echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
-                             echo "<br><br><p>" . $file1desc . "</p>";
-                             echo "<hr>";
-                             echo "</div>";
-
-                             echo "<div class='w3-container' id='we-shrink'>";
-                             echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b> " . $file1name . "</b></h5>";
-                             echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
-                             echo "<br><br><p>" . $file1desc . "</p>";
-                             echo "<hr>";
-                             echo "</div>";
-
-                             echo "<div class='w3-container' id='we-shrink'>";
-                             echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b> " . $file1name . "</b></h5>";
-                             echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
-                             echo "<br><br><p>" . $file1desc . "</p>";
-                             echo "<hr>";
-                             echo "</div>";
-                           ?>
+                       <div id='introContent'>
+                       <img id='introLogo' src='Resources/logo.png'></img>
+                       <h2 id='introText'>
+                         Welcome to TuPro!
+                       </h2>
+                        <p id='introText'>Tu-Pro is a tutorial site for the NBCC network, dedicated to extending
+                            learning beyond the classroom. We offer extra tutorials and and tutoring
+                            outside of the classroom, just login with your Student ID to find your classes,
+                            and continue learning!</p>
                      </div>
+                   </div>
                      <!-- Keep em seperated -->
                      <div class="row hideDiv" id="addContent">
                         <div id="formContainer">
@@ -291,7 +267,7 @@
                                  <div class="tab-pane active" id="login">
                                     <form class="form-signin" action="uploadAvatar.php" method="POST" enctype="multipart/form-data">
                                        <center>
-                                         <img id="avatarPreview" height="150" width="200" src="<?php echo $avatarPath; ?>"/>
+                                         <img id="avatarPreview" height="200" width="200" src="<?php echo $avatarPath; ?>"/>
                                           <h2>Upload an Avatar</h2>
                                        </center>
                                        <input type="file" id="avatarFile" name="avatarFile" class="form-control" placeholder="Username" required autofocus>
