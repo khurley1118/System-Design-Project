@@ -5,7 +5,6 @@ function changePassword() {
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
-  document.getElementById('we-shrink').style.height = "0px";
 }
 function landingPage() {
   document.getElementById('landingPage').setAttribute("class", "showDiv");
@@ -14,7 +13,6 @@ function landingPage() {
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "";
-  document.getElementById('we-shrink').style.height = "";
 }
 function addContent() {
   document.getElementById('addContent').setAttribute("class", "showDiv");
@@ -23,7 +21,6 @@ function addContent() {
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
-  document.getElementById('we-shrink').style.height = "0px";
 }
 function uploadAvatar() {
   document.getElementById('uploadAvatar').setAttribute("class", "showDiv");
@@ -32,7 +29,6 @@ function uploadAvatar() {
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
-  document.getElementById('we-shrink').style.height = "0px";
 }
 function createTicket(){
   document.getElementById('createTicket').setAttribute("class", "showDiv");
@@ -41,7 +37,6 @@ function createTicket(){
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
-  document.getElementById('we-shrink').style.height = "0px";
 }
 function logOut(){
   if (confirm('Are you sure you want to log out?')) {
@@ -106,3 +101,5 @@ function insTicket(description){
       }
   }); // end ajax call
 }
+
+(document).ready(function() { landingPage(); });

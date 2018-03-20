@@ -51,35 +51,7 @@ $courselist = $user->getCourses();
           </div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <?php
-                $name = $full;
-                echo "<li>
-                <li><div class='dropdown'>
-                <button class='btn btn-custom dropdown-toggle' type='button' data-toggle='dropdown'>Courses
-                <span class='caret'></span></button>
-                <ul class='dropdown-menu'>";
-                // if user isn't enrolled in anycourses display no courses, else print to a dropdown list
-                if (!isset($courselist)){
-                  echo "<li><a data-toggle='collapse' data-target='.navbar-collapse' href='#'>No courses</a></li>";
-                } else {
-
-                $courseCounter = 0;
-                if (isset($courseList)){
-                foreach ($courselist as $course){
-                  $courseName = utilCourseName($con, $course);
-                  echo "<li><a href='$course'>" . $course . " " . $courseName . "</a></li>";
-                  $courseCounter++;
-                }
-              } else {
-                echo "<li><a>No Course Found</a></li>";
-              }
-              }
-                echo "</ul>"
-                ?>
-            </li>
-          </ul>
+          
         </div>
       </div>
 

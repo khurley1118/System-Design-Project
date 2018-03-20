@@ -77,10 +77,10 @@ if (isset($_SESSION['userID'])) {
                                     }); // end ajax call
 																		return false;
                                 } else {
-                                    $("#pwerror").html("Required Field");
+                                    $("#pwerror").html("");
                                 }
                             } else {
-                                $("#unerror").html("Required Field");
+                                $("#unerror").html("");
                             }
                         });
                     }
@@ -133,10 +133,10 @@ if (isset($_SESSION['userID'])) {
                                     }); // end ajax call
 																		return false;
                                 } else {
-                                    $("#pwerror").html("Required Field");
+                                    $("#pwerror").html("");
                                 }
                             } else {
-                                $("#unerror").html("Required Field");
+                                $("#unerror").html("");
                             }
                         }); //end of faculty submit
                     } //end of else
