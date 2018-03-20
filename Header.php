@@ -45,10 +45,11 @@ $courselist = $user->getCourses();
             $id = $_SESSION['userID'];
             if($_SESSION['userType'] == "faculty") {
               $Avatar = utilGetAvatarInstructor($con, $id);
-            } else {
+              echo "<div id='Avatar'><img id='AvatarImg' src='$Avatar' width='40' height='40'/></div>";
+            } elseif ($_SESSION['userType'] == "student"){
               $Avatar = utilGetAvatarStudent($con, $id);
+              echo "<div id='Avatar'><img id='AvatarImg' src='$Avatar' width='40' height='40'/></div>";
             }
-            echo "<div id='Avatar'><img id='AvatarImg' src='$Avatar' width='40' height='40'/></div>"
             ?>
           </div>
           <div id="nameDisplay">

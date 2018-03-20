@@ -30,6 +30,12 @@ if (is_null(utilCourseName($con,$courseCode))) {
       mkdir('Content/' . $courseDescription, 0777, true);
       if (!file_exists('Content/' . $course->getDescription() . '/News')) { //make news folder
         mkdir('Content/' . $courseDescription . '/News', 0777, true);
+        if (!file_exists('Content/' . $course->getDescription() . '/News/news.txt')) {
+          $myfile = fopen('Content/' . $course->getDescription() . '/News/news.txt', "w") or die("Unable to open file!");
+          $txt = "There is currently no news for this course.";
+          fwrite($myfile, $txt);
+          fclose($myfile);
+        }
       }
     }
     unset($course);
