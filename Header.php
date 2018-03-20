@@ -37,12 +37,8 @@ $courselist = $user->getCourses();
     <nav id="nav" class="navbar navbar-default navbar-fixed-top">
       <div id="nav" class="container">
         <div id="nav" class="navbar-header">
-          <a class="navbar-brand" href="index.php"><img src="Resources/nbccLogo.png" height="30" width="170"/></a>
-          <div id="nameDisplay">
-            <?php
-              echo $first . " " . $last . " - " . ucfirst($type);
-            ?>
-          </div>
+          <a class="navbar-brand" href="index.php"><img id='logoImg'src="Resources/nbccLogo.png" height="30" width="170"/></a>
+
           <div id='avatar'>
             <?php
             $id = $_SESSION['userID'];
@@ -51,9 +47,15 @@ $courselist = $user->getCourses();
             } else {
               $Avatar = utilGetAvatarStudent($con, $id);
             }
-            echo "<img src='$Avatar'/>"
+            echo "<div id='Avatar'><img id='AvatarImg' src='$Avatar' width='40' height='40'/></div>"
             ?>
           </div>
+          <div id="nameDisplay">
+            <?php
+              echo $first . " " . $last . " - " . ucfirst($type);
+            ?>
+          </div>
+
         </div>
       </div>
 
