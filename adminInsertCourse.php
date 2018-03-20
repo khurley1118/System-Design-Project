@@ -26,8 +26,11 @@ if (is_null(utilCourseName($con,$courseCode))) {
     //insert was successful, create course folder, destruct object, redirect to AdminPage
     $_SESSION['insertCourse'] = 1;
     //note: below uses description as folder name, as description is really more of a title
-    if (!file_exists('Content/' . $course->getDescription())) { //should this have an else condition?
-    mkdir('Content/' . $courseDescription, 0777, true);
+    if (!file_exists('Content/' . $course->getDescription())) { //make course folder
+      mkdir('Content/' . $courseDescription, 0777, true);
+      if (!file_exists('Content/' . $course->getDescription() . '/News')) { //make news folder
+        mkdir('Content/' . $courseDescription . '/News', 0777, true);
+      }
     }
     unset($course);
   }

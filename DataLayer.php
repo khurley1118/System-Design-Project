@@ -295,6 +295,24 @@ function DLgetInstructor($con, $id) {
   }
 }
 
+//get an array of all of the instructors as objects
+function DLgetAllInstructors($con){
+  $instructors = array();
+  $rs = mysqli_query($con, "CALL SP_fetchAllInstructors");
+  if ($rs != false) {
+    $counter = 0;
+    while ($row = mysqli_fetch_array($rs)) {
+      $instructor = new Instructor();
+      $instructor->setUserID($row['instructorId']);
+      $instructor->setFirstName($row['firstName']);
+      $instructor->setLastName($row['lastName']);
+      $instructors[$counter] = $instructor;
+      $counter++;
+    }
+  }
+  return $instructors;
+}
+
 //change instructor's password
 function DLinstructorPasswordChange($con, $id, $newPass) {
 	return mysqli_query($con, "CALL SP_changeInstructorPassword($id, '$newPass')");
@@ -318,6 +336,10 @@ function DLfetchAllInstructorIDs($con){
       mysqli_next_result($con);
   }
   return $list;
+}
+
+function DLinstructorUpdateNames($con,$id,$firstName,$lastName) {
+	return mysqli_query($con, "CALL SP_updateInstructorNames($id, '$firstName','$lastName')");
 }
 
 //set Instructor Avatar
@@ -356,8 +378,8 @@ function DLinsertCourse($con, $courseCode, $courseDescription) {
   return mysqli_query($con, "CALL SP_createCourse($courseCode, '$courseDescription')");
 }
 
-function DLupdateCourse($courseID) {
-
+function DLupdateCourse($con,$courseCode,$description,$isActive) {
+  return mysqli_query($con, "CALL SP_updateCourse($courseCode, '$description',$isActive)");
 }
 
 function DLremoveCourse($courseID) {
@@ -379,6 +401,26 @@ function DLgetCourseName($con, $courseID) {
     else {
       return null;
     }
+}
+
+function DLgetCourseObject($con,$id) {
+  $rs = mysqli_query($con, "CALL SP_getCourse($id)");
+  while ($row = mysqli_fetch_array($rs)) {
+      $course = new Course();
+      $course->setCourseCode($row['courseCode']);
+      $course->setDescription($row['description']);
+      $course->setIsActive($row['active']);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (isset($course)) {
+    return $course;
+  }
+  else {
+    return null;
+  }
 }
 
 function DLgetFolders($con, $courseID){

@@ -67,6 +67,10 @@ function getInstructor($con,$id){
   return DLgetInstructor($con,$id);
 }
 
+function getAllInstructors($con){
+  return DLgetAllInstructors($con);
+}
+
 // ADMIN /////////////////////////////////////
 function utilAdminFirst($con, $id) {
     return DLgetAdminFirst($con, $id);
@@ -83,6 +87,10 @@ function getAdmin($con,$id){
 // COURSES ///////////////////////////////
 function utilCourseName($con, $id) {
     return DLgetCourseName($con, $id);
+}
+
+function GetCourseObject($con,$id){
+  return DLgetCourseObject($con,$id);
 }
 
 function utilGetFolders($con, $courseid){

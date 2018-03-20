@@ -9,38 +9,41 @@ $id = $_SESSION['userID'];
 $userType = $_SESSION['userType'];
 $user = $_SESSION['CurrentUser'];
 
-//get course code and description admin posted from AdminPage form
-$courseCode = $_POST["courseCode"];
-$courseDescription = $_POST["courseDescription"];
+//get inputs from edit course form
+$inDescription = $_POST["getCourseDesc"];
+$inInstructor = $_POST["editInstructor"]; //will be used when assigning to course... TODO
+$inActiveStatus = $_POST["editActive"]; //note: all this does currently is change active/inactive in the db.
 
-//make sure you can't insert a course if a course with that course code already exists
-if (is_null(utilCourseName($con,$courseCode))) {
-  //create course object and set attributes
-  $course = new Course();
-  $course->setCourseCode($courseCode);
-  $course->setDescription($courseDescription);
-
-  //call insert function
-  $success = $course->insertCourse($con);
-  if ($success) {
-    //insert was successful, create course folder, destruct object, redirect to AdminPage
-    $_SESSION['insertCourse'] = 1;
-    //note: below uses description as folder name, as description is really more of a title
-    if (!file_exists('Content/' . $course->getDescription())) { //should this have an else condition?
-    mkdir('Content/' . $courseDescription, 0777, true);
+//check if the inputted values are the same as current DB values.
+//if they are, no need to change, give message saying no change
+//if they're different, go ahead and update.
+$success = false;
+if (isset($_SESSION['editCourse'])) {
+  //proceed
+  if (!($_SESSION['editCourse']->getDescription() == $inDescription && $_SESSION['editCourse']->getIsActive() == $inActiveStatus)) { //note: once assigning is worked out, also need to check that instructor is different too
+    //inputs are different from existing values, need to update course object and DB
+    $_SESSION['editCourse']->setDescription($inDescription);
+    $_SESSION['editCourse']->setIsActive($inActiveStatus);
+    $success = $_SESSION['editCourse']->UpdateCourse($con);
+    if ($success) {
+      //course has been updated. display success message.
+      $_SESSION['adminEditCourse'] = 1;
     }
-    unset($course);
+    else {
+      //error updating course. display error message.
+      $_SESSION['adminEditCourse'] = 2;
+    }
   }
   else {
-    //insert was not sucessful, display error message
-    $_SESSION['insertCourse'] = 2;
-    unset($course);
+    //inputted values were the same as the existing values, no need to update
+    $_SESSION['adminEditCourse'] = 3;
   }
 }
 else {
-  //course with that code already exists.
-  $_SESSION['insertCourse'] = 3;
+  //no valid course gotten from get course form
+  $_SESSION['adminEditCourse'] = 4;
 }
+
 
 header('Location: AdminPage.php');
 ?>

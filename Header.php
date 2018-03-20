@@ -4,6 +4,7 @@ require("utilClass.php");
 require("StudentClass.php");
 require("AdminClass.php");
 require("InstructorClass.php");
+require("courseClass.php");
 session_start();
 
 $type = $_SESSION['userType'];

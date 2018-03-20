@@ -11,8 +11,8 @@ class Course{
 	function setDescription($desc){
 		$this->description = $desc;
 	}
-	function setIsActive($coursid){
-		$this->courseCode = $courseid;
+	function setIsActive($active){
+		$this->isActive = $active;
 	}
 
 	//gets
@@ -36,6 +36,11 @@ class Course{
 
 	function insertCourse($con){
 		return DLinsertCourse($con, $this->getCourseCode(), $this->getDescription());
+	}
+
+	//calls DL function to update course description for now
+  function UpdateCourse($con) {
+		return DLupdateCourse($con, $this->getCourseCode(), $this->getDescription(), $this->getIsActive());
 	}
 }
 ?>

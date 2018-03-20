@@ -45,7 +45,7 @@
                               <div class="panel panel-default">
                                  <div class="panel-heading">
                                     <h4 class="panel-title">
-                                       <span class='glyphicon glyphicon-list'></span><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Courses</a>
+                                       <span class='glyphicon glyphicon-list'></span><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" id="coursesLeftMenu">Courses</a>
                                     </h4>
                                  </div>
                                  <div id="collapseOne" class="panel-collapse collapse in">
@@ -58,7 +58,7 @@
                                           </tr>
                                           <tr>
                                              <td>
-                                                <span class="glyphicon glyphicon-wrench"></span><a href="javascript:editCourse()">Edit Course</a>
+                                                <span class="glyphicon glyphicon-wrench"></span><a href="javascript:editCourse()" id="editCourseLeftMenu">Edit Course</a>
                                              </td>
                                           </tr>
                                           <tr>
@@ -171,16 +171,32 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
+                                   <form class="form-signin" action="adminGetCourse.php" method="POST">
+                                      <center>
+                                         <h2>Get Course</h2>
+                                      </center>
+                                      <input id="getCourseCode" name="getCourseCode" type="text" class="form-control" placeholder="Course Code" required>
+                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Get Course" />
+                                    </form>
+                                    <br>
                                    <form class="form-signin" action="adminEditCourse.php" method="POST">
                                       <center>
                                          <h2>Edit Course</h2>
                                       </center>
-                                      <input type="text" class="form-control" placeholder="Course Code" required autofocus>
-                                      <input type="text" class="form-control" placeholder="Description" required>
-                                      <select class="form-control">
-                                         <option value="CSS">Bruce Banner McClary</option>
-                                         <option value="JAVA">Paul TypeOThing Richard</option>
-                                         <option value="PYTHON">Karen TheMom Campbell</option>
+                                      <input type="text" class="form-control" id="getCourseDesc" name="getCourseDesc" placeholder="Description" required>
+                                      <select class="form-control" id="editInstructor" name="editInstructor">
+                                         <option value="1" selected="selected">Assign an Instructor</option>
+                                         <?php
+                                            //populate dropdown with list of instructors
+                                            $instructors = getAllInstructors($con);
+                                            foreach ($instructors as $instructor) {
+                                              echo "<option value='" . $instructor->getUserId() . "'>" . $instructor->getUserId() . ' ' . $instructor->getFirstName() . ' ' . $instructor->getLastName() . "</option>";
+                                            }
+                                         ?>
+                                      </select>
+                                      <select class="form-control" id="editActive" name="editActive">
+                                         <option value="1" selected="selected">Active</option>
+                                         <option value="0">Inactive</option>
                                       </select>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                    </form>
@@ -248,7 +264,7 @@
                                       <center>
                                          <h2>Edit Account</h2>
                                       </center>
-                                      <input id="getUserID" name="getUserID" type="text" class="form-control" placeholder="#UserID" required>
+                                      <input id="getUserID" name="getUserID" type="text" class="form-control" placeholder="UserID" required>
                                       <select class="form-control" id="userType" name="userType">
                                          <option value="1">Student</option>
                                          <option value="2">Instructor</option>
@@ -506,6 +522,60 @@
      }
      }
     ?>
+    <?php
+     if (isset($_SESSION['editGetCourse'])){
+      if ($_SESSION['editGetCourse'] == 1){ //success, populate fields
+        echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
+        echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
+        echo "<script>document.getElementById('getCourseCode').value = '" . $_SESSION['editCourse']->getCourseCode() . "';</script>";
+        echo "<script>document.getElementById('editInstructor').selectedIndex = ' ". '0' ." ';</script>";
+        echo "<script>document.getElementById('getCourseDesc').value = '". $_SESSION['editCourse']->getDescription() ."';</script>";
+        $_SESSION['editGetCourse'] = 0;
+        // $_SESSION['editCourse'] = 0;
+      }
+      else if ($_SESSION['editGetCourse'] == 2) { //no course exists with that course id
+        echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
+        echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
+        $_SESSION['editGetCourse'] = 0;
+        echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'No course with that course code found.';</script>";
+        echo "<script> myFunction(); </script>";
+      }
+     }
+   ?>
+   <?php
+    if (isset($_SESSION['adminEditCourse'])){
+     if ($_SESSION['adminEditCourse'] == 1){
+       $_SESSION['adminEditCourse'] = 0;
+       unset($_SESSION['editCourse']);
+       echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course has been updated successfully!';</script>";
+       echo "<script> myFunction(); </script>";
+     }
+     else if ($_SESSION['adminEditCourse'] == 2) {
+      echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
+      echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
+      $_SESSION['adminEditCourse'] = 0;
+      unset($_SESSION['editCourse']);
+      echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course was not updated successfully.';</script>";
+      echo "<script> myFunction(); </script>";
+      }
+   else if ($_SESSION['adminEditCourse'] == 3) {
+     echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
+     echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
+     $_SESSION['adminEditCourse'] = 0;
+     unset($_SESSION['editCourse']);
+     echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Oops, you chose the same course information.';</script>";
+     echo "<script> myFunction(); </script>";
+   }
+   else if ($_SESSION['adminEditCourse'] == 4) {
+     echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
+     echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
+     $_SESSION['adminEditCourse'] = 0;
+     unset($_SESSION['editCourse']);
+     echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course code not valid.';</script>";
+     echo "<script> myFunction(); </script>";
+   }
+   }
+  ?>
       </div>
    </body>
 </html>
