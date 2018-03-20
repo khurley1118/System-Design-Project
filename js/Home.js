@@ -102,4 +102,4 @@ function insTicket(description){
   }); // end ajax call
 }
 
-(document).ready(function() { landingPage(); });
+$(document).ready(function() { landingPage(); });

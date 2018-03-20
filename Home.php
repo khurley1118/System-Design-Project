@@ -267,7 +267,7 @@
                                  <div class="tab-pane active" id="login">
                                     <form class="form-signin" action="uploadAvatar.php" method="POST" enctype="multipart/form-data">
                                        <center>
-                                         <img id="avatarPreview" height="150" width="200" src="<?php echo $avatarPath; ?>"/>
+                                         <img id="avatarPreview" height="200" width="200" src="<?php echo $avatarPath; ?>"/>
                                           <h2>Upload an Avatar</h2>
                                        </center>
                                        <input type="file" id="avatarFile" name="avatarFile" class="form-control" placeholder="Username" required autofocus>

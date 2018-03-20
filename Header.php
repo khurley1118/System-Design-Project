@@ -37,21 +37,23 @@ $courselist = $user->getCourses();
     <nav id="nav" class="navbar navbar-default navbar-fixed-top">
       <div id="nav" class="container">
         <div id="nav" class="navbar-header">
-          <button id="nav" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
           <a class="navbar-brand" href="index.php"><img src="Resources/nbccLogo.png" height="30" width="170"/></a>
           <div id="nameDisplay">
             <?php
               echo $first . " " . $last . " - " . ucfirst($type);
             ?>
           </div>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          
+          <div id='avatar'>
+            <?php
+            $id = $_SESSION['userID'];
+            if($_SESSION['userType'] == "faculty") {
+              $Avatar = utilGetAvatarInstructor($con, $id);
+            } else {
+              $Avatar = utilGetAvatarStudent($con, $id);
+            }
+            echo "<img src='$Avatar'/>"
+            ?>
+          </div>
         </div>
       </div>
 

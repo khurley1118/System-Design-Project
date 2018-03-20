@@ -31,7 +31,7 @@
      min-height: 620px;
      max-width: 100%;
 }
-@media only screen and (min-width : 1062px){
+@media only screen and (min-width : 1085px){
     #outputContainer{
       position: relative;
       min-height: 620px;
@@ -297,6 +297,7 @@ td {
      width: 125px;
      background-color: #00293a;
 }
+
  #pageContent {
      max-width: 80%;
      height: 100%;
@@ -355,6 +356,10 @@ td {
  #titleText {
      position: relative;
      top: 10px;
+}
+.sidebar-heading {
+  position: relative;
+  padding-right: 20px;
 }
  #sideBarContent {
      position: relative;
