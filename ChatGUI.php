@@ -26,10 +26,11 @@
                     $noInstructors = false;
                     $instructorName = utilInstructorFirst($con, $instID['instructorId']) . " " . utilInstructorLast($con, $instID['instructorId']);
                     $instructorID = $instID['instructorId'];
+                    $instructorAvatar = utilGetAvatarInstructor($con, $instructorID);
 
                     $element = '<div class="sidebar-name">';
                     $element = $element . '<a href="javascript:register_popup(\'' . $instructorID . '\',\'' . $instructorName . '\' );">';
-                    $element = $element . '<img width="30" height="30" src="Resources/th.jpeg" />';
+                    $element = $element . '<img width="30" height="30" src="' . $instructorAvatar . '" />';
                     $element = $element . '<span> ' . $instructorName . '</span></a></div>';
                     echo $element;
                   }
@@ -45,10 +46,11 @@
                     $noStudents = false;
                     $studentName = utilStudentFirst($con, $stuID['studentId']) . " " . utilStudentLast($con, $stuID['studentId']);
                     $studentID = $stuID['studentId'];
+                    $studentAvatar = utilGetAvatarStudent($con, $studentID);
 
                     $element = '<div class="sidebar-name">';
                     $element = $element . '<a href="javascript:register_popup(\'' . $studentID . '\',\'' . $studentName . '\' );">';
-                    $element = $element . '<img width="30" height="30" src="Resources/th.jpeg" />';
+                    $element = $element . '<img width="30" height="30" src="' . $studentAvatar . '" />';
                     $element = $element . '<span> ' . $studentName . '</span></a></div>';
                     echo $element;
                   }

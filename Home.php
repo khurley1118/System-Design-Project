@@ -13,7 +13,8 @@
    $id = $_SESSION['userID'];
    $userType = $_SESSION['userType'];
    $user = $_SESSION['CurrentUser'];
-   ?>
+
+      ?>
 <html lang="en">
    <head>
       <meta charset="utf-8">
@@ -29,6 +30,25 @@
       <link rel="stylesheet" href="css/pageStylings.css">
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <?php
+      $avatarRedirect = "";
+      if(isset($_SESSION['avatar'])){
+        $avatarRedirect = $_SESSION['avatar'];
+      }
+      $avatarPath = "avatars/default.png";
+
+      if($userType == "student"){
+        $avatarPath = utilGetAvatarStudent($con, $id);
+      }
+      else{
+        $avatarPath = utilGetAvatarInstructor($con, $id);
+      }
+      if($avatarPath == ""){
+        $avatarPath = "avatars/default.png";
+      }
+
+       ?>
    </head>
    <body class="w3-light-grey">
       <!-- Page Container -->
@@ -115,7 +135,7 @@
                               <div class="panel panel-default">
                                  <div class="panel-heading">
                                     <h4 class="panel-title">
-                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">
+                                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" id="accountsLeftMenu"><span class="glyphicon glyphicon-user">
                                        </span>Account</a>
                                     </h4>
                                  </div>
@@ -129,7 +149,7 @@
                                           </tr>
                                           <tr>
                                              <td>
-                                                <span id="changePasswordBtn" class="glyphicon glyphicon-picture"></span><a href="javascript:uploadAvatar()">Edit Avatar</a>
+                                                <span id="uploadAvatarBtn" class="glyphicon glyphicon-picture"></span><a id="editAvatarbtn" href="javascript:uploadAvatar()">Edit Avatar</a>
                                              </td>
                                           </tr>
                                        </table>
@@ -245,14 +265,14 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                    <form class="form-signin" action="" method="">
+                                    <form class="form-signin" action="uploadAvatar.php" method="POST" enctype="multipart/form-data">
                                        <center>
-                                         <img id="avatarPreview" height="150" width="200" src="/Resources/TuPro2.png"/>
+                                         <img id="avatarPreview" height="150" width="200" src="<?php echo $avatarPath; ?>"/>
                                           <h2>Upload an Avatar</h2>
                                        </center>
-                                       <input type="file" class="form-control" placeholder="Username" required autofocus>
-                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
-                                    </form>
+                                       <input type="file" id="avatarFile" name="avatarFile" class="form-control" placeholder="Username" required autofocus>
+                                       <input type="submit" name="setAvatar" class="btn btn-lg btn-default btn-block" value="Submit" />
+                                     </form>
                                  </div>
                               </div>
                            </div>
@@ -340,6 +360,17 @@
 			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Error, password did not update successfully!';</script>";
 			echo "<script> myFunction(); </script>";
 	   }
+     }
+     if($avatarRedirect == "isset"){
+       $avatarMessage = "";
+       $_SESSION['avatar'] = "";
+       if(isset($_SESSION['avatarMessage'])){
+         $avatarMessage = $_SESSION['avatarMessage'];
+       }
+       echo "<script>document.getElementById('accountsLeftMenu').click();</script>";
+       echo "<script>document.getElementById('editAvatarbtn').click();</script>";
+       echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = '" . $avatarMessage . "'</script>";
+       echo "<script> myFunction(); </script>";
      }
     ?>
    </div>

@@ -140,6 +140,24 @@ function DLstudentUpdateNames($con,$id,$firstName,$lastName) {
 	return mysqli_query($con, "CALL SP_updateStudentNames($id, '$firstName','$lastName')");
 }
 
+//setStudentsAvatar
+function DLsetAvatarStudent($con, $id, $path){
+  return mysqli_query($con, "CALL SP_setAvatarStudent($id, '$path')");
+}
+
+function DLgetAvatarStudent($con, $id){
+  $rs = mysqli_query($con, "CALL SP_getAvatarStudent($id)");
+
+  while ($row = mysqli_fetch_array($rs)) {
+      $path = $row['avatarPath'];
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $path;
+}
+
 //ADMIN
 ///////////////////////////////////////
 function DLgetAdminFirst($con, $id) {
@@ -302,6 +320,22 @@ function DLfetchAllInstructorIDs($con){
   return $list;
 }
 
+//set Instructor Avatar
+function DLsetAvatarInstructor($con, $id, $path){
+  return mysqli_query($con, "CALL SP_setAvatarInstructor($id, '$path')");
+}
+
+function DLgetAvatarInstructor($con, $id){
+  $rs = mysqli_query($con, "CALL SP_getAvatarInstructor($id)");
+  $path = "";
+  while ($row = mysqli_fetch_array($rs)) {
+      $path = $row['avatarPath'];
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $path;}
 //COURSES
 /////////////////////////////////////
 function DLgetCourseList($con) {
@@ -339,7 +373,12 @@ function DLgetCourseName($con, $courseID) {
     while (mysqli_more_results($con)) {
         mysqli_next_result($con);
     }
-    return $course;
+    if (isset($course)) {
+      return $course;
+    }
+    else {
+      return null;
+    }
 }
 
 function DLgetFolders($con, $courseID){

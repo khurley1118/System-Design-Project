@@ -23,10 +23,17 @@ function utilGetAllStudentIDs($con){
   return DLfetchAllStudentIDs($con);
 }
 
+function  utilSetStudentAvatar($con, $id, $path){
+  return DLsetAvatarStudent($con, $id, $path);
+}
+
+function utilGetAvatarStudent($con, $id){
+  return DLgetAvatarStudent($con, $id);
+}
+
 function getStudent($con,$id){
   return DLgetStudent($con,$id);
 }
-
 // INSTRUCTOR /////////////////////////////////
 function utilInstructorFirst($con, $id) {
     return DLgetInstructorFirst($con, $id);
@@ -46,6 +53,14 @@ function utilInstructorGetPassword($con,$id){
 
 function utilGetAllInstructorIDs($con){
   return DLfetchAllInstructorIDs($con);
+}
+
+function utilSetInstructorAvatar($con, $id, $path){
+  return DLsetAvatarInstructor($con, $id, $path);
+}
+
+function utilGetAvatarInstructor($con, $id){
+  return DLgetAvatarInstructor($con, $id);
 }
 
 function getInstructor($con,$id){
