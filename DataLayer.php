@@ -158,6 +158,22 @@ function DLgetAvatarStudent($con, $id){
   return $path;
 }
 
+function DLfetchAllStudentIDs($con){
+  $list = array();
+  $rs = mysqli_query($con, "CALL SP_fetchAllStudentIDs");
+  if($rs != false){
+    while ($row = mysqli_fetch_array($rs)) {
+        $list[] = $row;
+    }
+  }
+
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $list;
+}
+
 //ADMIN
 ///////////////////////////////////////
 function DLgetAdminFirst($con, $id) {
@@ -458,22 +474,11 @@ function DLcreateContent($con, $type, $courseID, $location, $path, $desc){
 	}
 }
 
-function DLfetchAllStudentIDs($con){
-  $list = array();
-  $rs = mysqli_query($con, "CALL SP_fetchAllStudentIDs");
-  if($rs != false){
-    while ($row = mysqli_fetch_array($rs)) {
-        $list[] = $row;
-    }
-  }
-
-  //gets rid of meta
-  while (mysqli_more_results($con)) {
-      mysqli_next_result($con);
-  }
-  return $list;
+function DLaddIntsructorToCourse($con, $id, $course){
+  return mysqli_query($con, "SP_AddInstructorToCourse($id, $course)");
 }
 
+/////CHAT/////////////////////////////////////////////////////////////////////////////////////////////////////
 function DLfetchConversation($con, $senderId, $recipientId){
 
   $rs = mysqli_query($con, "CALL SP_getConversation($senderId, $recipientId)");
