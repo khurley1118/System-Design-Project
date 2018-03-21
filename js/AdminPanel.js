@@ -1,49 +1,47 @@
 function setCourses() {
-    $('coursesContent').setAttribute("class", "showDiv");
-    $('accountsContent').setAttribute("class", "hideDiv");
-    $('searchAccount').setAttribute("class", "hideDiv");
-    $('addAccount').setAttribute("class", "hideDiv");
-    $('changePassword').setAttribute("class", "hideDiv");
+    document.getElementById('coursesContent').setAttribute("class", "showDiv");
+    document.getElementById('accountsContent').setAttribute("class", "hideDiv");
+    document.getElementById('searchAccount').setAttribute("class", "hideDiv");
+    document.getElementById('addAccount').setAttribute("class", "hideDiv");
+    document.getElementById('changePassword').setAttribute("class", "hideDiv");
 }
 function setAccounts() {
-    $('coursesContent').setAttribute("class", "hideDiv");
-    $('accountsContent').setAttribute("class", "showDiv");
-    $('removeCourse').setAttribute("class", "hideDiv");
-    $('addCourse').setAttribute("class", "hideDiv");
-    $('showCourses').setAttribute("class", "hideDiv");
+    document.getElementById('coursesContent').setAttribute("class", "hideDiv");
+    document.getElementById('accountsContent').setAttribute("class", "showDiv");
+    document.getElementById('removeCourse').setAttribute("class", "hideDiv");
+    document.getElementById('addCourse').setAttribute("class", "hideDiv");
+    document.getElementById('showCourses').setAttribute("class", "hideDiv");
 }
 function addCourse() {
-    $('removeCourse').setAttribute("class", "hideDiv");
-    $('addCourse').setAttribute("class", "showDiv");
-    $('showCourses').setAttribute("class", "hideDiv");
+    document.getElementById('removeCourse').setAttribute("class", "hideDiv");
+    document.getElementById('addCourse').setAttribute("class", "showDiv");
+    document.getElementById('showCourses').setAttribute("class", "hideDiv");
 }
 function removeCourse() {
-    $('addCourse').setAttribute("class", "hideDiv");
-    $('showCourses').setAttribute("class", "hideDiv");
-    $('removeCourse').setAttribute("class", "showDiv");
+    document.getElementById('addCourse').setAttribute("class", "hideDiv");
+    document.getElementById('showCourses').setAttribute("class", "hideDiv");
+    document.getElementById('removeCourse').setAttribute("class", "showDiv");
 }
 function showAllCrs() {
-    $('addCourse').setAttribute("class", "hideDiv");
-    $('removeCourse').setAttribute("class", "hideDiv");
-    $('showCourses').setAttribute("class", "showDiv");
+    document.getElementById('addCourse').setAttribute("class", "hideDiv");
+    document.getElementById('removeCourse').setAttribute("class", "hideDiv");
+    document.getElementById('showCourses').setAttribute("class", "showDiv");
 }
 function addAccount(){
-    $('searchAccount').setAttribute("class", "hideDiv");
-    $('addAccount').setAttribute("class", "showDiv");
-    $('changePassword').setAttribute("class", "hideDiv");
+    document.getElementById('searchAccount').setAttribute("class", "hideDiv");
+    document.getElementById('addAccount').setAttribute("class", "showDiv");
+    document.getElementById('changePassword').setAttribute("class", "hideDiv");
 }
 function searchAccount(){
-    $('addAccount').setAttribute("class", "hideDiv");
-    $('changePassword').setAttribute("class", "hideDiv");
-    $('searchAccount').setAttribute("class", "showDiv");
+    document.getElementById('addAccount').setAttribute("class", "hideDiv");
+    document.getElementById('changePassword').setAttribute("class", "hideDiv");
+    document.getElementById('searchAccount').setAttribute("class", "showDiv");
 }
 function changePassword() {
-    $('addAccount').setAttribute("class", "hideDiv");
-    $('searchAccount').setAttribute("class", "hideDiv");
-    $('changePassword').setAttribute("class", "showDiv");
+    document.getElementById('addAccount').setAttribute("class", "hideDiv");
+    document.getElementById('searchAccount').setAttribute("class", "hideDiv");
+    document.getElementById('changePassword').setAttribute("class", "showDiv");
 }
-
-$document.getElementById();
 
 function resTicket(ticketID) {
 
@@ -54,7 +52,7 @@ function resTicket(ticketID) {
         data: {ticket : ticketID},
         cache: false,
         success: function (dataArray) {
-          $('AdmiralSnackbar').innerHTML = 'Ticket has been set to resolved!';
+           document.getElementById('AdmiralSnackbar').innerHTML = 'Ticket has been set to resolved!';
           myFunction();
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -78,9 +76,9 @@ function retrieveTicket(ticketID) {
         var name = data[0];
         var description = data[1];
         var status = data[2];
-        $('ticketDisplay').value = description;
-        $('status').value = status;
-        $('subBy').value = name;
+        document.getElementById('ticketDisplay').value = description;
+        document.getElementById('status').value = status;
+        document.getElementById('subBy').value = name;
       },
       error: function (xhr, ajaxOptions, thrownError) {
           alert(xhr.status + "\n" + thrownError);
