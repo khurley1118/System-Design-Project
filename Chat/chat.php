@@ -22,7 +22,7 @@
 <body>
 <div id="chat" style="width:500px;margin:0 auto;overflow:hidden;">
 //This div will contain the messages
-<div id="messages"></div>
+<div id="messages"></div> 
 //This div will contain an eventual error message
 <div id="error" style="width:500px;text-align:center;color:red;"></div>
 //This div contains the forms and the send button
