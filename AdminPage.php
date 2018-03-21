@@ -178,10 +178,10 @@
                                       <select class="form-control" id="courseList" name="courseList">
                                          <option value="1" selected="selected" hidden>Select a course</option>
                                          <?php
-                                            //populate dropdown with list of instructors
-                                            $instructors = utilGetCoruseList($con);
-                                            foreach ($instructors as $instructor) {
-                                              echo "<option value='" . $instructor->getUserId() . "'>" . $instructor->getUserId() . ' ' . $instructor->getFirstName() . ' ' . $instructor->getLastName() . "</option>";
+                                            $courseVar = new Course();
+                                            $courseList = $courseVar->GetCourseList($con);
+                                            foreach ($courseList as $course) {
+                                              echo "<option value='" . $course->getCourseCode() . "'>" . $course->getDescription() . "</option>";
                                             }
                                          ?>
                                       </select>

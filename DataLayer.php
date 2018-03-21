@@ -43,11 +43,17 @@ function DLgetTicket($con, $id) {
 
 //function to insert a ticket
 function DLinsertTicket($con, $desc, $fNm, $lNm, $subBy) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_insertTicket('$desc', '$fNm', '$lNm', $subBy)");
 }
 
 //function to set ticket to resolved
 function DLresolveTicket($con, $id) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_resolveTicket($id)");
 }
 
@@ -127,21 +133,33 @@ function DLgetStudentPassword($con, $id) {
 
 //change student's password
 function DLstudentPasswordChange($con, $id, $newPass) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
 	return mysqli_query($con, "CALL SP_changeStudentPassword($id, '$newPass')");
 }
 
 //insert student
 function DLinsertStudent($con, $studentID, $password, $admin, $fname, $lname) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_createStudent($studentID, '$password',$admin,'$fname','$lname')");
 }
 
 //update names
 function DLstudentUpdateNames($con,$id,$firstName,$lastName) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
 	return mysqli_query($con, "CALL SP_updateStudentNames($id, '$firstName','$lastName')");
 }
 
 //setStudentsAvatar
 function DLsetAvatarStudent($con, $id, $path){
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_setAvatarStudent($id, '$path')");
 }
 
@@ -222,15 +240,24 @@ function DLgetAdmin($con, $id) {
 }
 
 function DLinsertAdmin($con, $adminId, $password, $fname, $lname) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_createAdmin($adminId, '$password','$fname','$lname')");
 }
 
 function DLadminPasswordChange($con, $adminId, $newPass){
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_changeAdminPassword($adminId, '$newPass')");
 }
 
 //update names
 function DLadminUpdateNames($con,$id,$firstName,$lastName) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
 	return mysqli_query($con, "CALL SP_updateAdminNames($id, '$firstName','$lastName')");
 }
 
@@ -326,15 +353,25 @@ function DLgetAllInstructors($con){
       $counter++;
     }
   }
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return $instructors;
+
 }
 
 //change instructor's password
 function DLinstructorPasswordChange($con, $id, $newPass) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
 	return mysqli_query($con, "CALL SP_changeInstructorPassword($id, '$newPass')");
 }
 
 function DLinsertInstructor($con, $instructorID, $password, $admin, $fname, $lname) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_createInstructor($instructorID, '$password',$admin,'$fname','$lname')");
 }
 
@@ -355,11 +392,17 @@ function DLfetchAllInstructorIDs($con){
 }
 
 function DLinstructorUpdateNames($con,$id,$firstName,$lastName) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
 	return mysqli_query($con, "CALL SP_updateInstructorNames($id, '$firstName','$lastName')");
 }
 
 //set Instructor Avatar
 function DLsetAvatarInstructor($con, $id, $path){
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_setAvatarInstructor($id, '$path')");
 }
 
@@ -389,7 +432,10 @@ function DLgetCourseList($con) {
       $counter++;
     }
   }
-  return $instructors;
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $courses;
 }
     // $rs = mysqli_query($con, "CALL SP_getAllCourses");
     // while ($row = mysqli_fetch_array($rs)) {
@@ -410,6 +456,7 @@ function DLinsertCourse($con, $courseCode, $courseDescription) {
 
 function DLupdateCourse($con,$courseCode,$description,$isActive) {
   return mysqli_query($con, "CALL SP_updateCourse($courseCode, '$description',$isActive)");
+
 }
 
 function DLremoveCourse($courseID) {
@@ -489,7 +536,11 @@ function DLcreateContent($con, $type, $courseID, $location, $path, $desc){
 }
 
 function DLaddIntsructorToCourse($con, $id, $course){
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "SP_AddInstructorToCourse($id, $course)");
+
 }
 
 /////CHAT/////////////////////////////////////////////////////////////////////////////////////////////////////
