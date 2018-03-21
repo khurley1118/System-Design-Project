@@ -10,10 +10,6 @@ $userType = $_SESSION['userType'];
 $user = $_SESSION['CurrentUser'];
 
 //testing: get all coursesLeftMenu
-$courses = GetAllCourses($con);
-foreach ($courses as $course){
-  echo $course['description'];
-}
 
 // //get course from dropdown menu on form
 // $courseCode = $_POST["courseCode"];

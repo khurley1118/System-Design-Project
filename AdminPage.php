@@ -207,15 +207,16 @@
                                       <center>
                                          <h2>Remove Course</h2>
                                       </center>
-                                      <select class="form-control">
-                                         <option value="1" selected="selected">Choose Course</option>
+                                      <select class="form-control" id="courseList" name="courseList">
+                                         <option value="1" selected="selected" hidden>Select a course</option>
                                          <?php
-                                            //get list of courses, make sure to have course IDs as values, populate dropdown.
-                                            $courses = GetAllCourses($con);
-                                            foreach ($courses as $course) {
-                                              //echo "<option value='" . $course['courseCode'] . "'>" . $course['courseCode'] . ' ' . $course['description'] . "</option>";
+                                            $courseVar = new Course();
+                                            $courseList = $courseVar->GetCourseList($con);
+                                            // print_r($courseList);
+                                            echo mysqli_error($con);
+                                            foreach ($courseList as $course) {
+                                              echo "<option value='" . $course->getCourseCode() . "'>" . $course->getDescription() . "</option>";
                                             }
-                                            echo $courses[0][1];
                                          ?>
                                       </select>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />

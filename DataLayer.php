@@ -310,6 +310,10 @@ function DLgetAllInstructors($con){
       $counter++;
     }
   }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return $instructors;
 }
 
@@ -372,8 +376,12 @@ function DLgetCourseList($con) {
       $courses[$counter] = $course;
       $counter++;
     }
+    //gets rid of meta
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
   }
-  return $instructors;
+  return $courses;
 }
 
 function DLinsertCourse($con, $courseCode, $courseDescription) {

@@ -43,6 +43,8 @@ function changePassword() {
     $('changePassword').setAttribute("class", "showDiv");
 }
 
+$document.getElementById();
+
 function resTicket(ticketID) {
 
   if (ticketID != 0){
