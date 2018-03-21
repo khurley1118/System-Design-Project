@@ -73,7 +73,7 @@ if (isset($_SESSION['userID']) && isset($_SESSION['userType'])) {
                 <h1>Admin - Only Log-in:</h1><BR>
                 <div id="loginForm">
                     <form action="" method="post" id="formData">
-                        <input type="text" id="login" name="login" placeholder="cc/Username" size="60" required><span id="unerror"> </span> <br><BR>
+                        <input type="text" id="login" name="login" placeholder="User ID" size="60" required><span id="unerror"> </span> <br><BR>
                         <input type="password" id="password" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span> <br><BR>
                         <input type="image" id="submit" name="submit" src="Resources/logIn.png" alt="Submit Form" />
                     </form>
