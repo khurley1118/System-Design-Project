@@ -41,12 +41,13 @@ $courselist = $user->getCourses();
           <a class="navbar-brand" href="index.php"><img id='logoImg'src="Resources/nbccLogo.png" height="30" width="170"/></a>
           <?php
             $id = $_SESSION['userID'];
-            if ($_SESSION['userType'] == "faculty" || $_SESSION['userType'] == "student"){
+            $type = $_SESSION['userType'];
+            if ($type == "faculty" || $type == "student"){
               echo "<div id='avatar'>";
-            if($_SESSION['userType'] == "faculty") {
+            if($type == "faculty") {
               $Avatar = utilGetAvatarInstructor($con, $id);
               echo "<div id='Avatar'><img id='AvatarImg' src='$Avatar' width='40' height='40'/></div>";
-            } elseif ($_SESSION['userType'] == "student"){
+            } elseif ($type == "student"){
               $Avatar = utilGetAvatarStudent($con, $id);
               echo "<div id='Avatar'><img id='AvatarImg' src='$Avatar' width='40' height='40'/></div>";
             }
