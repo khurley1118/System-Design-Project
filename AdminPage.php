@@ -203,14 +203,19 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <form class="form-signin" action="" method="">
+                                   <form class="form-signin" action="adminRemoveCourse.php" method="POST">
                                       <center>
                                          <h2>Remove Course</h2>
                                       </center>
                                       <select class="form-control">
-                                         <option value="AnyNickCourse">REEE101 How to be Angry</option>
-                                         <option value="JAVA">JAVA101 JAAAAVA</option>
-                                         <option value="SQL">TABL101 the table strikes back</option>
+                                         <option value="1" selected="selected">Choose Course</option>
+                                         <?php
+                                            //get list of courses, make sure to have course IDs as values, populate dropdown.
+                                            $courses = GetAllCourses($con);
+                                            foreach ($courses as $course) {
+                                              echo "<option value='" . $course['courseCode'] . "'>" . $course['courseCode'] . ' ' . $course['description']"</option>";
+                                            }
+                                         ?>
                                       </select>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                    </form>

@@ -93,6 +93,10 @@ function GetCourseObject($con,$id){
   return DLgetCourseObject($con,$id);
 }
 
+function GetAllCourses($con){
+  return DLgetCourseList($con);
+}
+
 function utilGetFolders($con, $courseid){
 	return DLgetFolders($con, $courseid);
 }
