@@ -1,47 +1,47 @@
-// function setCourses() {
-//     $('coursesContent').setAttribute("class", "showDiv");
-//     $('accountsContent').setAttribute("class", "hideDiv");
-//     $('searchAccount').setAttribute("class", "hideDiv");
-//     $('addAccount').setAttribute("class", "hideDiv");
-//     $('changePassword').setAttribute("class", "hideDiv");
-// }
-// function setAccounts() {
-//     $('coursesContent').setAttribute("class", "hideDiv");
-//     $('accountsContent').setAttribute("class", "showDiv");
-//     $('removeCourse').setAttribute("class", "hideDiv");
-//     $('addCourse').setAttribute("class", "hideDiv");
-//     $('showCourses').setAttribute("class", "hideDiv");
-// }
-// function addCourse() {
-//     $('removeCourse').setAttribute("class", "hideDiv");
-//     $('addCourse').setAttribute("class", "showDiv");
-//     $('showCourses').setAttribute("class", "hideDiv");
-// }
-// function removeCourse() {
-//     $('addCourse').setAttribute("class", "hideDiv");
-//     $('showCourses').setAttribute("class", "hideDiv");
-//     $('removeCourse').setAttribute("class", "showDiv");
-// }
-// function showAllCrs() {
-//     $('addCourse').setAttribute("class", "hideDiv");
-//     $('removeCourse').setAttribute("class", "hideDiv");
-//     $('showCourses').setAttribute("class", "showDiv");
-// }
-// function addAccount(){
-//     $('searchAccount').setAttribute("class", "hideDiv");
-//     $('addAccount').setAttribute("class", "showDiv");
-//     $('changePassword').setAttribute("class", "hideDiv");
-// }
-// function searchAccount(){
-//     $('addAccount').setAttribute("class", "hideDiv");
-//     $('changePassword').setAttribute("class", "hideDiv");
-//     $('searchAccount').setAttribute("class", "showDiv");
-// }
-// function changePassword() {
-//     $('addAccount').setAttribute("class", "hideDiv");
-//     $('searchAccount').setAttribute("class", "hideDiv");
-//     $('changePassword').setAttribute("class", "showDiv");
-// }
+function setCourses() {
+    $('coursesContent').setAttribute("class", "showDiv");
+    $('accountsContent').setAttribute("class", "hideDiv");
+    $('searchAccount').setAttribute("class", "hideDiv");
+    $('addAccount').setAttribute("class", "hideDiv");
+    $('changePassword').setAttribute("class", "hideDiv");
+}
+function setAccounts() {
+    $('coursesContent').setAttribute("class", "hideDiv");
+    $('accountsContent').setAttribute("class", "showDiv");
+    $('removeCourse').setAttribute("class", "hideDiv");
+    $('addCourse').setAttribute("class", "hideDiv");
+    $('showCourses').setAttribute("class", "hideDiv");
+}
+function addCourse() {
+    $('removeCourse').setAttribute("class", "hideDiv");
+    $('addCourse').setAttribute("class", "showDiv");
+    $('showCourses').setAttribute("class", "hideDiv");
+}
+function removeCourse() {
+    $('addCourse').setAttribute("class", "hideDiv");
+    $('showCourses').setAttribute("class", "hideDiv");
+    $('removeCourse').setAttribute("class", "showDiv");
+}
+function showAllCrs() {
+    $('addCourse').setAttribute("class", "hideDiv");
+    $('removeCourse').setAttribute("class", "hideDiv");
+    $('showCourses').setAttribute("class", "showDiv");
+}
+function addAccount(){
+    $('searchAccount').setAttribute("class", "hideDiv");
+    $('addAccount').setAttribute("class", "showDiv");
+    $('changePassword').setAttribute("class", "hideDiv");
+}
+function searchAccount(){
+    $('addAccount').setAttribute("class", "hideDiv");
+    $('changePassword').setAttribute("class", "hideDiv");
+    $('searchAccount').setAttribute("class", "showDiv");
+}
+function changePassword() {
+    $('addAccount').setAttribute("class", "hideDiv");
+    $('searchAccount').setAttribute("class", "hideDiv");
+    $('changePassword').setAttribute("class", "showDiv");
+}
 
 function resTicket(ticketID) {
 
