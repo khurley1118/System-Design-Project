@@ -377,18 +377,32 @@ function DLgetAvatarInstructor($con, $id){
 //COURSES
 /////////////////////////////////////
 function DLgetCourseList($con) {
-    $rs = mysqli_query($con, "CALL SP_getAllCourses");
+  $courses = array();
+  $rs = mysqli_query($con, "CALL SP_getAllCourses");
+  if ($rs != false) {
+    $counter = 0;
     while ($row = mysqli_fetch_array($rs)) {
-        $list[] = $row;
-        //Index 0 = Course code
-        //Index 1 = Course description
+      $course = new Course();
+      $course->setCourseCode($row['courseCode']);
+      $course->setDescription($row['description']);
+      $courses[$counter] = $course;
+      $counter++;
     }
-    //gets rid of meta
-    while (mysqli_more_results($con)) {
-        mysqli_next_result($con);
-    }
-    return $list;
+  }
+  return $instructors;
 }
+    // $rs = mysqli_query($con, "CALL SP_getAllCourses");
+    // while ($row = mysqli_fetch_array($rs)) {
+    //     $list[] = $row;
+    //     //Index 0 = Course code
+    //     //Index 1 = Course description
+    // }
+    // //gets rid of meta
+    // while (mysqli_more_results($con)) {
+    //     mysqli_next_result($con);
+    // }
+    // return $list;
+// }
 
 function DLinsertCourse($con, $courseCode, $courseDescription) {
   return mysqli_query($con, "CALL SP_createCourse($courseCode, '$courseDescription')");

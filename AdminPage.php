@@ -163,18 +163,28 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <form class="form-signin" action="adminGetCourse.php" method="POST">
+                                   <!-- <form class="form-signin" action="adminGetCourse.php" method="POST">
                                       <center>
                                          <h2>Get Course</h2>
                                       </center>
                                       <input id="getCourseCode" name="getCourseCode" type="text" class="form-control" placeholder="Course Code" required>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Get Course" />
-                                    </form>
+                                    </form> -->
                                     <br>
                                    <form class="form-signin" action="adminEditCourse.php" method="POST">
                                       <center>
                                          <h2>Edit Course</h2>
                                       </center>
+                                      <select class="form-control" id="courseList" name="courseList">
+                                         <option value="1" selected="selected" hidden>Select a course</option>
+                                         <?php
+                                            //populate dropdown with list of instructors
+                                            $instructors = utilGetCoruseList($con);
+                                            foreach ($instructors as $instructor) {
+                                              echo "<option value='" . $instructor->getUserId() . "'>" . $instructor->getUserId() . ' ' . $instructor->getFirstName() . ' ' . $instructor->getLastName() . "</option>";
+                                            }
+                                         ?>
+                                      </select>
                                       <input type="text" class="form-control" id="getCourseDesc" name="getCourseDesc" placeholder="Description" required>
                                       <select class="form-control" id="editInstructor" name="editInstructor">
                                          <option value="1" selected="selected">Assign an Instructor</option>

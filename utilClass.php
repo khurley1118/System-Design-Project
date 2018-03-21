@@ -101,6 +101,7 @@ function utilAddInstructorToCourse($con, $id, $course){
   return DLaddIntsructorToCourse($con, $id, $course);
 }
 
+
 // CHAT //////////////////////////////////
 function utilGetConversation($con, $senderId, $recipientId){
   return DLfetchConversation($con, $senderId, $recipientId);

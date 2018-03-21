@@ -42,5 +42,9 @@ class Course{
   function UpdateCourse($con) {
 		return DLupdateCourse($con, $this->getCourseCode(), $this->getDescription(), $this->getIsActive());
 	}
+
+	static function GetCourseList($con){
+		return DLgetCourseList($con);
+	}
 }
 ?>
