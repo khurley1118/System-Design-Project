@@ -197,7 +197,7 @@
                          Welcome to TuPro!
                        </h2>
                         <p id='introText'>Tu-Pro is a tutorial site for the NBCC network, dedicated to extending
-                            learning beyond the classroom. We offer extra tutorials and and tutoring
+                            learning beyond the classroom. We offer extra tutorials and tutoring
                             outside of the classroom, just login with your Student ID to find your classes,
                             and continue learning!</p>
                      </div>
@@ -367,8 +367,6 @@
        if(isset($_SESSION['avatarMessage'])){
          $avatarMessage = $_SESSION['avatarMessage'];
        }
-       echo "<script>document.getElementById('accountsLeftMenu').click();</script>";
-       echo "<script>document.getElementById('editAvatarbtn').click();</script>";
        echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = '" . $avatarMessage . "'</script>";
        echo "<script> myFunction(); </script>";
      }

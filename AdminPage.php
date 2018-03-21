@@ -66,10 +66,6 @@
                                                 <span class="glyphicon glyphicon-remove"></span><a href="javascript:removeCourse()">Remove Course</a>
                                              </td>
                                           </tr>
-                                          <tr>
-                                             <td>
-                                             </td>
-                                          </tr>
                                        </table>
                                     </div>
                                  </div>
@@ -133,18 +129,14 @@
             <!-- Right Column -->
             <div class="w3-twothird">
                <div id="outputContainer" class="w3-container w3-card w3-white w3-margin-bottom">
-                  <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i><?php if (isset($courseName)) {echo $courseName;} else { echo 'Admin';} ?></h2>
+                  <p class="glyphicon glyphicon-wrench" id="adminTitle"></i><?php echo 'Admin';?></p>
                   <div id=swapDiv>
                      <div class="row showDiv" id="landingPage">
                         <?php
                            echo "<div class='w3-container' id='we-shrink'>";
-                           echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b>Welcome to the Admin Panel</b></h5>";
-                           echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>We got fun and games";
-                           echo "<br><br><p>We got everything you want honey, we know the names
-                                 We are the people that can find whatever you may need
-                                 If you got the money, honey we got your disease</p><center><img height='150'src='Resources/honey.jpg'</center>";
-                           echo "<hr>";
-                           echo "</div>";
+                           echo "<div id='adminText'>Welcome to the Admin Panel</div><hr>";
+                           echo "<div id='adminDesc'>Here you can perform administrative tasks relating to courses, accounts and tickets. All items can be found
+                           in the accordian menu to the left or above.</div></div>";
                            ?>
                      </div>
                      <!-- addCourse -->

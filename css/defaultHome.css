@@ -13,9 +13,24 @@
   border-bottom-width: 1px;
   border-bottom-color: #cbcac5;
 }
+#adminTitle{
+  padding-top: 30px;
+  padding-bottom: 15px;
+  font-size: 20pt;
+  color: #00293a;
+}
+#adminDesc{
+  padding-top: 20px;
+  padding-bottom: 70px;
+}
+#adminText{
+  color: #00293a;
+  font-size: 15pt;
+  margin-bottom: 10px;
+}
 #introContent{
-  margin-top: 20%;
-  margin-bottom: 20%;
+  margin-top: 10%;
+  margin-bottom: 10%;
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -28,7 +43,6 @@
 }
 #outputContainer {
      position: relative;
-     min-height: 620px;
      max-width: 100%;
 }
 @media only screen and (min-width : 1085px){

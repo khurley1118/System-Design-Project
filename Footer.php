@@ -15,12 +15,20 @@
           <div id="copyright">
               <br><br>Copyright &copy; <?php echo date("Y"); ?> NBCC
           </div>
-          <div id="adminLogin">
-              <a href="adminLogin.php">Admin Log-in</a>
-          </div>
-          <div id="userLogOut">
-              <a href="logOut.php">Log Out</a>
-          </div>
+          <?php
+            $currPage = basename($_SERVER['PHP_SELF']);
+            if ($currPage == "index.php"){
+              echo "<div id='adminLogin'>
+                  <a href='adminLogin.php'>Admin Log-in</a>
+              </div>";
+            }
+            $currPage = basename($_SERVER['PHP_SELF']);
+            if ($currPage != "index.php"){
+              echo "<div id='userLogOut'>
+                  <a href='#' onclick='javascript:logOut()'>Log Out</a>
+              </div>";
+            }
+          ?>
       </div>
   </body>
 </html>

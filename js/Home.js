@@ -5,6 +5,7 @@ function changePassword() {
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
+  document.getElementById('outputContainer').style.height = "450px";
 }
 function landingPage() {
   document.getElementById('landingPage').setAttribute("class", "showDiv");
@@ -13,6 +14,7 @@ function landingPage() {
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "";
+  document.getElementById('outputContainer').style.height = "570px";
 }
 function addContent() {
   document.getElementById('addContent').setAttribute("class", "showDiv");
@@ -21,6 +23,7 @@ function addContent() {
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
+  document.getElementById('outputContainer').style.height = "535px";
 }
 function uploadAvatar() {
   document.getElementById('uploadAvatar').setAttribute("class", "showDiv");
@@ -29,6 +32,7 @@ function uploadAvatar() {
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
+  document.getElementById('outputContainer').style.height = "550px";
 }
 function createTicket(){
   document.getElementById('createTicket').setAttribute("class", "showDiv");
@@ -37,6 +41,7 @@ function createTicket(){
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
+  document.getElementById('outputContainer').style.height = "550px";
 }
 function logOut(){
   if (confirm('Are you sure you want to log out?')) {
@@ -48,7 +53,7 @@ function logOut(){
 
 function myFunction() {
     // Get the snackbar DIV
-	var x = document.getElementById("AdmiralSnackbar");
+	var x = $("AdmiralSnackbar");
 
     // Add the "show" class to DIV
     x.className = "show";
@@ -68,7 +73,7 @@ function popSubDir(directory){
       success: function (data) {
         var data = JSON.parse(data);
         len = data.length;
-        select = document.getElementById('subDir');
+        select = $('subDir');
         select.options.length = 0;
         for (var i = 0; i < len; i++){
           option = document.createElement('option');
@@ -91,8 +96,8 @@ function insTicket(description){
       data: {desc : description},
       cache: false,
       success: function (data) {
-        document.getElementById('AdmiralSnackbar').innerHTML = 'Ticket has been created!';
-        document.getElementById('textInput').value = "";
+        $('AdmiralSnackbar').innerHTML = 'Ticket has been created!';
+        $('textInput').value = "";
         myFunction();
       },
       error: function (xhr, ajaxOptions, thrownError) {

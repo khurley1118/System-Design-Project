@@ -24,13 +24,13 @@ $success = "false";
                  if($type == "student"){
                      if(utilSetStudentAvatar($con, $id, $filepath)){
                        move_uploaded_file($_FILES["avatarFile"]["tmp_name"], "avatars/" . $_FILES["avatarFile"]["name"]);
-                         $success = "Success";
+                         $success = "Successfully Updated Avatar!";
                      }
                  }
                  else if($type == "faculty"){
                      if(utilSetInstructorAvatar($con, $id, $filepath)){
                        move_uploaded_file($_FILES["avatarFile"]["tmp_name"], "avatars/" . $_FILES["avatarFile"]["name"]);
-                       $success = "Success";
+                       $success = "Successfully Updated Avatar!";
                      }
                  }
                }

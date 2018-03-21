@@ -7,6 +7,7 @@ function addCourse() {
   document.getElementById('resetPassword').setAttribute("class", "hideDiv");
   document.getElementById('viewTickets').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('outputContainer').style.height = "454px";
 }
 function editCourse() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
@@ -17,6 +18,7 @@ function editCourse() {
   document.getElementById('resetPassword').setAttribute("class", "hideDiv");
   document.getElementById('viewTickets').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('outputContainer').style.height = "700px";
 }
 function removeCourse() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
@@ -27,6 +29,7 @@ function removeCourse() {
   document.getElementById('resetPassword').setAttribute("class", "hideDiv");
   document.getElementById('viewTickets').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('outputContainer').style.height = "420px";
 }
 function addAccount() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
@@ -37,6 +40,7 @@ function addAccount() {
   document.getElementById('resetPassword').setAttribute("class", "hideDiv");
   document.getElementById('viewTickets').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('outputContainer').style.height = "650px";
 }
 function resetPassword() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
@@ -47,6 +51,8 @@ function resetPassword() {
   document.getElementById('resetPassword').setAttribute("class", "showDiv");
   document.getElementById('viewTickets').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('outputContainer').style.height = "550px";
+
 }
 function editAccount() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
@@ -57,6 +63,7 @@ function editAccount() {
   document.getElementById('resetPassword').setAttribute("class", "hideDiv");
   document.getElementById('viewTickets').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('outputContainer').style.height = "650px";
 }
 function viewTickets() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
@@ -67,6 +74,7 @@ function viewTickets() {
   document.getElementById('resetPassword').setAttribute("class", "hideDiv");
   document.getElementById('viewTickets').setAttribute("class", "showDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('outputContainer').style.height = "660px";
 }
 function myFunction() {
     // Get the snackbar DIV
