@@ -53,7 +53,7 @@ function logOut(){
 
 function myFunction() {
     // Get the snackbar DIV
-	var x = $("AdmiralSnackbar");
+	var x = document.getElementById("AdmiralSnackbar");
 
     // Add the "show" class to DIV
     x.className = "show";
@@ -96,8 +96,8 @@ function insTicket(description){
       data: {desc : description},
       cache: false,
       success: function (data) {
-        $('AdmiralSnackbar').innerHTML = 'Ticket has been created!';
-        $('textInput').value = "";
+        document.getElementById('AdmiralSnackbar').innerHTML = 'Ticket has been created!';
+        document.getElementById('textInput').value = "";
         myFunction();
       },
       error: function (xhr, ajaxOptions, thrownError) {
@@ -106,5 +106,3 @@ function insTicket(description){
       }
   }); // end ajax call
 }
-
-$(document).ready(function() { landingPage(); });
