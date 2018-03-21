@@ -1,43 +1,30 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-
-/*
-    Created on : Jan 15, 2018, 10:19:41 AM
-    Author     : Mark Patterson
-*/
-
-#logo {
-  padding-top: 10px;
-  position: absolute;
-  z-index: -50;
+/* To change this license header, choose License Headers in Project Properties. To change this template file, choose Tools | Templates and open the template in the editor. */
+/* Created on : Jan 15, 2018, 10:19:41 AM Author : Mark Patterson */
+ #logo {
+     padding-top: 10px;
+     position: absolute;
+     z-index: -50;
 }
-
-
-#mainContainer {
-  padding-top: 100px;
-  margin-bottom: 250px;
-  height: 1px;
-  width: 700px;
-  margin-top: auto;
-  margin-left: auto;
-  margin-right: auto;
-  z-index: 99;
+ #mainContainer {
+     padding-top: 100px;
+     margin-bottom: 250px;
+     height: 1px;
+     width: 700px;
+     margin-top: auto;
+     margin-left: auto;
+     margin-right: auto;
+     z-index: 1;
 }
-
-#buttonTable {
-  position: relative;
-  top: 340px;
-  left: 90px;
+ #buttonTable {
+     position: relative;
+     top: 340px;
+     left: 90px;
 }
-
-#description {
-  text-align: center;
-  position: relative;
-  width: 570px;
-  left: 60px;
-  top: 360px;
-  padding-bottom: 50px;
+ #description {
+     text-align: center;
+     position: relative;
+     width: 570px;
+     left: 60px;
+     top: 360px;
+     padding-bottom: 50px;
 }
