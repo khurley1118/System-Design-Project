@@ -213,8 +213,9 @@
                                             //get list of courses, make sure to have course IDs as values, populate dropdown.
                                             $courses = GetAllCourses($con);
                                             foreach ($courses as $course) {
-                                              echo "<option value='" . $course['courseCode'] . "'>" . $course['courseCode'] . ' ' . $course['description']"</option>";
+                                              //echo "<option value='" . $course['courseCode'] . "'>" . $course['courseCode'] . ' ' . $course['description'] . "</option>";
                                             }
+                                            echo $courses[0][1];
                                          ?>
                                       </select>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
