@@ -30,7 +30,7 @@
 
                     $element = '<div class="sidebar-name">';
                     $element = $element . '<a href="javascript:register_popup(\'' . $instructorID . '\',\'' . $instructorName . '\' );">';
-                    $element = $element . '<img width="30" height="30" src="' . $instructorAvatar . '" />';
+                    $element = $element . '<img id="chatImg" width="30" height="30" src="' . $instructorAvatar . '" />';
                     $element = $element . '<span> ' . $instructorName . '</span></a></div>';
                     echo $element;
                   }
@@ -50,7 +50,7 @@
 
                     $element = '<div class="sidebar-name">';
                     $element = $element . '<a href="javascript:register_popup(\'' . $studentID . '\',\'' . $studentName . '\' );">';
-                    $element = $element . '<img width="30" height="30" src="' . $studentAvatar . '" />';
+                    $element = $element . '<img id="chatImg" width="30" height="30" src="' . $studentAvatar . '" />';
                     $element = $element . '<span> ' . $studentName . '</span></a></div>';
                     echo $element;
                   }
