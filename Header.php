@@ -39,10 +39,10 @@ $courselist = $user->getCourses();
       <div id="nav" class="container">
         <div id="nav" class="navbar-header">
           <a class="navbar-brand" href="index.php"><img id='logoImg'src="Resources/nbccLogo.png" height="30" width="170"/></a>
-
-          <div id='avatar'>
-            <?php
+          <?php
             $id = $_SESSION['userID'];
+            if ($_SESSION['userType'] == "faculty" || $_SESSION['userType'] == "student"){
+              echo "<div id='avatar'>";
             if($_SESSION['userType'] == "faculty") {
               $Avatar = utilGetAvatarInstructor($con, $id);
               echo "<div id='Avatar'><img id='AvatarImg' src='$Avatar' width='40' height='40'/></div>";
@@ -50,6 +50,7 @@ $courselist = $user->getCourses();
               $Avatar = utilGetAvatarStudent($con, $id);
               echo "<div id='Avatar'><img id='AvatarImg' src='$Avatar' width='40' height='40'/></div>";
             }
+          }
             ?>
           </div>
           <div id="nameDisplay">
