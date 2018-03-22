@@ -41,7 +41,7 @@ if (isset($_SESSION['userID'])) {
                         $("#facultyButton").show();
                     } else {
                         //add student form
-                        $("#description").prepend('<form action="" method="post" id="formData"><input type="text" id="studentUsername" name="login" placeholder="cc/Username" size="60" required><span id="unerror"> </span><br><BR><input type="password" id="studentPassword" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span><br><BR><input type="image" id="studentSubmit" name="submit" src="Resources/logIn.png" alt="Submit Form" /></form>');
+                        $("#description").prepend('<form action="" method="post" id="formData"><input type="text" id="studentUsername" name="login" placeholder="Username" size="60" required><span id="unerror"> </span><br><BR><input type="password" id="studentPassword" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span><br><BR><input type="image" id="studentSubmit" name="submit" src="Resources/logIn.png" alt="Submit Form" /></form>');
                         //set focus for un input
                         $("#studentUsername").focus();
                         //On submit do an ajax call to the REST auth API
@@ -99,7 +99,7 @@ if (isset($_SESSION['userID'])) {
                         $("#studentButton").show();
                     } else {
                         //add faculty form
-                        $("#description").prepend('<form action="" method="post" id="formData"><input type="text" id="facultyUsername" name="login" placeholder="cc/Username" size="60" required><span id="unerror"> </span><br><BR><input type="password" id="facultyPassword" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span><br><BR><input type="image" id="facultySubmit" name="facultySubmit" src="Resources/logIn.png" alt="Submit Form" /></form>');
+                        $("#description").prepend('<form action="" method="post" id="formData"><input type="text" id="facultyUsername" name="login" placeholder="Username" size="60" required><span id="unerror"> </span><br><BR><input type="password" id="facultyPassword" name="password" size="60" placeholder="Password" required> <span id="pwerror"> </span><br><BR><input type="image" id="facultySubmit" name="facultySubmit" src="Resources/logIn.png" alt="Submit Form" /></form>');
                         //set username focus
                         $("#facultyUsername").focus();
                         // submit form to AJAX

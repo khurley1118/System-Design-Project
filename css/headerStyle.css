@@ -33,6 +33,7 @@ and open the template in the editor.
 #nav {
   background-color: #00293a;
   color: white;
+  max-height: 80px;
 }
 #logoImg {
   position: relative;

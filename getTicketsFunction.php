@@ -18,5 +18,7 @@ $fullName = $fName . " " . $lName;
 $desc = $ticket->getDescription();
 $status = $ticket->getStatus();
 $ticketInfo = array($fullName, $desc, $status);
+
+//returns something like [name, description, status]
 echo json_encode($ticketInfo);
 ?>

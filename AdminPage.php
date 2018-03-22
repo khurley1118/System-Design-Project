@@ -175,13 +175,13 @@
                                       <center>
                                          <h2>Edit Course</h2>
                                       </center>
-                                      <select class="form-control" id="courseList" name="courseList">
+                                      <select class="form-control" id="courseList" name="courseList" onchange="javascript:retrieveCourse(this.value)">
                                          <option value="1" selected="selected" hidden>Select a course</option>
                                          <?php
                                             $courseVar = new Course();
                                             $courseList = $courseVar->GetCourseList($con);
                                             foreach ($courseList as $course) {
-                                              echo "<option value='" . $course->getCourseCode() . "'>" . $course->getDescription() . "</option>";
+                                              echo "<option value='" . $course->getCourseCode() . "'>" . $course->getCourseCode() . "</option>";
                                             }
                                          ?>
                                       </select>
@@ -213,14 +213,21 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <form class="form-signin" action="" method="">
+                                   <form class="form-signin" action="adminRemoveCourse.php" method="POST">
                                       <center>
                                          <h2>Remove Course</h2>
                                       </center>
-                                      <select class="form-control">
-                                         <option value="AnyNickCourse">REEE101 How to be Angry</option>
-                                         <option value="JAVA">JAVA101 JAAAAVA</option>
-                                         <option value="SQL">TABL101 the table strikes back</option>
+                                      <select class="form-control" id="courseList" name="courseList">
+                                         <option value="1" selected="selected" hidden>Select a course</option>
+                                         <?php
+                                            $courseVar = new Course();
+                                            $courseList = $courseVar->GetCourseList($con);
+                                            // print_r($courseList);
+                                            echo mysqli_error($con);
+                                            foreach ($courseList as $course) {
+                                              echo "<option value='" . $course->getCourseCode() . "'>" . $course->getDescription() . "</option>";
+                                            }
+                                         ?>
                                       </select>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                    </form>

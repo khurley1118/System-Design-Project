@@ -52,7 +52,7 @@ function resTicket(ticketID) {
         data: {ticket : ticketID},
         cache: false,
         success: function (dataArray) {
-          $('AdmiralSnackbar').innerHTML = 'Ticket has been set to resolved!';
+           document.getElementById('AdmiralSnackbar').innerHTML = 'Ticket has been set to resolved!';
           myFunction();
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -76,9 +76,9 @@ function retrieveTicket(ticketID) {
         var name = data[0];
         var description = data[1];
         var status = data[2];
-        $('ticketDisplay').value = description;
-        $('status').value = status;
-        $('subBy').value = name;
+        document.getElementById('ticketDisplay').value = description;
+        document.getElementById('status').value = status;
+        document.getElementById('subBy').value = name;
       },
       error: function (xhr, ajaxOptions, thrownError) {
           alert(xhr.status + "\n" + thrownError);
