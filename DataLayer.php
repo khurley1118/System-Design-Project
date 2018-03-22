@@ -392,8 +392,8 @@ function DLupdateCourse($con,$courseCode,$description,$isActive) {
   return mysqli_query($con, "CALL SP_updateCourse($courseCode, '$description',$isActive)");
 }
 
-function DLremoveCourse($courseID) {
-
+function DLremoveCourse($con, $courseID) {
+  return mysqli_query($con, "CALL SP_removeCourse($courseCode)");
 }
 
 function DLgetCourseName($con, $courseID) {
