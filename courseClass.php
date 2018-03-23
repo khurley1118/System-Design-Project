@@ -47,7 +47,7 @@ class Course{
 		return DLgetCourseList($con);
 	}
 
-	function removeCourse($con, $this->getCourseCode()) {
+	function removeCourse($con) {
 		return DLremoveCourse($con, $this->getCourseCode());
 	}
 }
