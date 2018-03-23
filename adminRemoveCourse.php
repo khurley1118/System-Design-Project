@@ -9,13 +9,37 @@ $id = $_SESSION['userID'];
 $userType = $_SESSION['userType'];
 $user = $_SESSION['CurrentUser'];
 
-//testing: get all coursesLeftMenu
+//get course from dropdown menu on form
+$courseCode = $_POST["courseList"];
 
-// //get course from dropdown menu on form
-// $courseCode = $_POST["courseCode"];
-// $courseDescription = $_POST["courseDescription"];
-//
-// //make sure you can't insert a course if a course with that course code already exists
+//getting course from dropdown, so no need to validate. make course object, call delete method
+$course = GetCourseObject($con,$courseCode);
+
+//need to delete course from db, delete folders for that course, and delete content from db.
+//delete course
+$course->removeCourse($con);
+
+//delete folders for the course
+$dirPath = 'Content/' . $course->getDescription();
+if (! is_dir($dirPath)) {
+    throw new InvalidArgumentException("$dirPath must be a directory");
+}
+if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
+    $dirPath .= '/';
+}
+$files = glob($dirPath . '*', GLOB_MARK);
+foreach ($files as $file) {
+    if (is_dir($file)) {
+        self::deleteDir($file);
+    } else {
+        unlink($file);
+    }
+}
+rmdir($dirPath);
+
+//delete content from db
+
+
 // if (is_null(utilCourseName($con,$courseCode))) {
 //   //create course object and set attributes
 //   $course = new Course();
