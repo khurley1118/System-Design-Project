@@ -38,8 +38,8 @@ foreach ($files as $file) {
 rmdir($dirPath);
 
 //delete content from db
-//
-//
+
+
 // if (is_null(utilCourseName($con,$courseCode))) {
 //   //create course object and set attributes
 //   $course = new Course();
