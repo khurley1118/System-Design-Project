@@ -5,6 +5,7 @@ require("StudentClass.php");
 require("AdminClass.php");
 require("InstructorClass.php");
 require("courseClass.php");
+
 session_start();
 
 $type = $_SESSION['userType'];
@@ -17,6 +18,24 @@ $_SESSION['firstName'] = $first;
 $full = $first . " " . $last;
 if ($_SESSION['userType'] != "admin"){
 $courselist = $user->getCourses();
+//
+$courseNames = [];
+if ($type != "admin"){
+  if ($type == "student"){
+    $courses = DLGetAssigned($con, $id, 0);
+    foreach ($courses as $course){
+      $courseName = DLgetCourseName($con, $course);
+      array_push($courseNames, $courseName);
+    }
+  } else if ($type == "faculty"){
+    $courses = DLGetAssigned($con, $id, 1);
+    foreach ($courses as $course){
+      $courseName = DLgetCourseName($con, $course);
+      array_push($courseNames, $courseName);
+    }
+  }
+  $_SESSION['assignedCourses'] = $courseNames;
+}
 }
 ?>
 <html lang="en">
@@ -57,6 +76,7 @@ $courselist = $user->getCourses();
           <div id="nameDisplay">
             <?php
               echo $first . " " . $last . " - " . ucfirst($type);
+
             ?>
           </div>
 
