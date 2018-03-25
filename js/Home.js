@@ -73,7 +73,7 @@ function popSubDir(directory){
       success: function (data) {
         var data = JSON.parse(data);
         len = data.length;
-        select = $('subDir');
+        select = document.getElementById('subDir');
         select.options.length = 0;
         for (var i = 0; i < len; i++){
           option = document.createElement('option');

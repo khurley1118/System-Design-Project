@@ -1,4 +1,28 @@
 <?php
+//Avatars
+///////////////////////////////////
+function DLgetStudentAvatars($con){
+  $rs = mysqli_query($con, "CALL SP_getStudentAvatars");
+  while ($row = mysqli_fetch_array($rs)) {
+      $avatars[] = $row['avatarPath'];
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $avatars;
+}
+function DLgetInstructorAvatars($con){
+  $rs = mysqli_query($con, "CALL SP_getInstructorAvatars");
+  while ($row = mysqli_fetch_array($rs)) {
+      $avatars[] = $row['avatarPath'];
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $avatars;
+}
 
 //Ticket
 ///////////////////////////////////
@@ -371,6 +395,7 @@ function DLGetAssigned($con, $id, $type) {
   } else if ($type == 1){
     $rs = mysqli_query($con, "CALL SP_getAssignedInstructor($id)");
   }
+    $CourseCodes = [];
     while ($row = mysqli_fetch_array($rs)) {
         $CourseCodes[] = $row['courseCode'];
     }

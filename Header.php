@@ -23,16 +23,20 @@ $courseNames = [];
 if ($type != "admin"){
   if ($type == "student"){
     $courses = DLGetAssigned($con, $id, 0);
+    if ($courses != false){
     foreach ($courses as $course){
       $courseName = DLgetCourseName($con, $course);
       array_push($courseNames, $courseName);
     }
+  }
   } else if ($type == "faculty"){
     $courses = DLGetAssigned($con, $id, 1);
+    if ($courses != false){
     foreach ($courses as $course){
       $courseName = DLgetCourseName($con, $course);
       array_push($courseNames, $courseName);
     }
+  }
   }
   $_SESSION['assignedCourses'] = $courseNames;
 }

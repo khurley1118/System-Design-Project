@@ -95,10 +95,14 @@
                                          <!-- Needs to be dynamically populated from top level topics-->
                                          <?php
                                          $directories = glob("Content/*");
+                                         $empty = 0;
                                          $assignedCourses = $_SESSION['assignedCourses'];
                                          foreach($directories as $folder){
                                            $folder = substr($folder, strpos($folder, "/") + 1);
                                            $subDirs = glob("Content/" . $folder . "/*");
+                                           if (!$assignedCourses){
+                                             $empty = 1;
+                                           }
                                            if (in_array($folder, $assignedCourses)){
                                            echo "<tr>
                                               <td>
@@ -119,9 +123,10 @@
                                            </tr>";
                                           }
                                         }
-
-                                          ?>
-                                          <?php
+                                        if ($empty == 1){
+                                          echo "<tr><td>No Courses Assigned</td></tr>";
+                                          $empty  =  0;
+                                        } else {
                                              if ($type == "faculty"){
                                                echo "<tr>
                                                   <td>
@@ -129,7 +134,7 @@
                                                   </td>
                                                </tr>";
                                              }
-                                          
+                                           }
                                              ?>
                                        </table>
                                     </div>
@@ -220,10 +225,13 @@
                                          <option>Select a Course</option>
                                          <?php
                                            $directories = glob("Content/*");
+                                           $assignedCourses = $_SESSION['assignedCourses'];
                                            foreach($directories as $folder){
                                              $folder = substr($folder, strpos($folder, "/") + 1);
+                                             if (in_array($folder, $assignedCourses)){
                                              echo "<option value='" . $folder . "'>" . $folder . "</option>";
                                            }
+                                         }
                                          ?>
                                        </select>
                                        <select class="form-control" id="subDir">
