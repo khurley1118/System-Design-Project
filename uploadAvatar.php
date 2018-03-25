@@ -45,13 +45,28 @@ $success = "false";
  else{
    $Success = "File sizes is too large";
  }
-
-
+//Cull unused from DB
+$studentAvs = DLgetStudentAvatars($con);
+$instructorAvs = DLgetinstructorAvatars($con);
+$fileList = [];
+$unusedAvatars = [];
+foreach (array_filter(glob('avatars/*'), 'is_file') as $file)
+{
+    array_push($fileList, $file);
+}
+foreach($fileList as $file){
+  if (!in_array($file, $studentAvs) && !in_array($file, $instructorAvs)){
+    $file = substr($file, strpos($file, "/") + 1);
+    array_push($unusedAvatars, $file);
+  }
+}
+foreach($unusedAvatars as $u){
+  unlink('avatars/' . $u);
+}
+// end Cull
  $_SESSION['avatar'] = "isset";
  $_SESSION['avatarMessage'] = $success;
 header("location: Home.php");
-
-
 ?>
 
 
