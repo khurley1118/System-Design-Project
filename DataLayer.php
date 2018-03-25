@@ -364,6 +364,35 @@ function DLgetAvatarInstructor($con, $id){
   return $path;}
 //COURSES
 /////////////////////////////////////
+function DLGetAssigned($con, $id, $type) {
+    //$ticketIDs = array();
+    if ($type == 0){
+    $rs = mysqli_query($con, "CALL SP_getAssignedStudent($id)");
+  } else if ($type == 1){
+    $rs = mysqli_query($con, "CALL SP_getAssignedInstructor($id)");
+  }
+    while ($row = mysqli_fetch_array($rs)) {
+        $CourseCodes[] = $row['courseCode'];
+    }
+    //gets rid of meta
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+        return $CourseCodes;
+}
+
+function DLgetCourseNames($con, $courseCode) {
+    $rs = mysqli_query($con, "CALL SP_getCourseName($courseCode)");
+    while ($row = mysqli_fetch_array($rs)){
+      $courseName = $row['description'];
+    }
+    //gets rid of meta
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+    return $courseName;
+}
+
 function DLgetCourseList($con) {
   $courses = array();
   $rs = mysqli_query($con, "CALL SP_getAllCourses");

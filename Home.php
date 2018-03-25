@@ -95,9 +95,11 @@
                                          <!-- Needs to be dynamically populated from top level topics-->
                                          <?php
                                          $directories = glob("Content/*");
+                                         $assignedCourses = $_SESSION['assignedCourses'];
                                          foreach($directories as $folder){
                                            $folder = substr($folder, strpos($folder, "/") + 1);
                                            $subDirs = glob("Content/" . $folder . "/*");
+                                           if (in_array($folder, $assignedCourses)){
                                            echo "<tr>
                                               <td>
                                                  <span class='glyphicon glyphicon glyphicon-pushpin'></span>
@@ -116,7 +118,7 @@
                                               </td>
                                            </tr>";
                                           }
-
+                                        }
 
                                           ?>
                                           <?php
@@ -127,6 +129,7 @@
                                                   </td>
                                                </tr>";
                                              }
+                                          
                                              ?>
                                        </table>
                                     </div>
