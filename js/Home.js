@@ -71,7 +71,6 @@ function popSubDir(directory){
       data: {directory : directory},
       cache: false,
       success: function (data) {
-        alert(data);
         var data = JSON.parse(data);
         len = data.length;
         select = document.getElementById('subDir');
