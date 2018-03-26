@@ -446,8 +446,39 @@ function DLupdateCourse($con,$courseCode,$description,$isActive) {
   return mysqli_query($con, "CALL SP_updateCourse($courseCode, '$description',$isActive)");
 }
 
-function DLremoveCourse($con, $courseID) {
+//sets a course's isActive to 0
+function DLremoveCourse($con, $courseCode) {
   return mysqli_query($con, "CALL SP_removeCourse($courseCode)");
+}
+
+//removes audio content based on courseCode. used when deleting a course
+function DLremoveAudio($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveAudioContentWCourseCode($courseCode)");
+}
+
+//removes video content based on courseCode. used when deleting a course
+function DLremoveVideo($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveVideoContentWCourseCode($courseCode)");
+}
+
+//removes text content based on courseCode. used when deleting a course
+function DLremoveText($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveDocumentContentWCourseCode($courseCode)");
+}
+
+//removes location table rows based on courseCode. used when deleting a course.
+function DLremoveLocation($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveLocation($courseCode)");
+}
+
+//removes instructormap rows based on courseCode. used when deleting a course.
+function DLremoveAssignedInstructors($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveAssignedInstructors($courseCode)");
+}
+
+//removes studentmap rows based on courseCode. used when deleting a course.
+function DLremoveAssignedStudents($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveAssignedStudents($courseCode)");
 }
 
 function DLgetCourseName($con, $courseID) {

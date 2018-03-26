@@ -47,8 +47,17 @@ class Course{
 		return DLgetCourseList($con);
 	}
 
+	//used to set delete course (sets isActive to 0, deletes relevant content from audio, video, doc tables, removes location from location table, removes assigned students/instructors)
 	function removeCourse($con) {
-		return DLremoveCourse($con, $this->getCourseCode());
+		$removeCourseSuccess = DLremoveCourse($con, $this->getCourseCode());
+		$removeAudioSuccess = DLremoveAudio($con, $this->getCourseCode());
+		$removeVideoSuccess = DLremoveVideo($con, $this->getCourseCode());
+		$removeTextSuccess = DLremoveText($con, $this->getCourseCode());
+		$removeLocationSuccess = DLremoveLocation($con, $this->getCourseCode());
+		$removeAssignedInstructorSuccess = DLremoveAssignedInstructors($con, $this->getCourseCode());
+		$removeAssignedStudentSuccess = DLremoveAssignedStudents($con, $this->getCourseCode());
+
+		return $removeCourseSuccess;
 	}
 }
 ?>

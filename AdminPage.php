@@ -575,6 +575,20 @@
    }
    }
   ?>
+  <?php
+   if (isset($_SESSION['adminRemoveCourse'])){
+    if ($_SESSION['adminRemoveCourse'] == 1){
+      $_SESSION['adminRemoveCourse'] = 0;
+      echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course has been removed successfully.';</script>";
+      echo "<script> myFunction(); </script>";
+    }
+    else if ($_SESSION['adminRemoveCourse'] == 2) {
+     $_SESSION['adminRemoveCourse'] = 0;
+     echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course could not be removed. Consult administrator.';</script>";
+     echo "<script> myFunction(); </script>";
+     }
+  }
+ ?>
       </div>
    </body>
 </html>
