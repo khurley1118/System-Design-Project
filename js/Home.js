@@ -1,9 +1,37 @@
+function newsDiv(name){
+  document.cookie = "pageName=" + name +";"
+  document.getElementById('pageName').innerHTML = name;
+  document.getElementById('newsDiv').setAttribute("class", "showDiv");
+  document.getElementById('changePassword').setAttribute("class", "hideDiv");
+  document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('addContent').setAttribute("class", "hideDiv");
+  document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
+  document.getElementById('createTicket').setAttribute("class", "hideDiv");
+  document.getElementById('contentDiv').setAttribute("class", "hideDiv");
+  document.getElementById('landingPage').style.height = "400px";
+  document.getElementById('outputContainer').style.height = "450px";
+}
+function contentDiv(name){
+  document.cookie = "pageName=" + name +";"
+  document.getElementById('pageName').innerHTML = name;
+  document.getElementById('contentDiv').setAttribute("class", "showDiv");
+  document.getElementById('changePassword').setAttribute("class", "hideDiv");
+  document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('addContent').setAttribute("class", "hideDiv");
+  document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
+  document.getElementById('createTicket').setAttribute("class", "hideDiv");
+  document.getElementById('newsDiv').setAttribute("class", "hideDiv");
+  document.getElementById('landingPage').style.height = "400px";
+  document.getElementById('outputContainer').style.height = "450px";
+}
 function changePassword() {
   document.getElementById('changePassword').setAttribute("class", "showDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
   document.getElementById('addContent').setAttribute("class", "hideDiv");
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
+  document.getElementById('newsDiv').setAttribute("class", "hideDiv");
+    document.getElementById('contentDiv').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
   document.getElementById('outputContainer').style.height = "450px";
 }
@@ -13,6 +41,8 @@ function landingPage() {
   document.getElementById('addContent').setAttribute("class", "hideDiv");
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
+  document.getElementById('newsDiv').setAttribute("class", "hideDiv");
+    document.getElementById('contentDiv').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "";
   document.getElementById('outputContainer').style.height = "570px";
 }
@@ -22,6 +52,8 @@ function addContent() {
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
+  document.getElementById('newsDiv').setAttribute("class", "hideDiv");
+    document.getElementById('contentDiv').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
   document.getElementById('outputContainer').style.height = "535px";
 }
@@ -31,6 +63,8 @@ function uploadAvatar() {
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
+  document.getElementById('newsDiv').setAttribute("class", "hideDiv");
+    document.getElementById('contentDiv').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
   document.getElementById('outputContainer').style.height = "550px";
 }
@@ -40,6 +74,8 @@ function createTicket(){
   document.getElementById('addContent').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
+  document.getElementById('newsDiv').setAttribute("class", "hideDiv");
+    document.getElementById('contentDiv').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').style.height = "400px";
   document.getElementById('outputContainer').style.height = "550px";
 }

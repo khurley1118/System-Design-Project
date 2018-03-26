@@ -6,6 +6,9 @@
 #introText {
     text-align: center;
 }
+a {
+  width: 100% !important;
+}
 #titleText{
   position: relative;
   line-height: 25px;
@@ -78,6 +81,13 @@ td {
  .hideDiv {
      visibility: hidden;
 }
+#newsText{
+  width: 90%;
+  overflow-x: auto;
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: break-word;
+}
  .showDiv {
      visibility: visible;
 }
@@ -91,7 +101,7 @@ td {
   border-style: solid;
   border-color: #D8D8D8;
 }
- #changePassword, #createTicket, #uploadAvatar, #addContent, #addCourse, #editCourse, #removeCourse, #resetPassword, #addAccount, #editAccount, #viewTickets{
+ #changePassword, #contentDiv, #newsDiv, #createTicket, #uploadAvatar, #addContent, #addCourse, #editCourse, #removeCourse, #resetPassword, #addAccount, #editAccount, #viewTickets{
      position: absolute;
      bottom: 0px;
      width: 100%;
