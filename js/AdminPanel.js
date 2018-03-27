@@ -120,9 +120,9 @@ function retrieveCourse(courseID){
 }
 
 function editACourse(){
-  var courseId = document.getElementById('courseList').options[document.getElementById("courseList").selectedIndex].value;
+  var courseId = document.getElementById('coursesList').options[document.getElementById("coursesList").selectedIndex].value;
   var instructorId = document.getElementById('selectInstructorOps').options[document.getElementById("selectInstructorOps").selectedIndex].value;
-  var corDesc = document.getElementById('courseDescInput');
+  var corDesc = document.getElementById('courseDescInput').value;
   alert(courseId + " " + instructorId + " " + corDesc);
   // $.ajax({
   //     type: 'POST',
