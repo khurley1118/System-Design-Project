@@ -163,20 +163,13 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <!-- <form class="form-signin" action="adminGetCourse.php" method="POST">
-                                      <center>
-                                         <h2>Get Course</h2>
-                                      </center>
-                                      <input id="getCourseCode" name="getCourseCode" type="text" class="form-control" placeholder="Course Code" required>
-                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Get Course" />
-                                    </form> -->
-                                    <br>
-                                   <form class="form-signin" action="adminEditCourse.php" method="POST">
+                                  <br>
+                                   <form class="form-signin" method="">
                                       <center>
                                          <h2>Edit Course</h2>
                                       </center>
                                       <select class="form-control" id="courseList" name="courseList" onchange="javascript:retrieveCourse(this.value)">
-                                         <option value="1" selected="selected" hidden>Select a course</option>
+                                         <option selected="selected" hidden>Select a course</option>
                                          <?php
                                             $courseVar = new Course();
                                             $courseList = $courseVar->GetCourseList($con);
@@ -185,9 +178,10 @@
                                             }
                                          ?>
                                       </select>
-                                      <input type="text" class="form-control" id="getCourseDesc" name="getCourseDesc" placeholder="Description" required>
-                                      <select class="form-control" id="editInstructor" name="editInstructor">
-                                         <option value="1" selected="selected">Assign an Instructor</option>
+                                      <input type="text" class="form-control" id="courseDescInput" name="courseDescInput" placeholder="Description" required>
+                                      <select class="form-control" id="selectInstructorOps" placeholder="Assign an Instructor" name="selectInstructorOps">
+                                         <!-- <option selected="selected" hidden>Assign an Instructor</option> -->
+                                         <option selected="selected" value="1">No instructor assigned</option>
                                          <?php
                                             //populate dropdown with list of instructors
                                             $instructors = getAllInstructors($con);
@@ -196,11 +190,7 @@
                                             }
                                          ?>
                                       </select>
-                                      <select class="form-control" id="editActive" name="editActive">
-                                         <option value="1" selected="selected">Active</option>
-                                         <option value="0">Inactive</option>
-                                      </select>
-                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
+                                      <input type='submit' formaction='javascript:editCourse(selectInstructorOps.value, courseList.value, courseDescInput.value)' class='btn btn-lg btn-default btn-block'  value='Submit' />
                                    </form>
                                  </div>
                               </div>
@@ -531,60 +521,8 @@
      }
      }
     ?>
-    <?php
-     if (isset($_SESSION['editGetCourse'])){
-      if ($_SESSION['editGetCourse'] == 1){ //success, populate fields
-        echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
-        echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
-        echo "<script>document.getElementById('getCourseCode').value = '" . $_SESSION['editCourse']->getCourseCode() . "';</script>";
-        echo "<script>document.getElementById('editInstructor').selectedIndex = ' ". '0' ." ';</script>";
-        echo "<script>document.getElementById('getCourseDesc').value = '". $_SESSION['editCourse']->getDescription() ."';</script>";
-        $_SESSION['editGetCourse'] = 0;
-        // $_SESSION['editCourse'] = 0;
-      }
-      else if ($_SESSION['editGetCourse'] == 2) { //no course exists with that course id
-        echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
-        echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
-        $_SESSION['editGetCourse'] = 0;
-        echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'No course with that course code found.';</script>";
-        echo "<script> myFunction(); </script>";
-      }
-     }
-   ?>
-   <?php
-    if (isset($_SESSION['adminEditCourse'])){
-     if ($_SESSION['adminEditCourse'] == 1){
-       $_SESSION['adminEditCourse'] = 0;
-       unset($_SESSION['editCourse']);
-       echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course has been updated successfully!';</script>";
-       echo "<script> myFunction(); </script>";
-     }
-     else if ($_SESSION['adminEditCourse'] == 2) {
-      echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
-      echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
-      $_SESSION['adminEditCourse'] = 0;
-      unset($_SESSION['editCourse']);
-      echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course was not updated successfully.';</script>";
-      echo "<script> myFunction(); </script>";
-      }
-   else if ($_SESSION['adminEditCourse'] == 3) {
-     echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
-     echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
-     $_SESSION['adminEditCourse'] = 0;
-     unset($_SESSION['editCourse']);
-     echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Oops, you chose the same course information.';</script>";
-     echo "<script> myFunction(); </script>";
-   }
-   else if ($_SESSION['adminEditCourse'] == 4) {
-     echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
-     echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
-     $_SESSION['adminEditCourse'] = 0;
-     unset($_SESSION['editCourse']);
-     echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course code not valid.';</script>";
-     echo "<script> myFunction(); </script>";
-   }
-   }
-  ?>
+
+
       </div>
    </body>
 </html>

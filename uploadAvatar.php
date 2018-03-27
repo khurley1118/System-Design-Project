@@ -35,7 +35,7 @@ $success = "false";
                  }
                }
                else{
-                 $Success = "Unsupported file type";
+                 $success = "Unsupported file type";
                }
        }
        else{
@@ -43,7 +43,7 @@ $success = "false";
        }
  }
  else{
-   $Success = "File sizes is too large";
+   $success = "File sizes is too large";
  }
 
 

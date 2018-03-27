@@ -489,6 +489,26 @@ function DLgetCourseObject($con,$id) {
   }
 }
 
+function DLgetCourseInstructor($con, $courseId){
+  $rs = mysqli_query($con, "CALL SP_getCurrentInstructor($courseId)");
+  $instructorId = null;
+  while ($row = mysqli_fetch_array($rs)){
+    $instructorId = $row['instructorId'];
+  }
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $instructorId;
+}
+
+function DLunassignInstructor($con, $id, $courseCode){
+  return mysqli_query($con, "CALL SP_unassignInsructor($id, $courseCode)");
+}
+
+function DLupdateInstructor($con, $id, $courseCode){
+  return myqli_qurey($con, "CALL SP_updateCurrentInstructor($id, $courseCode)");
+}
+
 function DLgetFolders($con, $courseID){
 		$result = mysqli_query($con, "CALL SP_getFolders($courseID)");
 		while ($row = mysqli_fetch_array($result)){

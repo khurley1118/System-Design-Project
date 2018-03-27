@@ -101,6 +101,17 @@ function utilAddInstructorToCourse($con, $id, $course){
   return DLaddIntsructorToCourse($con, $id, $course);
 }
 
+function utilUnassignInstructor($con, $id, $courseCode){
+  return DLunassignInstructor($con, $id, $courseCode);
+}
+
+function utilGetCourseInstructor($con, $courseId){
+  return DLgetCourseInstructor($con, $courseId);
+}
+
+function utilUpdateCourseInstructor($con, $id, $courseCode){
+  return DLupdateInstructor($con, $id, $courseCode);
+}
 
 // CHAT //////////////////////////////////
 function utilGetConversation($con, $senderId, $recipientId){
