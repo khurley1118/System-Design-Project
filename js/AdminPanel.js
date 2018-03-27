@@ -125,8 +125,9 @@ function retrieveCourse(courseID){
   }
 }
 
-function editCourse(instructorId, courseId, courseDesc){
-    alert("Here");
+function editACourse(instructorId, courseDesc){
+  var courseId = document.getElementById('courseList').options[document.getElementById("courseList").selectedIndex].value
+    alert(courseId + "  " + instructorId + "  " + courseDesc);
   $.ajax({
       type: 'POST',
       url: 'adminEditCourse.php',
