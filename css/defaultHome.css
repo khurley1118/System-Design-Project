@@ -6,9 +6,7 @@
 #introText {
     text-align: center;
 }
-a {
-  width: 100% !important;
-}
+
 #titleText{
   position: relative;
   line-height: 25px;

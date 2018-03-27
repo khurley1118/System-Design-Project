@@ -215,8 +215,7 @@
                                   $directory = $_COOKIE['pageName'];
                                   $fh = fopen('Content/' . $directory .'/News/news.txt','r');
                                   echo "<div id='newsText' class='w3-container' id='we-shrink'>";
-                                  echo "<h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b>Tacos</b></h5>";
-                                  echo "<h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>Jan 2015";
+                                  echo "<h5 class='w3-opacity'><span class='fa fa-calendar fa-fw w3-margin-right'></span><b>News</b></h5>";
                                   echo "<br><br><p>";
                                   while ($line = fgets($fh)) {
                                     echo($line);

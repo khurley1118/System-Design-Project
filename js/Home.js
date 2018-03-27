@@ -8,8 +8,11 @@ function newsDiv(name){
   document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
   document.getElementById('createTicket').setAttribute("class", "hideDiv");
   document.getElementById('contentDiv').setAttribute("class", "hideDiv");
-  document.getElementById('landingPage').style.height = "400px";
-  document.getElementById('outputContainer').style.height = "450px";
+  var len = document.getElementById('newsText').clientHeight;
+  var len2 = len + 200;
+  document.getElementById('landingPage').style.height = len2 + "px";
+  document.getElementById('outputContainer').style.height = len2 + "px";
+
 }
 function contentDiv(name){
   document.cookie = "pageName=" + name +";"
