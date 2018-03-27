@@ -448,6 +448,10 @@ function DLupdateCourse($con,$courseCode,$description,$isActive) {
 
 }
 
+function DLupdateCourseDescription($con, $corId, $corDesc){
+  return myqli_qurey($con, "CALL SP_updateCourse($corId, $corDesc)");
+}
+
 function DLremoveCourse($courseID) {
 
 }

@@ -164,7 +164,7 @@
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
                                   <br>
-                                   <form class="form-signin" method="">
+                                   <form class="form-signin" action="javascript:editACourse()">
                                       <center>
                                          <h2>Edit Course</h2>
                                       </center>
@@ -190,7 +190,7 @@
                                             }
                                          ?>
                                       </select>
-                                      <input type='submit' formaction='javascript:editACourse(selectInstructorOps.value, courseDescInput.value)' class='btn btn-lg btn-default btn-block'  value='Submit' />
+                                      <input type='submit' class='btn btn-lg btn-default btn-block'  value='Submit' />
                                    </form>
                                  </div>
                               </div>
@@ -207,7 +207,7 @@
                                       <center>
                                          <h2>Remove Course</h2>
                                       </center>
-                                      <select class="form-control" id="coursesList" name="coursesList">
+                                      <select class="form-control" id="courseList" name="courseList">
                                          <option value="1" selected="selected" hidden>Select a course</option>
                                          <?php
                                             $courseVar = new Course();

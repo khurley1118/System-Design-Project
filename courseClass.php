@@ -47,5 +47,14 @@ class Course{
 		return DLgetCourseList($con);
 	}
 
+	function updateDescription($con){
+		if($this->getCourseCode() != "" && $this->getDescription() != ""){
+			return DLupdateCourseDescription($con, $this->getCourseCode(), $this->getDescription());
+		}
+		else{
+			return false;
+		}
+	}
+
 }
 ?>

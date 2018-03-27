@@ -15,22 +15,49 @@ $newCourse = new Course();
 $newCourse->setCourseCode($_POST['corId']);
 $newCourse->setDescription($_POST['corDesc']);
 $inInstructor = $_POST["idNum"];
-$message = "success";
+$message = "";
 
+//$message = $currentCourse->getCourseCode() . " " . $currentCourse->getDescription() . " " . $inInstructor;
+$message = utilGetCourseInstructor($con, $currentCourse->getCourseCode());
 
-if(utilGetCourseInstructor($con, $currentCourse->getCourseCode()) != null){
+if(utilGetCourseInstructor($con, $currentCourse->getCourseCode()) != ""){
   if($inInstructor == 1){
-    utilUnassignInstructor($con, $currentCourse->getCourseCode());
-
+    if(utilUnassignInstructor($con, $currentCourse->getCourseCode())){
+      $message = "Instructor Unassigned";
+    }
+    else {
+      $mssage = "Error assigning Instructor";
+    }
   }
   else{
-    utilUpdateCourseInstructor($con, $currentCouse->getCourseCode());
+    if (utilUpdateCourseInstructor($con, $currentCouse->getCourseCode())){
+      $message = "Instructor updated";
+    }
+    else {
+      $mssage = "Error assigning Instructor";
+    }
   }
-
 }
 else{
   if($inInstructor != 1){
-    utilAddInstructorToCourse($con, $inInstructor, $currentCourse->getCourseCode());
+    if(utilAddInstructorToCourse($con, $inInstructor, $currentCourse->getCourseCode())){
+      $message = "Instructor assigned";
+    }
+    else {
+      $mssage = "Error assigning Instructor";
+    }
+  }
+}
+
+if($currentCourse->getDescription() != $newCourse->getDescription()){
+  if($urrentCourse->updateDescription($con)){
+    if($message != ""){
+      $message += ", and ";
+    }
+    $message += "Description updated";
+  }
+  else{
+    $message += "Error updating Description";
   }
 }
 

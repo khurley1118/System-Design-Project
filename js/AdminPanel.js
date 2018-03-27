@@ -104,10 +104,10 @@ function retrieveCourse(courseID){
         var courseDesc = data[0];
         var instructor = data[1];
         if(instructor != null){
-          $('#selectInstructorOps').val(instructor);
+          document.getElementById('selectInstructorOps').value = instructor;
         }
         else{
-          $('#selectInstructorOps').val(1);
+          document.getElementById('selectInstructorOps').value = 1;
         }
         document.getElementById('courseDescInput').value = courseDesc;
 
@@ -117,35 +117,30 @@ function retrieveCourse(courseID){
           return false;
       }
   }); // end ajax call
-
-  function limitText(limitField, limitNum) {
-      if (limitField.value.length > limitNum) {
-          limitField.value = limitField.value.substring(0, limitNum);
-      }
-  }
 }
 
-function editACourse(instructorId, courseDesc){
-  var courseId = document.getElementById('courseList').options[document.getElementById("courseList").selectedIndex].value
-    alert(courseId + "  " + instructorId + "  " + courseDesc);
-  $.ajax({
-      type: 'POST',
-      url: 'adminEditCourse.php',
-      data: {idNum : instructorId, corId : courseId, corDesc : courseDesc},
-      cache: false,
-      success: function (dataArray) {
-        var data = JSON.parse(dataArray);
-        var message = data[0];
-        retrieveCourse(courseId);
-        var message = data[0];
-       document.getElementById('AdmiralSnackbar').innerHTML = message;
-       myFunction();
-
-      },
-      error: function (xhr, ajaxOptions, thrownError) {
-          alert(xhr.status + "\n" + thrownError);
-          return false;
-      }
-  }); // end ajax call
+function editACourse(){
+  var courseId = document.getElementById('courseList').options[document.getElementById("courseList").selectedIndex].value;
+  var instructorId = document.getElementById('selectInstructorOps').options[document.getElementById("selectInstructorOps").selectedIndex].value;
+  var corDesc = document.getElementById('courseDescInput');
+  alert(courseId + " " + instructorId + " " + courseDesc);
+  // $.ajax({
+  //     type: 'POST',
+  //     url: 'adminEditCourse.php',
+  //     data: {idNum : instructorId, corId : courseId, corDesc : courseDesc},
+  //     cache: false,
+  //     success: function (dataArray) {
+  //       var data = JSON.parse(dataArray);
+  //       var message = data[0];
+  //       retrieveCourse(courseId);
+  //       document.getElementById('AdmiralSnackbar').innerHTML = message;
+  //      myFunction();
+  //
+  //     },
+  //     error: function (xhr, ajaxOptions, thrownError) {
+  //         alert(xhr.status + "\n" + thrownError);
+  //         return false;
+  //     }
+  // }); // end ajax call
 
   }
