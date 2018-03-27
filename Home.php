@@ -216,12 +216,12 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                    <form class="form-signin" action="" method="">
+                                    <form class="form-signin" action="uploadContent.php" method="POST" enctype="multipart/form-data">
                                        <center>
                                           <h2>Add a File</h2>
                                        </center>
-                                       <input type="file" class="form-control" required autofocus>
-                                       <select class="form-control" id="mainDir" onchange="javascript:popSubDir(mainDir.value)">
+                                       <input type="file" class="form-control" id="contentFile" name="contentFile" required autofocus>
+                                       <select class="form-control" id="mainDir" name="mainDir" onchange="javascript:popSubDir(mainDir.value)">
                                          <option>Select a Course</option>
                                          <?php
                                            $directories = glob("Content/*");
@@ -234,10 +234,10 @@
                                          }
                                          ?>
                                        </select>
-                                       <select class="form-control" id="subDir">
+                                       <select class="form-control" id="subDir" name="subDir">
 
                                        </select>
-                                       <textarea type="text" class="form-control" id="fileTA" placeholder="Description" required></textarea>
+                                       <textarea type="text" class="form-control" id="fileTA" name="fileTA" placeholder="Description" required></textarea>
                                        <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                     </form>
                                     <div id="tabs" data-tabs="tabs">

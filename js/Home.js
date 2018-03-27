@@ -75,6 +75,7 @@ function popSubDir(directory){
         len = data.length;
         select = document.getElementById('subDir');
         select.options.length = 0;
+        select.name = 'subDir';
         for (var i = 0; i < len; i++){
           option = document.createElement('option');
           option.value = data[i];
