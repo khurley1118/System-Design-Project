@@ -168,7 +168,7 @@
                                       <center>
                                          <h2>Edit Course</h2>
                                       </center>
-                                      <select class="form-control" id="courseList" name="courseList" onchange="javascript:retrieveCourse(this.value)">
+                                      <select class="form-control" id="coursesList" name="coursesList" onchange="javascript:retrieveCourse(this.value)">
                                          <option selected="selected" hidden>Select a course</option>
                                          <?php
                                             $courseVar = new Course();

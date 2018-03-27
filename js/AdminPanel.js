@@ -123,7 +123,7 @@ function editACourse(){
   var courseId = document.getElementById('courseList').options[document.getElementById("courseList").selectedIndex].value;
   var instructorId = document.getElementById('selectInstructorOps').options[document.getElementById("selectInstructorOps").selectedIndex].value;
   var corDesc = document.getElementById('courseDescInput');
-  alert(courseId + " " + instructorId + " " + courseDesc);
+  alert(courseId + " " + instructorId + " " + corDesc);
   // $.ajax({
   //     type: 'POST',
   //     url: 'adminEditCourse.php',
