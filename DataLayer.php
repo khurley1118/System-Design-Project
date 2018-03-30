@@ -157,9 +157,11 @@ function DLstudentUpdateNames($con,$id,$firstName,$lastName) {
 
 //setStudentsAvatar
 function DLsetAvatarStudent($con, $id, $path){
+  //clean
   while (mysqli_more_results($con)) {
       mysqli_next_result($con);
   }
+  //return true/false
   return mysqli_query($con, "CALL SP_setAvatarStudent($id, '$path')");
 }
 
@@ -400,9 +402,11 @@ function DLinstructorUpdateNames($con,$id,$firstName,$lastName) {
 
 //set Instructor Avatar
 function DLsetAvatarInstructor($con, $id, $path){
+  //clean
   while (mysqli_more_results($con)) {
       mysqli_next_result($con);
   }
+  //return true/false is success
   return mysqli_query($con, "CALL SP_setAvatarInstructor($id, '$path')");
 }
 
@@ -448,8 +452,9 @@ function DLupdateCourse($con,$courseCode,$description,$isActive) {
 
 }
 
+
 function DLupdateCourseDescription($con, $corId, $corDesc){
-  return myqli_qurey($con, "CALL SP_updateCourse($corId, $corDesc)");
+  return mysqli_query($con, "CALL SP_updateCourseDescription('$corId', '$corDesc')");
 }
 
 function DLremoveCourse($courseID) {
@@ -506,11 +511,11 @@ function DLgetCourseInstructor($con, $courseId){
 }
 
 function DLunassignInstructor($con, $id, $courseCode){
-  return mysqli_query($con, "CALL SP_unassignInsructor($id, $courseCode)");
+  return mysqli_query($con, "CALL SP_unassignInstructor($id, '$courseCode')");
 }
 
 function DLupdateInstructor($con, $id, $courseCode){
-  return myqli_qurey($con, "CALL SP_updateCurrentInstructor($id, $courseCode)");
+  return mysqli_query($con, "CALL SP_updateCurrentInstructor($id, $courseCode)");
 }
 
 function DLgetFolders($con, $courseID){
@@ -549,11 +554,7 @@ function DLcreateContent($con, $type, $courseID, $location, $path, $desc){
 }
 
 function DLaddIntsructorToCourse($con, $id, $course){
-  while (mysqli_more_results($con)) {
-      mysqli_next_result($con);
-  }
-  return mysqli_query($con, "SP_AddInstructorToCourse($id, $course)");
-
+  return mysqli_query($con, "CALL SP_addInstructorToCourse($id, '$course')");
 }
 
 /////CHAT/////////////////////////////////////////////////////////////////////////////////////////////////////

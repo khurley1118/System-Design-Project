@@ -123,24 +123,23 @@ function editACourse(){
   var courseId = document.getElementById('coursesList').options[document.getElementById("coursesList").selectedIndex].value;
   var instructorId = document.getElementById('selectInstructorOps').options[document.getElementById("selectInstructorOps").selectedIndex].value;
   var corDesc = document.getElementById('courseDescInput').value;
-  alert(courseId + " " + instructorId + " " + corDesc);
-  // $.ajax({
-  //     type: 'POST',
-  //     url: 'adminEditCourse.php',
-  //     data: {idNum : instructorId, corId : courseId, corDesc : courseDesc},
-  //     cache: false,
-  //     success: function (dataArray) {
-  //       var data = JSON.parse(dataArray);
-  //       var message = data[0];
-  //       retrieveCourse(courseId);
-  //       document.getElementById('AdmiralSnackbar').innerHTML = message;
-  //      myFunction();
-  //
-  //     },
-  //     error: function (xhr, ajaxOptions, thrownError) {
-  //         alert(xhr.status + "\n" + thrownError);
-  //         return false;
-  //     }
-  // }); // end ajax call
+  //alert(courseId + " " + instructorId + " " + corDesc);
+  $.ajax({
+      type: 'POST',
+      url: 'adminEditCourse.php',
+      data: {instId : instructorId, corId : courseId, corDesc : corDesc},
+      cache: false,
+      success: function (data) {
+        alert(data);
+        var data = JSON.parse(data);
+        document.getElementById('AdmiralSnackbar').innerHTML = data;
+        myFunction();
+        retrieveCourse(courseId);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + thrownError);
+          return false;
+      }
+  }); // end ajax call
 
   }

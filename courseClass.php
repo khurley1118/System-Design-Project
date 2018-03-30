@@ -47,7 +47,9 @@ class Course{
 		return DLgetCourseList($con);
 	}
 
+	//update the description
 	function updateDescription($con){
+		//check if the course has values
 		if($this->getCourseCode() != "" && $this->getDescription() != ""){
 			return DLupdateCourseDescription($con, $this->getCourseCode(), $this->getDescription());
 		}
