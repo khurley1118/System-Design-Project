@@ -350,6 +350,7 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
+                                   <!-- form for submitting a ticket -->
                                     <form class="form-signin" action="javascript:insTicket(textInput.value)" method="">
                                       <center>
                                         <h2>Create Ticket</h2>

@@ -14,7 +14,7 @@ Class Ticket {
     private $date;
     private $status;
 
-    //getters/setters
+    //getters n setters
     public function getStatus(){
 		return $this->status;
   	}
