@@ -95,6 +95,7 @@
                                          <?php
                                          $directories = glob("Content/*");
                                          $assignedCourses = $_SESSION['assignedCourses'];
+                                         $count = 0;
                                          foreach($directories as $folder){
                                            $folder = substr($folder, strpos($folder, "/") + 1);
                                            $subDirs = glob("Content/" . $folder . "/*");
@@ -103,21 +104,26 @@
                                               <td>
                                                  <span class='glyphicon glyphicon glyphicon-pushpin'></span>
                                                  <div class='dropdown btn-group'>
-                                                   <a id='listValue' name='$folder' class='btn dropdown-toggle' data-toggle='dropdown'>$folder</span></a>
+                                                   <a id='listValue" . $count . "' name='$folder' class='btn dropdown-toggle' data-toggle='dropdown'>$folder</span></a>
                                                    <ol class='dropdown-menu scrollable-menu' role='menu'>";
-                                                   echo "<li><a id='News' onclick='javascript:newsDiv(listValue.innerHTML)'>News<br></a></li>";
+                                                   echo "<li><a id='News' onclick='javascript:newsDiv(listValue" . $count . ".innerHTML)'>News<br></a></li>";
                                                     foreach($subDirs as $subFolder){
                                                       $subFolder = substr($subFolder, strpos($subFolder, '/', strpos($subFolder, '/')+3));
                                                       $subFolder = str_replace("/", "", $subFolder);
                                                       if ($subFolder != "News"){
-                                                      echo "<li><a id='$subFolder' onclick='javascript:contentDiv(listValue.innerHTML)'>$subFolder<br></a></li>";
+                                                      echo "<li><a id='$subFolder' onclick=javascript:contentDiv(listValue" . $count . ".innerHTML)>$subFolder<br></a></li>";
+
                                                     }
+
                                                     }
                                                    echo "</ol>
+
                                                  </div>
                                               </td>
                                            </tr>";
+
                                           }
+                                          $count = $count +1;
                                         }
                                           ?>
                                           <?php
