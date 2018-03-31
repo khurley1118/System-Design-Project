@@ -112,12 +112,9 @@
                                                       $subFolder = str_replace("/", "", $subFolder);
                                                       if ($subFolder != "News"){
                                                       echo "<li><a id='$subFolder' onclick=javascript:contentDiv(listValue" . $count . ".innerHTML)>$subFolder<br></a></li>";
-
                                                     }
-
                                                     }
                                                    echo "</ol>
-
                                                  </div>
                                               </td>
                                            </tr>";
@@ -214,24 +211,8 @@
                    <div class="row hideDiv" id="newsDiv">
                       <div id="formContainer">
                          <div class="account-wall">
-                            <div id="my-tab-content" class="tab-content">
-
-
-                                <?php
-                                  $directory = $_COOKIE['pageName'];
-                                  $fh = fopen('Content/' . $directory .'/News/news.txt','r');
-                                  echo "<div id='newsText' class='w3-container' id='we-shrink'>";
-                                  echo "<h5 class='w3-opacity'><span class='fa fa-calendar fa-fw w3-margin-right'></span><b>News</b></h5>";
-                                  echo "<br><br><p>";
-                                  while ($line = fgets($fh)) {
-                                    echo($line);
-                                  }
-                                  echo "</p>";
-                                  echo "<hr>";
-                                  echo "</div>";
-                                  fclose($fh);
-                                 ?>
-
+                            <div id="newsDisplay" class="tab-content">
+                              <!-- Populated from Home.js -->
                             </div>
                          </div>
                       </div>
@@ -241,11 +222,8 @@
                         <div id="formContainer">
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
-                                 <div class="tab-pane active" id="login">
-                                   <?php
-                                    $directory = $_COOKIE['pageName'];
-
-                                    ?>
+                                 <div class="tab-pane active" id="contentDisplay">
+                                   <!-- Populated from Home.js -->
                                  </div>
                               </div>
                            </div>

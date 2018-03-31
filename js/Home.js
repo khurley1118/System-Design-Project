@@ -1,5 +1,5 @@
-function newsDiv(name){
-  document.cookie = "pageName=" + name +";"
+function newsDiv(course){
+  popNews(course);
   document.getElementById('pageName').innerHTML = name;
   document.getElementById('newsDiv').setAttribute("class", "showDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
@@ -12,10 +12,9 @@ function newsDiv(name){
   var len2 = len + 200;
   document.getElementById('landingPage').style.height = len2 + "px";
   document.getElementById('outputContainer').style.height = len2 + "px";
-
 }
 function contentDiv(name){
-  document.cookie = "pageName=" + name +";"
+  popContent(name);
   document.getElementById('pageName').innerHTML = name;
   document.getElementById('contentDiv').setAttribute("class", "showDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
@@ -88,6 +87,48 @@ function logOut(){
   } else {
       // Do nothing!
   }
+}
+
+function popContent(course){
+  function retrieveContent(course, topic){
+  $.ajax({
+      type: 'POST',
+      url: 'ContentPull.php',
+      data: {givenPath : "'Content\\" + course + "\\" + topic + "'"},
+      cache: false,
+      success: function (data) {
+        //Do Nothin
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + thrownError);
+          return false;
+      }
+  }); // end ajax call
+}
+}
+
+function popNews(course){
+  $.ajax({
+      //pass by POST directory by directory
+      type: 'POST',
+      url: 'getTheNews.php',
+      data: {directory : course},
+      cache: false,
+      success: function (data) {
+        //on success parse JSON array into JS array
+        var data = JSON.parse(data);
+        var output = "<br><div id='newsText' class='w3-container' id='we-shrink'><h5 class='w3-opacity'><span class='fa fa-calendar fa-fw w3-margin-right'></span><b>News</b></h5><br><br><p>";
+        for (var i = 0; i < data.length; i++){
+          output = output + data[i];
+        }
+        var output = output + "</p><hr></div>";
+        document.getElementById('newsDiv').innerHTML = output;
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + thrownError);
+          return false;
+      }
+  }); // end ajax call
 }
 
 function myFunction() {

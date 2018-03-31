@@ -24,6 +24,61 @@ function DLgetInstructorAvatars($con){
   return $avatars;
 }
 
+//Content
+///////////////////////////////////
+function DLgetText($con, $path){
+  $rs = mysqli_query($con, "CALL SP_getText($path)");
+  $cont = new Content();
+  while ($row = mysqli_fetch_array($rs)) {
+      //create ticket and assign values
+      $cont->setDescription($row['description']);
+      $cont->setFileName($row['fileName']);
+      $cont->setUploadDate($row['uploadDate']);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  //returns a ticket object
+  return $cont;
+}
+function DLgetAudio($con, $path){
+  $rs = mysqli_query($con, "CALL SP_getAudio($path)");
+  $content = new Content();
+  $contentRay = [];
+  while ($row = mysqli_fetch_array($rs)) {
+      //assign values to content
+      $content->setDescription($row['description']);
+      $content->setFileName($row['fileName']);
+      $content->setUploadDate($row['uploadDate']);
+      array_push($contentRay, $content);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  //returns a ticket object
+  return $contentRay;
+}
+function DLgetVideo($con, $path){
+  $rs = mysqli_query($con, "CALL SP_getVideo($path)");
+  $content = new Content();
+  $contentRay = [];
+  while ($row = mysqli_fetch_array($rs)) {
+      //assign values to content
+      $content->setDescription($row['description']);
+      $content->setFileName($row['fileName']);
+      $content->setUploadDate($row['uploadDate']);
+      array_push($contentRay, $content);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  //returns a ticket object
+  return $contentRay;
+}
+
 //Ticket
 ///////////////////////////////////
 
