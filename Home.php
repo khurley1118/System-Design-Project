@@ -111,7 +111,8 @@
                                                       $subFolder = substr($subFolder, strpos($subFolder, '/', strpos($subFolder, '/')+3));
                                                       $subFolder = str_replace("/", "", $subFolder);
                                                       if ($subFolder != "News"){
-                                                      echo "<li><a id='$subFolder' onclick=javascript:contentDiv(listValue" . $count . ".innerHTML)>$subFolder<br></a></li>";
+                                                      $output = str_replace(" ", "|", $subFolder);
+                                                      echo "<li><a id='$subFolder' onclick='javascript:contentDiv(listValue" . $count . ".innerHTML, this.id)'>$subFolder<br></a></li>";
                                                     }
                                                     }
                                                    echo "</ol>

@@ -13,8 +13,8 @@ function newsDiv(course){
   document.getElementById('landingPage').style.height = len2 + "px";
   document.getElementById('outputContainer').style.height = len2 + "px";
 }
-function contentDiv(name){
-  popContent(name);
+function contentDiv(name, topic){
+  popContent(name, topic);
   document.getElementById('pageName').innerHTML = name;
   document.getElementById('contentDiv').setAttribute("class", "showDiv");
   document.getElementById('changePassword').setAttribute("class", "hideDiv");
@@ -89,15 +89,47 @@ function logOut(){
   }
 }
 
-function popContent(course){
-  function retrieveContent(course, topic){
+function popContent(course, topic){
   $.ajax({
       type: 'POST',
       url: 'ContentPull.php',
-      data: {givenPath : "'Content\\" + course + "\\" + topic + "'"},
+      data: {givenPath : "'Content\\\\" + course + "\\\\" + topic + "'"},
       cache: false,
       success: function (data) {
-        //Do Nothin
+        var data = JSON.parse(data);
+        var output = "";
+        var count = 0;
+        for (var i = 0; i < 3; i++){
+          for(var b = 0; b < 12; b++){
+            count += 1;
+            if (count == 1){
+              output = output + "<div class='w3-container' id='we-shrink'><h5 class='w3-opacity'><span class='glyphicon glyphicon-pencil'></span><b>";
+              output = output + data[i][b] + "</b></h5><h6 class='w3-text-teal'><i class='fa fa-calendar fa-fw w3-margin-right'></i>";
+            }
+            else if (count == 2){
+              output = output + data[i][b] + "<br><br><p>";
+            }
+            else if (count == 3){
+              output = output + data[i][b] + "</p>";
+            }
+            else if (count == 4){
+              var countDiff = b - 2;
+              var previous = data[i][countDiff];
+              if (previous.includes("mp4")){
+                output = output + "<video width='100%' height='240' controls><source src='" + data[i][b] + "'  type='video/mp4'></video><hr>";
+              } else if (previous.includes("txt")){
+                output = output + "<a href='" + data[i][b] + "' download>Download File</a><hr>";
+              } else if (previous.includes("mp3")){
+                output = output + "<audio controls><source src='" + data[i][b] + "'  type='audio/mp3'></audio><hr>";
+              }
+            }
+            if (count == 4){
+              output = output + "<BR></div>";
+              count = 0;
+            }
+          }
+        }
+        document.getElementById('contentDisplay').innerHTML = output;
       },
       error: function (xhr, ajaxOptions, thrownError) {
           alert(xhr.status + "\n" + thrownError);
@@ -105,7 +137,7 @@ function popContent(course){
       }
   }); // end ajax call
 }
-}
+
 
 function popNews(course){
   $.ajax({
