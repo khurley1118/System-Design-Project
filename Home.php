@@ -209,19 +209,23 @@
                      </div>
                    </div>
                    <!-- Keep em seperated -->
-                   <div class="row hideDiv" id="newsDiv">
-                      <div id="formContainer">
-                         <div class="account-wall">
-                            <div id="newsDisplay" class="tab-content">
-                              <!-- Populated from Home.js -->
-                            </div>
-                         </div>
+                   <div id='newsHolder'>
+                     <div class="row hideDiv" id="newsDiv">
+                        <div id="formContainer">
+                           <div class="account-wall">
+                              <div id="newsDisplay" class="tab-content">
+                                <div id='newsText' class='w3-container' id='we-shrink'>
+                                <!-- Populated from Home.js -->
+                                </div>
+                              </div>
+                           </div>
+                        </div>
                       </div>
-                   </div>
+                    </div>
                      <!-- Keep em seperated -->
                      <div class="row hideDiv" id="contentDiv">
                         <div id="formContainer">
-                           <div class="account-wall">
+                           <div id='contentHolder' class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="contentDisplay">
                                    <!-- Populated from Home.js -->
@@ -229,7 +233,7 @@
                               </div>
                            </div>
                         </div>
-                     </div>
+                      </div>
                      <!-- Keep em seperated -->
                      <div class="row hideDiv" id="addContent">
                         <div id="formContainer">

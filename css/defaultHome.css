@@ -6,7 +6,9 @@
 #introText {
     text-align: center;
 }
-
+#landingPage{
+  min-height: 200px;
+}
 #titleText{
   position: relative;
   line-height: 25px;
@@ -45,6 +47,7 @@
 #outputContainer {
      position: relative;
      max-width: 100%;
+     clear:both;
 }
 @media only screen and (min-width : 1085px){
     #outputContainer{
