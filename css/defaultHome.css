@@ -47,7 +47,8 @@
 #outputContainer {
      position: relative;
      max-width: 100%;
-     clear:both;
+     overflow: scroll;
+     max-height: 1200px;
 }
 @media only screen and (min-width : 1085px){
     #outputContainer{
