@@ -24,8 +24,8 @@ function contentDiv(name, topic) {
         document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
         document.getElementById('createTicket').setAttribute("class", "hideDiv");
         document.getElementById('newsDiv').setAttribute("class", "hideDiv");
-        document.getElementById('formContainer').style.height = 1000 + "px";
-        document.getElementById('outputContainer').style.height = 1000 + "px";
+        document.getElementById('formContainer').style.height = 2000 + "px";
+        document.getElementById('outputContainer').style.height = 2000 + "px";
 }
 
 function changePassword() {
