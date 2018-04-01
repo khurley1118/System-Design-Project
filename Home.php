@@ -224,15 +224,11 @@
                     </div>
                      <!-- Keep em seperated -->
                      <div class="row hideDiv" id="contentDiv">
-                        <div id="formContainer">
                            <div id='contentHolder' class="account-wall">
-                              <div id="my-tab-content" class="tab-content">
-                                 <div class="tab-pane active" id="contentDisplay">
+                                 <div id="contentDisplay">
                                    <!-- Populated from Home.js -->
                                  </div>
-                              </div>
                            </div>
-                        </div>
                       </div>
                      <!-- Keep em seperated -->
                      <div class="row hideDiv" id="addContent">

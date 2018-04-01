@@ -16,7 +16,6 @@ function newsDiv(course) {
 
 function contentDiv(name, topic) {
     popContent(name, topic);
-    if (name != 1 && topic != 2) {
         document.getElementById('pageName').innerHTML = name;
         document.getElementById('contentDiv').setAttribute("class", "showDiv");
         document.getElementById('changePassword').setAttribute("class", "hideDiv");
@@ -25,11 +24,8 @@ function contentDiv(name, topic) {
         document.getElementById('uploadAvatar').setAttribute("class", "hideDiv");
         document.getElementById('createTicket').setAttribute("class", "hideDiv");
         document.getElementById('newsDiv').setAttribute("class", "hideDiv");
-        var len = document.getElementById('contentHolder').clientHeight;
-        var len2 = len + 150;
-        document.getElementById('formContainer').style.height = len2 + "px";
-        document.getElementById('outputContainer').style.height = len2 + "px";
-    }
+        document.getElementById('formContainer').style.height = 1000 + "px";
+        document.getElementById('outputContainer').style.height = 1000 + "px";
 }
 
 function changePassword() {
