@@ -14,10 +14,6 @@ $course = $_POST["mainDir"]; //title of course
 $subDir = $_POST["subDir"]; //title of subfolder it's going into
 $description = $_POST["fileTA"]; //description of the file
 
-// echo $course . '<br>';
-// echo $subDir . '<br>';
-// echo $description . '<br>';
-
 //get file info
 $fileName = $_FILES["contentFile"]["name"];
 $fileType =  $_FILES["contentFile"]["type"];
@@ -52,29 +48,33 @@ if ((($fileType == "video/mp4") //video
 && in_array($extension, $allowedExts))
 
   {
-  if ($_FILES["contentFile"]["error"] > 0) {
-    echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
-  }
-  else { //no errors, proceed
-    echo "Upload: " . $_FILES["contentFile"]["name"] . "<br />";
-    echo "Type: " . $_FILES["contentFile"]["type"] . "<br />";
-    echo "Size: " . ($_FILES["contentFile"]["size"] / 1024) . " Kb<br />";
-    echo "Temp file: " . $_FILES["contentFile"]["tmp_name"] . "<br />";
+    if ($_FILES["contentFile"]["error"] > 0) {
+      echo "Return Code: " . $_FILES["contentFile"]["error"] . "<br />";
+    }
+    else { //no errors, proceed
+      echo "Upload: " . $_FILES["contentFile"]["name"] . "<br />";
+      echo "Type: " . $_FILES["contentFile"]["type"] . "<br />";
+      echo "Size: " . ($_FILES["contentFile"]["size"] / 1024) . " Kb<br />";
+      echo "Temp file: " . $_FILES["contentFile"]["tmp_name"] . "<br />";
+      echo "mainDir: " . $course . "<br/>";
+      echo "subDir: " . $subDir . "<br/>";
+      echo "fileTA: " . $description . "<br/><br/>";
 
-    // if (file_exists("upload/" . $_FILES["file"]["name"])) {
-    //   echo $_FILES["file"]["name"] . " already exists. ";
-    // }
-    // else {
-    //   move_uploaded_file($_FILES["file"]["tmp_name"],
-    //   "upload/" . $_FILES["file"]["name"]);
-    //   echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
-    // }
+      if (file_exists("Content/" . $course . "/" . $asubDir . "/" . $fileName)) {
+        echo $fileName . " already exists.";
+      }
+      else {
+        move_uploaded_file($fileTempName,
+        "Content/" . $course . "/" . $subDir . "/" . $fileName);
+        echo "Stored in: " . "Content/" . $course . "/" . $subDir . "/" . $fileName;
+      }
+    }
   }
-}
-else {
-  echo "Invalid file";
-}
+  else {
+    echo "Invalid file";
+  }
 
+//below is Kyle's
 //will return the file type if it's an accepted file type or false if it's not.
 // function FileTypeChecker($fileType) {
 //   if ($fileType == "image/jpeg") {
