@@ -20,7 +20,7 @@ function addRemoveStudent() {
   document.getElementById('resetPassword').setAttribute("class", "hideDiv");
   document.getElementById('viewTickets').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
-  document.getElementById('outputContainer').style.height = "300px";
+  document.getElementById('outputContainer').style.height = "500px";
 }
 function editCourse() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
