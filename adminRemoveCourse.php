@@ -9,40 +9,34 @@ $id = $_SESSION['userID'];
 $userType = $_SESSION['userType'];
 $user = $_SESSION['CurrentUser'];
 
-//testing: get all coursesLeftMenu
+//get course from dropdown menu on form
+$courseCode = $_POST["courseList"];
 
-// //get course from dropdown menu on form
-// $courseCode = $_POST["courseCode"];
-// $courseDescription = $_POST["courseDescription"];
-//
-// //make sure you can't insert a course if a course with that course code already exists
-// if (is_null(utilCourseName($con,$courseCode))) {
-//   //create course object and set attributes
-//   $course = new Course();
-//   $course->setCourseCode($courseCode);
-//   $course->setDescription($courseDescription);
-//
-//   //call insert function
-//   $success = $course->insertCourse($con);
-//   if ($success) {
-//     //insert was successful, create course folder, destruct object, redirect to AdminPage
-//     $_SESSION['insertCourse'] = 1;
-//     //note: below uses description as folder name, as description is really more of a title
-//     if (!file_exists('Content/' . $course->getDescription())) { //should this have an else condition?
-//     mkdir('Content/' . $courseDescription, 0777, true);
-//     }
-//     unset($course);
-//   }
-//   else {
-//     //insert was not sucessful, display error message
-//     $_SESSION['insertCourse'] = 2;
-//     unset($course);
-//   }
-// }
-// else {
-//   //course with that code already exists.
-//   $_SESSION['insertCourse'] = 3;
-// }
-//
-// header('Location: AdminPage.php');
+//getting course from dropdown, so no need to validate. make course object, call delete method
+$course = GetCourseObject($con,$courseCode);
+
+//need to delete course from db, delete folders for that course, delete content from db, and remove assigned instructors/students.
+//delete course (sets isActive to 0, deletes rows from content tables and location table)
+$success = $course->removeCourse($con);
+
+//delete folders for the course
+$dirPath = 'Content/' . $course->getDescription();
+function removeDirectory($path) {
+ 	$files = glob($path . '/*');
+	foreach ($files as $file) {
+		is_dir($file) ? removeDirectory($file) : unlink($file);
+	}
+	rmdir($path);
+ 	return;
+}
+removeDirectory($dirPath);
+
+if ($success) {
+  $_SESSION['adminRemoveCourse'] = 1;
+}
+else {
+  $_SESSION['adminRemoveCourse'] = 2;
+}
+
+header('Location: AdminPage.php');
 ?>

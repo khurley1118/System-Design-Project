@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <script src="js/AdminPanel.js"></script>
 <?php
-
    include('connect.php');
    include('Header.php');
    include('Footer.php');
@@ -347,26 +346,33 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                    <form class="form-signin">
-                                      <select class="form-control" id="ticketSelect" onchange="javascript:retrieveTicket(this.value)">
-                                        <option value="" disabled selected hidden>Please choose a Ticket</option>
-                                        <?php
-                                        $idList = new Ticket();
-                                        $ticketID[] = $idList->getTickets($con);
-                                        $i = 0;
-                                        while ($ticketID[0][$i] != ""){
-                                          $str = $ticketID[0][$i];
-                                          $value = strstr($str, '&nbsp', true);
-                                          echo "<option value='" . $value . "'>Ticket#: " . $ticketID[0][$i] . "</option>";
-                                          $i++;
-                                        }
-                                        ?>
-                                        </select>
-                                        Submitted By: <input type='text' id='subBy' name='Name' value='' readonly>
-                                        Status: <input type='text' id='status' name='Name' value='' readonly>
-                                        <textarea id='ticketDisplay' type='text' class='form-control' rows='10' cols='50' placeholder='Select a Ticket from the Dropdown'></textarea>
-                                        <input type='submit' formaction="javascript:resTicket(ticketSelect.value)" class='btn btn-lg btn-default btn-block' name='action' id='action' value='Set Resolved' />
-                                    </form>
+                                   <form class="form-signin">
+                                     <!-- When you select a ticket call retrieveTicket passing in the value -->
+                                     <select class="form-control" id="ticketSelect" onchange="javascript:retrieveTicket(this.value)">
+                                       <option value="" disabled selected hidden>Please choose a Ticket</option>
+                                       <?php
+                                       //create empty ticket to call ticket functions to populate the drop down
+                                       $idList = new Ticket();
+                                       //get the Tickets info
+                                       $ticketID[] = $idList->getTickets($con);
+                                       $i = 0;
+                                       //while info loop
+                                       while ($ticketID[0][$i] != ""){
+                                         //substring from the nbsp's
+                                         $str = $ticketID[0][$i];
+                                         $value = strstr($str, '&nbsp', true);
+                                         //create option elements
+                                         echo "<option value='" . $value . "'>Ticket#: " . $ticketID[0][$i] . "</option>";
+                                         $i++;
+                                       }
+                                       ?>
+                                       </select>
+                                       <table><tr><td>
+                                       Submitted By: </td><td><input type='text' id='subBy' name='Name' value='' readonly><br>
+                                       </td></tr><tr><td>Status: </td><td><input type='text' id='status' name='Name' value='' readonly><br></td></td></table>
+                                       <textarea id='ticketDisplay' type='text' class='form-control' rows='10' cols='50' placeholder='Select a Ticket from the Dropdown'></textarea>
+                                       <input type='submit' formaction="javascript:resTicket(ticketSelect.value)" class='btn btn-lg btn-default btn-block' name='action' id='action' value='Set Resolved' />
+                                   </form>
                                  </div>
                               </div>
                            </div>

@@ -47,16 +47,17 @@ class Course{
 		return DLgetCourseList($con);
 	}
 
-	//update the description
-	function updateDescription($con){
-		//check if the course has values
-		if($this->getCourseCode() != "" && $this->getDescription() != ""){
-			return DLupdateCourseDescription($con, $this->getCourseCode(), $this->getDescription());
-		}
-		else{
-			return false;
-		}
-	}
+	//used to set delete course (sets isActive to 0, deletes relevant content from audio, video, doc tables, removes location from location table, removes assigned students/instructors)
+	function removeCourse($con) {
+		$removeCourseSuccess = DLremoveCourse($con, $this->getCourseCode());
+		$removeAudioSuccess = DLremoveAudio($con, $this->getCourseCode());
+		$removeVideoSuccess = DLremoveVideo($con, $this->getCourseCode());
+		$removeTextSuccess = DLremoveText($con, $this->getCourseCode());
+		$removeLocationSuccess = DLremoveLocation($con, $this->getCourseCode());
+		$removeAssignedInstructorSuccess = DLremoveAssignedInstructors($con, $this->getCourseCode());
+		$removeAssignedStudentSuccess = DLremoveAssignedStudents($con, $this->getCourseCode());
 
+		return $removeCourseSuccess;
+	}
 }
 ?>

@@ -48,13 +48,31 @@ $success = "false"; //holds response message
  else{
    $success = "File sizes is too large";
  }
-
-
- $_SESSION['avatar'] = "isset";//session var that is used to trigger a redirect to the avatar upload section
- $_SESSION['avatarMessage'] = $success;//session for returning the success message
+//Cull unused from DB
+$studentAvs = DLgetStudentAvatars($con); //get all student paths
+$instructorAvs = DLgetinstructorAvatars($con); //get all instructor paths
+$fileList = [];
+$unusedAvatars = [];
+foreach (array_filter(glob('avatars/*'), 'is_file') as $file)
+{
+    //each file in avatar directory into an array
+    array_push($fileList, $file);
+}
+foreach($fileList as $file){
+  //if a file in the directory is not present in the student or instructor array, push to unused array
+  if (!in_array($file, $studentAvs) && !in_array($file, $instructorAvs)){
+    $file = substr($file, strpos($file, "/") + 1);
+    array_push($unusedAvatars, $file);
+  }
+}
+foreach($unusedAvatars as $u){
+  //delete any unused avatar
+  unlink('avatars/' . $u);
+}
+// end Cull
+ $_SESSION['avatar'] = "isset";
+ $_SESSION['avatarMessage'] = $success;
 header("location: Home.php");
-
-
 ?>
 
 
