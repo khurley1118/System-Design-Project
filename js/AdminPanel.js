@@ -1,4 +1,17 @@
-
+function setCourses() {
+    document.getElementById('coursesContent').setAttribute("class", "showDiv");
+    document.getElementById('accountsContent').setAttribute("class", "hideDiv");
+    document.getElementById('searchAccount').setAttribute("class", "hideDiv");
+    document.getElementById('addAccount').setAttribute("class", "hideDiv");
+    document.getElementById('changePassword').setAttribute("class", "hideDiv");
+}
+function setAccounts() {
+    document.getElementById('coursesContent').setAttribute("class", "hideDiv");
+    document.getElementById('accountsContent').setAttribute("class", "showDiv");
+    document.getElementById('removeCourse').setAttribute("class", "hideDiv");
+    document.getElementById('addCourse').setAttribute("class", "hideDiv");
+    document.getElementById('showCourses').setAttribute("class", "hideDiv");
+}
 function addCourse() {
     document.getElementById('removeCourse').setAttribute("class", "hideDiv");
     document.getElementById('addCourse').setAttribute("class", "showDiv");
@@ -128,6 +141,7 @@ function editACourse(){
   }); // end ajax call
 
   }
+
   function getUserInfoAdmin(){
     var useriD = document.getElementById('userIdAddRemove').value;
     var userType = document.getElementById('userTypeAddRemove').value;
@@ -138,11 +152,11 @@ function editACourse(){
         data: {getUserID : userId, userType : userType},
         cache: false,
         success: function (dataArray) {
-          alert(data);
-          var data = JSON.parse(data);
-          document.getElementById('AdmiralSnackbar').innerHTML = data;
-          myFunction();
-          retrieveCourse(courseId);
+          alert(dataArray);
+          var data = JSON.parse(dataArray);
+          var courseDesc = data[0];
+          var instructor = data[1];
+          document.getElementById('')
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr.status + "\n" + thrownError);
@@ -151,3 +165,28 @@ function editACourse(){
     }); // end ajax call
 
     }
+
+    function addRemoveStudent(){
+      alert("HERE");
+      var userId = document.getElementById('courseDescInput').value;
+      var userType = document.getElementById('courseDescInput').value;
+      // alert(option);
+
+      // $.ajax({
+      //     type: 'POST',
+      //     url: 'addRemoveStudent.php',
+      //     data: {userId : userId, userType : userType, opt : option},
+      //     cache: false,
+      //     success: function (data) {
+      //       var data = JSON.parse(data);
+      //       document.getElementById('AdmiralSnackbar').innerHTML = data;
+      //       myFunction();
+      //       retrieveCourse(courseId);
+      //     },
+      //     error: function (xhr, ajaxOptions, thrownError) {
+      //         alert(xhr.status + "\n" + thrownError);
+      //         return false;
+      //     }
+      // }); // end ajax call
+
+      }

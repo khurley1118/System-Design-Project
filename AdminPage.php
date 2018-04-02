@@ -237,12 +237,12 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <form class="form-signin">
+                                   <form class="form-signin" action="javascript:addRemoveStudent();">
                                       <center>
                                          <h2>Add/Remove Student</h2>
                                       </center>
-                                      <input id="studentIdToRemove" name="studentIdToRemove" type="text" class="form-control" placeholder="UserID" required>
-                                      <select class="form-control" id="courseToRemoveFrom" name="coursesList">
+                                      <input id="studentIdToRemove" name="studentIdToRemove" type="text" class="form-control" placeholder="UserID">
+                                      <select class="form-control" id="courseToRemoveFrom" name="courseToRemoveFrom">
                                          <option selected="selected" hidden>Select a course</option>
                                          <?php
                                             $courseVar = new Course();
@@ -252,8 +252,10 @@
                                             }
                                          ?>
                                       </select>
-                                      <button class="btn btn-lg btn-default btn-block" value="Get User">Add>
-                                      <button class="btn btn-lg btn-default btn-block" value="Get User">Remove</button>
+                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Add"/>
+                                      <!-- <input id="clickMe" type="button" value="clickme" onclick="javascript:addRemoveStudent();" /> -->
+                                      <!-- <input type="button" class="btn btn-lg btn-default btn-block" onclick="javascript:addRemoveStudent();" value="Add" /> -->
+                                      <!-- <input type="button" class="btn btn-lg btn-default btn-block" onclick="javascript:addRemoveStudent();" value="Remove" /> -->
                                     </form>
                                  </div>
                               </div>
