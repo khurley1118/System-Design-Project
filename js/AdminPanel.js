@@ -129,7 +129,6 @@ function editACourse(){
       data: {instId : instructorId, corId : courseId, corDesc : corDesc},
       cache: false,
       success: function (data) {
-        alert(data);
         var data = JSON.parse(data);
         document.getElementById('AdmiralSnackbar').innerHTML = data;
         myFunction();
@@ -148,10 +147,10 @@ function editACourse(){
     //alert(courseId + " " + instructorId + " " + corDesc);
     $.ajax({
         type: 'POST',
-        url: 'adminGetUser.php',
+        url: 'getUserInfo.php',
         data: {getUserID : userId, userType : userType},
         cache: false,
-        success: function (data) {
+        success: function (dataArray) {
           alert(data);
           var data = JSON.parse(data);
           document.getElementById('AdmiralSnackbar').innerHTML = data;

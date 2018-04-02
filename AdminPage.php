@@ -237,16 +237,23 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <form class="form-signin" action="adminGetUser.php" method="POST">
+                                   <form class="form-signin">
                                       <center>
                                          <h2>Add/Remove Student</h2>
                                       </center>
-                                      <input id="userIdAddRemove" name="userIdAddRemove" type="text" class="form-control" placeholder="UserID" required>
-                                      <select class="form-control" id="userTypeAddRemove" name="userTypeAddRemove" required>
-                                         <option value="1">Student</option>
-                                         <option value="2">Instructor</option>
+                                      <input id="studentIdToRemove" name="studentIdToRemove" type="text" class="form-control" placeholder="UserID" required>
+                                      <select class="form-control" id="courseToRemoveFrom" name="coursesList">
+                                         <option selected="selected" hidden>Select a course</option>
+                                         <?php
+                                            $courseVar = new Course();
+                                            $courseList = $courseVar->GetCourseList($con);
+                                            foreach ($courseList as $course) {
+                                              echo "<option value='" . $course->getCourseCode() . "'>" . $course->getCourseCode() . " - " . $course->getDescription() . "</option>";
+                                            }
+                                         ?>
                                       </select>
-                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Get User" />
+                                      <button class="btn btn-lg btn-default btn-block" value="Get User">Add>
+                                      <button class="btn btn-lg btn-default btn-block" value="Get User">Remove</button>
                                     </form>
                                  </div>
                               </div>
