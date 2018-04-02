@@ -25,6 +25,7 @@ $filesizeMB = $filesize / 1024 / 1024;
 $allowedExts = array("mp3","mp4","avi","wma","fodt","txt","doc","docx","apt","rtf","docxml","text","wpd","docx","wps","readme","pdf","application/vnd.openxmlformats-officedocument.wordprocessingml.document");
 $extension = pathinfo($fileName, PATHINFO_EXTENSION);
 
+//V1
 if ((($fileType == "video/mp4") //video
 || ($fileType == "video/avi")
 || ($fileType == "audio/mp3") //audio
@@ -49,18 +50,18 @@ if ((($fileType == "video/mp4") //video
 
   {
     if ($_FILES["contentFile"]["error"] > 0) {
-      echo "Return Code: " . $_FILES["contentFile"]["error"] . "<br />";
+      echo "Return Code: " . $_FILES["contentFile"]["error"] . "<br/>";
     }
     else { //no errors, proceed
-      echo "Upload: " . $_FILES["contentFile"]["name"] . "<br />";
-      echo "Type: " . $_FILES["contentFile"]["type"] . "<br />";
-      echo "Size: " . ($_FILES["contentFile"]["size"] / 1024) . " Kb<br />";
-      echo "Temp file: " . $_FILES["contentFile"]["tmp_name"] . "<br />";
+      echo "Upload: " . $_FILES["contentFile"]["name"] . "<br/>";
+      echo "Type: " . $_FILES["contentFile"]["type"] . "<br/>";
+      echo "Size: " . ($_FILES["contentFile"]["size"] / 1024) . " Kb<br/>";
+      echo "Temp file: " . $_FILES["contentFile"]["tmp_name"] . "<br/>";
       echo "mainDir: " . $course . "<br/>";
       echo "subDir: " . $subDir . "<br/>";
       echo "fileTA: " . $description . "<br/><br/>";
 
-      if (file_exists("Content/" . $course . "/" . $asubDir . "/" . $fileName)) {
+      if (file_exists("Content/" . $course . "/" . $subDir . "/" . $fileName)) {
         echo $fileName . " already exists.";
       }
       else {
@@ -72,6 +73,51 @@ if ((($fileType == "video/mp4") //video
   }
   else {
     echo "Invalid file";
+  }
+
+  //V2
+  $fileValid = false;
+  if ($filesize < 500000000 && in_array($extension, $allowedExts)) { //file is less than max of 500mb and is an allowed file extension
+    if ($fileType == "video/mp4" || $fileType == "video/avi") { //video
+      $fileValid = true;
+      //insert to video table
+      
+    }
+    else if ($fileType == "audio/mp3" || $fileType == "audio/wma") { //audio
+      $fileValid = true;
+      //insert to audio table
+
+    }
+    else if ($fileType == "text/plain" || $fileType == "text/doc" || $fileType == "text/docx"
+    || $fileType == "text/rtf" || $fileType == "text/text" || $fileType == "text/wpd"
+    || $fileType == "text/pdf" || $fileType == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") { //text
+      $fileValid = true;
+      //insert to documents table
+
+    }
+    else {
+      //invalid file type
+    }
+
+    //check if file was valid, if so put file in folder
+    if ($fileValid) { //file was valid, so proceed, put file in appropriate folder
+      echo "Upload: " . $_FILES["contentFile"]["name"] . "<br/>";
+      echo "Type: " . $_FILES["contentFile"]["type"] . "<br/>";
+      echo "Size: " . ($_FILES["contentFile"]["size"] / 1024) . " Kb<br/>";
+      echo "Temp file: " . $_FILES["contentFile"]["tmp_name"] . "<br/>";
+      echo "mainDir: " . $course . "<br/>";
+      echo "subDir: " . $subDir . "<br/>";
+      echo "fileTA: " . $description . "<br/><br/>";
+
+      if (file_exists("Content/" . $course . "/" . $subDir . "/" . $fileName)) {
+        echo $fileName . " already exists.";
+      }
+      else {
+        move_uploaded_file($fileTempName,
+        "Content/" . $course . "/" . $subDir . "/" . $fileName);
+        echo "Stored in: " . "Content/" . $course . "/" . $subDir . "/" . $fileName;
+      }
+    }
   }
 
 //below is Kyle's
