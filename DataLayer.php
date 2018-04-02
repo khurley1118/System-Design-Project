@@ -557,6 +557,14 @@ function DLaddIntsructorToCourse($con, $id, $course){
   return mysqli_query($con, "CALL SP_addInstructorToCourse($id, '$course')");
 }
 
+function DLaddStudentToCourse($con, $id, $courseId){
+  return mysqli_query($con, "CALL SP_addStudentToCourse($id, '$courseId')");
+}
+
+function DLremoveStudentFromCourse($con, $id, $courseId){
+  return mysqli_query($con, "CALL SP_removeStudentFromCourse($id, '$courseId')");
+}
+
 /////CHAT/////////////////////////////////////////////////////////////////////////////////////////////////////
 function DLfetchConversation($con, $senderId, $recipientId){
 

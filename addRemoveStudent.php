@@ -3,21 +3,50 @@ include('utilClass.php');
 include('connect.php');
 
 //get inputs from edit course form
-$userId = $_POST['corId'];
-$userType- = $_POST['corDesc'];
+$idNum = $_POST['id'];
+$option = $_POST['malone'];
+$CourseId = $_POST['corId'];
 $message = "";
 $isValid = false;
 
-$allIds = utilGetAllStudentIDs($con);
+if($idNum != ""){
+  if($CourseId != "1"){
+        $allIds = utilGetAllStudentIDs($con);
 
-foreach ($studentIDnums as $stuID){
-  if ($userId == $stuID){
-    $isValid == true;
+        foreach ($allIds as $stuID){
+          if ($idNum == $stuID['studentId']){
+            $isValid = true;
+          }
+        }
+
+        if($isValid){
+          if($option == "add"){
+            if(utilAddStudentToCourse($con, $idNum, $CourseId)){
+              $message = "Student Added";
+            }
+            else{
+              $message = "Unable to add student";
+            }
+          }
+          else{
+            if(utilRemoveStudentFromCourse($con, $idNum, $CourseId)){
+              $message = "Student Removed from course";
+            }
+            else{
+              $message = "Unablt to remoce student from course";
+            }
+          }
+        }
+        else{
+          $message = "Student ID not found";
+        }
+    }
+    else{
+      $message = "Please Select a course";
   }
 }
-
-if(isValid){
-
+else{
+  $message = "Please enter a student ID";
 }
 
 

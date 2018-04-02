@@ -113,6 +113,14 @@ function utilUpdateCourseInstructor($con, $id, $courseCode){
   return DLupdateInstructor($con, $id, $courseCode);
 }
 
+function utilAddStudentToCourse($con, $id, $courseId){
+  return DLaddStudentToCourse($con, $id, $courseId);
+}
+
+function utilRemoveStudentFromCourse($con, $id, $courseId){
+  return DLremoveStudentFromCourse($con, $id, $courseId);
+}
+
 // CHAT //////////////////////////////////
 function utilGetConversation($con, $senderId, $recipientId){
   return DLfetchConversation($con, $senderId, $recipientId);

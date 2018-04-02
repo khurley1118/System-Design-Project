@@ -166,27 +166,26 @@ function editACourse(){
 
     }
 
-    function addRemoveStudent(){
-      alert("HERE");
-      var userId = document.getElementById('courseDescInput').value;
-      var userType = document.getElementById('courseDescInput').value;
-      // alert(option);
-
-      // $.ajax({
-      //     type: 'POST',
-      //     url: 'addRemoveStudent.php',
-      //     data: {userId : userId, userType : userType, opt : option},
-      //     cache: false,
-      //     success: function (data) {
-      //       var data = JSON.parse(data);
-      //       document.getElementById('AdmiralSnackbar').innerHTML = data;
-      //       myFunction();
-      //       retrieveCourse(courseId);
-      //     },
-      //     error: function (xhr, ajaxOptions, thrownError) {
-      //         alert(xhr.status + "\n" + thrownError);
-      //         return false;
-      //     }
-      // }); // end ajax call
+    function addRemoveStudentFromCourse(option){
+      var userId = document.getElementById('studentIdToRemove').value;
+      var courseId = document.getElementById('courseToRemoveFrom').options[document.getElementById("courseToRemoveFrom").selectedIndex].value;
+      $.ajax({
+          type: 'POST',
+          url: 'addRemoveStudent.php',
+          data: {id : userId, malone : option, corId : courseId},
+          cache: false,
+          success: function (data) {
+            var data = JSON.parse(data);
+            document.getElementById('AdmiralSnackbar').innerHTML = data;
+            myFunction();
+            retrieveCourse(courseId);
+            document.getElementById('courseDescInput').value = "";
+            document.getElementById('courseDescInput').value = "";
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+              alert(xhr.status + "\n" + thrownError);
+              return false;
+          }
+      }); // end ajax call
 
       }
