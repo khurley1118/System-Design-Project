@@ -7,10 +7,24 @@ function addCourse() {
   document.getElementById('resetPassword').setAttribute("class", "hideDiv");
   document.getElementById('viewTickets').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('addRemoveStudent').setAttribute("class", "hideDiv");
   document.getElementById('outputContainer').style.height = "454px";
+}
+function addRemoveStudent() {
+  document.getElementById('addRemoveStudent').setAttribute("class", "showDiv");
+  document.getElementById('addCourse').setAttribute("class", "hideDiv");
+  document.getElementById('editCourse').setAttribute("class", "hideDiv");
+  document.getElementById('removeCourse').setAttribute("class", "hideDiv");
+  document.getElementById('addAccount').setAttribute("class", "hideDiv");
+  document.getElementById('editAccount').setAttribute("class", "hideDiv");
+  document.getElementById('resetPassword').setAttribute("class", "hideDiv");
+  document.getElementById('viewTickets').setAttribute("class", "hideDiv");
+  document.getElementById('landingPage').setAttribute("class", "hideDiv");
+  document.getElementById('outputContainer').style.height = "300px";
 }
 function editCourse() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
+  document.getElementById('addRemoveStudent').setAttribute("class", "hideDiv");
   document.getElementById('editCourse').setAttribute("class", "showDiv");
   document.getElementById('removeCourse').setAttribute("class", "hideDiv");
   document.getElementById('addAccount').setAttribute("class", "hideDiv");
@@ -22,6 +36,7 @@ function editCourse() {
 }
 function removeCourse() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
+  document.getElementById('addRemoveStudent').setAttribute("class", "hideDiv");
   document.getElementById('editCourse').setAttribute("class", "hideDiv");
   document.getElementById('removeCourse').setAttribute("class", "showDiv");
   document.getElementById('addAccount').setAttribute("class", "hideDiv");
@@ -33,6 +48,7 @@ function removeCourse() {
 }
 function addAccount() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
+  document.getElementById('addRemoveStudent').setAttribute("class", "hideDiv");
   document.getElementById('editCourse').setAttribute("class", "hideDiv");
   document.getElementById('removeCourse').setAttribute("class", "hideDiv");
   document.getElementById('addAccount').setAttribute("class", "showDiv");
@@ -45,6 +61,7 @@ function addAccount() {
 function resetPassword() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
   document.getElementById('editCourse').setAttribute("class", "hideDiv");
+  document.getElementById('addRemoveStudent').setAttribute("class", "hideDiv");
   document.getElementById('removeCourse').setAttribute("class", "hideDiv");
   document.getElementById('addAccount').setAttribute("class", "hideDiv");
   document.getElementById('editAccount').setAttribute("class", "hideDiv");
@@ -56,6 +73,7 @@ function resetPassword() {
 }
 function editAccount() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
+  document.getElementById('addRemoveStudent').setAttribute("class", "hideDiv");
   document.getElementById('editCourse').setAttribute("class", "hideDiv");
   document.getElementById('removeCourse').setAttribute("class", "hideDiv");
   document.getElementById('addAccount').setAttribute("class", "hideDiv");
@@ -67,6 +85,7 @@ function editAccount() {
 }
 function viewTickets() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
+  document.getElementById('addRemoveStudent').setAttribute("class", "hideDiv");
   document.getElementById('editCourse').setAttribute("class", "hideDiv");
   document.getElementById('removeCourse').setAttribute("class", "hideDiv");
   document.getElementById('addAccount').setAttribute("class", "hideDiv");
