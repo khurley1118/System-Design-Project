@@ -66,6 +66,11 @@
                                                 <span class="glyphicon glyphicon-remove"></span><a href="javascript:removeCourse()">Remove Course</a>
                                              </td>
                                           </tr>
+                                          <tr>
+                                             <td>
+                                                <span class="glyphicon glyphicon-remove"></span><a href="javascript:addRemoveStudent()">Add/Remove Student</a>
+                                             </td>
+                                          </tr>
                                        </table>
                                     </div>
                                  </div>
@@ -221,6 +226,28 @@
                                       </select>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                    </form>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--Add/RemoveStudentsFromCourse-->
+                     <div class="row hideDiv" id="addRemoveStudent">
+                        <div id="formContainer">
+                           <div class="account-wall">
+                              <div id="my-tab-content" class="tab-content">
+                                 <div class="tab-pane active" id="login">
+                                   <form class="form-signin" action="adminGetUser.php" method="POST">
+                                      <center>
+                                         <h2>Add/Remove Student</h2>
+                                      </center>
+                                      <input id="userIdAddRemove" name="userIdAddRemove" type="text" class="form-control" placeholder="UserID" required>
+                                      <select class="form-control" id="userTypeAddRemove" name="userTypeAddRemove" required>
+                                         <option value="1">Student</option>
+                                         <option value="2">Instructor</option>
+                                      </select>
+                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Get User" />
+                                    </form>
                                  </div>
                               </div>
                            </div>
