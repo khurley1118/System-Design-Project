@@ -32,7 +32,7 @@ function editCourse() {
   document.getElementById('resetPassword').setAttribute("class", "hideDiv");
   document.getElementById('viewTickets').setAttribute("class", "hideDiv");
   document.getElementById('landingPage').setAttribute("class", "hideDiv");
-  document.getElementById('outputContainer').style.height = "700px";
+  document.getElementById('outputContainer').style.height = "520px";
 }
 function removeCourse() {
   document.getElementById('addCourse').setAttribute("class", "hideDiv");
