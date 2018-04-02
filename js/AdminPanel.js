@@ -168,7 +168,6 @@ function editACourse(){
             return false;
         }
     }); // end ajax call
-
     }
 
     function addRemoveStudentFromCourse(option){

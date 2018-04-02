@@ -33,7 +33,7 @@ if($idNum != ""){
               $message = "Student Removed from course";
             }
             else{
-              $message = "Unablt to remoce student from course";
+              $message = "Unable to remove student from course";
             }
           }
         }
