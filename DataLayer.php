@@ -24,6 +24,69 @@ function DLgetInstructorAvatars($con){
   return $avatars;
 }
 
+//Content
+///////////////////////////////////
+function DLgetText($con, $path){
+  $rs = mysqli_query($con, "CALL SP_getText($path)");
+  $contentRay = [];
+  while ($row = mysqli_fetch_array($rs)) {
+      $cont = new Content();
+      $cont->setDescription($row['description']);
+      $cont->setUploadDate($row['uploadDate']);
+      $cont->setFileName($row['fileName']);
+      array_push($contentRay, $cont);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (!isset($contentRay)) {
+      return "BOI";
+  } else {
+      return $contentRay;
+  }
+}
+function DLgetAudio($con, $path){
+  $rs = mysqli_query($con, "CALL SP_getAudio($path)");
+  $contentRay = [];
+  while ($row = mysqli_fetch_array($rs)) {
+      $cont = new Content();
+      $cont->setDescription($row['description']);
+      $cont->setUploadDate($row['uploadDate']);
+      $cont->setFileName($row['fileName']);
+      array_push($contentRay, $cont);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (!isset($contentRay)) {
+      return "BOI";
+  } else {
+      return $contentRay;
+  }
+}
+function DLgetVideo($con, $path){
+  $rs = mysqli_query($con, "CALL SP_getVideo($path)");
+  $contentRay = [];
+  while ($row = mysqli_fetch_array($rs)) {
+      $cont = new Content();
+      $cont->setDescription($row['description']);
+      $cont->setUploadDate($row['uploadDate']);
+      $cont->setFileName($row['fileName']);
+      array_push($contentRay, $cont);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (!isset($contentRay)) {
+      return "BOI";
+  } else {
+      return $contentRay;
+  }
+}
+
 //Ticket
 ///////////////////////////////////
 
@@ -50,18 +113,19 @@ function DLgetTickets($con) {
 function DLgetTicket($con, $id) {
     $rs = mysqli_query($con, "CALL SP_getTicket($id)");
     while ($row = mysqli_fetch_array($rs)) {
+        //create ticket and assign values
         $ticket = new Ticket();
         $ticket->setDescription($row['description']);
         $ticket->setFirstName($row['firstName']);
         $ticket->setLastName($row['lastName']);
         $ticket->setDate($row['subDate']);
         $ticket->setStatus($row['status']);
-        $_SESSION['testTicket'] = $row['description'];
     }
     //gets rid of meta
     while (mysqli_more_results($con)) {
         mysqli_next_result($con);
     }
+    //returns a ticket object
     return $ticket;
 }
 
@@ -74,6 +138,8 @@ function DLinsertTicket($con, $desc, $fNm, $lNm, $subBy) {
 function DLresolveTicket($con, $id) {
   return mysqli_query($con, "CALL SP_resolveTicket($id)");
 }
+
+
 
 //Student
 ///////////////////////////////////
@@ -387,9 +453,9 @@ function DLgetAvatarInstructor($con, $id){
   }
   return $path;}
 //COURSES
-/////////////////////////////////////
+/////////////////////////////////////0
 function DLGetAssigned($con, $id, $type) {
-    //$ticketIDs = array();
+
     if ($type == 0){
     $rs = mysqli_query($con, "CALL SP_getAssignedStudent($id)");
   } else if ($type == 1){

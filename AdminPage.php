@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <script src="js/AdminPanel.js"></script>
 <?php
-
    include('connect.php');
    include('Header.php');
    include('Footer.php');
@@ -163,21 +162,25 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                   <form class="form-signin" action="adminGetCourse.php" method="POST">
-                                      <center>
-                                         <h2>Get Course</h2>
-                                      </center>
-                                      <input id="getCourseCode" name="getCourseCode" type="text" class="form-control" placeholder="Course Code" required>
-                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Get Course" />
-                                    </form>
-                                    <br>
-                                   <form class="form-signin" action="adminEditCourse.php" method="POST">
+                                  <br>
+                                   <form class="form-signin" action="javascript:editACourse()">
                                       <center>
                                          <h2>Edit Course</h2>
                                       </center>
-                                      <input type="text" class="form-control" id="getCourseDesc" name="getCourseDesc" placeholder="Description" required>
-                                      <select class="form-control" id="editInstructor" name="editInstructor">
-                                         <option value="1" selected="selected">Assign an Instructor</option>
+                                      <select class="form-control" id="coursesList" name="coursesList" onchange="javascript:retrieveCourse(this.value)">
+                                         <option selected="selected" hidden>Select a course</option>
+                                         <?php
+                                            $courseVar = new Course();
+                                            $courseList = $courseVar->GetCourseList($con);
+                                            foreach ($courseList as $course) {
+                                              echo "<option value='" . $course->getCourseCode() . "'>" . $course->getCourseCode() . "</option>";
+                                            }
+                                         ?>
+                                      </select>
+                                      <input type="text" class="form-control" id="courseDescInput" name="courseDescInput" placeholder="Description" required>
+                                      <select class="form-control" id="selectInstructorOps" placeholder="Assign an Instructor" name="selectInstructorOps">
+                                         <!-- <option selected="selected" hidden>Assign an Instructor</option> -->
+                                         <option selected="selected" value="1">No instructor assigned</option>
                                          <?php
                                             //populate dropdown with list of instructors
                                             $instructors = getAllInstructors($con);
@@ -186,11 +189,7 @@
                                             }
                                          ?>
                                       </select>
-                                      <select class="form-control" id="editActive" name="editActive">
-                                         <option value="1" selected="selected">Active</option>
-                                         <option value="0">Inactive</option>
-                                      </select>
-                                      <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
+                                      <input type='submit' class='btn btn-lg btn-default btn-block'  value='Submit' />
                                    </form>
                                  </div>
                               </div>
@@ -313,26 +312,33 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
-                                    <form class="form-signin">
-                                      <select class="form-control" id="ticketSelect" onchange="javascript:retrieveTicket(this.value)">
-                                        <option value="" disabled selected hidden>Please choose a Ticket</option>
-                                        <?php
-                                        $idList = new Ticket();
-                                        $ticketID[] = $idList->getTickets($con);
-                                        $i = 0;
-                                        while ($ticketID[0][$i] != ""){
-                                          $str = $ticketID[0][$i];
-                                          $value = strstr($str, '&nbsp', true);
-                                          echo "<option value='" . $value . "'>Ticket#: " . $ticketID[0][$i] . "</option>";
-                                          $i++;
-                                        }
-                                        ?>
-                                        </select>
-                                        Submitted By: <input type='text' id='subBy' name='Name' value='' readonly>
-                                        Status: <input type='text' id='status' name='Name' value='' readonly>
-                                        <textarea id='ticketDisplay' type='text' class='form-control' rows='10' cols='50' placeholder='Select a Ticket from the Dropdown'></textarea>
-                                        <input type='submit' formaction="javascript:resTicket(ticketSelect.value)" class='btn btn-lg btn-default btn-block' name='action' id='action' value='Set Resolved' />
-                                    </form>
+                                   <form class="form-signin">
+                                     <!-- When you select a ticket call retrieveTicket passing in the value -->
+                                     <select class="form-control" id="ticketSelect" onchange="javascript:retrieveTicket(this.value)">
+                                       <option value="" disabled selected hidden>Please choose a Ticket</option>
+                                       <?php
+                                       //create empty ticket to call ticket functions to populate the drop down
+                                       $idList = new Ticket();
+                                       //get the Tickets info
+                                       $ticketID[] = $idList->getTickets($con);
+                                       $i = 0;
+                                       //while info loop
+                                       while ($ticketID[0][$i] != ""){
+                                         //substring from the nbsp's
+                                         $str = $ticketID[0][$i];
+                                         $value = strstr($str, '&nbsp', true);
+                                         //create option elements
+                                         echo "<option value='" . $value . "'>Ticket#: " . $ticketID[0][$i] . "</option>";
+                                         $i++;
+                                       }
+                                       ?>
+                                       </select>
+                                       <table><tr><td>
+                                       Submitted By: </td><td><input type='text' id='subBy' name='Name' value='' readonly><br>
+                                       </td></tr><tr><td>Status: </td><td><input type='text' id='status' name='Name' value='' readonly><br></td></td></table>
+                                       <textarea id='ticketDisplay' type='text' class='form-control' rows='10' cols='50' placeholder='Select a Ticket from the Dropdown'></textarea>
+                                       <input type='submit' formaction="javascript:resTicket(ticketSelect.value)" class='btn btn-lg btn-default btn-block' name='action' id='action' value='Set Resolved' />
+                                   </form>
                                  </div>
                               </div>
                            </div>
@@ -521,74 +527,8 @@
      }
      }
     ?>
-    <?php
-     if (isset($_SESSION['editGetCourse'])){
-      if ($_SESSION['editGetCourse'] == 1){ //success, populate fields
-        echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
-        echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
-        echo "<script>document.getElementById('getCourseCode').value = '" . $_SESSION['editCourse']->getCourseCode() . "';</script>";
-        echo "<script>document.getElementById('editInstructor').selectedIndex = ' ". '0' ." ';</script>";
-        echo "<script>document.getElementById('getCourseDesc').value = '". $_SESSION['editCourse']->getDescription() ."';</script>";
-        $_SESSION['editGetCourse'] = 0;
-        // $_SESSION['editCourse'] = 0;
-      }
-      else if ($_SESSION['editGetCourse'] == 2) { //no course exists with that course id
-        echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
-        echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
-        $_SESSION['editGetCourse'] = 0;
-        echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'No course with that course code found.';</script>";
-        echo "<script> myFunction(); </script>";
-      }
-     }
-   ?>
-   <?php
-    if (isset($_SESSION['adminEditCourse'])){
-     if ($_SESSION['adminEditCourse'] == 1){
-       $_SESSION['adminEditCourse'] = 0;
-       unset($_SESSION['editCourse']);
-       echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course has been updated successfully!';</script>";
-       echo "<script> myFunction(); </script>";
-     }
-     else if ($_SESSION['adminEditCourse'] == 2) {
-      echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
-      echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
-      $_SESSION['adminEditCourse'] = 0;
-      unset($_SESSION['editCourse']);
-      echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course was not updated successfully.';</script>";
-      echo "<script> myFunction(); </script>";
-      }
-   else if ($_SESSION['adminEditCourse'] == 3) {
-     echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
-     echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
-     $_SESSION['adminEditCourse'] = 0;
-     unset($_SESSION['editCourse']);
-     echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Oops, you chose the same course information.';</script>";
-     echo "<script> myFunction(); </script>";
-   }
-   else if ($_SESSION['adminEditCourse'] == 4) {
-     echo "<script>document.getElementById('coursesLeftMenu').click();</script>";
-     echo "<script>document.getElementById('editCourseLeftMenu').click();</script>";
-     $_SESSION['adminEditCourse'] = 0;
-     unset($_SESSION['editCourse']);
-     echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course code not valid.';</script>";
-     echo "<script> myFunction(); </script>";
-   }
-   }
-  ?>
-  <?php
-   if (isset($_SESSION['adminRemoveCourse'])){
-    if ($_SESSION['adminRemoveCourse'] == 1){
-      $_SESSION['adminRemoveCourse'] = 0;
-      echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course has been removed successfully.';</script>";
-      echo "<script> myFunction(); </script>";
-    }
-    else if ($_SESSION['adminRemoveCourse'] == 2) {
-     $_SESSION['adminRemoveCourse'] = 0;
-     echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Course could not be removed. Consult administrator.';</script>";
-     echo "<script> myFunction(); </script>";
-     }
-  }
- ?>
+
+
       </div>
    </body>
 </html>

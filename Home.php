@@ -21,7 +21,6 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <title>Tu-Pro Home</title>
 
-
       <script src="js/scripts.js"></script>
       <script src="js/Home.js"></script>
       <link rel="stylesheet" type="text/css" href="css/defaultHome.css">
@@ -95,38 +94,37 @@
                                          <!-- Needs to be dynamically populated from top level topics-->
                                          <?php
                                          $directories = glob("Content/*");
-                                         $empty = 0;
                                          $assignedCourses = $_SESSION['assignedCourses'];
+                                         $count = 0;
                                          foreach($directories as $folder){
                                            $folder = substr($folder, strpos($folder, "/") + 1);
                                            $subDirs = glob("Content/" . $folder . "/*");
-                                           if (!$assignedCourses){
-                                             $empty = 1;
-                                           }
                                            if (in_array($folder, $assignedCourses)){
                                            echo "<tr>
                                               <td>
                                                  <span class='glyphicon glyphicon glyphicon-pushpin'></span>
                                                  <div class='dropdown btn-group'>
-                                                   <a class='btn dropdown-toggle' data-toggle='dropdown' href='#'> $folder
-                                                   <span class='caret'></span>
-                                                   </a>
-                                                   <ul class='dropdown-menu scrollable-menu' role='menu'>";
+                                                   <a id='listValue" . $count . "' name='$folder' class='btn dropdown-toggle' data-toggle='dropdown'>$folder</span></a>
+                                                   <ol class='dropdown-menu scrollable-menu' role='menu'>";
+                                                   echo "<li><a id='News' onclick='javascript:newsDiv(listValue" . $count . ".innerHTML)'>News<br></a></li>";
                                                     foreach($subDirs as $subFolder){
                                                       $subFolder = substr($subFolder, strpos($subFolder, '/', strpos($subFolder, '/')+3));
                                                       $subFolder = str_replace("/", "", $subFolder);
-                                                      echo "<li><a href='#'>$subFolder<br></a></li>";
+                                                      if ($subFolder != "News"){
+                                                      $output = str_replace(" ", "|", $subFolder);
+                                                      echo "<li><a id='$subFolder' onclick='javascript:contentDiv(listValue" . $count . ".innerHTML, this.id)'>$subFolder<br></a></li>";
                                                     }
-                                                   echo "</ul>
+                                                    }
+                                                   echo "</ol>
                                                  </div>
                                               </td>
                                            </tr>";
+
                                           }
+                                          $count = $count +1;
                                         }
-                                        if ($empty == 1){
-                                          echo "<tr><td>No Courses Assigned</td></tr>";
-                                          $empty  =  0;
-                                        } else {
+                                          ?>
+                                          <?php
                                              if ($type == "faculty"){
                                                echo "<tr>
                                                   <td>
@@ -134,7 +132,7 @@
                                                   </td>
                                                </tr>";
                                              }
-                                           }
+
                                              ?>
                                        </table>
                                     </div>
@@ -195,7 +193,7 @@
             <div class="w3-twothird">
                <div id="outputContainer" class="w3-container w3-card w3-white w3-margin-bottom">
                 <div id='titleText'>
-                  <p><i class="fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i><?php echo 'TuPro - Tutorial Professors';?></p>
+                  <p id='pageName'>TuPro - Tutorial Professors</p>
                 </div>
                   <div id=swapDiv>
                      <div class="row showDiv" id="landingPage">
@@ -210,6 +208,28 @@
                             and continue learning!</p>
                      </div>
                    </div>
+                   <!-- Keep em seperated -->
+                   <div id='newsHolder'>
+                     <div class="row hideDiv" id="newsDiv">
+                        <div id="formContainer">
+                           <div class="account-wall">
+                              <div id="newsDisplay" class="tab-content">
+                                <div id='newsText' class='w3-container' id='we-shrink'>
+                                <!-- Populated from Home.js -->
+                                </div>
+                              </div>
+                           </div>
+                        </div>
+                      </div>
+                    </div>
+                     <!-- Keep em seperated -->
+                     <div class="row hideDiv" id="contentDiv">
+                           <div id='contentHolder' class="account-wall">
+                                 <div id="contentDisplay">
+                                   <!-- Populated from Home.js -->
+                                 </div>
+                           </div>
+                      </div>
                      <!-- Keep em seperated -->
                      <div class="row hideDiv" id="addContent">
                         <div id="formContainer">
@@ -315,6 +335,7 @@
                            <div class="account-wall">
                               <div id="my-tab-content" class="tab-content">
                                  <div class="tab-pane active" id="login">
+                                   <!-- form for submitting a ticket -->
                                     <form class="form-signin" action="javascript:insTicket(textInput.value)" method="">
                                       <center>
                                         <h2>Create Ticket</h2>

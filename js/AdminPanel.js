@@ -44,15 +44,17 @@ function changePassword() {
 }
 
 function resTicket(ticketID) {
-
+  //ajax call to reserve a ticket without refreshing the page
   if (ticketID != 0){
     $.ajax({
+        //pass by POST ticketID by ticket
         type: 'POST',
         url: 'setResolvedFunction.php',
         data: {ticket : ticketID},
         cache: false,
         success: function (dataArray) {
-           document.getElementById('AdmiralSnackbar').innerHTML = 'Ticket has been set to resolved!';
+          //on success call snackbar for user feedback
+          document.getElementById('AdmiralSnackbar').innerHTML = 'Ticket has been set to resolved!';
           myFunction();
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -66,12 +68,15 @@ function resTicket(ticketID) {
 }
 
 function retrieveTicket(ticketID) {
+  //ajax call for retrieving a specific ticket without refreshing the page
   $.ajax({
+      //send by POST ticketID by ticket
       type: 'POST',
       url: 'getTicketsFunction.php',
       data: {ticket : ticketID},
       cache: false,
       success: function (dataArray) {
+        //on success parse JSON array into JS array, assign value to elements for display
         var data = JSON.parse(dataArray);
         var name = data[0];
         var description = data[1];

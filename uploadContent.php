@@ -25,7 +25,10 @@ $filesizeMB = $filesize / 1024 / 1024;
 $allowedExts = array("mp3","mp4","avi","wma","fodt","txt","doc","docx","apt","rtf","docxml","text","wpd","docx","wps","readme","pdf","application/vnd.openxmlformats-officedocument.wordprocessingml.document");
 $extension = pathinfo($fileName, PATHINFO_EXTENSION);
 
+<<<<<<< HEAD
 //V1
+=======
+>>>>>>> Dev
 if ((($fileType == "video/mp4") //video
 || ($fileType == "video/avi")
 || ($fileType == "audio/mp3") //audio
@@ -50,6 +53,7 @@ if ((($fileType == "video/mp4") //video
 
   {
     if ($_FILES["contentFile"]["error"] > 0) {
+<<<<<<< HEAD
       echo "Return Code: " . $_FILES["contentFile"]["error"] . "<br/>";
     }
     else { //no errors, proceed
@@ -57,6 +61,15 @@ if ((($fileType == "video/mp4") //video
       echo "Type: " . $_FILES["contentFile"]["type"] . "<br/>";
       echo "Size: " . ($_FILES["contentFile"]["size"] / 1024) . " Kb<br/>";
       echo "Temp file: " . $_FILES["contentFile"]["tmp_name"] . "<br/>";
+=======
+      echo "Return Code: " . $_FILES["contentFile"]["error"] . "<br />";
+    }
+    else { //no errors, proceed
+      echo "Upload: " . $_FILES["contentFile"]["name"] . "<br />";
+      echo "Type: " . $_FILES["contentFile"]["type"] . "<br />";
+      echo "Size: " . ($_FILES["contentFile"]["size"] / 1024) . " Kb<br />";
+      echo "Temp file: " . $_FILES["contentFile"]["tmp_name"] . "<br />";
+>>>>>>> Dev
       echo "mainDir: " . $course . "<br/>";
       echo "subDir: " . $subDir . "<br/>";
       echo "fileTA: " . $description . "<br/><br/>";
@@ -75,6 +88,7 @@ if ((($fileType == "video/mp4") //video
     echo "Invalid file";
   }
 
+<<<<<<< HEAD
   //V2
   $fileValid = false;
   if ($filesize < 500000000 && in_array($extension, $allowedExts)) { //file is less than max of 500mb and is an allowed file extension
@@ -121,6 +135,9 @@ if ((($fileType == "video/mp4") //video
   }
 
 //below is Kyle's
+=======
+//below is Kyle's`
+>>>>>>> Dev
 //will return the file type if it's an accepted file type or false if it's not.
 // function FileTypeChecker($fileType) {
 //   if ($fileType == "image/jpeg") {
