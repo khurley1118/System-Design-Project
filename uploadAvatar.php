@@ -19,7 +19,7 @@ $success = "false"; //holds response message
 
                 //checks if file is a picture
                if($_FILES["avatarFile"]["type"] == "image/jpeg" || $_FILES["avatarFile"]["type"] == "image/png" || $_FILES["avatarFile"]["type"] == "image/gif"){
-                 $filepath = "avatars/" . $_FILES["avatarFile"]["name"];///create the correct filepath
+                 $filepath = "avatars\\\\" . $_FILES["avatarFile"]["name"];///create the correct filepath
 
                  //upload the picture to the corrent table in the database
                  if($type == "student"){
