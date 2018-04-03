@@ -47,7 +47,7 @@ if (isset($_FILES["contentFile"])) { //proceed
     if ($subDir == "News") { //news folder, if it's a text file need to replace existing news file
       if ($fileType == "text/plain" || $fileType == "text/doc" || $fileType == "text/docx"
       || $fileType == "text/rtf" || $fileType == "text/text" || $fileType == "text/wpd"
-      || $fileType == "application/pdf" || $fileType == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+      || $fileType == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
         //it's a text file, replace existing news file with this
         move_uploaded_file($fileTempName,
         "Content/" . $course . "/" . $subDir . "/news.txt");
@@ -68,7 +68,7 @@ if (isset($_FILES["contentFile"])) { //proceed
         $video->setDescription($description);
         $video->setUploadDate(date('Y-m-d H:i:s')); //now
         $video->setFileName($fileName);
-        $video->setFilePath("Content/" . $course . "/" . $subDir); //looks like path doesn't need file name as we currently have it
+        $video->setFilePath("Content\\\\" . $course . "\\\\" . $subDir); //looks like path doesn't need file name as we currently have it
         //insert video object
         $insertSuccess = $video->insertContent($con,"video",$courseObject->getCourseCode());
       }
@@ -79,7 +79,7 @@ if (isset($_FILES["contentFile"])) { //proceed
         $audio->setDescription($description);
         $audio->setUploadDate(date('Y-m-d H:i:s')); //now
         $audio->setFileName($fileName);
-        $audio->setFilePath("Content/" . $course . "/" . $subDir); //looks like path doesn't need file name as we currently have it
+        $audio->setFilePath("Content\\\\" . $course . "\\\\" . $subDir); //looks like path doesn't need file name as we currently have it
         //insert audio object
         $insertSuccess = $audio->insertContent($con,"audio",$courseObject->getCourseCode());
       }
@@ -92,7 +92,7 @@ if (isset($_FILES["contentFile"])) { //proceed
         $text->setDescription($description);
         $text->setUploadDate(date('Y-m-d H:i:s')); //now
         $text->setFileName($fileName);
-        $text->setFilePath("Content/" . $course . "/" . $subDir); //looks like path doesn't need file name as we currently have it
+        $text->setFilePath("Content\\\\" . $course . "\\\\" . $subDir); //looks like path doesn't need file name as we currently have it
         //insert text object
         $insertSuccess = $text->insertContent($con,"text",$courseObject->getCourseCode());
       }
