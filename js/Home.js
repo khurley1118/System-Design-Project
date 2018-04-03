@@ -124,10 +124,10 @@ function popContent(course, topic) {
                         if (previous != null){
                         if (previous.includes(".mp4")) {
                             output = output + "<video width='100%' height='240' controls><source src='" + data[i][b] + "'  type='video/mp4'></video><hr>";
-                        } else if (previous.includes(".txt")) {
-                            output = output + "<a href='" + data[i][b] + "' download>Download File</a><hr>";
                         } else if (previous.includes(".mp3")) {
                             output = output + "<audio controls><source src='" + data[i][b] + "'  type='audio/mp3'></audio><hr>";
+                        } else {
+                            output = output + "<a href='" + data[i][b] + "' download>Download File</a><hr>";
                         }
                       }
                     }
