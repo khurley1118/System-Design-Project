@@ -584,6 +584,26 @@ function DLgetCourseObject($con,$id) {
   }
 }
 
+function DLgetCourseObjectWName($con,$description) {
+  $rs = mysqli_query($con, "CALL SP_getCourseWName('$description')");
+  while ($row = mysqli_fetch_array($rs)) {
+      $course = new Course();
+      $course->setCourseCode($row['courseCode']);
+      $course->setDescription($row['description']);
+      $course->setIsActive($row['active']);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (isset($course)) {
+    return $course;
+  }
+  else {
+    return null;
+  }
+}
+
 function DLgetFolders($con, $courseID){
 		$result = mysqli_query($con, "CALL SP_getFolders($courseID)");
 		while ($row = mysqli_fetch_array($result)){
@@ -595,28 +615,17 @@ function DLgetFolders($con, $courseID){
 		return $folders;
 }
 
-function DLcreateContent($con, $type, $courseID, $location, $path, $desc){
+function DLinsertContent($con, $type, $courseCode, $uploadDate, $path, $desc, $fileName){
 	if ($type == "audio"){
-		$result = mysqli_query($con, "CALL SP_createAudio($courseID, $location, '$path', '$desc')");
-		if ($result > 0){
-			return true;
-		}
-		else return false;
+		return mysqli_query($con, "CALL SP_insertAudio($courseCode, '$uploadDate', '$path', '$desc','$fileName')");
 	}
 	else if ($type == "video"){
-		$result = mysqli_query($con, "CALL SP_createVideo($courseID, $location, '$path', '$desc')");
-		if ($result > 0){
-			return true;
-		}
-		else return false;
+		return mysqli_query($con, "CALL SP_insertVideo($courseCode, '$uploadDate', '$path', '$desc','$fileName')");
 	}
-	else if ($type == "documents"){
-		$result = mysqli_query($con, "CALL SP_createDoc($courseID, $location, '$path', '$desc')");
-		if ($result > 0){
-			return true;
-		}
-		else return false;
+	else if ($type == "text"){
+		return mysqli_query($con, "CALL SP_insertText($courseCode, '$uploadDate', '$path', '$desc','$fileName')");
 	}
+  else return false;
 }
 
 function DLfetchAllStudentIDs($con){

@@ -5,6 +5,7 @@ require("StudentClass.php");
 require("AdminClass.php");
 require("InstructorClass.php");
 require("courseClass.php");
+require("ContentClass.php");
 
 session_start();
 

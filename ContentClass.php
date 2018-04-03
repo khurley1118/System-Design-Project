@@ -62,5 +62,10 @@ Class Content {
     function getVideo($con, $path){
       return DLgetVideo($con, $path);
     }
+
+    //calls DL function to insert content
+    function insertContent($con,$type,$courseCode){
+      return DLinsertContent($con, $type, $courseCode, $this->getUploadDate(), $this->getFilePath(), $this->getDescription(), $this->getFileName());
+    }
 }
 ?>

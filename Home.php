@@ -403,6 +403,14 @@
        echo "<script> myFunction(); </script>";
      }
     ?>
+    <?php
+      if (isset($_SESSION['uploadContent'])) {
+        $message = $_SESSION['uploadContent'];
+        unset($_SESSION['uploadContent']);
+        echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = '" . $message . "'</script>";
+        echo "<script> myFunction(); </script>";
+      }
+    ?>
    </div>
    <?php include('ChatGUI.php'); ?>
    </body>
