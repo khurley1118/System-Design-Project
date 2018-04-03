@@ -45,9 +45,7 @@ if (isset($_FILES["contentFile"])) { //proceed
     // echo "fileTA: " . $description . "<br/><br/>";
 
     if ($subDir == "News") { //news folder, if it's a text file need to replace existing news file
-      if ($fileType == "text/plain" || $fileType == "text/doc" || $fileType == "text/docx"
-      || $fileType == "text/rtf" || $fileType == "text/text" || $fileType == "text/wpd"
-      || $fileType == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+      if ($fileType == "text/plain") {
         //it's a text file, replace existing news file with this
         move_uploaded_file($fileTempName,
         "Content/" . $course . "/" . $subDir . "/news.txt");
