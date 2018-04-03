@@ -112,7 +112,7 @@ td {
   border-style: solid;
   border-color: #D8D8D8;
 }
- #changePassword, #contentDiv, #newsDiv, #createTicket, #uploadAvatar, #addContent, #addCourse, #editCourse, #removeCourse, #resetPassword, #addAccount, #editAccount, #viewTickets{
+ #changePassword, #contentDiv, #newsDiv, #createTicket, #addRemoveStudent, #uploadAvatar, #addContent, #addCourse, #editCourse, #removeCourse, #resetPassword, #addAccount, #editAccount, #viewTickets{
      position: absolute;
      bottom: 0px;
      width: 100%;

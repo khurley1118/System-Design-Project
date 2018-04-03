@@ -65,6 +65,11 @@
                                                 <span class="glyphicon glyphicon-remove"></span><a href="javascript:removeCourse()">Remove Course</a>
                                              </td>
                                           </tr>
+                                          <tr>
+                                             <td>
+                                                <span class="glyphicon glyphicon-remove"></span><a href="javascript:addRemoveStudent()">Add/Remove Student</a>
+                                             </td>
+                                          </tr>
                                        </table>
                                     </div>
                                  </div>
@@ -220,6 +225,35 @@
                                       </select>
                                       <input type="submit" class="btn btn-lg btn-default btn-block" value="Submit" />
                                    </form>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <!--Add/RemoveStudentsFromCourse-->
+                     <div class="row hideDiv" id="addRemoveStudent">
+                        <div id="formContainer">
+                           <div class="account-wall">
+                              <div id="my-tab-content" class="tab-content">
+                                 <div class="tab-pane active" id="login">
+                                   <form class="form-signin" >
+                                      <center>
+                                         <h2>Add/Remove Student</h2>
+                                      </center>
+                                      <input id="studentIdToRemove" name="studentIdToRemove" type="text" class="form-control" placeholder="UserID">
+                                      <select class="form-control" id="courseToRemoveFrom" name="courseToRemoveFrom">
+                                         <option selected="selected" hidden value="1">Select a course</option>
+                                         <?php
+                                            $courseVar = new Course();
+                                            $courseList = $courseVar->GetCourseList($con);
+                                            foreach ($courseList as $course) {
+                                              echo "<option value='" . $course->getCourseCode() . "'>" . $course->getCourseCode() . " - " . $course->getDescription() . "</option>";
+                                            }
+                                         ?>
+                                      </select>
+                                      <input type="button" class="btn btn-lg btn-default btn-block" onclick="javascript:addRemoveStudentFromCourse('add');" value="Add" />
+                                      <input type="button" class="btn btn-lg btn-default btn-block" onclick="javascript:addRemoveStudentFromCourse('remove');" value="Remove" />
+                                    </form>
                                  </div>
                               </div>
                            </div>

@@ -31,6 +31,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
       <?php
+      //get users avatar file path from the database
       $avatarRedirect = "";
       if(isset($_SESSION['avatar'])){
         $avatarRedirect = $_SESSION['avatar'];
