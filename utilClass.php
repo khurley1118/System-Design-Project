@@ -101,6 +101,30 @@ function utilGetFolders($con, $courseid){
 	return DLgetFolders($con, $courseid);
 }
 
+function utilAddInstructorToCourse($con, $id, $course){
+  return DLaddIntsructorToCourse($con, $id, $course);
+}
+
+function utilUnassignInstructor($con, $id, $courseCode){
+  return DLunassignInstructor($con, $id, $courseCode);
+}
+
+function utilGetCourseInstructor($con, $courseId){
+  return DLgetCourseInstructor($con, $courseId);
+}
+
+function utilUpdateCourseInstructor($con, $id, $courseCode){
+  return DLupdateInstructor($con, $id, $courseCode);
+}
+
+function utilAddStudentToCourse($con, $id, $courseId){
+  return DLaddStudentToCourse($con, $id, $courseId);
+}
+
+function utilRemoveStudentFromCourse($con, $id, $courseId){
+  return DLremoveStudentFromCourse($con, $id, $courseId);
+}
+
 // CHAT //////////////////////////////////
 function utilGetConversation($con, $senderId, $recipientId){
   return DLfetchConversation($con, $senderId, $recipientId);
