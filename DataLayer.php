@@ -667,6 +667,7 @@ function DLgetCourseObjectWName($con,$description) {
   else {
     return null;
   }
+}
 
 function DLgetCourseInstructor($con, $courseId){
   $rs = mysqli_query($con, "CALL SP_getCurrentInstructor($courseId)");
@@ -752,6 +753,4 @@ function DLdeleteOldMessages($con, $senderId, $recipientId, $time){
 
   }
 }
-
-
 ?>
