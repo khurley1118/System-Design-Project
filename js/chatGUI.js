@@ -197,7 +197,7 @@ function send(recipientId, message){
 }
 
 function process(e, fieldID, id) {
-
+  fieldID = $(fieldID).get(0);//Chris is a wizard
     var code = (e.keyCode ? e.keyCode : e.which);
 
     if (code == 13) {

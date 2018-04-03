@@ -275,7 +275,9 @@
                                             $directories = glob("Content/*");
                                             foreach($directories as $folder){
                                               $folder = substr($folder, strpos($folder, "/") + 1);
+                                              if (in_array($folder, $assignedCourses)){
                                               echo "<option value='" . $folder . "'>" . $folder . "</option>";
+                                              }
                                             }
                                           ?>
                                        </select>
