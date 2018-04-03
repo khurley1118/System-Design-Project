@@ -1,4 +1,91 @@
 <?php
+//Avatars
+///////////////////////////////////
+function DLgetStudentAvatars($con){
+  $rs = mysqli_query($con, "CALL SP_getStudentAvatars");
+  while ($row = mysqli_fetch_array($rs)) {
+      $avatars[] = $row['avatarPath'];
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $avatars;
+}
+function DLgetInstructorAvatars($con){
+  $rs = mysqli_query($con, "CALL SP_getInstructorAvatars");
+  while ($row = mysqli_fetch_array($rs)) {
+      $avatars[] = $row['avatarPath'];
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $avatars;
+}
+
+//Content
+///////////////////////////////////
+function DLgetText($con, $path){
+  $rs = mysqli_query($con, "CALL SP_getText($path)");
+  $contentRay = [];
+  while ($row = mysqli_fetch_array($rs)) {
+      $cont = new Content();
+      $cont->setDescription($row['description']);
+      $cont->setUploadDate($row['uploadDate']);
+      $cont->setFileName($row['fileName']);
+      array_push($contentRay, $cont);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (!isset($contentRay)) {
+      return "BOI";
+  } else {
+      return $contentRay;
+  }
+}
+function DLgetAudio($con, $path){
+  $rs = mysqli_query($con, "CALL SP_getAudio($path)");
+  $contentRay = [];
+  while ($row = mysqli_fetch_array($rs)) {
+      $cont = new Content();
+      $cont->setDescription($row['description']);
+      $cont->setUploadDate($row['uploadDate']);
+      $cont->setFileName($row['fileName']);
+      array_push($contentRay, $cont);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (!isset($contentRay)) {
+      return "BOI";
+  } else {
+      return $contentRay;
+  }
+}
+function DLgetVideo($con, $path){
+  $rs = mysqli_query($con, "CALL SP_getVideo($path)");
+  $contentRay = [];
+  while ($row = mysqli_fetch_array($rs)) {
+      $cont = new Content();
+      $cont->setDescription($row['description']);
+      $cont->setUploadDate($row['uploadDate']);
+      $cont->setFileName($row['fileName']);
+      array_push($contentRay, $cont);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (!isset($contentRay)) {
+      return "BOI";
+  } else {
+      return $contentRay;
+  }
+}
 
 //Ticket
 ///////////////////////////////////
@@ -26,30 +113,39 @@ function DLgetTickets($con) {
 function DLgetTicket($con, $id) {
     $rs = mysqli_query($con, "CALL SP_getTicket($id)");
     while ($row = mysqli_fetch_array($rs)) {
+        //create ticket and assign values
         $ticket = new Ticket();
         $ticket->setDescription($row['description']);
         $ticket->setFirstName($row['firstName']);
         $ticket->setLastName($row['lastName']);
         $ticket->setDate($row['subDate']);
         $ticket->setStatus($row['status']);
-        $_SESSION['testTicket'] = $row['description'];
     }
     //gets rid of meta
     while (mysqli_more_results($con)) {
         mysqli_next_result($con);
     }
+    //returns a ticket object
     return $ticket;
 }
 
 //function to insert a ticket
 function DLinsertTicket($con, $desc, $fNm, $lNm, $subBy) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_insertTicket('$desc', '$fNm', '$lNm', $subBy)");
 }
 
 //function to set ticket to resolved
 function DLresolveTicket($con, $id) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_resolveTicket($id)");
 }
+
+
 
 //Student
 ///////////////////////////////////
@@ -127,21 +223,35 @@ function DLgetStudentPassword($con, $id) {
 
 //change student's password
 function DLstudentPasswordChange($con, $id, $newPass) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
 	return mysqli_query($con, "CALL SP_changeStudentPassword($id, '$newPass')");
 }
 
 //insert student
 function DLinsertStudent($con, $studentID, $password, $admin, $fname, $lname) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_createStudent($studentID, '$password',$admin,'$fname','$lname')");
 }
 
 //update names
 function DLstudentUpdateNames($con,$id,$firstName,$lastName) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
 	return mysqli_query($con, "CALL SP_updateStudentNames($id, '$firstName','$lastName')");
 }
 
 //setStudentsAvatar
 function DLsetAvatarStudent($con, $id, $path){
+  //clean
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  //return true/false
   return mysqli_query($con, "CALL SP_setAvatarStudent($id, '$path')");
 }
 
@@ -156,6 +266,22 @@ function DLgetAvatarStudent($con, $id){
       mysqli_next_result($con);
   }
   return $path;
+}
+
+function DLfetchAllStudentIDs($con){
+  $list = array();
+  $rs = mysqli_query($con, "CALL SP_fetchAllStudentIDs");
+  if($rs != false){
+    while ($row = mysqli_fetch_array($rs)) {
+        $list[] = $row;
+    }
+  }
+
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $list;
 }
 
 //ADMIN
@@ -206,15 +332,24 @@ function DLgetAdmin($con, $id) {
 }
 
 function DLinsertAdmin($con, $adminId, $password, $fname, $lname) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_createAdmin($adminId, '$password','$fname','$lname')");
 }
 
 function DLadminPasswordChange($con, $adminId, $newPass){
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_changeAdminPassword($adminId, '$newPass')");
 }
 
 //update names
 function DLadminUpdateNames($con,$id,$firstName,$lastName) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
 	return mysqli_query($con, "CALL SP_updateAdminNames($id, '$firstName','$lastName')");
 }
 
@@ -310,19 +445,25 @@ function DLgetAllInstructors($con){
       $counter++;
     }
   }
-  //gets rid of meta
   while (mysqli_more_results($con)) {
       mysqli_next_result($con);
   }
   return $instructors;
+
 }
 
 //change instructor's password
 function DLinstructorPasswordChange($con, $id, $newPass) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
 	return mysqli_query($con, "CALL SP_changeInstructorPassword($id, '$newPass')");
 }
 
 function DLinsertInstructor($con, $instructorID, $password, $admin, $fname, $lname) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
   return mysqli_query($con, "CALL SP_createInstructor($instructorID, '$password',$admin,'$fname','$lname')");
 }
 
@@ -343,11 +484,19 @@ function DLfetchAllInstructorIDs($con){
 }
 
 function DLinstructorUpdateNames($con,$id,$firstName,$lastName) {
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
 	return mysqli_query($con, "CALL SP_updateInstructorNames($id, '$firstName','$lastName')");
 }
 
 //set Instructor Avatar
 function DLsetAvatarInstructor($con, $id, $path){
+  //clean
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  //return true/false is success
   return mysqli_query($con, "CALL SP_setAvatarInstructor($id, '$path')");
 }
 
@@ -363,7 +512,37 @@ function DLgetAvatarInstructor($con, $id){
   }
   return $path;}
 //COURSES
-/////////////////////////////////////
+/////////////////////////////////////0
+function DLGetAssigned($con, $id, $type) {
+
+    if ($type == 0){
+    $rs = mysqli_query($con, "CALL SP_getAssignedStudent($id)");
+  } else if ($type == 1){
+    $rs = mysqli_query($con, "CALL SP_getAssignedInstructor($id)");
+  }
+    $CourseCodes = [];
+    while ($row = mysqli_fetch_array($rs)) {
+        $CourseCodes[] = $row['courseCode'];
+    }
+    //gets rid of meta
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+        return $CourseCodes;
+}
+
+function DLgetCourseNames($con, $courseCode) {
+    $rs = mysqli_query($con, "CALL SP_getCourseName($courseCode)");
+    while ($row = mysqli_fetch_array($rs)){
+      $courseName = $row['description'];
+    }
+    //gets rid of meta
+    while (mysqli_more_results($con)) {
+        mysqli_next_result($con);
+    }
+    return $courseName;
+}
+
 function DLgetCourseList($con) {
   $courses = array();
   $rs = mysqli_query($con, "CALL SP_getAllCourses");
@@ -390,10 +569,47 @@ function DLinsertCourse($con, $courseCode, $courseDescription) {
 
 function DLupdateCourse($con,$courseCode,$description,$isActive) {
   return mysqli_query($con, "CALL SP_updateCourse($courseCode, '$description',$isActive)");
+
 }
 
-function DLremoveCourse($con, $courseID) {
+
+function DLupdateCourseDescription($con, $corId, $corDesc){
+  return mysqli_query($con, "CALL SP_updateCourseDescription('$corId', '$corDesc')");
+}
+
+//sets a course's isActive to 0
+function DLremoveCourse($con, $courseCode) {
   return mysqli_query($con, "CALL SP_removeCourse($courseCode)");
+}
+
+//removes audio content based on courseCode. used when deleting a course
+function DLremoveAudio($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveAudioContentWCourseCode($courseCode)");
+}
+
+//removes video content based on courseCode. used when deleting a course
+function DLremoveVideo($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveVideoContentWCourseCode($courseCode)");
+}
+
+//removes text content based on courseCode. used when deleting a course
+function DLremoveText($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveDocumentContentWCourseCode($courseCode)");
+}
+
+//removes location table rows based on courseCode. used when deleting a course.
+function DLremoveLocation($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveLocation($courseCode)");
+}
+
+//removes instructormap rows based on courseCode. used when deleting a course.
+function DLremoveAssignedInstructors($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveAssignedInstructors($courseCode)");
+}
+
+//removes studentmap rows based on courseCode. used when deleting a course.
+function DLremoveAssignedStudents($con,$courseCode) {
+  return mysqli_query($con, "CALL SP_RemoveAssignedStudents($courseCode)");
 }
 
 function DLgetCourseName($con, $courseID) {
@@ -433,6 +649,46 @@ function DLgetCourseObject($con,$id) {
   }
 }
 
+function DLgetCourseObjectWName($con,$description) {
+  $rs = mysqli_query($con, "CALL SP_getCourseWName('$description')");
+  while ($row = mysqli_fetch_array($rs)) {
+      $course = new Course();
+      $course->setCourseCode($row['courseCode']);
+      $course->setDescription($row['description']);
+      $course->setIsActive($row['active']);
+  }
+  //gets rid of meta
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  if (isset($course)) {
+    return $course;
+  }
+  else {
+    return null;
+  }
+}
+
+function DLgetCourseInstructor($con, $courseId){
+  $rs = mysqli_query($con, "CALL SP_getCurrentInstructor($courseId)");
+  $instructorId = null;
+  while ($row = mysqli_fetch_array($rs)){
+    $instructorId = $row['instructorId'];
+  }
+  while (mysqli_more_results($con)) {
+      mysqli_next_result($con);
+  }
+  return $instructorId;
+}
+
+function DLunassignInstructor($con, $id, $courseCode){
+  return mysqli_query($con, "CALL SP_unassignInstructor($id, '$courseCode')");
+}
+
+function DLupdateInstructor($con, $id, $courseCode){
+  return mysqli_query($con, "CALL SP_updateCurrentInstructor($id, $courseCode)");
+}
+
 function DLgetFolders($con, $courseID){
 		$result = mysqli_query($con, "CALL SP_getFolders($courseID)");
 		while ($row = mysqli_fetch_array($result)){
@@ -444,46 +700,32 @@ function DLgetFolders($con, $courseID){
 		return $folders;
 }
 
-function DLcreateContent($con, $type, $courseID, $location, $path, $desc){
+function DLinsertContent($con, $type, $courseCode, $uploadDate, $path, $desc, $fileName){
 	if ($type == "audio"){
-		$result = mysqli_query($con, "CALL SP_createAudio($courseID, $location, '$path', '$desc')");
-		if ($result > 0){
-			return true;
-		}
-		else return false;
+		return mysqli_query($con, "CALL SP_insertAudio($courseCode, '$uploadDate', '$path', '$desc','$fileName')");
 	}
 	else if ($type == "video"){
-		$result = mysqli_query($con, "CALL SP_createVideo($courseID, $location, '$path', '$desc')");
-		if ($result > 0){
-			return true;
-		}
-		else return false;
+		return mysqli_query($con, "CALL SP_insertVideo($courseCode, '$uploadDate', '$path', '$desc','$fileName')");
 	}
-	else if ($type == "documents"){
-		$result = mysqli_query($con, "CALL SP_createDoc($courseID, $location, '$path', '$desc')");
-		if ($result > 0){
-			return true;
-		}
-		else return false;
+	else if ($type == "text"){
+		return mysqli_query($con, "CALL SP_insertText($courseCode, '$uploadDate', '$path', '$desc','$fileName')");
 	}
+  else return false;
 }
 
-function DLfetchAllStudentIDs($con){
-  $list = array();
-  $rs = mysqli_query($con, "CALL SP_fetchAllStudentIDs");
-  if($rs != false){
-    while ($row = mysqli_fetch_array($rs)) {
-        $list[] = $row;
-    }
-  }
-
-  //gets rid of meta
-  while (mysqli_more_results($con)) {
-      mysqli_next_result($con);
-  }
-  return $list;
+function DLaddIntsructorToCourse($con, $id, $course){
+  return mysqli_query($con, "CALL SP_addInstructorToCourse($id, '$course')");
 }
 
+function DLaddStudentToCourse($con, $id, $courseId){
+  return mysqli_query($con, "CALL SP_addStudentToCourse($id, '$courseId')");
+}
+
+function DLremoveStudentFromCourse($con, $id, $courseId){
+  return mysqli_query($con, "CALL SP_removeStudentFromCourse($id, '$courseId')");
+}
+
+/////CHAT/////////////////////////////////////////////////////////////////////////////////////////////////////
 function DLfetchConversation($con, $senderId, $recipientId){
 
   $rs = mysqli_query($con, "CALL SP_getConversation($senderId, $recipientId)");
@@ -511,6 +753,4 @@ function DLdeleteOldMessages($con, $senderId, $recipientId, $time){
 
   }
 }
-
-
 ?>

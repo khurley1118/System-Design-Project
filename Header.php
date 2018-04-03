@@ -5,6 +5,8 @@ require("StudentClass.php");
 require("AdminClass.php");
 require("InstructorClass.php");
 require("courseClass.php");
+require("ContentClass.php");
+
 session_start();
 
 $type = $_SESSION['userType'];
@@ -17,6 +19,28 @@ $_SESSION['firstName'] = $first;
 $full = $first . " " . $last;
 if ($_SESSION['userType'] != "admin"){
 $courselist = $user->getCourses();
+//
+$courseNames = [];
+if ($type != "admin"){
+  if ($type == "student"){
+    $courses = DLGetAssigned($con, $id, 0);
+    if ($courses != false){
+    foreach ($courses as $course){
+      $courseName = DLgetCourseName($con, $course);
+      array_push($courseNames, $courseName);
+    }
+  }
+  } else if ($type == "faculty"){
+    $courses = DLGetAssigned($con, $id, 1);
+    if ($courses != false){
+    foreach ($courses as $course){
+      $courseName = DLgetCourseName($con, $course);
+      array_push($courseNames, $courseName);
+    }
+  }
+  }
+  $_SESSION['assignedCourses'] = $courseNames;
+}
 }
 ?>
 <html lang="en">
@@ -26,8 +50,7 @@ $courselist = $user->getCourses();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tu-Pro Home</title>
     <script src="js/Home.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/headerStyle.css">
 
@@ -57,6 +80,7 @@ $courselist = $user->getCourses();
           <div id="nameDisplay">
             <?php
               echo $first . " " . $last . " - " . ucfirst($type);
+
             ?>
           </div>
 

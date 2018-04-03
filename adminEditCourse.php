@@ -10,40 +10,68 @@ $userType = $_SESSION['userType'];
 $user = $_SESSION['CurrentUser'];
 
 //get inputs from edit course form
-$inDescription = $_POST["getCourseDesc"];
-$inInstructor = $_POST["editInstructor"]; //will be used when assigning to course... TODO
-$inActiveStatus = $_POST["editActive"]; //note: all this does currently is change active/inactive in the db.
+$currentCourse = GetCourseObject($con, $_POST['corId']);
+$newCourse = new Course();
+$newCourse->setCourseCode($_POST['corId']);
+$newCourse->setDescription($_POST['corDesc']);
+$inInstructor = $_POST["instId"];
+$message = "";
 
-//check if the inputted values are the same as current DB values.
-//if they are, no need to change, give message saying no change
-//if they're different, go ahead and update.
-$success = false;
-if (isset($_SESSION['editCourse'])) {
-  //proceed
-  if (!($_SESSION['editCourse']->getDescription() == $inDescription && $_SESSION['editCourse']->getIsActive() == $inActiveStatus)) { //note: once assigning is worked out, also need to check that instructor is different too
-    //inputs are different from existing values, need to update course object and DB
-    $_SESSION['editCourse']->setDescription($inDescription);
-    $_SESSION['editCourse']->setIsActive($inActiveStatus);
-    $success = $_SESSION['editCourse']->UpdateCourse($con);
-    if ($success) {
-      //course has been updated. display success message.
-      $_SESSION['adminEditCourse'] = 1;
+//if there is an instructor assigned
+if(utilGetCourseInstructor($con, $currentCourse->getCourseCode()) != ""){
+      //if option one is seleted, unassign the current instructor
+      if($inInstructor == 1){
+            //get the current instructor assigned to the course
+            $x = utilGetCourseInstructor($con, $currentCourse->getCourseCode());
+            if(utilUnassignInstructor($con, $x, $currentCourse->getCourseCode())){
+              $message = "Instructor Unassigned";
+            }
+            else {
+              $message = "Error unassigning Instructor";
+            }
+      }
+      else{//else there is an instructor assigned, so update the assignned instructor
+            if (utilUpdateCourseInstructor($con, $inInstructor, $currentCourse->getCourseCode())){
+              $message = "Instructor updated";
+            }
+            else {
+              $message = "Error updating Instructor";
+            }
+      }
+}
+else{//there is no instructor assigned
+      if($inInstructor != 1){//if an instrctor is selected
+            if(utilAddInstructorToCourse($con, $inInstructor, $currentCourse->getCourseCode())){
+              $message = "Instructor assigned";
+            }
+            else {
+              $message = "Error assigning Instructor";
+            }
+      }
+}
+
+//if the desctiption is changed then update it
+if($currentCourse->getDescription() != $newCourse->getDescription()){
+  if($newCourse->updateDescription($con)){
+    //if message already has a value, then append to it
+    if($message != ""){
+      $message = $message . ", and description updated";
     }
     else {
-      //error updating course. display error message.
-      $_SESSION['adminEditCourse'] = 2;
+      $message = "Description updated";
     }
   }
-  else {
-    //inputted values were the same as the existing values, no need to update
-    $_SESSION['adminEditCourse'] = 3;
+  else{
+    //if message already has a value, then append to it
+    if($message != ""){
+      $message = $message . ", but error updating description";
+    }
+    else {
+      $message = "Error updating description";
+    }
   }
 }
-else {
-  //no valid course gotten from get course form
-  $_SESSION['adminEditCourse'] = 4;
-}
 
+echo json_encode($message);
 
-header('Location: AdminPage.php');
 ?>

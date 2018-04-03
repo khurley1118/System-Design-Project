@@ -44,15 +44,17 @@ function changePassword() {
 }
 
 function resTicket(ticketID) {
-
+  //ajax call to reserve a ticket without refreshing the page
   if (ticketID != 0){
     $.ajax({
+        //pass by POST ticketID by ticket
         type: 'POST',
         url: 'setResolvedFunction.php',
         data: {ticket : ticketID},
         cache: false,
         success: function (dataArray) {
-           document.getElementById('AdmiralSnackbar').innerHTML = 'Ticket has been set to resolved!';
+          //on success call snackbar for user feedback
+          document.getElementById('AdmiralSnackbar').innerHTML = 'Ticket has been set to resolved!';
           myFunction();
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -66,12 +68,15 @@ function resTicket(ticketID) {
 }
 
 function retrieveTicket(ticketID) {
+  //ajax call for retrieving a specific ticket without refreshing the page
   $.ajax({
+      //send by POST ticketID by ticket
       type: 'POST',
       url: 'getTicketsFunction.php',
       data: {ticket : ticketID},
       cache: false,
       success: function (dataArray) {
+        //on success parse JSON array into JS array, assign value to elements for display
         var data = JSON.parse(dataArray);
         var name = data[0];
         var description = data[1];
@@ -92,3 +97,99 @@ function retrieveTicket(ticketID) {
       }
   }
 }
+
+function retrieveCourse(courseID){
+  $.ajax({
+      type: 'POST',
+      url: 'getCourseInfo.php',
+      data: {idNum : courseID},
+      cache: false,
+      success: function (dataArray) {
+        var data = JSON.parse(dataArray);
+        var courseDesc = data[0];
+        var instructor = data[1];
+        if(instructor != null){
+          document.getElementById('selectInstructorOps').value = instructor;
+        }
+        else{
+          document.getElementById('selectInstructorOps').value = 1;
+        }
+        document.getElementById('courseDescInput').value = courseDesc;
+
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + thrownError);
+          return false;
+      }
+  }); // end ajax call
+}
+
+function editACourse(){
+  var courseId = document.getElementById('coursesList').options[document.getElementById("coursesList").selectedIndex].value;
+  var instructorId = document.getElementById('selectInstructorOps').options[document.getElementById("selectInstructorOps").selectedIndex].value;
+  var corDesc = document.getElementById('courseDescInput').value;
+  $.ajax({
+      type: 'POST',
+      url: 'adminEditCourse.php',
+      data: {instId : instructorId, corId : courseId, corDesc : corDesc},
+      cache: false,
+      success: function (data) {
+        var data = JSON.parse(data);
+        document.getElementById('AdmiralSnackbar').innerHTML = data;
+        myFunction();
+        retrieveCourse(courseId);
+      },
+      error: function (xhr, ajaxOptions, thrownError) {
+          alert(xhr.status + "\n" + thrownError);
+          return false;
+      }
+  }); // end ajax call
+
+  }
+
+  function getUserInfoAdmin(){
+    var useriD = document.getElementById('userIdAddRemove').value;
+    var userType = document.getElementById('userTypeAddRemove').value;
+    //alert(courseId + " " + instructorId + " " + corDesc);
+    $.ajax({
+        type: 'POST',
+        url: 'getUserInfo.php',
+        data: {getUserID : userId, userType : userType},
+        cache: false,
+        success: function (dataArray) {
+          alert(dataArray);
+          var data = JSON.parse(dataArray);
+          var courseDesc = data[0];
+          var instructor = data[1];
+          document.getElementById('')
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(xhr.status + "\n" + thrownError);
+            return false;
+        }
+    }); // end ajax call
+    }
+
+    function addRemoveStudentFromCourse(option){
+      var userId = document.getElementById('studentIdToRemove').value;
+      var courseId = document.getElementById('courseToRemoveFrom').options[document.getElementById("courseToRemoveFrom").selectedIndex].value;
+      $.ajax({
+          type: 'POST',
+          url: 'addRemoveStudent.php',
+          data: {id : userId, malone : option, corId : courseId},
+          cache: false,
+          success: function (data) {
+            var data = JSON.parse(data);
+            document.getElementById('AdmiralSnackbar').innerHTML = data;
+            myFunction();
+            retrieveCourse(courseId);
+            document.getElementById('courseDescInput').value = "";
+            document.getElementById('courseDescInput').value = "";
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+              alert(xhr.status + "\n" + thrownError);
+              return false;
+          }
+      }); // end ajax call
+
+      }
