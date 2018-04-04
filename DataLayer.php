@@ -169,7 +169,12 @@ function DLstudentUpdateNames($con,$id,$firstName,$lastName) {
 
 //setStudentsAvatar
 function DLsetAvatarStudent($con, $id, $path){
-  return mysqli_query($con, "CALL SP_setAvatarStudent($id, '$path')");
+  $rs = mysqli_query($con, "CALL SP_setAvatarStudent($id, '$path')");
+  if ($rs != false){
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function DLgetAvatarStudent($con, $id){
