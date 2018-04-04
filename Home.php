@@ -372,7 +372,8 @@
       }
      }
       if (isset($_SESSION['passwordChng'])){
-       if ($_SESSION['passwordChng'] == 1){
+       if ($_SESSION['passwordChng']
+       == 1){
 			$_SESSION['passwordChng'] = 0;
 			echo "<script>document.getElementById('AdmiralSnackbar').innerHTML = 'Password has been changed!';</script>";
 			echo "<script> myFunction(); </script>";
