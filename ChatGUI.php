@@ -27,6 +27,9 @@
                     $instructorName = utilInstructorFirst($con, $instID['instructorId']) . " " . utilInstructorLast($con, $instID['instructorId']);
                     $instructorID = $instID['instructorId'];
                     $instructorAvatar = utilGetAvatarInstructor($con, $instructorID);
+                    if (utilCheckAvatar($instructorAvatar) == false){
+                      $instructorAvatar = "Resources\Default.png";
+                    }
 
                     $element = '<div class="sidebar-name">';
                     $element = $element . '<a href="javascript:register_popup(\'' . $instructorID . '\',\'' . $instructorName . '\' );">';
@@ -47,7 +50,9 @@
                     $studentName = utilStudentFirst($con, $stuID['studentId']) . " " . utilStudentLast($con, $stuID['studentId']);
                     $studentID = $stuID['studentId'];
                     $studentAvatar = utilGetAvatarStudent($con, $studentID);
-
+                    if (utilCheckAvatar($studentAvatar) == false){
+                      $studentAvatar = "Resources\Default.png";
+                    }
                     $element = '<div class="sidebar-name">';
                     $element = $element . '<a href="javascript:register_popup(\'' . $studentID . '\',\'' . $studentName . '\' );">';
                     $element = $element . '<img id="chatImg" width="30" height="30" src="' . $studentAvatar . '" />';

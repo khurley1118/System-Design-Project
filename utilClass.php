@@ -6,7 +6,9 @@ include("DataLayer.php");
 function utilStudentFirst($con, $id) {
     return DLgetStudentFirst($con, $id);
 }
-
+function utilCheckAvatar($path){
+  return DLcheckAvatar($path);
+}
 function utilStudentLast($con, $id) {
     return DLgetStudentLast($con, $id);
 }
