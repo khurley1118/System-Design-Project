@@ -1,0 +1,31 @@
+Instructor->System: Presses choose Button
+System->Instructor: Displays file explorer
+Instructor->System: Selects a file
+Instructor->System: Selects a Topic
+Instructor->System: Adds description
+Instructor->System: addContent()
+note right of System: System executes function and adds to DB
+System->Instructor: Displays Snackbar
+
+Admin->System: Presses Reset password
+System->Admin: Displays change password form
+note left of Admin: enters ID 
+note left of Admin: enters old and new password with confirmation
+note left of Admin: selects account type
+Admin->System: changePassword(password, id)
+note right of System: System executes function hashes and updates DB
+System->Admin: Displays Snackbar
+
+Instructor->System: Presses Submit Ticket 
+System->Instructor: Displays Ticket form
+Instructor->System: addTicket(Description)
+note right of System: System executes function and adds to DB
+System->Instructor: Displays Snackbar
+
+
+Student->System: Presses course info
+System->Student: Displays Content dropdowns in accordian
+Student->System: Selects course dropdown
+System->Student: Displays Content topics options
+Student->System: Selects item from dropdown
+System->Student: Displays page with content

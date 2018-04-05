@@ -35,16 +35,17 @@
       if(isset($_SESSION['avatar'])){
         $avatarRedirect = $_SESSION['avatar'];
       }
-      $avatarPath = "avatars/default.png";
-
       if($userType == "student"){
         $avatarPath = utilGetAvatarStudent($con, $id);
+        if (utilCheckAvatar($avatarPath) == false){
+          $avatarPath = "Resources\Default.png";
+        }
       }
       else{
         $avatarPath = utilGetAvatarInstructor($con, $id);
-      }
-      if($avatarPath == ""){
-        $avatarPath = "avatars/default.png";
+        if (utilCheckAvatar($avatarPath) == false){
+          $avatarPath = "Resources\Default.png";
+        }
       }
 
        ?>
