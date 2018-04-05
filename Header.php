@@ -69,9 +69,15 @@ if ($type != "admin"){
               echo "<div id='avatar'>";
             if($type == "faculty") {
               $Avatar = utilGetAvatarInstructor($con, $id);
+              if (utilCheckAvatar($Avatar) == false){
+                $Avatar = "Resources\Default.png";
+              }
               echo "<div id='Avatar'><img id='AvatarImg' src='$Avatar' width='40' height='40'/></div>";
             } elseif ($type == "student"){
               $Avatar = utilGetAvatarStudent($con, $id);
+              if (utilCheckAvatar($Avatar) == false){
+                $Avatar = "Resources\Default.png";
+              }
               echo "<div id='Avatar'><img id='AvatarImg' src='$Avatar' width='40' height='40'/></div>";
             }
           }
