@@ -35,16 +35,17 @@
       if(isset($_SESSION['avatar'])){
         $avatarRedirect = $_SESSION['avatar'];
       }
-      $avatarPath = "avatars/default.png";
-
       if($userType == "student"){
         $avatarPath = utilGetAvatarStudent($con, $id);
+        if (utilCheckAvatar($avatarPath) == false){
+          $avatarPath = "Resources\Default.png";
+        }
       }
       else{
         $avatarPath = utilGetAvatarInstructor($con, $id);
-      }
-      if($avatarPath == ""){
-        $avatarPath = "avatars/default.png";
+        if (utilCheckAvatar($avatarPath) == false){
+          $avatarPath = "Resources\Default.png";
+        }
       }
 
        ?>
@@ -241,7 +242,7 @@
                                           <h2>Add a File</h2>
                                        </center>
                                        <input type="file" class="form-control" id="contentFile" name="contentFile" required autofocus>
-                                       <select class="form-control" id="mainDir" name="mainDir" onchange="javascript:popSubDir(mainDir.value)">
+                                       <select class="form-control" id="mainDir" required name="mainDir" onchange="javascript:popSubDir(mainDir.value)">
                                          <option>Select a Course</option>
                                          <?php
                                            $directories = glob("Content/*");
@@ -254,7 +255,7 @@
                                          }
                                          ?>
                                        </select>
-                                       <select class="form-control" id="subDir" name="subDir">
+                                       <select required class="form-control" id="subDir" name="subDir">
 
                                        </select>
                                        <textarea type="text" class="form-control" id="fileTA" name="fileTA" placeholder="Description" required></textarea>
@@ -269,8 +270,8 @@
                                        <center>
                                           <h2>Add a Topic</h2>
                                        </center>
-                                       <select class="form-control" name="mainDirectory">
-                                          <option>Select a Parent Topic</option>
+                                       <select required class="form-control" name="mainDirectory">
+                                          <option value="">Select a Parent Topic</option>
                                           <?php
                                             $directories = glob("Content/*");
                                             foreach($directories as $folder){
