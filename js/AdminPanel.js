@@ -118,7 +118,7 @@ function retrieveCourse(courseID){
 
       },
       error: function (xhr, ajaxOptions, thrownError) {
-          alert(xhr.status + "\n" + thrownError);
+          //alert(xhr.status + "\n" + thrownError);
           return false;
       }
   }); // end ajax call
@@ -140,7 +140,7 @@ function editACourse(){
         retrieveCourse(courseId);
       },
       error: function (xhr, ajaxOptions, thrownError) {
-          alert(xhr.status + "\n" + thrownError);
+          //alert(xhr.status + "\n" + thrownError);
           return false;
       }
   }); // end ajax call
@@ -164,7 +164,7 @@ function editACourse(){
           document.getElementById('')
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert(xhr.status + "\n" + thrownError);
+            //alert(xhr.status + "\n" + thrownError);
             return false;
         }
     }); // end ajax call
@@ -187,7 +187,7 @@ function editACourse(){
             document.getElementById('courseDescInput').value = "";
           },
           error: function (xhr, ajaxOptions, thrownError) {
-              alert(xhr.status + "\n" + thrownError);
+              //alert(xhr.status + "\n" + thrownError);
               return false;
           }
       }); // end ajax call
