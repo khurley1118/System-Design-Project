@@ -242,7 +242,7 @@
                                           <h2>Add a File</h2>
                                        </center>
                                        <input type="file" class="form-control" id="contentFile" name="contentFile" required autofocus>
-                                       <select class="form-control" id="mainDir" name="mainDir" onchange="javascript:popSubDir(mainDir.value)">
+                                       <select class="form-control" id="mainDir" required name="mainDir" onchange="javascript:popSubDir(mainDir.value)">
                                          <option>Select a Course</option>
                                          <?php
                                            $directories = glob("Content/*");
@@ -255,7 +255,7 @@
                                          }
                                          ?>
                                        </select>
-                                       <select class="form-control" id="subDir" name="subDir">
+                                       <select required class="form-control" id="subDir" name="subDir">
 
                                        </select>
                                        <textarea type="text" class="form-control" id="fileTA" name="fileTA" placeholder="Description" required></textarea>
