@@ -211,8 +211,8 @@
                                       <center>
                                          <h2>Remove Course</h2>
                                       </center>
-                                      <select class="form-control" id="courseList" name="courseList">
-                                         <option value="1" selected="selected" hidden>Select a course</option>
+                                      <select required class="form-control" id="courseList" name="courseList">
+                                         <option value="" selected="selected" hidden>Select a course</option>
                                          <?php
                                             $courseVar = new Course();
                                             $courseList = $courseVar->GetCourseList($con);
