@@ -270,8 +270,8 @@
                                        <center>
                                           <h2>Add a Topic</h2>
                                        </center>
-                                       <select class="form-control" name="mainDirectory">
-                                          <option>Select a Parent Topic</option>
+                                       <select required class="form-control" name="mainDirectory">
+                                          <option value="">Select a Parent Topic</option>
                                           <?php
                                             $directories = glob("Content/*");
                                             foreach($directories as $folder){
